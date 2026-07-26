@@ -4,7 +4,7 @@
     "title": "The Maltese Falcon",
     "authors": ["Dashiell Hammett"],
     "year": 1930,
-    "subjects": ["hardboiled", "noir", "detective-fiction"],
+    "subjects": ["hardboiled", "noir", "detective-fiction", "classic-mystery", "city-life"],
     "description": "Sam Spade's partner is killed and everyone hunting a jewelled bird lies to him about it. Hammett writes entirely from the outside, never entering a character's thoughts."
   },
   {
@@ -12,7 +12,7 @@
     "title": "The Big Sleep",
     "authors": ["Raymond Chandler"],
     "year": 1939,
-    "subjects": ["hardboiled", "noir", "city-life"],
+    "subjects": ["hardboiled", "noir", "city-life", "detective-fiction"],
     "description": "Philip Marlowe takes a blackmail case for a dying general and finds pornography, gambling, and two unmanageable daughters. The plot is famously incoherent and famously beside the point."
   },
   {
@@ -20,7 +20,7 @@
     "title": "The Long Goodbye",
     "authors": ["Raymond Chandler"],
     "year": 1953,
-    "subjects": ["hardboiled", "noir", "detective-fiction"],
+    "subjects": ["hardboiled", "noir", "detective-fiction", "city-life"],
     "description": "Marlowe's friendship with a drunk named Terry Lennox costs him a beating and his illusions. Chandler's most personal and least formulaic novel."
   },
   {
@@ -28,7 +28,7 @@
     "title": "Red Harvest",
     "authors": ["Dashiell Hammett"],
     "year": 1929,
-    "subjects": ["hardboiled", "noir", "criminal-justice"],
+    "subjects": ["hardboiled", "noir", "criminal-justice", "detective-fiction"],
     "description": "An unnamed operative sets a corrupt mining town's factions against each other until the streets clear. The template for a century of imitations."
   },
   {
@@ -36,7 +36,7 @@
     "title": "The Postman Always Rings Twice",
     "authors": ["James M. Cain"],
     "year": 1934,
-    "subjects": ["noir", "novella", "hardboiled"],
+    "subjects": ["noir", "novella", "hardboiled", "criminal-justice"],
     "description": "A drifter and a roadside diner owner's wife kill her husband and are destroyed by the aftermath rather than the act. Brutally short."
   },
   {
@@ -44,7 +44,7 @@
     "title": "Devil in a Blue Dress",
     "authors": ["Walter Mosley"],
     "year": 1990,
-    "subjects": ["hardboiled", "race", "noir"],
+    "subjects": ["hardboiled", "race", "noir", "detective-fiction", "city-life"],
     "description": "Easy Rawlins, newly unemployed in 1948 Los Angeles, is paid to find a white woman who frequents Black jazz clubs. The colour line is the actual terrain."
   },
   {
@@ -52,7 +52,7 @@
     "title": "The Black Echo",
     "authors": ["Michael Connelly"],
     "year": 1992,
-    "subjects": ["police-procedural", "detective-fiction", "city-life"],
+    "subjects": ["police-procedural", "detective-fiction", "city-life", "hardboiled", "war"],
     "description": "Harry Bosch recognises a body in a drainage pipe as a fellow Vietnam tunnel rat and works the case against his own department. Procedure rendered with real specificity."
   },
   {
@@ -60,7 +60,7 @@
     "title": "The Laughing Policeman",
     "authors": ["Maj Sjöwall", "Per Wahlöö"],
     "year": 1968,
-    "subjects": ["police-procedural", "criminal-justice"],
+    "subjects": ["police-procedural", "criminal-justice", "detective-fiction"],
     "description": "A bus massacre in Stockholm is ground down by patient, unglamorous police work. The Swedish series that made the procedural a vehicle for social criticism."
   },
   {
@@ -68,7 +68,7 @@
     "title": "In the Woods",
     "authors": ["Tana French"],
     "year": 2007,
-    "subjects": ["police-procedural", "psychological-horror"],
+    "subjects": ["police-procedural", "psychological-horror", "detective-fiction"],
     "description": "A Dublin detective investigates a child's murder in the same wood where his own friends vanished in 1984. Refuses to resolve one of its two mysteries."
   },
   {
@@ -76,7 +76,7 @@
     "title": "The Silence of the Lambs",
     "authors": ["Thomas Harris"],
     "year": 1988,
-    "subjects": ["police-procedural", "psychological-horror", "techno-thriller"],
+    "subjects": ["police-procedural", "psychological-horror", "techno-thriller", "detective-fiction"],
     "description": "An FBI trainee consults an imprisoned psychiatrist to catch a different killer, and pays for each answer with autobiography. The interviews are the engine."
   },
   {
@@ -84,7 +84,7 @@
     "title": "The Murder of Roger Ackroyd",
     "authors": ["Agatha Christie"],
     "year": 1926,
-    "subjects": ["classic-mystery", "detective-fiction"],
+    "subjects": ["classic-mystery", "detective-fiction", "metafiction"],
     "description": "Poirot investigates a country-house killing in a novel whose solution provoked accusations of cheating. Still the most-discussed trick in the genre."
   },
   {
@@ -92,7 +92,7 @@
     "title": "And Then There Were None",
     "authors": ["Agatha Christie"],
     "year": 1939,
-    "subjects": ["classic-mystery", "psychological-horror"],
+    "subjects": ["classic-mystery", "psychological-horror", "detective-fiction", "criminal-justice"],
     "description": "Ten strangers are lured to an island and accused, one by one, of deaths they were never tried for. No detective, and no survivors to explain."
   },
   {
@@ -100,7 +100,7 @@
     "title": "The Hound of the Baskervilles",
     "authors": ["Arthur Conan Doyle"],
     "year": 1902,
-    "subjects": ["classic-mystery", "gothic", "detective-fiction"],
+    "subjects": ["classic-mystery", "gothic", "detective-fiction", "victorian", "natural-history"],
     "description": "Holmes sends Watson to Dartmoor to guard an heir against a family curse in the shape of a spectral dog. Doyle's best sustained atmosphere."
   },
   {
@@ -108,7 +108,7 @@
     "title": "The Moonstone",
     "authors": ["Wilkie Collins"],
     "year": 1868,
-    "subjects": ["classic-mystery", "victorian", "colonialism"],
+    "subjects": ["classic-mystery", "victorian", "colonialism", "detective-fiction", "empire"],
     "description": "A diamond looted from India disappears from an English country house, and is investigated through a chain of contradictory witness accounts. Often called the first detective novel."
   },
   {
@@ -116,7 +116,7 @@
     "title": "The Daughter of Time",
     "authors": ["Josephine Tey"],
     "year": 1951,
-    "subjects": ["classic-mystery", "medieval-history"],
+    "subjects": ["classic-mystery", "medieval-history", "detective-fiction", "political-biography"],
     "description": "A bedridden inspector reinvestigates whether Richard III killed his nephews, using only books brought to his hospital bed. A detective novel about historiography."
   },
   {
@@ -124,7 +124,7 @@
     "title": "Tinker Tailor Soldier Spy",
     "authors": ["John le Carré"],
     "year": 1974,
-    "subjects": ["espionage", "cold-war", "police-procedural"],
+    "subjects": ["espionage", "cold-war", "police-procedural", "spy-stories"],
     "description": "The retired George Smiley is brought back to identify a Soviet mole at the top of British intelligence. Almost entirely files, interviews, and memory."
   },
   {
@@ -132,7 +132,7 @@
     "title": "The Spy Who Came In from the Cold",
     "authors": ["John le Carré"],
     "year": 1963,
-    "subjects": ["espionage", "cold-war", "ethics"],
+    "subjects": ["espionage", "cold-war", "ethics", "spy-stories", "authoritarianism"],
     "description": "A burnt-out British agent agrees to one last operation in East Germany and is used more thoroughly than he understands. The novel that ended the glamorous spy."
   },
   {
@@ -140,7 +140,7 @@
     "title": "The Quiet American",
     "authors": ["Graham Greene"],
     "year": 1955,
-    "subjects": ["espionage", "colonialism", "war"],
+    "subjects": ["espionage", "colonialism", "war", "spy-stories", "empire"],
     "description": "A cynical British journalist in 1950s Saigon watches an idealistic American operative cause deaths he considers justified. Prophetic about the next twenty years."
   },
   {
@@ -148,7 +148,7 @@
     "title": "The Riddle of the Sands",
     "authors": ["Erskine Childers"],
     "year": 1903,
-    "subjects": ["espionage", "war"],
+    "subjects": ["espionage", "war", "spy-stories", "world-war-i"],
     "description": "Two Englishmen sailing the Frisian coast stumble on German invasion preparations. Early spy fiction that reads mostly as an extremely detailed sailing log."
   },
   {
@@ -156,7 +156,7 @@
     "title": "Red Sparrow",
     "authors": ["Jason Matthews"],
     "year": 2013,
-    "subjects": ["espionage", "cold-war", "techno-thriller"],
+    "subjects": ["espionage", "cold-war", "techno-thriller", "spy-stories", "authoritarianism"],
     "description": "A coerced Russian intelligence officer and a CIA handler run each other in contemporary Moscow. Written by a career case officer, and specific about tradecraft."
   },
   {
@@ -164,7 +164,7 @@
     "title": "Presumed Innocent",
     "authors": ["Scott Turow"],
     "year": 1987,
-    "subjects": ["legal-thriller", "criminal-justice"],
+    "subjects": ["legal-thriller", "criminal-justice", "police-procedural"],
     "description": "A prosecutor is assigned his colleague's murder and then charged with it himself. The trial is procedurally exact and the narrator is not forthcoming."
   },
   {
@@ -172,7 +172,7 @@
     "title": "Anatomy of a Murder",
     "authors": ["Robert Traver"],
     "year": 1958,
-    "subjects": ["legal-thriller", "criminal-justice"],
+    "subjects": ["legal-thriller", "criminal-justice", "classic-mystery"],
     "description": "A small-town Michigan lawyer defends an army officer who killed his wife's alleged rapist. Written by a state supreme court justice, and unromantic about the law."
   },
   {
@@ -180,7 +180,7 @@
     "title": "A Time to Kill",
     "authors": ["John Grisham"],
     "year": 1989,
-    "subjects": ["legal-thriller", "race", "criminal-justice"],
+    "subjects": ["legal-thriller", "race", "criminal-justice", "civil-rights"],
     "description": "A Black father in Mississippi kills the men who raped his daughter, and his young white lawyer takes the case. Grisham's first and least formulaic novel."
   },
   {
@@ -188,7 +188,7 @@
     "title": "The Firm",
     "authors": ["John Grisham"],
     "year": 1991,
-    "subjects": ["legal-thriller", "techno-thriller"],
+    "subjects": ["legal-thriller", "techno-thriller", "economics", "criminal-justice"],
     "description": "A young tax lawyer discovers his generous new firm launders money and does not permit resignations. Efficient, and largely responsible for the genre's 1990s boom."
   },
   {
@@ -196,7 +196,7 @@
     "title": "The Hunt for Red October",
     "authors": ["Tom Clancy"],
     "year": 1984,
-    "subjects": ["techno-thriller", "cold-war", "espionage"],
+    "subjects": ["techno-thriller", "cold-war", "espionage", "war", "physics"],
     "description": "A Soviet submarine captain defects with his boat while both navies try to find him first. Hardware described with a loving specificity that became a genre convention."
   },
   {
@@ -204,7 +204,7 @@
     "title": "Jurassic Park",
     "authors": ["Michael Crichton"],
     "year": 1990,
-    "subjects": ["techno-thriller", "genetics", "ethics"],
+    "subjects": ["techno-thriller", "genetics", "ethics", "evolution", "technology-criticism"],
     "description": "Cloned dinosaurs on a Costa Rican island escape their containment on schedule. Crichton uses chaos theory as an explicit argument about engineering hubris."
   },
   {
@@ -212,7 +212,7 @@
     "title": "Cryptonomicon",
     "authors": ["Neal Stephenson"],
     "year": 1999,
-    "subjects": ["techno-thriller", "cryptography", "world-war-ii"],
+    "subjects": ["techno-thriller", "cryptography", "world-war-ii", "computer-security", "mathematics"],
     "description": "Codebreakers in the Second World War and their grandchildren building a data haven in the 1990s. Contains actual working cryptography as an appendix."
   },
   {
@@ -220,7 +220,7 @@
     "title": "The Cuckoo's Egg",
     "authors": ["Cliff Stoll"],
     "year": 1989,
-    "subjects": ["computer-security", "true-crime", "memoir"],
+    "subjects": ["computer-security", "true-crime", "memoir", "cryptography", "cold-war"],
     "description": "An astronomer notices a 75-cent accounting error and follows it to a KGB-linked intruder in his lab's network. The first popular account of a real network intrusion."
   },
   {
@@ -244,7 +244,7 @@
     "title": "I'll Be Gone in the Dark",
     "authors": ["Michelle McNamara"],
     "year": 2018,
-    "subjects": ["true-crime", "memoir"],
+    "subjects": ["true-crime", "memoir", "criminal-justice", "police-procedural"],
     "description": "A writer's obsessive hunt for the Golden State Killer, published after her death and before his arrest. As much about the cost of the obsession as the case."
   },
   {
@@ -252,7 +252,7 @@
     "title": "The Devil in the White City",
     "authors": ["Erik Larson"],
     "year": 2003,
-    "subjects": ["true-crime", "architecture", "city-life"],
+    "subjects": ["true-crime", "architecture", "city-life", "19th-century", "urbanism"],
     "description": "The 1893 Chicago World's Fair and a serial killer operating at its edge, told in alternating strands. The architecture half is the stronger one."
   },
   {
@@ -260,7 +260,7 @@
     "title": "Just Mercy",
     "authors": ["Bryan Stevenson"],
     "year": 2014,
-    "subjects": ["criminal-justice", "race", "memoir"],
+    "subjects": ["criminal-justice", "race", "memoir", "civil-rights"],
     "description": "A lawyer's account of defending condemned prisoners in Alabama, centred on Walter McMillian's wrongful conviction. Case narrative doing the work of argument."
   },
   {
@@ -268,7 +268,7 @@
     "title": "The New Jim Crow",
     "authors": ["Michelle Alexander"],
     "year": 2010,
-    "subjects": ["criminal-justice", "race", "civil-rights"],
+    "subjects": ["criminal-justice", "race", "civil-rights", "authoritarianism"],
     "description": "Argues that mass incarceration functions as a racial caste system succeeding segregation. The book that moved the phrase into general use."
   },
   {
@@ -276,7 +276,7 @@
     "title": "Ghettoside",
     "authors": ["Jill Leovy"],
     "year": 2015,
-    "subjects": ["criminal-justice", "police-procedural", "race"],
+    "subjects": ["criminal-justice", "police-procedural", "race", "urbanism"],
     "description": "A single Los Angeles homicide investigation used to argue that Black victims have been chronically under-policed rather than over-policed."
   },
   {
@@ -284,7 +284,7 @@
     "title": "Gomorrah",
     "authors": ["Roberto Saviano"],
     "year": 2006,
-    "subjects": ["true-crime", "economics", "globalization"],
+    "subjects": ["true-crime", "economics", "globalization", "labor", "urbanism"],
     "description": "The Neapolitan Camorra described as a logistics and manufacturing business rather than a subculture. Its author has lived under police protection since publication."
   },
   {
@@ -292,7 +292,7 @@
     "title": "Mystic River",
     "authors": ["Dennis Lehane"],
     "year": 2001,
-    "subjects": ["noir", "police-procedural", "family-saga"],
+    "subjects": ["noir", "police-procedural", "family-saga", "city-life"],
     "description": "Three Boston men, marked by one afternoon in childhood, are brought back together by a daughter's murder. Closer to tragedy than mystery."
   },
   {
@@ -300,7 +300,7 @@
     "title": "The Secret History",
     "authors": ["Donna Tartt"],
     "year": 1992,
-    "subjects": ["psychological-horror", "classical-antiquity", "coming-of-age"],
+    "subjects": ["psychological-horror", "classical-antiquity", "coming-of-age", "ancient-philosophy"],
     "description": "A classics student at a Vermont college is drawn into a killing by his elite study group. The murder is disclosed on page one; the interest is entirely in the why."
   },
   {
@@ -316,7 +316,7 @@
     "title": "Gone Girl",
     "authors": ["Gillian Flynn"],
     "year": 2012,
-    "subjects": ["psychological-horror", "noir", "gender"],
+    "subjects": ["psychological-horror", "noir", "gender", "family-saga", "media-studies"],
     "description": "A wife disappears and her husband's account of the marriage is contradicted by her diary. Both narrators are performing, which is the actual subject."
   }
 ]

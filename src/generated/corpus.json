@@ -37,7 +37,8 @@
     "subjects": [
       "russian-literature",
       "19th-century",
-      "war"
+      "war",
+      "political-theory"
     ],
     "description": "Russian aristocratic families are carried through the Napoleonic invasion. Tolstoy interleaves domestic life with battlefield chaos, arguing that history is made by countless small acts rather than great men."
   },
@@ -51,7 +52,9 @@
     "subjects": [
       "russian-literature",
       "ethics",
-      "comparative-religion"
+      "comparative-religion",
+      "existentialism",
+      "family-saga"
     ],
     "description": "A patricide becomes the frame for an argument about faith, doubt, and moral responsibility among three very different brothers. Contains the Grand Inquisitor parable."
   },
@@ -65,7 +68,9 @@
     "subjects": [
       "russian-literature",
       "psychological-horror",
-      "ethics"
+      "ethics",
+      "criminal-justice",
+      "existentialism"
     ],
     "description": "Raskolnikov murders a pawnbroker to prove he is above conventional morality, then spends the novel being dismantled by his own conscience. An early study of rationalized violence."
   },
@@ -91,7 +96,8 @@
     "year": 1857,
     "subjects": [
       "19th-century",
-      "family-saga"
+      "family-saga",
+      "gender"
     ],
     "description": "Emma Bovary's romantic expectations, formed by novels, collide with the boredom of a provincial marriage. Flaubert's precision made the ordinary a legitimate subject for serious prose."
   },
@@ -105,7 +111,9 @@
     "subjects": [
       "victorian",
       "coming-of-age",
-      "class"
+      "class",
+      "19th-century",
+      "criminal-justice"
     ],
     "description": "Pip is lifted from a blacksmith's forge into gentility by an unknown benefactor, and discovers what his new status actually cost. Dickens on money, shame, and self-invention."
   },
@@ -119,7 +127,8 @@
     "subjects": [
       "victorian",
       "criminal-justice",
-      "19th-century"
+      "19th-century",
+      "family-saga"
     ],
     "description": "An interminable inheritance suit poisons everyone it touches while a parallel mystery unwinds around Esther Summerson. Dickens's most structurally ambitious attack on institutional delay."
   },
@@ -133,7 +142,8 @@
     "subjects": [
       "victorian",
       "gothic",
-      "coming-of-age"
+      "coming-of-age",
+      "gender"
     ],
     "description": "An orphaned governess insists on her own moral standing against a household built on a concealed crime. Combines gothic machinery with an unusually direct first-person voice."
   },
@@ -147,7 +157,8 @@
     "subjects": [
       "gothic",
       "victorian",
-      "family-saga"
+      "family-saga",
+      "19th-century"
     ],
     "description": "Heathcliff and Catherine's mutual destruction plays out across two generations on the Yorkshire moors. Told through narrators who barely understand what they are reporting."
   },
@@ -175,7 +186,8 @@
     "subjects": [
       "modernism",
       "stream-of-consciousness",
-      "city-life"
+      "city-life",
+      "metafiction"
     ],
     "description": "One Dublin day, mapped onto the Odyssey, rendered in a different prose style almost every chapter. The most systematic demonstration of what interior monologue can carry."
   },
@@ -189,7 +201,9 @@
     "subjects": [
       "modernism",
       "stream-of-consciousness",
-      "city-life"
+      "city-life",
+      "gender",
+      "war"
     ],
     "description": "A day of party preparation in post-war London, shadowed by a veteran's disintegration. Woolf moves between consciousnesses without transition, letting the city hold them together."
   },
@@ -203,7 +217,9 @@
     "subjects": [
       "modernism",
       "stream-of-consciousness",
-      "family-saga"
+      "family-saga",
+      "gender",
+      "war"
     ],
     "description": "A family's summer visits to Skye, split by a decade and several deaths delivered in parentheses. Its middle section is one of the great formal risks in English fiction."
   },
@@ -217,7 +233,8 @@
     "subjects": [
       "modernism",
       "stream-of-consciousness",
-      "family-saga"
+      "family-saga",
+      "race"
     ],
     "description": "The Compson family's decline told four times, beginning inside the mind of a man who cannot order events in time. Difficulty here is structural argument, not decoration."
   },
@@ -245,7 +262,9 @@
     "subjects": [
       "modernism",
       "criminal-justice",
-      "totalitarianism"
+      "totalitarianism",
+      "existentialism",
+      "authoritarianism"
     ],
     "description": "Josef K. is arrested by an authority that never states his charge and never quite convenes. The bureaucracy is not malicious so much as indifferent, which is worse."
   },
@@ -259,7 +278,9 @@
     "subjects": [
       "novella",
       "modernism",
-      "psychological-horror"
+      "psychological-horror",
+      "existentialism",
+      "family-saga"
     ],
     "description": "Gregor Samsa wakes as an insect and his family's pity curdles into resentment. The transformation is stated in the first sentence; the novella is about the household's adjustment."
   },
@@ -273,7 +294,8 @@
     "subjects": [
       "existentialism",
       "novella",
-      "criminal-justice"
+      "criminal-justice",
+      "colonialism"
     ],
     "description": "Meursault kills a man on a beach and is condemned less for the killing than for not grieving at his mother's funeral. Flat prose as a philosophical position."
   },
@@ -287,7 +309,8 @@
     "subjects": [
       "magical-realism",
       "latin-american-literature",
-      "family-saga"
+      "family-saga",
+      "colonialism"
     ],
     "description": "Seven generations of the Buendía family found, populate, and lose the town of Macondo. Miracles are reported in the same register as weather, which is the whole technique."
   },
@@ -300,7 +323,9 @@
     "year": 1985,
     "subjects": [
       "latin-american-literature",
-      "magical-realism"
+      "magical-realism",
+      "family-saga",
+      "gender"
     ],
     "description": "Florentino waits fifty-one years for Fermina to be widowed. García Márquez treats obsessive devotion as both genuinely romantic and faintly absurd, refusing to choose."
   },
@@ -314,7 +339,8 @@
     "subjects": [
       "latin-american-literature",
       "magical-realism",
-      "novella"
+      "novella",
+      "gothic"
     ],
     "description": "A man goes to Comala to find his father and discovers a village where the living and dead are not clearly distinguished. Short, fragmentary, and the direct ancestor of magical realism."
   },
@@ -328,7 +354,9 @@
     "subjects": [
       "short-stories",
       "latin-american-literature",
-      "metafiction"
+      "metafiction",
+      "logic",
+      "epistemology"
     ],
     "description": "Stories about infinite libraries, invented encyclopedias, and a man who rewrites Don Quixote word for word. Borges built the template for fiction as intellectual puzzle."
   },
@@ -342,7 +370,9 @@
     "subjects": [
       "latin-american-literature",
       "postmodern",
-      "metafiction"
+      "metafiction",
+      "existentialism",
+      "city-life"
     ],
     "description": "A novel with two reading orders, following an Argentine expatriate in Paris and Buenos Aires. The structural game is inseparable from its argument about how life is assembled."
   },
@@ -356,7 +386,9 @@
     "subjects": [
       "latin-american-literature",
       "postmodern",
-      "poetry"
+      "poetry",
+      "city-life",
+      "literary-criticism"
     ],
     "description": "Two young poets are pursued across decades and continents through dozens of testimonies. A novel about literary ambition that is mostly about failure and time passing."
   },
@@ -369,7 +401,9 @@
     "year": 1914,
     "subjects": [
       "japanese-literature",
-      "translation"
+      "translation",
+      "existentialism",
+      "family-saga"
     ],
     "description": "A student befriends an older man carrying an unexplained guilt from his youth. Sōseki writes the psychological cost of Japan's rapid modernization into a quiet friendship."
   },
@@ -383,7 +417,8 @@
     "subjects": [
       "japanese-literature",
       "translation",
-      "family-saga"
+      "family-saga",
+      "gender"
     ],
     "description": "Court life and the amorous career of a Heian prince, written by a lady-in-waiting around the year 1000. Frequently called the first novel, and still readable as one."
   },
@@ -397,7 +432,9 @@
     "subjects": [
       "japanese-literature",
       "magical-realism",
-      "coming-of-age"
+      "coming-of-age",
+      "existentialism",
+      "family-saga"
     ],
     "description": "A runaway teenager and an elderly man who talks to cats move toward each other through a landscape where prophecy and coincidence are indistinguishable."
   },
@@ -411,7 +448,9 @@
     "subjects": [
       "japanese-literature",
       "psychological-horror",
-      "gender"
+      "gender",
+      "family-saga",
+      "novella"
     ],
     "description": "A Korean woman stops eating meat and keeps subtracting from herself, narrated in three parts by people who refuse to understand her. Bodily refusal as the only available protest."
   },
@@ -425,7 +464,8 @@
     "subjects": [
       "chinese-literature",
       "translation",
-      "family-saga"
+      "family-saga",
+      "revolution"
     ],
     "description": "A landlord's son loses everything across the Chinese twentieth century and keeps surviving. Delivered plainly, which makes the accumulation of loss harder to deflect."
   },
@@ -439,7 +479,8 @@
     "subjects": [
       "african-literature",
       "colonialism",
-      "family-saga"
+      "family-saga",
+      "comparative-religion"
     ],
     "description": "Okonkwo's standing in his Igbo community cannot survive either his own rigidity or the arrival of British missionaries. Written deliberately against colonial accounts of the same events."
   },
@@ -453,7 +494,8 @@
     "subjects": [
       "african-literature",
       "war",
-      "family-saga"
+      "family-saga",
+      "colonialism"
     ],
     "description": "Three lives intersect during the Nigerian-Biafran war: a professor's houseboy, a twin sister, and an English writer. The war arrives gradually, then completely."
   },
@@ -467,7 +509,9 @@
     "subjects": [
       "african-literature",
       "colonialism",
-      "novella"
+      "novella",
+      "migration",
+      "gender"
     ],
     "description": "A Sudanese narrator returns from England to find a village neighbour with a violent London past. A deliberate inversion of Heart of Darkness, travelling the other way."
   },
@@ -481,7 +525,9 @@
     "subjects": [
       "south-asian-literature",
       "magical-realism",
-      "postmodern"
+      "postmodern",
+      "colonialism",
+      "family-saga"
     ],
     "description": "Saleem Sinai, born at the instant of Indian independence, finds his life handcuffed to the nation's. Allegory carried out at maximum volume and length."
   },
@@ -495,7 +541,9 @@
     "subjects": [
       "south-asian-literature",
       "class",
-      "family-saga"
+      "family-saga",
+      "authoritarianism",
+      "city-life"
     ],
     "description": "Four strangers share a cramped apartment during the Indian Emergency. Mistry is unsentimental about how thoroughly poverty and politics can dismantle decent people."
   },
@@ -509,7 +557,9 @@
     "subjects": [
       "south-asian-literature",
       "coming-of-age",
-      "class"
+      "class",
+      "family-saga",
+      "gender"
     ],
     "description": "Twins in Kerala circle the day their cousin drowned and the caste transgression that followed. Told in a fractured, invented, child-inflected English."
   },
@@ -523,7 +573,8 @@
     "subjects": [
       "race",
       "gothic",
-      "family-saga"
+      "family-saga",
+      "psychological-horror"
     ],
     "description": "An escaped enslaved woman is visited by the daughter she killed rather than see returned to slavery. Morrison makes the ghost story the only adequate form for the history."
   },
@@ -537,7 +588,8 @@
     "subjects": [
       "race",
       "coming-of-age",
-      "civil-rights"
+      "civil-rights",
+      "city-life"
     ],
     "description": "An unnamed Black narrator moves through the American South, Harlem, and a political movement that each need him to be something other than himself."
   },
@@ -551,7 +603,9 @@
     "subjects": [
       "postmodern",
       "metafiction",
-      "world-war-ii"
+      "world-war-ii",
+      "war",
+      "technology-criticism"
     ],
     "description": "V-2 rockets fall on London in a pattern that seems to anticipate one man's erections. Paranoia, ballistics, and cartel capitalism in a novel that refuses to resolve."
   },
@@ -565,7 +619,8 @@
     "subjects": [
       "postmodern",
       "media-studies",
-      "technology-criticism"
+      "technology-criticism",
+      "city-life"
     ],
     "description": "A professor of Hitler studies confronts an airborne toxic event and his own terror of dying. DeLillo hears the language of supermarkets and television as liturgy."
   },
@@ -579,7 +634,8 @@
     "subjects": [
       "postmodern",
       "metafiction",
-      "media-studies"
+      "media-studies",
+      "technology-criticism"
     ],
     "description": "A tennis academy, a halfway house, and a film so entertaining it incapacitates viewers. Wallace's argument about addiction and entertainment runs to a thousand pages and hundreds of endnotes."
   },
@@ -606,7 +662,8 @@
     "year": 1899,
     "subjects": [
       "short-stories",
-      "russian-literature"
+      "russian-literature",
+      "19th-century"
     ],
     "description": "Chekhov's mature stories, where plot recedes and a character's situation is simply made visible. The template most subsequent short fiction is written against."
   },
@@ -619,7 +676,9 @@
     "year": 1953,
     "subjects": [
       "short-stories",
-      "psychological-horror"
+      "psychological-horror",
+      "family-saga",
+      "war"
     ],
     "description": "Nine stories including 'A Perfect Day for Bananafish', preoccupied with damaged veterans and unnervingly perceptive children."
   },
@@ -633,7 +692,8 @@
     "subjects": [
       "novella",
       "colonialism",
-      "modernism"
+      "modernism",
+      "empire"
     ],
     "description": "Marlow travels up the Congo to retrieve the trader Kurtz and finds imperial commerce stripped of its justifications. Much argued over, and worth arguing about."
   },
@@ -646,7 +706,8 @@
     "year": 1952,
     "subjects": [
       "novella",
-      "natural-history"
+      "natural-history",
+      "ecology"
     ],
     "description": "An aged Cuban fisherman hooks a marlin larger than his boat and loses it to sharks on the way home. Hemingway's late, pared-back style at its most exposed."
   },
@@ -659,7 +720,8 @@
     "year": 1951,
     "subjects": [
       "coming-of-age",
-      "city-life"
+      "city-life",
+      "family-saga"
     ],
     "description": "Holden Caulfield wanders New York after being expelled, narrating in a voice that has been imitated ever since. Adolescent contempt as a defence against grief."
   },
@@ -673,7 +735,8 @@
     "subjects": [
       "coming-of-age",
       "modernism",
-      "stream-of-consciousness"
+      "stream-of-consciousness",
+      "comparative-religion"
     ],
     "description": "Stephen Dedalus grows from a small boy to a young man deciding to leave Ireland, the prose maturing in step with him. The style is the biography."
   },
@@ -687,7 +750,8 @@
     "subjects": [
       "dystopia",
       "coming-of-age",
-      "novella"
+      "novella",
+      "medicine"
     ],
     "description": "Students at an English boarding school gradually learn what they were made for. Ishiguro withholds the premise so that acceptance, not horror, becomes the subject."
   },
@@ -701,7 +765,8 @@
     "subjects": [
       "class",
       "memoir",
-      "family-saga"
+      "family-saga",
+      "war"
     ],
     "description": "An English butler tours the West Country and slowly reveals how much dignity cost him. An unreliable narrator who is mostly unreliable about himself."
   },
@@ -715,7 +780,8 @@
     "subjects": [
       "cyberpunk",
       "artificial-intelligence",
-      "noir"
+      "noir",
+      "city-life"
     ],
     "description": "A burned-out console cowboy is hired for a run against an AI seeking to merge with its other half. The book that fixed cyberspace, street-level tech, and corporate arcologies as a genre grammar."
   },
@@ -729,7 +795,8 @@
     "subjects": [
       "cyberpunk",
       "linguistics",
-      "artificial-intelligence"
+      "artificial-intelligence",
+      "city-life"
     ],
     "description": "A pizza-delivering hacker chases a linguistic virus through a franchised, privatized America and its shared virtual Metaverse. Satire and infodump in roughly equal measure."
   },
@@ -757,7 +824,8 @@
     "subjects": [
       "cyberpunk",
       "hardboiled",
-      "noir"
+      "noir",
+      "criminal-justice"
     ],
     "description": "Consciousness can be moved between bodies, so a soldier is downloaded into a new one to investigate a rich man's apparent suicide. Hardboiled detective structure with immortality as the crime scene."
   },
@@ -771,7 +839,8 @@
     "subjects": [
       "cyberpunk",
       "artificial-intelligence",
-      "coming-of-age"
+      "coming-of-age",
+      "technology-criticism"
     ],
     "description": "In a nanotech world organized into cultural enclaves, a stolen interactive primer educates a poor girl. A serious argument about pedagogy inside an adventure novel."
   },
@@ -785,7 +854,8 @@
     "subjects": [
       "space-opera",
       "ecology",
-      "empire"
+      "empire",
+      "political-theory"
     ],
     "description": "Control of the desert planet Arrakis means control of the spice, and a displaced ducal heir becomes a messiah he half distrusts. Ecology, religion, and imperial politics locked together."
   },
@@ -799,7 +869,8 @@
     "subjects": [
       "space-opera",
       "poetry",
-      "short-stories"
+      "short-stories",
+      "comparative-religion"
     ],
     "description": "Seven pilgrims travel to the Time Tombs and tell their stories on the way, each in a different genre register. A Canterbury Tales structure at interstellar scale."
   },
@@ -813,7 +884,8 @@
     "subjects": [
       "space-opera",
       "first-contact",
-      "artificial-intelligence"
+      "artificial-intelligence",
+      "artificial-life"
     ],
     "description": "A galaxy stratified by zones of possible intelligence, a resurrected malevolent power, and a medieval species of pack minds. Ambitious even by space opera standards."
   },
@@ -841,7 +913,8 @@
     "subjects": [
       "utopia",
       "political-theory",
-      "space-opera"
+      "space-opera",
+      "labor"
     ],
     "description": "A physicist travels from an anarchist moon to the capitalist planet it seceded from. Le Guin takes both societies seriously enough to show what each costs."
   },
@@ -869,7 +942,8 @@
     "subjects": [
       "space-opera",
       "artificial-intelligence",
-      "utopia"
+      "utopia",
+      "war"
     ],
     "description": "The first Culture novel, told from the perspective of someone fighting against the post-scarcity utopia. Banks introduces his AI Minds by way of their enemies."
   },
@@ -883,7 +957,9 @@
     "subjects": [
       "dystopia",
       "totalitarianism",
-      "surveillance"
+      "surveillance",
+      "propaganda",
+      "linguistics"
     ],
     "description": "Winston Smith edits the past for a Party that has abolished the possibility of private thought. The appendix on Newspeak is the most chilling part."
   },
@@ -897,7 +973,8 @@
     "subjects": [
       "dystopia",
       "utopia",
-      "genetics"
+      "genetics",
+      "technology-criticism"
     ],
     "description": "A society stabilized by engineered castes, casual pleasure, and a drug that removes objection. Huxley's dystopia is frictionless rather than brutal."
   },
@@ -911,7 +988,9 @@
     "subjects": [
       "dystopia",
       "gender",
-      "totalitarianism"
+      "totalitarianism",
+      "feminism",
+      "authoritarianism"
     ],
     "description": "A theocratic United States assigns fertile women to households as reproductive property. Atwood insisted every element had a historical precedent."
   },
@@ -924,7 +1003,8 @@
     "year": 2006,
     "subjects": [
       "post-apocalyptic",
-      "family-saga"
+      "family-saga",
+      "climate"
     ],
     "description": "A man and his son push a shopping cart south through an ash-covered continent. Stripped of quotation marks, chapter breaks, and nearly all consolation."
   },
@@ -937,7 +1017,8 @@
     "year": 2014,
     "subjects": [
       "post-apocalyptic",
-      "short-stories"
+      "short-stories",
+      "public-health"
     ],
     "description": "A travelling Shakespeare company crosses the Great Lakes twenty years after a flu pandemic. Interested in what art is for once infrastructure is gone."
   },
@@ -951,7 +1032,8 @@
     "subjects": [
       "post-apocalyptic",
       "climate",
-      "race"
+      "race",
+      "comparative-religion"
     ],
     "description": "A young woman with pathological empathy walks north through a collapsing, water-scarce California and founds a religion. Written in 1993 and set in the 2020s."
   },
@@ -965,7 +1047,8 @@
     "subjects": [
       "time-travel",
       "race",
-      "gothic"
+      "gothic",
+      "civil-rights"
     ],
     "description": "A Black woman in 1976 is pulled repeatedly into antebellum Maryland to keep her own ancestor alive. Time travel used to make historical complicity unavoidable."
   },
@@ -979,7 +1062,8 @@
     "subjects": [
       "first-contact",
       "physics",
-      "chinese-literature"
+      "chinese-literature",
+      "revolution"
     ],
     "description": "A physicist investigates scientist suicides and finds a signal answered during the Cultural Revolution. Ideas-first science fiction on a civilizational timescale."
   },
@@ -993,7 +1077,8 @@
     "subjects": [
       "first-contact",
       "consciousness",
-      "psychological-horror"
+      "psychological-horror",
+      "epistemology"
     ],
     "description": "A research station orbits an ocean-planet that responds by materializing the crew's dead. Lem's argument is that genuine alienness would be unintelligible, not humanoid."
   },
@@ -1021,7 +1106,8 @@
     "subjects": [
       "first-contact",
       "cosmology",
-      "utopia"
+      "utopia",
+      "comparative-religion"
     ],
     "description": "Benevolent aliens end war and want, then reveal what humanity was being prepared for. Clarke's transcendence is genuinely unsettling rather than triumphant."
   },
@@ -1035,7 +1121,8 @@
     "subjects": [
       "time-travel",
       "world-war-ii",
-      "metafiction"
+      "metafiction",
+      "war"
     ],
     "description": "Billy Pilgrim experiences his life, including the firebombing of Dresden, out of order. The nonlinearity is a way of handling trauma, not a gimmick."
   },
@@ -1049,7 +1136,8 @@
     "subjects": [
       "time-travel",
       "novella",
-      "class"
+      "class",
+      "evolution"
     ],
     "description": "A Victorian inventor travels to a future split into languid Eloi and subterranean Morlocks. Class anxiety projected forward eight hundred thousand years."
   },
@@ -1076,7 +1164,9 @@
     "subjects": [
       "epic-fantasy",
       "war",
-      "linguistics"
+      "linguistics",
+      "fantasy",
+      "medieval-history"
     ],
     "description": "A hobbit carries a ring of total power toward the only place it can be destroyed. Built on invented languages and a genuine sense of deep, lossy history."
   },
@@ -1090,7 +1180,9 @@
     "subjects": [
       "epic-fantasy",
       "medieval-history",
-      "political-theory"
+      "political-theory",
+      "fantasy",
+      "war"
     ],
     "description": "Rival houses manoeuvre for a throne while something worse gathers in the north. Rotating viewpoints and a stated willingness to kill anyone."
   },
@@ -1104,7 +1196,8 @@
     "subjects": [
       "epic-fantasy",
       "coming-of-age",
-      "taoism"
+      "taoism",
+      "fantasy"
     ],
     "description": "A gifted boy at a wizards' school unleashes a shadow he must spend the book naming. Magic as true naming, and restraint as the actual lesson."
   },
@@ -1118,7 +1211,9 @@
     "subjects": [
       "epic-fantasy",
       "climate",
-      "class"
+      "class",
+      "fantasy",
+      "race"
     ],
     "description": "On a continent of recurring extinction events, people who can quell earthquakes are enslaved for it. Three timelines that turn out to be one."
   },
@@ -1132,7 +1227,9 @@
     "subjects": [
       "urban-fantasy",
       "19th-century",
-      "epic-fantasy"
+      "epic-fantasy",
+      "fantasy",
+      "war"
     ],
     "description": "Two magicians revive English magic during the Napoleonic wars and fall out badly. Written as a Regency novel complete with invented scholarly footnotes."
   },
@@ -1146,7 +1243,8 @@
     "subjects": [
       "urban-fantasy",
       "police-procedural",
-      "city-life"
+      "city-life",
+      "authoritarianism"
     ],
     "description": "A murder investigation in two cities occupying the same ground, whose residents are trained to unsee each other. Genuine police procedural on an impossible premise."
   },
@@ -1159,7 +1257,8 @@
     "year": 1996,
     "subjects": [
       "urban-fantasy",
-      "city-life"
+      "city-life",
+      "fantasy"
     ],
     "description": "A Londoner helps an injured girl and falls into London Below, a city assembled from the tube map's discarded names."
   },
@@ -1172,7 +1271,9 @@
     "year": 1989,
     "subjects": [
       "magical-realism",
-      "latin-american-literature"
+      "latin-american-literature",
+      "gender",
+      "family-saga"
     ],
     "description": "A youngest daughter forbidden to marry channels her feeling into cooking, and the emotions transfer to whoever eats. Structured around monthly recipes."
   },
@@ -1186,7 +1287,9 @@
     "subjects": [
       "magical-realism",
       "russian-literature",
-      "totalitarianism"
+      "totalitarianism",
+      "comparative-religion",
+      "authoritarianism"
     ],
     "description": "The Devil and a talking cat arrive in Stalinist Moscow while a parallel narrative retells Pontius Pilate. Written in secret and published decades after its author's death."
   },
@@ -1200,7 +1303,9 @@
     "subjects": [
       "gothic",
       "victorian",
-      "psychological-horror"
+      "psychological-horror",
+      "horror",
+      "19th-century"
     ],
     "description": "A Transylvanian count relocates to England and is hunted by a small group with telegrams, phonographs, and shorthand. Modern technology versus ancient contagion."
   },
@@ -1214,7 +1319,8 @@
     "subjects": [
       "gothic",
       "artificial-life",
-      "ethics"
+      "ethics",
+      "science-writing"
     ],
     "description": "A student assembles a living man and abandons him at first sight. The creature's own eloquent account sits at the centre, which is what makes it more than horror."
   },
@@ -1227,7 +1333,8 @@
     "year": 1938,
     "subjects": [
       "gothic",
-      "psychological-horror"
+      "psychological-horror",
+      "gender"
     ],
     "description": "A young second wife arrives at Manderley to find the first wife's authority intact and the housekeeper hostile. The narrator is never named."
   },
@@ -1241,7 +1348,8 @@
     "subjects": [
       "gothic",
       "novella",
-      "psychological-horror"
+      "psychological-horror",
+      "19th-century"
     ],
     "description": "A governess becomes convinced two children are being visited by the dead. Constructed so that the question of whether the ghosts are real cannot be settled."
   },
@@ -1255,7 +1363,9 @@
     "subjects": [
       "cosmic-horror",
       "novella",
-      "natural-history"
+      "natural-history",
+      "horror",
+      "cosmology"
     ],
     "description": "An Antarctic expedition uncovers the ruins of a pre-human civilization and its discarded biology. Horror delivered as reluctant scientific report."
   },
@@ -1269,7 +1379,8 @@
     "subjects": [
       "cosmic-horror",
       "ecology",
-      "first-contact"
+      "first-contact",
+      "natural-history"
     ],
     "description": "A biologist enters a coastal zone where biology has been rewritten by something that has no interest in being understood. Field notes as dread."
   },
@@ -1282,7 +1393,9 @@
     "year": 2016,
     "subjects": [
       "cosmic-horror",
-      "psychological-horror"
+      "psychological-horror",
+      "horror",
+      "gothic"
     ],
     "description": "Two widowers take up fishing in upstate New York and hear a long story about a drowned valley. Grief and cosmic horror braided into one another."
   },
@@ -1295,7 +1408,8 @@
     "year": 1959,
     "subjects": [
       "psychological-horror",
-      "gothic"
+      "gothic",
+      "horror"
     ],
     "description": "Four people study a house that seems to select one of them. Jackson keeps the haunting and Eleanor's disintegration inseparable."
   },
@@ -1309,7 +1423,8 @@
     "subjects": [
       "psychological-horror",
       "novella",
-      "family-saga"
+      "family-saga",
+      "gothic"
     ],
     "description": "Two sisters live in hostile isolation after a poisoning the village has not forgiven. Narrated by someone whose calm is the most alarming thing in the book."
   },
@@ -1323,7 +1438,8 @@
     "subjects": [
       "psychological-horror",
       "gothic",
-      "family-saga"
+      "family-saga",
+      "horror"
     ],
     "description": "A recovering alcoholic takes a winter caretaking job at an isolated Colorado hotel with his wife and psychic son. The hotel supplies what he already wanted."
   },
@@ -1337,7 +1453,9 @@
     "subjects": [
       "hardboiled",
       "noir",
-      "detective-fiction"
+      "detective-fiction",
+      "classic-mystery",
+      "city-life"
     ],
     "description": "Sam Spade's partner is killed and everyone hunting a jewelled bird lies to him about it. Hammett writes entirely from the outside, never entering a character's thoughts."
   },
@@ -1351,7 +1469,8 @@
     "subjects": [
       "hardboiled",
       "noir",
-      "city-life"
+      "city-life",
+      "detective-fiction"
     ],
     "description": "Philip Marlowe takes a blackmail case for a dying general and finds pornography, gambling, and two unmanageable daughters. The plot is famously incoherent and famously beside the point."
   },
@@ -1365,7 +1484,8 @@
     "subjects": [
       "hardboiled",
       "noir",
-      "detective-fiction"
+      "detective-fiction",
+      "city-life"
     ],
     "description": "Marlowe's friendship with a drunk named Terry Lennox costs him a beating and his illusions. Chandler's most personal and least formulaic novel."
   },
@@ -1379,7 +1499,8 @@
     "subjects": [
       "hardboiled",
       "noir",
-      "criminal-justice"
+      "criminal-justice",
+      "detective-fiction"
     ],
     "description": "An unnamed operative sets a corrupt mining town's factions against each other until the streets clear. The template for a century of imitations."
   },
@@ -1393,7 +1514,8 @@
     "subjects": [
       "noir",
       "novella",
-      "hardboiled"
+      "hardboiled",
+      "criminal-justice"
     ],
     "description": "A drifter and a roadside diner owner's wife kill her husband and are destroyed by the aftermath rather than the act. Brutally short."
   },
@@ -1407,7 +1529,9 @@
     "subjects": [
       "hardboiled",
       "race",
-      "noir"
+      "noir",
+      "detective-fiction",
+      "city-life"
     ],
     "description": "Easy Rawlins, newly unemployed in 1948 Los Angeles, is paid to find a white woman who frequents Black jazz clubs. The colour line is the actual terrain."
   },
@@ -1421,7 +1545,9 @@
     "subjects": [
       "police-procedural",
       "detective-fiction",
-      "city-life"
+      "city-life",
+      "hardboiled",
+      "war"
     ],
     "description": "Harry Bosch recognises a body in a drainage pipe as a fellow Vietnam tunnel rat and works the case against his own department. Procedure rendered with real specificity."
   },
@@ -1435,7 +1561,8 @@
     "year": 1968,
     "subjects": [
       "police-procedural",
-      "criminal-justice"
+      "criminal-justice",
+      "detective-fiction"
     ],
     "description": "A bus massacre in Stockholm is ground down by patient, unglamorous police work. The Swedish series that made the procedural a vehicle for social criticism."
   },
@@ -1448,7 +1575,8 @@
     "year": 2007,
     "subjects": [
       "police-procedural",
-      "psychological-horror"
+      "psychological-horror",
+      "detective-fiction"
     ],
     "description": "A Dublin detective investigates a child's murder in the same wood where his own friends vanished in 1984. Refuses to resolve one of its two mysteries."
   },
@@ -1462,7 +1590,8 @@
     "subjects": [
       "police-procedural",
       "psychological-horror",
-      "techno-thriller"
+      "techno-thriller",
+      "detective-fiction"
     ],
     "description": "An FBI trainee consults an imprisoned psychiatrist to catch a different killer, and pays for each answer with autobiography. The interviews are the engine."
   },
@@ -1475,7 +1604,8 @@
     "year": 1926,
     "subjects": [
       "classic-mystery",
-      "detective-fiction"
+      "detective-fiction",
+      "metafiction"
     ],
     "description": "Poirot investigates a country-house killing in a novel whose solution provoked accusations of cheating. Still the most-discussed trick in the genre."
   },
@@ -1488,7 +1618,9 @@
     "year": 1939,
     "subjects": [
       "classic-mystery",
-      "psychological-horror"
+      "psychological-horror",
+      "detective-fiction",
+      "criminal-justice"
     ],
     "description": "Ten strangers are lured to an island and accused, one by one, of deaths they were never tried for. No detective, and no survivors to explain."
   },
@@ -1502,7 +1634,9 @@
     "subjects": [
       "classic-mystery",
       "gothic",
-      "detective-fiction"
+      "detective-fiction",
+      "victorian",
+      "natural-history"
     ],
     "description": "Holmes sends Watson to Dartmoor to guard an heir against a family curse in the shape of a spectral dog. Doyle's best sustained atmosphere."
   },
@@ -1516,7 +1650,9 @@
     "subjects": [
       "classic-mystery",
       "victorian",
-      "colonialism"
+      "colonialism",
+      "detective-fiction",
+      "empire"
     ],
     "description": "A diamond looted from India disappears from an English country house, and is investigated through a chain of contradictory witness accounts. Often called the first detective novel."
   },
@@ -1529,7 +1665,9 @@
     "year": 1951,
     "subjects": [
       "classic-mystery",
-      "medieval-history"
+      "medieval-history",
+      "detective-fiction",
+      "political-biography"
     ],
     "description": "A bedridden inspector reinvestigates whether Richard III killed his nephews, using only books brought to his hospital bed. A detective novel about historiography."
   },
@@ -1543,7 +1681,8 @@
     "subjects": [
       "espionage",
       "cold-war",
-      "police-procedural"
+      "police-procedural",
+      "spy-stories"
     ],
     "description": "The retired George Smiley is brought back to identify a Soviet mole at the top of British intelligence. Almost entirely files, interviews, and memory."
   },
@@ -1557,7 +1696,9 @@
     "subjects": [
       "espionage",
       "cold-war",
-      "ethics"
+      "ethics",
+      "spy-stories",
+      "authoritarianism"
     ],
     "description": "A burnt-out British agent agrees to one last operation in East Germany and is used more thoroughly than he understands. The novel that ended the glamorous spy."
   },
@@ -1571,7 +1712,9 @@
     "subjects": [
       "espionage",
       "colonialism",
-      "war"
+      "war",
+      "spy-stories",
+      "empire"
     ],
     "description": "A cynical British journalist in 1950s Saigon watches an idealistic American operative cause deaths he considers justified. Prophetic about the next twenty years."
   },
@@ -1584,7 +1727,9 @@
     "year": 1903,
     "subjects": [
       "espionage",
-      "war"
+      "war",
+      "spy-stories",
+      "world-war-i"
     ],
     "description": "Two Englishmen sailing the Frisian coast stumble on German invasion preparations. Early spy fiction that reads mostly as an extremely detailed sailing log."
   },
@@ -1598,7 +1743,9 @@
     "subjects": [
       "espionage",
       "cold-war",
-      "techno-thriller"
+      "techno-thriller",
+      "spy-stories",
+      "authoritarianism"
     ],
     "description": "A coerced Russian intelligence officer and a CIA handler run each other in contemporary Moscow. Written by a career case officer, and specific about tradecraft."
   },
@@ -1611,7 +1758,8 @@
     "year": 1987,
     "subjects": [
       "legal-thriller",
-      "criminal-justice"
+      "criminal-justice",
+      "police-procedural"
     ],
     "description": "A prosecutor is assigned his colleague's murder and then charged with it himself. The trial is procedurally exact and the narrator is not forthcoming."
   },
@@ -1624,7 +1772,8 @@
     "year": 1958,
     "subjects": [
       "legal-thriller",
-      "criminal-justice"
+      "criminal-justice",
+      "classic-mystery"
     ],
     "description": "A small-town Michigan lawyer defends an army officer who killed his wife's alleged rapist. Written by a state supreme court justice, and unromantic about the law."
   },
@@ -1638,7 +1787,8 @@
     "subjects": [
       "legal-thriller",
       "race",
-      "criminal-justice"
+      "criminal-justice",
+      "civil-rights"
     ],
     "description": "A Black father in Mississippi kills the men who raped his daughter, and his young white lawyer takes the case. Grisham's first and least formulaic novel."
   },
@@ -1651,7 +1801,9 @@
     "year": 1991,
     "subjects": [
       "legal-thriller",
-      "techno-thriller"
+      "techno-thriller",
+      "economics",
+      "criminal-justice"
     ],
     "description": "A young tax lawyer discovers his generous new firm launders money and does not permit resignations. Efficient, and largely responsible for the genre's 1990s boom."
   },
@@ -1665,7 +1817,9 @@
     "subjects": [
       "techno-thriller",
       "cold-war",
-      "espionage"
+      "espionage",
+      "war",
+      "physics"
     ],
     "description": "A Soviet submarine captain defects with his boat while both navies try to find him first. Hardware described with a loving specificity that became a genre convention."
   },
@@ -1679,7 +1833,9 @@
     "subjects": [
       "techno-thriller",
       "genetics",
-      "ethics"
+      "ethics",
+      "evolution",
+      "technology-criticism"
     ],
     "description": "Cloned dinosaurs on a Costa Rican island escape their containment on schedule. Crichton uses chaos theory as an explicit argument about engineering hubris."
   },
@@ -1693,7 +1849,9 @@
     "subjects": [
       "techno-thriller",
       "cryptography",
-      "world-war-ii"
+      "world-war-ii",
+      "computer-security",
+      "mathematics"
     ],
     "description": "Codebreakers in the Second World War and their grandchildren building a data haven in the 1990s. Contains actual working cryptography as an appendix."
   },
@@ -1707,7 +1865,9 @@
     "subjects": [
       "computer-security",
       "true-crime",
-      "memoir"
+      "memoir",
+      "cryptography",
+      "cold-war"
     ],
     "description": "An astronomer notices a 75-cent accounting error and follows it to a KGB-linked intruder in his lab's network. The first popular account of a real network intrusion."
   },
@@ -1747,7 +1907,9 @@
     "year": 2018,
     "subjects": [
       "true-crime",
-      "memoir"
+      "memoir",
+      "criminal-justice",
+      "police-procedural"
     ],
     "description": "A writer's obsessive hunt for the Golden State Killer, published after her death and before his arrest. As much about the cost of the obsession as the case."
   },
@@ -1761,7 +1923,9 @@
     "subjects": [
       "true-crime",
       "architecture",
-      "city-life"
+      "city-life",
+      "19th-century",
+      "urbanism"
     ],
     "description": "The 1893 Chicago World's Fair and a serial killer operating at its edge, told in alternating strands. The architecture half is the stronger one."
   },
@@ -1775,7 +1939,8 @@
     "subjects": [
       "criminal-justice",
       "race",
-      "memoir"
+      "memoir",
+      "civil-rights"
     ],
     "description": "A lawyer's account of defending condemned prisoners in Alabama, centred on Walter McMillian's wrongful conviction. Case narrative doing the work of argument."
   },
@@ -1789,7 +1954,8 @@
     "subjects": [
       "criminal-justice",
       "race",
-      "civil-rights"
+      "civil-rights",
+      "authoritarianism"
     ],
     "description": "Argues that mass incarceration functions as a racial caste system succeeding segregation. The book that moved the phrase into general use."
   },
@@ -1803,7 +1969,8 @@
     "subjects": [
       "criminal-justice",
       "police-procedural",
-      "race"
+      "race",
+      "urbanism"
     ],
     "description": "A single Los Angeles homicide investigation used to argue that Black victims have been chronically under-policed rather than over-policed."
   },
@@ -1817,7 +1984,9 @@
     "subjects": [
       "true-crime",
       "economics",
-      "globalization"
+      "globalization",
+      "labor",
+      "urbanism"
     ],
     "description": "The Neapolitan Camorra described as a logistics and manufacturing business rather than a subculture. Its author has lived under police protection since publication."
   },
@@ -1831,7 +2000,8 @@
     "subjects": [
       "noir",
       "police-procedural",
-      "family-saga"
+      "family-saga",
+      "city-life"
     ],
     "description": "Three Boston men, marked by one afternoon in childhood, are brought back together by a daughter's murder. Closer to tragedy than mystery."
   },
@@ -1845,7 +2015,8 @@
     "subjects": [
       "psychological-horror",
       "classical-antiquity",
-      "coming-of-age"
+      "coming-of-age",
+      "ancient-philosophy"
     ],
     "description": "A classics student at a Vermont college is drawn into a killing by his elite study group. The murder is disclosed on page one; the interest is entirely in the why."
   },
@@ -1872,7 +2043,9 @@
     "subjects": [
       "psychological-horror",
       "noir",
-      "gender"
+      "gender",
+      "family-saga",
+      "media-studies"
     ],
     "description": "A wife disappears and her husband's account of the marriage is contradicted by her diary. Both narrators are performing, which is the actual subject."
   },
@@ -1885,7 +2058,9 @@
     "year": -430,
     "subjects": [
       "classical-antiquity",
-      "war"
+      "war",
+      "empire",
+      "comparative-religion"
     ],
     "description": "An inquiry into the Greco-Persian wars that digresses constantly into ethnography, rumour, and marvels. The founding text of history writing, and openly unreliable in places."
   },
@@ -1899,7 +2074,8 @@
     "subjects": [
       "classical-antiquity",
       "war",
-      "political-theory"
+      "political-theory",
+      "democracy"
     ],
     "description": "A participant's austere account of Athens and Sparta destroying each other. The Melian Dialogue remains the standard citation for realist power politics."
   },
@@ -1913,7 +2089,8 @@
     "subjects": [
       "rome",
       "classical-antiquity",
-      "empire"
+      "empire",
+      "democracy"
     ],
     "description": "A thousand years of Roman history that keeps asking how we know what we claim to know. Beard is more interested in citizenship and ordinary Romans than in emperors."
   },
@@ -1927,7 +2104,8 @@
     "subjects": [
       "rome",
       "classical-antiquity",
-      "empire"
+      "empire",
+      "environmental-history"
     ],
     "description": "Argues from archaeology — pottery, building, literacy — that Rome's end was a genuine material collapse rather than a peaceful transformation."
   },
@@ -1941,7 +2119,9 @@
     "subjects": [
       "rome",
       "classical-antiquity",
-      "political-biography"
+      "political-biography",
+      "biography",
+      "authoritarianism"
     ],
     "description": "Biographies of Julius Caesar through Domitian, mixing administrative record with enthusiastic gossip. The source of most lurid imperial anecdotes."
   },
@@ -1954,7 +2134,8 @@
     "year": 1975,
     "subjects": [
       "medieval-history",
-      "comparative-religion"
+      "comparative-religion",
+      "criminal-justice"
     ],
     "description": "The daily life of a Pyrenean village reconstructed from Inquisition interrogation records. Heresy trials turned into an unusually complete social history."
   },
@@ -1967,7 +2148,8 @@
     "year": 1978,
     "subjects": [
       "medieval-history",
-      "war"
+      "war",
+      "public-health"
     ],
     "description": "The calamitous fourteenth century — plague, schism, and the Hundred Years' War — followed through the life of one French nobleman."
   },
@@ -1980,7 +2162,8 @@
     "year": 1953,
     "subjects": [
       "medieval-history",
-      "comparative-religion"
+      "comparative-religion",
+      "political-theory"
     ],
     "description": "How Europe between 970 and 1215 developed the institutions and inner life that made it medieval rather than late antique."
   },
@@ -1994,7 +2177,8 @@
     "subjects": [
       "world-war-i",
       "war",
-      "political-biography"
+      "political-biography",
+      "empire"
     ],
     "description": "The first month of the First World War, showing how mobilization timetables and misread intentions removed everyone's choices."
   },
@@ -2008,7 +2192,8 @@
     "subjects": [
       "world-war-i",
       "war",
-      "empire"
+      "empire",
+      "political-theory"
     ],
     "description": "Reconstructs 1914 as a shared failure of many governments rather than a German plan. Deliberately refuses to assign single blame."
   },
@@ -2022,7 +2207,8 @@
     "subjects": [
       "world-war-i",
       "memoir",
-      "war"
+      "war",
+      "autobiography"
     ],
     "description": "A German officer's front-line diary of the Western Front, written without disillusionment. Unsettling precisely because it does not condemn."
   },
@@ -2035,7 +2221,9 @@
     "year": 2012,
     "subjects": [
       "world-war-ii",
-      "war"
+      "war",
+      "empire",
+      "holocaust"
     ],
     "description": "A single-volume global military history that keeps the Pacific, Eastern, and Western theatres in one frame and stays close to individual experience."
   },
@@ -2049,7 +2237,8 @@
     "subjects": [
       "world-war-ii",
       "war",
-      "cold-war"
+      "cold-war",
+      "totalitarianism"
     ],
     "description": "The 1942–43 battle reconstructed from Soviet and German archives opened after 1991, including letters never delivered."
   },
@@ -2063,7 +2252,9 @@
     "subjects": [
       "world-war-ii",
       "totalitarianism",
-      "propaganda"
+      "propaganda",
+      "authoritarianism",
+      "holocaust"
     ],
     "description": "A correspondent who reported from Berlin writes the Nazi state's history from captured documents. Dated in interpretation, unmatched as eyewitness synthesis."
   },
@@ -2077,7 +2268,9 @@
     "subjects": [
       "holocaust",
       "memoir",
-      "ethics"
+      "ethics",
+      "autobiography",
+      "world-war-ii"
     ],
     "description": "A chemist's account of ten months in Auschwitz, written to describe rather than accuse. Its restraint is what gives it force."
   },
@@ -2091,7 +2284,9 @@
     "subjects": [
       "holocaust",
       "ethics",
-      "totalitarianism"
+      "totalitarianism",
+      "criminal-justice",
+      "propaganda"
     ],
     "description": "Trial reportage that introduced the banality of evil, arguing Eichmann was thoughtless rather than demonic. Still fiercely disputed."
   },
@@ -2105,7 +2300,9 @@
     "subjects": [
       "holocaust",
       "ethics",
-      "war"
+      "war",
+      "psychological-horror",
+      "criminal-justice"
     ],
     "description": "How a reserve police battalion of middle-aged German civilians became mass shooters, reconstructed from post-war interrogations."
   },
@@ -2118,7 +2315,10 @@
     "year": 2005,
     "subjects": [
       "cold-war",
-      "political-theory"
+      "political-theory",
+      "authoritarianism",
+      "war",
+      "democracy"
     ],
     "description": "A compact synthesis of the whole confrontation by a historian with archival access on both sides."
   },
@@ -2131,7 +2331,9 @@
     "year": 2011,
     "subjects": [
       "cold-war",
-      "political-biography"
+      "political-biography",
+      "war",
+      "democracy"
     ],
     "description": "The year Kennedy and Khrushchev brought Berlin to the brink and the wall went up, told almost hour by hour at its crisis points."
   },
@@ -2145,7 +2347,8 @@
     "subjects": [
       "totalitarianism",
       "russian-literature",
-      "novella"
+      "novella",
+      "memoir"
     ],
     "description": "A single ordinary day in a Soviet labour camp, published inside the USSR during the thaw. Its power is in the smallness of the victories."
   },
@@ -2159,7 +2362,8 @@
     "subjects": [
       "totalitarianism",
       "memoir",
-      "criminal-justice"
+      "criminal-justice",
+      "authoritarianism"
     ],
     "description": "The Soviet camp system documented from the author's imprisonment and hundreds of survivor accounts, smuggled out for publication."
   },
@@ -2186,7 +2390,8 @@
     "subjects": [
       "revolution",
       "political-theory",
-      "democracy"
+      "democracy",
+      "authoritarianism"
     ],
     "description": "Shows how much of the centralized French state the Revolution inherited rather than created. Written by someone who had watched a later revolution fail."
   },
@@ -2200,7 +2405,8 @@
     "subjects": [
       "revolution",
       "russian-literature",
-      "totalitarianism"
+      "totalitarianism",
+      "war"
     ],
     "description": "The Russian Revolution from 1891 to 1924, following individual lives through famine, war, and Bolshevik consolidation."
   },
@@ -2214,7 +2420,9 @@
     "subjects": [
       "revolution",
       "colonialism",
-      "race"
+      "race",
+      "empire",
+      "labor"
     ],
     "description": "The Haitian Revolution and Toussaint L'Ouverture, written as both history and anticolonial argument. The first major account to treat it as a revolution of equal standing."
   },
@@ -2228,7 +2436,9 @@
     "subjects": [
       "colonialism",
       "empire",
-      "true-crime"
+      "true-crime",
+      "labor",
+      "civil-rights"
     ],
     "description": "The Congo Free State as a private extraction operation that killed millions, and the early campaign that exposed it."
   },
@@ -2242,7 +2452,8 @@
     "subjects": [
       "colonialism",
       "literary-criticism",
-      "empire"
+      "empire",
+      "epistemology"
     ],
     "description": "Argues that Western scholarship on the East constructed the object it claimed to describe, and that this served rule. Foundational and much contested."
   },
@@ -2256,7 +2467,9 @@
     "subjects": [
       "colonialism",
       "empire",
-      "war"
+      "war",
+      "19th-century",
+      "race"
     ],
     "description": "How European powers partitioned a continent between 1876 and 1912, told through the men who did it and thought it reasonable."
   },
@@ -2270,7 +2483,9 @@
     "subjects": [
       "environmental-history",
       "colonialism",
-      "climate"
+      "climate",
+      "public-health",
+      "economics"
     ],
     "description": "El Niño famines in India, China, and Brazil turned catastrophic by imperial market policy. Climate and politics treated as one causal system."
   },
@@ -2284,7 +2499,9 @@
     "subjects": [
       "memoir",
       "political-biography",
-      "civil-rights"
+      "civil-rights",
+      "autobiography",
+      "race"
     ],
     "description": "Mandela's account of the ANC, the Rivonia trial, and twenty-seven years of imprisonment, much of it drafted on Robben Island."
   },
@@ -2298,7 +2515,9 @@
     "subjects": [
       "memoir",
       "russian-literature",
-      "essays"
+      "essays",
+      "autobiography",
+      "modernism"
     ],
     "description": "A pre-revolutionary Russian childhood recovered in deliberately artificial, gorgeous prose. Nabokov treats memory as composition rather than record."
   },
@@ -2312,7 +2531,9 @@
     "subjects": [
       "holocaust",
       "memoir",
-      "coming-of-age"
+      "coming-of-age",
+      "autobiography",
+      "world-war-ii"
     ],
     "description": "Two years of hiding in an Amsterdam annexe, written by a teenager who did not survive. An ordinary adolescent diary in an unbearable setting."
   },
@@ -2326,7 +2547,8 @@
     "subjects": [
       "memoir",
       "migration",
-      "class"
+      "class",
+      "race"
     ],
     "description": "An essayist's account of how education carried him out of a Spanish-speaking household and away from his parents. Deliberately unwelcome conclusions."
   },
@@ -2340,7 +2562,9 @@
     "subjects": [
       "political-biography",
       "democracy",
-      "civil-rights"
+      "civil-rights",
+      "biography",
+      "19th-century"
     ],
     "description": "Lincoln's cabinet, assembled from the men he defeated for the nomination. A study of political management as much as biography."
   },
@@ -2354,7 +2578,8 @@
     "subjects": [
       "political-biography",
       "urbanism",
-      "democracy"
+      "democracy",
+      "biography"
     ],
     "description": "Robert Moses reshaped New York for forty years without ever winning an election. The definitive account of unelected power."
   },
@@ -2368,7 +2593,9 @@
     "subjects": [
       "political-biography",
       "democracy",
-      "civil-rights"
+      "civil-rights",
+      "biography",
+      "race"
     ],
     "description": "Johnson from the humiliations of the vice presidency through the transition after Dallas. Caro's specialty is showing exactly how legislative power is applied."
   },
@@ -2396,7 +2623,9 @@
     "subjects": [
       "scientific-biography",
       "physics",
-      "memoir"
+      "memoir",
+      "autobiography",
+      "science-writing"
     ],
     "description": "Anecdotes from a physicist who enjoyed safecracking and bongo drums as much as quantum electrodynamics."
   },
@@ -2410,7 +2639,9 @@
     "subjects": [
       "scientific-biography",
       "mathematics",
-      "south-asian-literature"
+      "south-asian-literature",
+      "biography-of-ideas",
+      "colonialism"
     ],
     "description": "Ramanujan's journey from a clerk's desk in Madras to Cambridge, and his collaboration with Hardy. A biography about how mathematical intuition is legitimised."
   },
@@ -2425,7 +2656,9 @@
     "subjects": [
       "scientific-biography",
       "computer-science",
-      "biography-of-ideas"
+      "biography-of-ideas",
+      "mathematics",
+      "cryptography"
     ],
     "description": "Claude Shannon, who founded information theory in a single 1948 paper and then largely lost interest in fame."
   },
@@ -2439,7 +2672,8 @@
     "subjects": [
       "scientific-biography",
       "physics",
-      "biography-of-ideas"
+      "biography-of-ideas",
+      "war"
     ],
     "description": "Uses newly released letters to connect Einstein's physics, his politics, and a personal life he managed poorly."
   },
@@ -2453,7 +2687,9 @@
     "subjects": [
       "medicine",
       "race",
-      "ethics"
+      "ethics",
+      "genetics",
+      "civil-rights"
     ],
     "description": "The woman whose cancer cells became the immortal HeLa line without her family's knowledge or benefit. Consent and race in medical research."
   },
@@ -2467,7 +2703,9 @@
     "subjects": [
       "environmental-history",
       "empire",
-      "ecology"
+      "ecology",
+      "evolution",
+      "globalization"
     ],
     "description": "Argues geography and available domesticates, not innate difference, explain which societies conquered others. Popular, influential, and heavily criticised by specialists."
   },
@@ -2481,7 +2719,9 @@
     "subjects": [
       "empire",
       "globalization",
-      "medieval-history"
+      "medieval-history",
+      "colonialism",
+      "economics"
     ],
     "description": "World history recentred on Central Asia and the trade corridors between East and West, with Europe as periphery for most of it."
   },
@@ -2495,7 +2735,9 @@
     "subjects": [
       "cold-war",
       "political-theory",
-      "democracy"
+      "democracy",
+      "authoritarianism",
+      "economics"
     ],
     "description": "Europe from the ruins to the EU, tracking both halves of the continent and the memory politics that followed 1989."
   },
@@ -2509,7 +2751,8 @@
     "subjects": [
       "physics",
       "quantum-mechanics",
-      "science-writing"
+      "science-writing",
+      "mathematics"
     ],
     "description": "Four lectures explaining quantum electrodynamics with arrows and no mathematics. Feynman refuses to make it intuitive because it isn't."
   },
@@ -2522,7 +2765,9 @@
     "year": 1994,
     "subjects": [
       "physics",
-      "science-writing"
+      "science-writing",
+      "quantum-mechanics",
+      "mathematics"
     ],
     "description": "The most accessible chapters of the Feynman Lectures, covering atoms, energy, and the relationship of physics to the other sciences."
   },
@@ -2535,7 +2780,9 @@
     "year": 1965,
     "subjects": [
       "physics",
-      "philosophy-of-science"
+      "philosophy-of-science",
+      "mathematics",
+      "epistemology"
     ],
     "description": "Lectures on what makes a physical law a law — symmetry, conservation, and the peculiar effectiveness of mathematics."
   },
@@ -2550,7 +2797,9 @@
     "subjects": [
       "quantum-mechanics",
       "physics",
-      "science-writing"
+      "science-writing",
+      "mathematics",
+      "cosmology"
     ],
     "description": "Builds quantum mechanics from clock-face amplitudes to the exclusion principle and the mass of stars, keeping the arithmetic visible."
   },
@@ -2564,7 +2813,9 @@
     "subjects": [
       "quantum-mechanics",
       "philosophy-of-science",
-      "consciousness"
+      "consciousness",
+      "physics",
+      "epistemology"
     ],
     "description": "A philosopher takes the measurement problem seriously and walks through the candidate solutions without hand-waving."
   },
@@ -2578,7 +2829,9 @@
     "subjects": [
       "cosmology",
       "physics",
-      "science-writing"
+      "science-writing",
+      "quantum-mechanics",
+      "astronomy"
     ],
     "description": "Black holes, the arrow of time, and the search for a unified theory, written for readers with no mathematics. The book that created modern popular physics publishing."
   },
@@ -2591,7 +2844,9 @@
     "year": 1977,
     "subjects": [
       "cosmology",
-      "physics"
+      "physics",
+      "astronomy",
+      "science-writing"
     ],
     "description": "A minute-by-minute account of the early universe by a physicist who helped build the standard model. Ends on a famously bleak note about cosmic purpose."
   },
@@ -2605,7 +2860,8 @@
     "subjects": [
       "astronomy",
       "cosmology",
-      "science-writing"
+      "science-writing",
+      "physics"
     ],
     "description": "A tour from the Library of Alexandria to the outer planets, arguing that science is a way of thinking rather than a body of facts."
   },
@@ -2619,7 +2875,8 @@
     "subjects": [
       "astronomy",
       "essays",
-      "science-writing"
+      "science-writing",
+      "cosmology"
     ],
     "description": "The case for exploring and eventually inhabiting the solar system, built around a photograph of Earth from beyond Neptune."
   },
@@ -2632,7 +2889,9 @@
     "year": 2017,
     "subjects": [
       "astronomy",
-      "cosmology"
+      "cosmology",
+      "physics",
+      "science-writing"
     ],
     "description": "Short chapters covering dark matter, exoplanets, and the cosmic perspective. Deliberately compressed."
   },
@@ -2646,7 +2905,9 @@
     "subjects": [
       "mathematics",
       "logic",
-      "consciousness"
+      "consciousness",
+      "artificial-intelligence",
+      "linguistics"
     ],
     "description": "Self-reference in mathematics, art, and music as a route to explaining how minds could arise from mechanism. Dialogues alternate with chapters."
   },
@@ -2659,7 +2920,9 @@
     "year": 1940,
     "subjects": [
       "mathematics",
-      "essays"
+      "essays",
+      "biography-of-ideas",
+      "memoir"
     ],
     "description": "A defence of pure mathematics as an aesthetic pursuit, written with some bitterness by a mathematician who believed his best work was behind him."
   },
@@ -2672,7 +2935,8 @@
     "year": 2019,
     "subjects": [
       "mathematics",
-      "science-writing"
+      "science-writing",
+      "epistemology"
     ],
     "description": "How to reason from data honestly, using real cases including surgical outcomes and criminal trials. Clear about what statistics cannot settle."
   },
@@ -2685,7 +2949,8 @@
     "year": 2003,
     "subjects": [
       "mathematics",
-      "biography-of-ideas"
+      "biography-of-ideas",
+      "scientific-biography"
     ],
     "description": "The Riemann hypothesis explained in alternating mathematical and historical chapters, so a reader can skip one strand and still follow."
   },
@@ -2698,7 +2963,9 @@
     "year": 1859,
     "subjects": [
       "evolution",
-      "natural-history"
+      "natural-history",
+      "science-writing",
+      "19th-century"
     ],
     "description": "The argument for descent with modification by natural selection, built from pigeon breeding, barnacles, and geographical distribution. Cautious and cumulative."
   },
@@ -2726,7 +2993,8 @@
     "subjects": [
       "evolution",
       "natural-history",
-      "essays"
+      "essays",
+      "science-writing"
     ],
     "description": "The Burgess Shale fossils as evidence that evolution's history is contingent, and would not repeat if rerun."
   },
@@ -2740,7 +3008,8 @@
     "subjects": [
       "evolution",
       "natural-history",
-      "medicine"
+      "medicine",
+      "science-writing"
     ],
     "description": "Human anatomy read as inherited fish and amphibian engineering, by the palaeontologist who found Tiktaalik. Explains hiccups and hernias as legacy code."
   },
@@ -2768,7 +3037,8 @@
     "subjects": [
       "medicine",
       "genetics",
-      "public-health"
+      "public-health",
+      "scientific-biography"
     ],
     "description": "A biography of cancer, from ancient surgery through chemotherapy to targeted therapy, told partly through the author's own patients."
   },
@@ -2782,7 +3052,8 @@
     "subjects": [
       "genetics",
       "scientific-biography",
-      "ethics"
+      "ethics",
+      "medicine"
     ],
     "description": "Jennifer Doudna, CRISPR, and the patent and ethics fights that followed the ability to edit human embryos."
   },
@@ -2810,7 +3081,9 @@
     "subjects": [
       "neuroscience",
       "medicine",
-      "mind-and-brain"
+      "mind-and-brain",
+      "psychological-horror",
+      "public-health"
     ],
     "description": "Argues that trauma is stored physiologically and needs treatment that reaches the body. Widely read and not uncontested clinically."
   },
@@ -2824,7 +3097,9 @@
     "subjects": [
       "neuroscience",
       "public-health",
-      "medicine"
+      "medicine",
+      "mind-and-brain",
+      "science-writing"
     ],
     "description": "The case that sleep deprivation is a serious population health problem. Influential, and criticised for overstating some of the evidence."
   },
@@ -2838,7 +3113,9 @@
     "subjects": [
       "consciousness",
       "mind-and-brain",
-      "philosophy-of-science"
+      "philosophy-of-science",
+      "neuroscience",
+      "artificial-intelligence"
     ],
     "description": "Argues that the felt unity of consciousness is a useful fiction produced by many parallel processes. The title's confidence is part of the argument."
   },
@@ -2852,7 +3129,8 @@
     "subjects": [
       "medicine",
       "ethics",
-      "public-health"
+      "public-health",
+      "memoir"
     ],
     "description": "A surgeon on how medicine handles the end of life badly, and what changes when the goal shifts from survival to what a patient actually wants."
   },
@@ -2866,7 +3144,8 @@
     "subjects": [
       "medicine",
       "public-health",
-      "labor"
+      "labor",
+      "economics"
     ],
     "description": "How a simple list reduces failure in surgery, aviation, and construction, and why experts resist using one."
   },
@@ -2880,7 +3159,9 @@
     "subjects": [
       "public-health",
       "ecology",
-      "natural-history"
+      "natural-history",
+      "evolution",
+      "globalization"
     ],
     "description": "Field reporting on zoonotic diseases jumping from animals to humans, published eight years before COVID-19 and eerily specific about coronaviruses."
   },
@@ -2894,7 +3175,9 @@
     "subjects": [
       "ecology",
       "climate",
-      "nature-writing"
+      "nature-writing",
+      "public-health",
+      "science-writing"
     ],
     "description": "The book that made pesticide accumulation a public issue and effectively started modern environmental politics. Careful, and attacked ferociously on publication."
   },
@@ -2908,7 +3191,9 @@
     "subjects": [
       "ecology",
       "climate",
-      "natural-history"
+      "natural-history",
+      "evolution",
+      "environmental-history"
     ],
     "description": "Thirteen field trips documenting a mass extinction in progress, each organised around a single vanishing species."
   },
@@ -2922,7 +3207,9 @@
     "subjects": [
       "nature-writing",
       "ecology",
-      "essays"
+      "essays",
+      "natural-history",
+      "memoir"
     ],
     "description": "A botanist and member of the Potawatomi Nation writes essays holding scientific and indigenous knowledge together without subordinating either."
   },
@@ -2935,7 +3222,9 @@
     "year": 2019,
     "subjects": [
       "climate",
-      "environmental-history"
+      "environmental-history",
+      "public-health",
+      "globalization"
     ],
     "description": "A deliberately alarming survey of what unchecked warming does to heat, food, and conflict. Argues that restraint in describing risk has been counterproductive."
   },
@@ -2949,7 +3238,9 @@
     "subjects": [
       "climate",
       "economics",
-      "globalization"
+      "globalization",
+      "ecology",
+      "labor"
     ],
     "description": "Argues the climate crisis cannot be solved without confronting the growth assumptions of deregulated capitalism."
   },
@@ -2963,7 +3254,9 @@
     "subjects": [
       "nature-writing",
       "natural-history",
-      "ecology"
+      "ecology",
+      "science-writing",
+      "climate"
     ],
     "description": "Oceanography written as literature, covering the sea's formation, its islands, and its tides. Carson's reputation was built here before Silent Spring."
   },
@@ -2977,7 +3270,8 @@
     "subjects": [
       "nature-writing",
       "natural-history",
-      "essays"
+      "essays",
+      "ecology"
     ],
     "description": "Ten winters of following falcons across Essex, compressed into one season of extraordinarily concentrated prose. The observer nearly disappears into the bird."
   },
@@ -2991,7 +3285,9 @@
     "subjects": [
       "natural-history",
       "ecology",
-      "nature-writing"
+      "nature-writing",
+      "science-writing",
+      "climate"
     ],
     "description": "A forester's account of how trees communicate through roots and fungal networks. Anthropomorphic by design, and disputed for it."
   },
@@ -3006,7 +3302,9 @@
     "subjects": [
       "computer-science",
       "programming",
-      "mathematics"
+      "mathematics",
+      "logic",
+      "artificial-intelligence"
     ],
     "description": "Teaches computation by building interpreters, using Scheme so the language stays out of the way. About controlling complexity rather than any one language."
   },
@@ -3020,7 +3318,8 @@
     "subjects": [
       "programming",
       "labor",
-      "computer-science"
+      "computer-science",
+      "economics"
     ],
     "description": "Why adding people to a late software project makes it later. Fifty years on, still the most-cited essay collection in software management."
   },
@@ -3034,7 +3333,8 @@
     "year": 1999,
     "subjects": [
       "programming",
-      "computer-science"
+      "computer-science",
+      "labor"
     ],
     "description": "Short, practical chapters on craft: orthogonality, tracer bullets, and not repeating yourself. Aimed at habits rather than technologies."
   },
@@ -3047,7 +3347,9 @@
     "year": 1999,
     "subjects": [
       "computer-science",
-      "programming"
+      "programming",
+      "mathematics",
+      "logic"
     ],
     "description": "Builds a working computer from telegraph relays upward, one layer at a time, with nothing assumed."
   },
@@ -3061,7 +3363,8 @@
     "subjects": [
       "computer-science",
       "labor",
-      "memoir"
+      "memoir",
+      "programming"
     ],
     "description": "A year inside a Data General team racing to build a minicomputer. The best account of engineering as a social and emotional activity."
   },
@@ -3075,7 +3378,9 @@
     "subjects": [
       "computer-science",
       "scientific-biography",
-      "cryptography"
+      "cryptography",
+      "mathematics",
+      "logic"
     ],
     "description": "Turing's mathematics, his Bletchley Park codebreaking, and his prosecution for homosexuality, written by a mathematician who takes the proofs seriously."
   },
@@ -3089,7 +3394,8 @@
     "subjects": [
       "artificial-intelligence",
       "ethics",
-      "philosophy-of-science"
+      "philosophy-of-science",
+      "technology-criticism"
     ],
     "description": "Argues that a machine intelligence exceeding ours would be difficult to control and that the problem needs work in advance."
   },
@@ -3103,7 +3409,8 @@
     "subjects": [
       "artificial-intelligence",
       "ethics",
-      "computer-science"
+      "computer-science",
+      "technology-criticism"
     ],
     "description": "How machine learning systems acquire goals that diverge from their designers', covering fairness, reward hacking, and interpretability research."
   },
@@ -3117,7 +3424,10 @@
     "subjects": [
       "artificial-intelligence",
       "technology-criticism",
-      "class"
+      "class",
+      "criminal-justice",
+      "economics",
+      "mathematics"
     ],
     "description": "How opaque scoring models in lending, sentencing, and hiring reproduce inequality while claiming neutrality."
   },
@@ -3132,7 +3442,9 @@
     "subjects": [
       "artificial-intelligence",
       "computer-science",
-      "logic"
+      "logic",
+      "mathematics",
+      "programming"
     ],
     "description": "The standard textbook, organising the field around rational agents and covering search, logic, probability, and learning."
   },
@@ -3146,7 +3458,9 @@
     "subjects": [
       "cryptography",
       "mathematics",
-      "science-writing"
+      "science-writing",
+      "computer-security",
+      "espionage"
     ],
     "description": "Ciphers from Mary Queen of Scots to public-key cryptography, with the mathematics kept accessible and the espionage kept vivid."
   },
@@ -3160,7 +3474,9 @@
     "subjects": [
       "cryptography",
       "computer-security",
-      "programming"
+      "programming",
+      "computer-science",
+      "mathematics"
     ],
     "description": "The reference that made cryptographic protocols accessible to working programmers. Dated in its algorithm choices, foundational in its framing."
   },
@@ -3174,7 +3490,9 @@
     "subjects": [
       "computer-security",
       "true-crime",
-      "cold-war"
+      "cold-war",
+      "espionage",
+      "authoritarianism"
     ],
     "description": "Reporting on the Russian military unit behind the Ukrainian grid attacks and NotPetya. Traces how state cyberattacks stopped staying contained."
   },
@@ -3188,7 +3506,8 @@
     "subjects": [
       "computer-security",
       "cryptography",
-      "espionage"
+      "espionage",
+      "authoritarianism"
     ],
     "description": "How Stuxnet was found, reverse-engineered, and traced to a state programme aimed at Iranian centrifuges."
   },
@@ -3202,7 +3521,9 @@
     "subjects": [
       "ancient-philosophy",
       "political-theory",
-      "ethics"
+      "ethics",
+      "utopia",
+      "democracy"
     ],
     "description": "A dialogue on justice that becomes a design for an ideal city, containing the cave, the noble lie, and the banishment of poets."
   },
@@ -3215,7 +3536,9 @@
     "year": -340,
     "subjects": [
       "ancient-philosophy",
-      "ethics"
+      "ethics",
+      "political-theory",
+      "philosophy"
     ],
     "description": "Virtue as a stable disposition acquired by practice, aimed at a flourishing life rather than rule-following. The origin of virtue ethics."
   },
@@ -3229,7 +3552,8 @@
     "subjects": [
       "stoicism",
       "ancient-philosophy",
-      "memoir"
+      "memoir",
+      "rome"
     ],
     "description": "A Roman emperor's private notes to himself on duty, mortality, and not being ruled by other people's opinions. Never intended for publication."
   },
@@ -3243,7 +3567,9 @@
     "subjects": [
       "stoicism",
       "ancient-philosophy",
-      "essays"
+      "essays",
+      "rome",
+      "memoir"
     ],
     "description": "Letters on grief, wealth, time, and dying well, from a man who advised Nero and was eventually ordered to kill himself."
   },
@@ -3257,7 +3583,8 @@
     "subjects": [
       "stoicism",
       "ancient-philosophy",
-      "ethics"
+      "ethics",
+      "rome"
     ],
     "description": "A former slave's teaching on separating what is up to us from what is not. Blunter and more practical than Seneca."
   },
@@ -3271,7 +3598,9 @@
     "subjects": [
       "ancient-philosophy",
       "poetry",
-      "physics"
+      "physics",
+      "cosmology",
+      "rome"
     ],
     "description": "Epicurean atomism argued in Latin verse: everything is particles and void, and death is therefore nothing to fear."
   },
@@ -3284,7 +3613,10 @@
     "year": 1785,
     "subjects": [
       "ethics",
-      "epistemology"
+      "epistemology",
+      "political-theory",
+      "logic",
+      "philosophy"
     ],
     "description": "Derives morality from the form of rational willing alone, producing the categorical imperative. Short, dense, and endlessly argued over."
   },
@@ -3297,7 +3629,10 @@
     "year": 1863,
     "subjects": [
       "ethics",
-      "political-theory"
+      "political-theory",
+      "democracy",
+      "economics",
+      "philosophy"
     ],
     "description": "Defends the greatest happiness principle while trying to accommodate the objection that it flattens higher and lower pleasures."
   },
@@ -3324,7 +3659,10 @@
     "year": 1979,
     "subjects": [
       "ethics",
-      "philosophy-of-science"
+      "philosophy-of-science",
+      "medicine",
+      "ecology",
+      "philosophy"
     ],
     "description": "Applies utilitarian reasoning to animals, abortion, euthanasia, and global poverty, following the arguments to conclusions many readers reject."
   },
@@ -3338,7 +3676,8 @@
     "subjects": [
       "existentialism",
       "epistemology",
-      "consciousness"
+      "consciousness",
+      "linguistics"
     ],
     "description": "Reopens the question of being by analysing the everyday existence of the entity that asks it. Invents much of its own vocabulary and is unfinished."
   },
@@ -3352,7 +3691,8 @@
     "subjects": [
       "existentialism",
       "consciousness",
-      "ethics"
+      "ethics",
+      "epistemology"
     ],
     "description": "Consciousness as a nothingness that must choose, with bad faith as the standard evasion. Contains the waiter who is too perfectly a waiter."
   },
@@ -3366,7 +3706,9 @@
     "subjects": [
       "existentialism",
       "essays",
-      "ethics"
+      "ethics",
+      "comparative-religion",
+      "literary-criticism"
     ],
     "description": "Opens by declaring suicide the only serious philosophical problem, then argues for living without appeal in a universe that offers no meaning."
   },
@@ -3380,7 +3722,9 @@
     "subjects": [
       "existentialism",
       "comparative-religion",
-      "ethics"
+      "ethics",
+      "mysticism",
+      "philosophy"
     ],
     "description": "Abraham's willingness to sacrifice Isaac as a case that ethics cannot absorb, requiring a leap that cannot be publicly justified."
   },
@@ -3394,7 +3738,9 @@
     "subjects": [
       "existentialism",
       "ethics",
-      "essays"
+      "essays",
+      "epistemology",
+      "literary-criticism"
     ],
     "description": "Aphorisms attacking the assumptions behind moral philosophy, including the idea that truth is obviously preferable to illusion."
   },
@@ -3422,7 +3768,9 @@
     "subjects": [
       "philosophy-of-science",
       "epistemology",
-      "biography-of-ideas"
+      "biography-of-ideas",
+      "logic",
+      "science-writing"
     ],
     "description": "Science as long periods of puzzle-solving punctuated by paradigm shifts that are not simply cumulative. The source of the overused word."
   },
@@ -3436,7 +3784,8 @@
     "subjects": [
       "philosophy-of-science",
       "epistemology",
-      "logic"
+      "logic",
+      "political-theory"
     ],
     "description": "Falsifiability as the mark of a scientific claim, with Marxism and psychoanalysis as the counterexamples."
   },
@@ -3449,7 +3798,8 @@
     "year": 1975,
     "subjects": [
       "philosophy-of-science",
-      "epistemology"
+      "epistemology",
+      "logic"
     ],
     "description": "Argues no single method characterises science and that successful practice has often required breaking the rules. Deliberately provocative."
   },
@@ -3462,7 +3812,8 @@
     "year": 1748,
     "subjects": [
       "epistemology",
-      "logic"
+      "logic",
+      "philosophy-of-science"
     ],
     "description": "Causation as habit rather than observed necessity, plus the problem of induction and the argument against miracles."
   },
@@ -3475,7 +3826,9 @@
     "year": 1641,
     "subjects": [
       "epistemology",
-      "consciousness"
+      "consciousness",
+      "mind-and-brain",
+      "logic"
     ],
     "description": "Doubts everything doubtable to find one certainty, then rebuilds knowledge from it. The mind-body split that followed set the agenda for centuries."
   },
@@ -3489,7 +3842,9 @@
     "subjects": [
       "epistemology",
       "consciousness",
-      "ethics"
+      "ethics",
+      "mind-and-brain",
+      "existentialism"
     ],
     "description": "How to reconcile the objective standpoint with the fact of being a particular person. Follows from his question about what it is like to be a bat."
   },
@@ -3502,7 +3857,8 @@
     "year": 1959,
     "subjects": [
       "buddhism",
-      "comparative-religion"
+      "comparative-religion",
+      "mysticism"
     ],
     "description": "The four noble truths and dependent origination set out from Pali sources by a Theravada monk, without embellishment."
   },
@@ -3544,7 +3900,8 @@
     "subjects": [
       "taoism",
       "poetry",
-      "political-theory"
+      "political-theory",
+      "mysticism"
     ],
     "description": "Eighty-one short chapters on yielding, emptiness, and governing by not interfering. Compressed to the point of deliberate ambiguity."
   },
@@ -3572,7 +3929,8 @@
     "subjects": [
       "confucianism",
       "ethics",
-      "political-theory"
+      "political-theory",
+      "democracy"
     ],
     "description": "Recorded sayings on ritual, learning, and the conduct of the person fit to govern. Ethics as cultivated character rather than rules."
   },
@@ -3586,7 +3944,8 @@
     "subjects": [
       "confucianism",
       "political-theory",
-      "ethics"
+      "ethics",
+      "democracy"
     ],
     "description": "Dialogues arguing human nature is originally good and that a ruler who fails his people forfeits the mandate to rule. The most politically pointed of the Confucian classics."
   },
@@ -3600,7 +3959,8 @@
     "subjects": [
       "comparative-religion",
       "mysticism",
-      "consciousness"
+      "consciousness",
+      "neuroscience"
     ],
     "description": "Treats conversion and mystical states as psychological data to be examined rather than doctrines to be judged."
   },
@@ -3614,7 +3974,9 @@
     "subjects": [
       "comparative-religion",
       "mysticism",
-      "natural-history"
+      "natural-history",
+      "19th-century",
+      "literary-criticism"
     ],
     "description": "A vast comparative survey of myth and ritual arguing for an evolution from magic to religion to science. Its method is now rejected; its influence on literature was enormous."
   },
@@ -3627,7 +3989,8 @@
     "year": 1957,
     "subjects": [
       "comparative-religion",
-      "mysticism"
+      "mysticism",
+      "religion"
     ],
     "description": "Argues religious people experience space and time as qualitatively divided, with sacred centres organising the world."
   },
@@ -3641,7 +4004,8 @@
     "subjects": [
       "mysticism",
       "medieval-history",
-      "comparative-religion"
+      "comparative-religion",
+      "religion"
     ],
     "description": "A fourteenth-century English guide to contemplative prayer that insists God is reached by love rather than knowledge."
   },
@@ -3655,7 +4019,9 @@
     "subjects": [
       "mysticism",
       "comparative-religion",
-      "memoir"
+      "memoir",
+      "religion",
+      "gender"
     ],
     "description": "The soul as a castle of seven mansions, described by a Carmelite reformer who was also a formidable administrator."
   },
@@ -3669,7 +4035,9 @@
     "subjects": [
       "consciousness",
       "philosophy-of-science",
-      "mind-and-brain"
+      "mind-and-brain",
+      "neuroscience",
+      "logic"
     ],
     "description": "Formulates the hard problem: why physical processing is accompanied by experience at all. Argues no functional account will close the gap."
   },
@@ -3683,7 +4051,8 @@
     "subjects": [
       "consciousness",
       "neuroscience",
-      "mind-and-brain"
+      "mind-and-brain",
+      "epistemology"
     ],
     "description": "Argues there is no self, only a model of one, drawing on out-of-body experiences and rubber-hand illusions."
   },
@@ -3697,7 +4066,8 @@
     "subjects": [
       "consciousness",
       "logic",
-      "mind-and-brain"
+      "mind-and-brain",
+      "mathematics"
     ],
     "description": "A more direct restatement of his thesis that selfhood is a self-referential pattern, written partly as a response to his wife's death."
   },
@@ -3711,7 +4081,8 @@
     "subjects": [
       "logic",
       "epistemology",
-      "linguistics"
+      "linguistics",
+      "mathematics"
     ],
     "description": "Numbered propositions on the limits of what can be said, concluding that the reader should now discard the ladder."
   },
@@ -3725,7 +4096,8 @@
     "subjects": [
       "logic",
       "linguistics",
-      "epistemology"
+      "epistemology",
+      "philosophy"
     ],
     "description": "Wittgenstein dismantling his earlier picture theory in favour of meaning as use, language games, and family resemblance."
   },
@@ -3739,7 +4111,8 @@
     "year": 1958,
     "subjects": [
       "logic",
-      "mathematics"
+      "mathematics",
+      "epistemology"
     ],
     "description": "A short exposition of the incompleteness theorems for readers without formal logic, keeping the diagonal argument intact."
   },
@@ -3753,7 +4126,8 @@
     "subjects": [
       "linguistics",
       "logic",
-      "computer-science"
+      "computer-science",
+      "mathematics"
     ],
     "description": "The short monograph that made generative grammar the dominant programme in linguistics and killed behaviourist accounts of language."
   },
@@ -3767,7 +4141,8 @@
     "subjects": [
       "linguistics",
       "translation",
-      "consciousness"
+      "consciousness",
+      "science-writing"
     ],
     "description": "Revisits whether language shapes thought, salvaging modest versions of the claim from colour terms and spatial orientation."
   },
@@ -3796,7 +4171,8 @@
     "subjects": [
       "economics",
       "political-theory",
-      "labor"
+      "labor",
+      "globalization"
     ],
     "description": "The division of labour, self-interest, and markets as coordination, argued at length and with more suspicion of merchants than the citations suggest."
   },
@@ -3810,7 +4186,8 @@
     "subjects": [
       "economics",
       "political-theory",
-      "labor"
+      "labor",
+      "revolution"
     ],
     "description": "An analysis of commodity production, surplus value, and accumulation, including long chapters of factory-inspector evidence."
   },
@@ -3823,7 +4200,10 @@
     "year": 1936,
     "subjects": [
       "economics",
-      "democracy"
+      "democracy",
+      "labor",
+      "political-theory",
+      "mathematics"
     ],
     "description": "Argues that demand can settle at persistent underemployment and that government spending is the remedy. Reoriented macroeconomics."
   },
@@ -3837,7 +4217,9 @@
     "subjects": [
       "economics",
       "class",
-      "globalization"
+      "globalization",
+      "labor",
+      "democracy"
     ],
     "description": "Two centuries of wealth and income data supporting the claim that returns on capital normally outpace growth, concentrating wealth."
   },
@@ -3851,7 +4233,9 @@
     "subjects": [
       "economics",
       "political-theory",
-      "authoritarianism"
+      "authoritarianism",
+      "democracy",
+      "totalitarianism"
     ],
     "description": "Argues central economic planning tends toward coercion because planners cannot possess the dispersed knowledge markets aggregate."
   },
@@ -3866,7 +4250,8 @@
     "subjects": [
       "economics",
       "public-health",
-      "globalization"
+      "globalization",
+      "behavioral-economics"
     ],
     "description": "Randomised trials on how poor households actually make decisions about food, schooling, and health, against grand development theories."
   },
@@ -3880,7 +4265,8 @@
     "subjects": [
       "behavioral-economics",
       "mind-and-brain",
-      "neuroscience"
+      "neuroscience",
+      "economics"
     ],
     "description": "Two decades of work on heuristics and biases, organised around fast intuition and slow deliberation. Some studies have since replicated poorly, which the author acknowledged."
   },
@@ -3895,7 +4281,9 @@
     "subjects": [
       "behavioral-economics",
       "political-theory",
-      "ethics"
+      "ethics",
+      "economics",
+      "democracy"
     ],
     "description": "Argues default settings and framing can improve decisions without removing choice. Influential in policy and criticised as paternalism."
   },
@@ -3922,7 +4310,8 @@
     "subjects": [
       "behavioral-economics",
       "economics",
-      "memoir"
+      "memoir",
+      "biography-of-ideas"
     ],
     "description": "A first-hand history of behavioural economics winning its argument with the rational-agent model, told with the disputes intact."
   },
@@ -3950,7 +4339,9 @@
     "subjects": [
       "labor",
       "class",
-      "memoir"
+      "memoir",
+      "economics",
+      "gender"
     ],
     "description": "A journalist works minimum-wage jobs and finds the arithmetic of survival does not close. Direct, and clear about the limits of her own experiment."
   },
@@ -3964,7 +4355,8 @@
     "subjects": [
       "labor",
       "class",
-      "public-health"
+      "public-health",
+      "migration"
     ],
     "description": "A Lithuanian immigrant family destroyed by Chicago's meatpacking industry. Intended to provoke labour reform; produced food-safety law instead."
   },
@@ -3978,7 +4370,8 @@
     "subjects": [
       "labor",
       "class",
-      "revolution"
+      "revolution",
+      "19th-century"
     ],
     "description": "Recovers the political thought of artisans and weavers between 1780 and 1832, insisting they were agents rather than statistics."
   },
@@ -3992,7 +4385,9 @@
     "subjects": [
       "political-theory",
       "authoritarianism",
-      "ethics"
+      "ethics",
+      "democracy",
+      "war"
     ],
     "description": "Derives absolute sovereignty from the intolerability of the state of nature. Written during a civil war, and it shows."
   },
@@ -4005,7 +4400,8 @@
     "year": 1689,
     "subjects": [
       "political-theory",
-      "democracy"
+      "democracy",
+      "revolution"
     ],
     "description": "Government as a trust founded on consent and revocable when it violates natural rights. The direct ancestor of the American founding documents."
   },
@@ -4033,7 +4429,8 @@
     "subjects": [
       "political-theory",
       "ethics",
-      "democracy"
+      "democracy",
+      "economics"
     ],
     "description": "Principles chosen behind a veil of ignorance about one's own position. The dominant framework in political philosophy for a generation."
   },
@@ -4047,7 +4444,9 @@
     "subjects": [
       "totalitarianism",
       "authoritarianism",
-      "propaganda"
+      "propaganda",
+      "race",
+      "empire"
     ],
     "description": "Traces Nazi and Stalinist rule to antisemitism, imperialism, and the production of stateless people with no rights to appeal to."
   },
@@ -4060,7 +4459,8 @@
     "year": 1835,
     "subjects": [
       "democracy",
-      "political-theory"
+      "political-theory",
+      "19th-century"
     ],
     "description": "A French aristocrat's report on American associational life, equality, and the risk of majority conformity."
   },
@@ -4075,7 +4475,8 @@
     "subjects": [
       "democracy",
       "authoritarianism",
-      "political-theory"
+      "political-theory",
+      "propaganda"
     ],
     "description": "Comparative evidence that democracies now fail through elected officials eroding norms rather than through coups."
   },
@@ -4090,7 +4491,9 @@
     "subjects": [
       "democracy",
       "economics",
-      "colonialism"
+      "colonialism",
+      "political-theory",
+      "globalization"
     ],
     "description": "Argues inclusive political institutions, not geography or culture, explain sustained prosperity. Broad comparative history."
   },
@@ -4105,7 +4508,8 @@
     "year": 1788,
     "subjects": [
       "democracy",
-      "political-theory"
+      "political-theory",
+      "revolution"
     ],
     "description": "Newspaper essays arguing for ratification, including Madison on factions and the deliberate fragmentation of power."
   },
@@ -4119,7 +4523,8 @@
     "subjects": [
       "authoritarianism",
       "totalitarianism",
-      "democracy"
+      "democracy",
+      "propaganda"
     ],
     "description": "Twenty short lessons drawn from twentieth-century Europe about how compliance is secured before it is demanded."
   },
@@ -4134,7 +4539,9 @@
     "subjects": [
       "propaganda",
       "media-studies",
-      "globalization"
+      "globalization",
+      "democracy",
+      "economics"
     ],
     "description": "A model of how ownership, advertising, and sourcing filter news in market democracies without formal censorship."
   },
@@ -4148,7 +4555,9 @@
     "subjects": [
       "propaganda",
       "media-studies",
-      "technology-criticism"
+      "technology-criticism",
+      "democracy",
+      "authoritarianism"
     ],
     "description": "Argues propaganda is a structural feature of mass technological society and that the well-informed are its easiest subjects."
   },
@@ -4162,7 +4571,8 @@
     "subjects": [
       "race",
       "civil-rights",
-      "essays"
+      "essays",
+      "19th-century"
     ],
     "description": "Essays introducing double consciousness and the colour line, combining sociology, history, and elegy."
   },
@@ -4176,7 +4586,8 @@
     "subjects": [
       "race",
       "civil-rights",
-      "essays"
+      "essays",
+      "comparative-religion"
     ],
     "description": "Two essays — a letter to his nephew and a longer reckoning with the Nation of Islam and American self-deception."
   },
@@ -4204,7 +4615,8 @@
     "subjects": [
       "race",
       "migration",
-      "civil-rights"
+      "civil-rights",
+      "urbanism"
     ],
     "description": "The Great Migration told through three lives leaving the South between 1915 and 1970, built on more than a thousand interviews."
   },
@@ -4232,7 +4644,8 @@
     "subjects": [
       "gender",
       "feminism",
-      "literary-criticism"
+      "literary-criticism",
+      "epistemology"
     ],
     "description": "Argues gender is performatively constituted rather than expressed, and questions whether a stable category of woman can ground politics."
   },
@@ -4246,7 +4659,9 @@
     "subjects": [
       "gender",
       "feminism",
-      "public-health"
+      "public-health",
+      "economics",
+      "medicine"
     ],
     "description": "How default-male data in crash tests, drug trials, and city planning produces measurable harm. Argument by accumulated example."
   },
@@ -4260,7 +4675,8 @@
     "subjects": [
       "feminism",
       "essays",
-      "literary-criticism"
+      "literary-criticism",
+      "gender"
     ],
     "description": "An extended essay on why so few women wrote, arguing from money and privacy rather than talent. Invents Shakespeare's sister to make the point."
   },
@@ -4274,7 +4690,8 @@
     "subjects": [
       "migration",
       "south-asian-literature",
-      "magical-realism"
+      "magical-realism",
+      "city-life"
     ],
     "description": "Two lovers leave a city sliding into war through doors that open onto other countries. The magical device strips migration down to arrival and aftermath."
   },
@@ -4316,7 +4733,8 @@
     "subjects": [
       "urbanism",
       "political-theory",
-      "authoritarianism"
+      "authoritarianism",
+      "economics"
     ],
     "description": "Why large state schemes to improve society fail: they replace local knowledge with legible simplifications that omit what made things work."
   },
@@ -4330,7 +4748,9 @@
     "subjects": [
       "urbanism",
       "class",
-      "labor"
+      "labor",
+      "economics",
+      "race"
     ],
     "description": "Ethnography of eviction in Milwaukee, following tenants and landlords to argue housing instability is a cause of poverty, not only a symptom."
   },
@@ -4344,7 +4764,8 @@
     "subjects": [
       "globalization",
       "economics",
-      "technology-criticism"
+      "technology-criticism",
+      "labor"
     ],
     "description": "An optimistic account of outsourcing and supply chains levelling economic competition. Useful now partly as a record of what that moment believed."
   },
@@ -4358,7 +4779,8 @@
     "subjects": [
       "globalization",
       "economics",
-      "authoritarianism"
+      "authoritarianism",
+      "propaganda"
     ],
     "description": "Argues free-market restructuring has repeatedly been imposed during crises when resistance is impossible."
   },
@@ -4372,7 +4794,9 @@
     "subjects": [
       "globalization",
       "colonialism",
-      "labor"
+      "labor",
+      "economics",
+      "race"
     ],
     "description": "A single commodity used to trace how slavery, state violence, and industrialisation built the first global economy."
   },
@@ -4386,7 +4810,8 @@
     "subjects": [
       "art-history",
       "media-studies",
-      "literary-criticism"
+      "literary-criticism",
+      "photography"
     ],
     "description": "Seven essays on how reproduction, oil painting, and advertising train the eye, including the argument about the male gaze in the nude."
   },
@@ -4399,7 +4824,8 @@
     "year": 1950,
     "subjects": [
       "art-history",
-      "essays"
+      "essays",
+      "architecture"
     ],
     "description": "A single-volume narrative from cave painting to modernism, written on the premise that there is no such thing as Art, only artists."
   },
@@ -4426,7 +4852,8 @@
     "year": 1550,
     "subjects": [
       "art-history",
-      "political-biography"
+      "political-biography",
+      "medieval-history"
     ],
     "description": "Biographies of Italian Renaissance artists by a painter who knew several of them. Unreliable on detail and the origin of most art-historical anecdote."
   },
@@ -4454,7 +4881,8 @@
     "subjects": [
       "photography",
       "literary-criticism",
-      "essays"
+      "essays",
+      "memoir"
     ],
     "description": "A short, grief-driven meditation on photography that introduces studium and punctum, written after his mother's death."
   },
@@ -4481,7 +4909,8 @@
     "subjects": [
       "photography",
       "war",
-      "ethics"
+      "ethics",
+      "media-studies"
     ],
     "description": "Revisits her earlier position to ask what war photographs actually accomplish, and whether compassion or numbness is the honest response."
   },
@@ -4523,7 +4952,8 @@
     "subjects": [
       "architecture",
       "urbanism",
-      "technology-criticism"
+      "technology-criticism",
+      "ecology"
     ],
     "description": "Argues buildings should be judged by how well they adapt over decades, and that celebrated designs often adapt worst."
   },
@@ -4551,7 +4981,8 @@
     "subjects": [
       "jazz",
       "race",
-      "music-criticism"
+      "music-criticism",
+      "civil-rights"
     ],
     "description": "Reads the development of blues and jazz as a social history of Black America rather than a sequence of styles."
   },
@@ -4566,7 +4997,9 @@
     "subjects": [
       "jazz",
       "memoir",
-      "popular-music"
+      "popular-music",
+      "autobiography",
+      "race"
     ],
     "description": "Davis on bebop, modal jazz, fusion, and everyone who annoyed him. Profane, self-mythologising, and indispensable."
   },
@@ -4594,7 +5027,9 @@
     "subjects": [
       "classical-music",
       "music-criticism",
-      "cold-war"
+      "cold-war",
+      "war",
+      "totalitarianism"
     ],
     "description": "Twentieth-century classical music placed inside its political history, from Strauss through Shostakovich to the American avant-garde."
   },
@@ -4621,7 +5056,8 @@
     "subjects": [
       "classical-music",
       "memoir",
-      "music-criticism"
+      "music-criticism",
+      "biography-of-ideas"
     ],
     "description": "Braids Bach's life, Pablo Casals's rediscovery of the manuscript, and the author's own obsession into one narrative."
   },
@@ -4635,7 +5071,8 @@
     "subjects": [
       "classical-music",
       "neuroscience",
-      "mind-and-brain"
+      "mind-and-brain",
+      "science-writing"
     ],
     "description": "A record producer turned neuroscientist on what happens in the brain during listening, from pitch perception to expectation."
   },
@@ -4650,7 +5087,8 @@
     "subjects": [
       "popular-music",
       "music-criticism",
-      "memoir"
+      "memoir",
+      "city-life"
     ],
     "description": "An oral history of American punk assembled entirely from interviews, with no narration to tidy the contradictions."
   },
@@ -4664,7 +5102,8 @@
     "subjects": [
       "popular-music",
       "technology-criticism",
-      "music-criticism"
+      "music-criticism",
+      "architecture"
     ],
     "description": "Argues music is shaped by the venues and recording technology available, using his own career as the worked example."
   },
@@ -4678,7 +5117,8 @@
     "subjects": [
       "popular-music",
       "memoir",
-      "poetry"
+      "poetry",
+      "city-life"
     ],
     "description": "Smith and Robert Mapplethorpe as young artists in New York, told with the deaths already known and never leaned on."
   },
@@ -4692,7 +5132,9 @@
     "subjects": [
       "popular-music",
       "labor",
-      "music-criticism"
+      "music-criticism",
+      "economics",
+      "city-life"
     ],
     "description": "Thirteen American indie bands of the 1980s and the touring economics that sustained them before the majors noticed."
   },
@@ -4706,7 +5148,9 @@
     "subjects": [
       "literary-criticism",
       "modernism",
-      "essays"
+      "essays",
+      "19th-century",
+      "epistemology"
     ],
     "description": "Traces the representation of reality from Homer to Woolf through close readings, written in Istanbul without access to a research library."
   },
@@ -4734,7 +5178,9 @@
     "subjects": [
       "literary-criticism",
       "essays",
-      "metafiction"
+      "metafiction",
+      "modernism",
+      "postmodern"
     ],
     "description": "Short numbered sections on free indirect style, detail, and character, argued from quotation rather than theory."
   },
@@ -4747,7 +5193,8 @@
     "year": 1973,
     "subjects": [
       "literary-criticism",
-      "poetry"
+      "poetry",
+      "psychological-horror"
     ],
     "description": "Argues strong poets write by misreading their predecessors, because originality requires clearing space against them."
   },
@@ -4761,7 +5208,8 @@
     "subjects": [
       "essays",
       "literary-criticism",
-      "film"
+      "film",
+      "modernism"
     ],
     "description": "Essays arguing criticism has become a way of taming art, and calling for an erotics of attention instead of a hermeneutics."
   },
@@ -4775,7 +5223,8 @@
     "subjects": [
       "essays",
       "memoir",
-      "media-studies"
+      "media-studies",
+      "city-life"
     ],
     "description": "Essays on California in the late sixties, including her own psychiatric report, holding fragmentation as both subject and method."
   },
@@ -4789,7 +5238,9 @@
     "subjects": [
       "essays",
       "ethics",
-      "media-studies"
+      "media-studies",
+      "linguistics",
+      "postmodern"
     ],
     "description": "Essays on a Maine food festival, talk radio, and usage dictionaries, footnoted to the point of formal argument."
   },
@@ -4803,7 +5254,9 @@
     "subjects": [
       "essays",
       "race",
-      "memoir"
+      "memoir",
+      "civil-rights",
+      "city-life"
     ],
     "description": "Baldwin's first essay collection, including the title piece on his father's funeral and the Harlem riot the same week."
   },
@@ -4817,7 +5270,9 @@
     "subjects": [
       "poetry",
       "modernism",
-      "literary-criticism"
+      "literary-criticism",
+      "war",
+      "translation"
     ],
     "description": "A fragmented post-war poem assembled from quotation in several languages, published with its own notes."
   },
@@ -4844,7 +5299,8 @@
     "year": 1890,
     "subjects": [
       "poetry",
-      "19th-century"
+      "19th-century",
+      "comparative-religion"
     ],
     "description": "Nearly eighteen hundred short poems on death, faith, and perception, almost none published in her lifetime."
   },
@@ -4858,7 +5314,9 @@
     "subjects": [
       "poetry",
       "psychological-horror",
-      "feminism"
+      "feminism",
+      "memoir",
+      "gender"
     ],
     "description": "The late poems, written in a burst before her death and published by her husband in an order she had not chosen."
   },
@@ -4886,7 +5344,8 @@
     "subjects": [
       "film",
       "literary-criticism",
-      "media-studies"
+      "media-studies",
+      "psychological-horror"
     ],
     "description": "Fifty hours of interviews in which Hitchcock explains his own technique film by film. The book that established him as an artist rather than an entertainer."
   },
@@ -4928,7 +5387,8 @@
     "subjects": [
       "media-studies",
       "technology-criticism",
-      "essays"
+      "essays",
+      "linguistics"
     ],
     "description": "The medium is the message, argued in aphorisms about type, radio, and television. Frequently obscure and frequently right."
   },
@@ -4942,7 +5402,8 @@
     "subjects": [
       "media-studies",
       "technology-criticism",
-      "democracy"
+      "democracy",
+      "propaganda"
     ],
     "description": "Argues television reorganises public discourse into entertainment, and that Huxley rather than Orwell described the real risk."
   },
@@ -4970,7 +5431,9 @@
     "subjects": [
       "surveillance",
       "technology-criticism",
-      "economics"
+      "economics",
+      "media-studies",
+      "democracy"
     ],
     "description": "Argues behavioural data has become a raw material extracted for prediction markets, and treats this as a new economic logic rather than a privacy problem."
   },
@@ -4984,7 +5447,8 @@
     "subjects": [
       "media-studies",
       "technology-criticism",
-      "economics"
+      "economics",
+      "propaganda"
     ],
     "description": "A history of the business of harvesting attention, from patent-medicine posters through radio to the social feed."
   },
@@ -4998,7 +5462,8 @@
     "subjects": [
       "technology-criticism",
       "programming",
-      "media-studies"
+      "media-studies",
+      "computer-science"
     ],
     "description": "Ten short commands arguing that people who do not understand software will be shaped by the choices embedded in it."
   }

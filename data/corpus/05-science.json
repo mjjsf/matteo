@@ -4,7 +4,7 @@
     "title": "QED: The Strange Theory of Light and Matter",
     "authors": ["Richard P. Feynman"],
     "year": 1985,
-    "subjects": ["physics", "quantum-mechanics", "science-writing"],
+    "subjects": ["physics", "quantum-mechanics", "science-writing", "mathematics"],
     "description": "Four lectures explaining quantum electrodynamics with arrows and no mathematics. Feynman refuses to make it intuitive because it isn't."
   },
   {
@@ -12,7 +12,7 @@
     "title": "Six Easy Pieces",
     "authors": ["Richard P. Feynman"],
     "year": 1994,
-    "subjects": ["physics", "science-writing"],
+    "subjects": ["physics", "science-writing", "quantum-mechanics", "mathematics"],
     "description": "The most accessible chapters of the Feynman Lectures, covering atoms, energy, and the relationship of physics to the other sciences."
   },
   {
@@ -20,7 +20,7 @@
     "title": "The Character of Physical Law",
     "authors": ["Richard P. Feynman"],
     "year": 1965,
-    "subjects": ["physics", "philosophy-of-science"],
+    "subjects": ["physics", "philosophy-of-science", "mathematics", "epistemology"],
     "description": "Lectures on what makes a physical law a law — symmetry, conservation, and the peculiar effectiveness of mathematics."
   },
   {
@@ -28,7 +28,7 @@
     "title": "The Quantum Universe",
     "authors": ["Brian Cox", "Jeff Forshaw"],
     "year": 2011,
-    "subjects": ["quantum-mechanics", "physics", "science-writing"],
+    "subjects": ["quantum-mechanics", "physics", "science-writing", "mathematics", "cosmology"],
     "description": "Builds quantum mechanics from clock-face amplitudes to the exclusion principle and the mass of stars, keeping the arithmetic visible."
   },
   {
@@ -36,7 +36,7 @@
     "title": "Quantum Mechanics and Experience",
     "authors": ["David Z Albert"],
     "year": 1992,
-    "subjects": ["quantum-mechanics", "philosophy-of-science", "consciousness"],
+    "subjects": ["quantum-mechanics", "philosophy-of-science", "consciousness", "physics", "epistemology"],
     "description": "A philosopher takes the measurement problem seriously and walks through the candidate solutions without hand-waving."
   },
   {
@@ -44,7 +44,7 @@
     "title": "A Brief History of Time",
     "authors": ["Stephen Hawking"],
     "year": 1988,
-    "subjects": ["cosmology", "physics", "science-writing"],
+    "subjects": ["cosmology", "physics", "science-writing", "quantum-mechanics", "astronomy"],
     "description": "Black holes, the arrow of time, and the search for a unified theory, written for readers with no mathematics. The book that created modern popular physics publishing."
   },
   {
@@ -52,7 +52,7 @@
     "title": "The First Three Minutes",
     "authors": ["Steven Weinberg"],
     "year": 1977,
-    "subjects": ["cosmology", "physics"],
+    "subjects": ["cosmology", "physics", "astronomy", "science-writing"],
     "description": "A minute-by-minute account of the early universe by a physicist who helped build the standard model. Ends on a famously bleak note about cosmic purpose."
   },
   {
@@ -60,7 +60,7 @@
     "title": "Cosmos",
     "authors": ["Carl Sagan"],
     "year": 1980,
-    "subjects": ["astronomy", "cosmology", "science-writing"],
+    "subjects": ["astronomy", "cosmology", "science-writing", "physics"],
     "description": "A tour from the Library of Alexandria to the outer planets, arguing that science is a way of thinking rather than a body of facts."
   },
   {
@@ -68,7 +68,7 @@
     "title": "Pale Blue Dot",
     "authors": ["Carl Sagan"],
     "year": 1994,
-    "subjects": ["astronomy", "essays", "science-writing"],
+    "subjects": ["astronomy", "essays", "science-writing", "cosmology"],
     "description": "The case for exploring and eventually inhabiting the solar system, built around a photograph of Earth from beyond Neptune."
   },
   {
@@ -76,7 +76,7 @@
     "title": "Astrophysics for People in a Hurry",
     "authors": ["Neil deGrasse Tyson"],
     "year": 2017,
-    "subjects": ["astronomy", "cosmology"],
+    "subjects": ["astronomy", "cosmology", "physics", "science-writing"],
     "description": "Short chapters covering dark matter, exoplanets, and the cosmic perspective. Deliberately compressed."
   },
   {
@@ -84,7 +84,7 @@
     "title": "Gödel, Escher, Bach",
     "authors": ["Douglas Hofstadter"],
     "year": 1979,
-    "subjects": ["mathematics", "logic", "consciousness"],
+    "subjects": ["mathematics", "logic", "consciousness", "artificial-intelligence", "linguistics"],
     "description": "Self-reference in mathematics, art, and music as a route to explaining how minds could arise from mechanism. Dialogues alternate with chapters."
   },
   {
@@ -92,7 +92,7 @@
     "title": "A Mathematician's Apology",
     "authors": ["G. H. Hardy"],
     "year": 1940,
-    "subjects": ["mathematics", "essays"],
+    "subjects": ["mathematics", "essays", "biography-of-ideas", "memoir"],
     "description": "A defence of pure mathematics as an aesthetic pursuit, written with some bitterness by a mathematician who believed his best work was behind him."
   },
   {
@@ -100,7 +100,7 @@
     "title": "The Art of Statistics",
     "authors": ["David Spiegelhalter"],
     "year": 2019,
-    "subjects": ["mathematics", "science-writing"],
+    "subjects": ["mathematics", "science-writing", "epistemology"],
     "description": "How to reason from data honestly, using real cases including surgical outcomes and criminal trials. Clear about what statistics cannot settle."
   },
   {
@@ -108,7 +108,7 @@
     "title": "Prime Obsession",
     "authors": ["John Derbyshire"],
     "year": 2003,
-    "subjects": ["mathematics", "biography-of-ideas"],
+    "subjects": ["mathematics", "biography-of-ideas", "scientific-biography"],
     "description": "The Riemann hypothesis explained in alternating mathematical and historical chapters, so a reader can skip one strand and still follow."
   },
   {
@@ -116,7 +116,7 @@
     "title": "On the Origin of Species",
     "authors": ["Charles Darwin"],
     "year": 1859,
-    "subjects": ["evolution", "natural-history"],
+    "subjects": ["evolution", "natural-history", "science-writing", "19th-century"],
     "description": "The argument for descent with modification by natural selection, built from pigeon breeding, barnacles, and geographical distribution. Cautious and cumulative."
   },
   {
@@ -132,7 +132,7 @@
     "title": "Wonderful Life",
     "authors": ["Stephen Jay Gould"],
     "year": 1989,
-    "subjects": ["evolution", "natural-history", "essays"],
+    "subjects": ["evolution", "natural-history", "essays", "science-writing"],
     "description": "The Burgess Shale fossils as evidence that evolution's history is contingent, and would not repeat if rerun."
   },
   {
@@ -140,7 +140,7 @@
     "title": "Your Inner Fish",
     "authors": ["Neil Shubin"],
     "year": 2008,
-    "subjects": ["evolution", "natural-history", "medicine"],
+    "subjects": ["evolution", "natural-history", "medicine", "science-writing"],
     "description": "Human anatomy read as inherited fish and amphibian engineering, by the palaeontologist who found Tiktaalik. Explains hiccups and hernias as legacy code."
   },
   {
@@ -156,7 +156,7 @@
     "title": "The Emperor of All Maladies",
     "authors": ["Siddhartha Mukherjee"],
     "year": 2010,
-    "subjects": ["medicine", "genetics", "public-health"],
+    "subjects": ["medicine", "genetics", "public-health", "scientific-biography"],
     "description": "A biography of cancer, from ancient surgery through chemotherapy to targeted therapy, told partly through the author's own patients."
   },
   {
@@ -164,7 +164,7 @@
     "title": "The Code Breaker",
     "authors": ["Walter Isaacson"],
     "year": 2021,
-    "subjects": ["genetics", "scientific-biography", "ethics"],
+    "subjects": ["genetics", "scientific-biography", "ethics", "medicine"],
     "description": "Jennifer Doudna, CRISPR, and the patent and ethics fights that followed the ability to edit human embryos."
   },
   {
@@ -180,7 +180,7 @@
     "title": "The Body Keeps the Score",
     "authors": ["Bessel van der Kolk"],
     "year": 2014,
-    "subjects": ["neuroscience", "medicine", "mind-and-brain"],
+    "subjects": ["neuroscience", "medicine", "mind-and-brain", "psychological-horror", "public-health"],
     "description": "Argues that trauma is stored physiologically and needs treatment that reaches the body. Widely read and not uncontested clinically."
   },
   {
@@ -188,7 +188,7 @@
     "title": "Why We Sleep",
     "authors": ["Matthew Walker"],
     "year": 2017,
-    "subjects": ["neuroscience", "public-health", "medicine"],
+    "subjects": ["neuroscience", "public-health", "medicine", "mind-and-brain", "science-writing"],
     "description": "The case that sleep deprivation is a serious population health problem. Influential, and criticised for overstating some of the evidence."
   },
   {
@@ -196,7 +196,7 @@
     "title": "Consciousness Explained",
     "authors": ["Daniel C. Dennett"],
     "year": 1991,
-    "subjects": ["consciousness", "mind-and-brain", "philosophy-of-science"],
+    "subjects": ["consciousness", "mind-and-brain", "philosophy-of-science", "neuroscience", "artificial-intelligence"],
     "description": "Argues that the felt unity of consciousness is a useful fiction produced by many parallel processes. The title's confidence is part of the argument."
   },
   {
@@ -204,7 +204,7 @@
     "title": "Being Mortal",
     "authors": ["Atul Gawande"],
     "year": 2014,
-    "subjects": ["medicine", "ethics", "public-health"],
+    "subjects": ["medicine", "ethics", "public-health", "memoir"],
     "description": "A surgeon on how medicine handles the end of life badly, and what changes when the goal shifts from survival to what a patient actually wants."
   },
   {
@@ -212,7 +212,7 @@
     "title": "The Checklist Manifesto",
     "authors": ["Atul Gawande"],
     "year": 2009,
-    "subjects": ["medicine", "public-health", "labor"],
+    "subjects": ["medicine", "public-health", "labor", "economics"],
     "description": "How a simple list reduces failure in surgery, aviation, and construction, and why experts resist using one."
   },
   {
@@ -220,7 +220,7 @@
     "title": "Spillover",
     "authors": ["David Quammen"],
     "year": 2012,
-    "subjects": ["public-health", "ecology", "natural-history"],
+    "subjects": ["public-health", "ecology", "natural-history", "evolution", "globalization"],
     "description": "Field reporting on zoonotic diseases jumping from animals to humans, published eight years before COVID-19 and eerily specific about coronaviruses."
   },
   {
@@ -228,7 +228,7 @@
     "title": "Silent Spring",
     "authors": ["Rachel Carson"],
     "year": 1962,
-    "subjects": ["ecology", "climate", "nature-writing"],
+    "subjects": ["ecology", "climate", "nature-writing", "public-health", "science-writing"],
     "description": "The book that made pesticide accumulation a public issue and effectively started modern environmental politics. Careful, and attacked ferociously on publication."
   },
   {
@@ -236,7 +236,7 @@
     "title": "The Sixth Extinction",
     "authors": ["Elizabeth Kolbert"],
     "year": 2014,
-    "subjects": ["ecology", "climate", "natural-history"],
+    "subjects": ["ecology", "climate", "natural-history", "evolution", "environmental-history"],
     "description": "Thirteen field trips documenting a mass extinction in progress, each organised around a single vanishing species."
   },
   {
@@ -244,7 +244,7 @@
     "title": "Braiding Sweetgrass",
     "authors": ["Robin Wall Kimmerer"],
     "year": 2013,
-    "subjects": ["nature-writing", "ecology", "essays"],
+    "subjects": ["nature-writing", "ecology", "essays", "natural-history", "memoir"],
     "description": "A botanist and member of the Potawatomi Nation writes essays holding scientific and indigenous knowledge together without subordinating either."
   },
   {
@@ -252,7 +252,7 @@
     "title": "The Uninhabitable Earth",
     "authors": ["David Wallace-Wells"],
     "year": 2019,
-    "subjects": ["climate", "environmental-history"],
+    "subjects": ["climate", "environmental-history", "public-health", "globalization"],
     "description": "A deliberately alarming survey of what unchecked warming does to heat, food, and conflict. Argues that restraint in describing risk has been counterproductive."
   },
   {
@@ -260,7 +260,7 @@
     "title": "This Changes Everything",
     "authors": ["Naomi Klein"],
     "year": 2014,
-    "subjects": ["climate", "economics", "globalization"],
+    "subjects": ["climate", "economics", "globalization", "ecology", "labor"],
     "description": "Argues the climate crisis cannot be solved without confronting the growth assumptions of deregulated capitalism."
   },
   {
@@ -268,7 +268,7 @@
     "title": "The Sea Around Us",
     "authors": ["Rachel Carson"],
     "year": 1951,
-    "subjects": ["nature-writing", "natural-history", "ecology"],
+    "subjects": ["nature-writing", "natural-history", "ecology", "science-writing", "climate"],
     "description": "Oceanography written as literature, covering the sea's formation, its islands, and its tides. Carson's reputation was built here before Silent Spring."
   },
   {
@@ -276,7 +276,7 @@
     "title": "The Peregrine",
     "authors": ["J. A. Baker"],
     "year": 1967,
-    "subjects": ["nature-writing", "natural-history", "essays"],
+    "subjects": ["nature-writing", "natural-history", "essays", "ecology"],
     "description": "Ten winters of following falcons across Essex, compressed into one season of extraordinarily concentrated prose. The observer nearly disappears into the bird."
   },
   {
@@ -284,7 +284,7 @@
     "title": "The Hidden Life of Trees",
     "authors": ["Peter Wohlleben"],
     "year": 2015,
-    "subjects": ["natural-history", "ecology", "nature-writing"],
+    "subjects": ["natural-history", "ecology", "nature-writing", "science-writing", "climate"],
     "description": "A forester's account of how trees communicate through roots and fungal networks. Anthropomorphic by design, and disputed for it."
   },
   {
@@ -292,7 +292,7 @@
     "title": "Structure and Interpretation of Computer Programs",
     "authors": ["Harold Abelson", "Gerald Jay Sussman"],
     "year": 1985,
-    "subjects": ["computer-science", "programming", "mathematics"],
+    "subjects": ["computer-science", "programming", "mathematics", "logic", "artificial-intelligence"],
     "description": "Teaches computation by building interpreters, using Scheme so the language stays out of the way. About controlling complexity rather than any one language."
   },
   {
@@ -300,7 +300,7 @@
     "title": "The Mythical Man-Month",
     "authors": ["Frederick P. Brooks Jr."],
     "year": 1975,
-    "subjects": ["programming", "labor", "computer-science"],
+    "subjects": ["programming", "labor", "computer-science", "economics"],
     "description": "Why adding people to a late software project makes it later. Fifty years on, still the most-cited essay collection in software management."
   },
   {
@@ -308,7 +308,7 @@
     "title": "The Pragmatic Programmer",
     "authors": ["Andrew Hunt", "David Thomas"],
     "year": 1999,
-    "subjects": ["programming", "computer-science"],
+    "subjects": ["programming", "computer-science", "labor"],
     "description": "Short, practical chapters on craft: orthogonality, tracer bullets, and not repeating yourself. Aimed at habits rather than technologies."
   },
   {
@@ -316,7 +316,7 @@
     "title": "Code: The Hidden Language of Computer Hardware and Software",
     "authors": ["Charles Petzold"],
     "year": 1999,
-    "subjects": ["computer-science", "programming"],
+    "subjects": ["computer-science", "programming", "mathematics", "logic"],
     "description": "Builds a working computer from telegraph relays upward, one layer at a time, with nothing assumed."
   },
   {
@@ -324,7 +324,7 @@
     "title": "The Soul of a New Machine",
     "authors": ["Tracy Kidder"],
     "year": 1981,
-    "subjects": ["computer-science", "labor", "memoir"],
+    "subjects": ["computer-science", "labor", "memoir", "programming"],
     "description": "A year inside a Data General team racing to build a minicomputer. The best account of engineering as a social and emotional activity."
   },
   {
@@ -332,7 +332,7 @@
     "title": "Alan Turing: The Enigma",
     "authors": ["Andrew Hodges"],
     "year": 1983,
-    "subjects": ["computer-science", "scientific-biography", "cryptography"],
+    "subjects": ["computer-science", "scientific-biography", "cryptography", "mathematics", "logic"],
     "description": "Turing's mathematics, his Bletchley Park codebreaking, and his prosecution for homosexuality, written by a mathematician who takes the proofs seriously."
   },
   {
@@ -340,7 +340,7 @@
     "title": "Superintelligence",
     "authors": ["Nick Bostrom"],
     "year": 2014,
-    "subjects": ["artificial-intelligence", "ethics", "philosophy-of-science"],
+    "subjects": ["artificial-intelligence", "ethics", "philosophy-of-science", "technology-criticism"],
     "description": "Argues that a machine intelligence exceeding ours would be difficult to control and that the problem needs work in advance."
   },
   {
@@ -348,7 +348,7 @@
     "title": "The Alignment Problem",
     "authors": ["Brian Christian"],
     "year": 2020,
-    "subjects": ["artificial-intelligence", "ethics", "computer-science"],
+    "subjects": ["artificial-intelligence", "ethics", "computer-science", "technology-criticism"],
     "description": "How machine learning systems acquire goals that diverge from their designers', covering fairness, reward hacking, and interpretability research."
   },
   {
@@ -356,7 +356,7 @@
     "title": "Weapons of Math Destruction",
     "authors": ["Cathy O'Neil"],
     "year": 2016,
-    "subjects": ["artificial-intelligence", "technology-criticism", "class"],
+    "subjects": ["artificial-intelligence", "technology-criticism", "class", "criminal-justice", "economics", "mathematics"],
     "description": "How opaque scoring models in lending, sentencing, and hiring reproduce inequality while claiming neutrality."
   },
   {
@@ -364,7 +364,7 @@
     "title": "Artificial Intelligence: A Modern Approach",
     "authors": ["Stuart Russell", "Peter Norvig"],
     "year": 1995,
-    "subjects": ["artificial-intelligence", "computer-science", "logic"],
+    "subjects": ["artificial-intelligence", "computer-science", "logic", "mathematics", "programming"],
     "description": "The standard textbook, organising the field around rational agents and covering search, logic, probability, and learning."
   },
   {
@@ -372,7 +372,7 @@
     "title": "The Code Book",
     "authors": ["Simon Singh"],
     "year": 1999,
-    "subjects": ["cryptography", "mathematics", "science-writing"],
+    "subjects": ["cryptography", "mathematics", "science-writing", "computer-security", "espionage"],
     "description": "Ciphers from Mary Queen of Scots to public-key cryptography, with the mathematics kept accessible and the espionage kept vivid."
   },
   {
@@ -380,7 +380,7 @@
     "title": "Applied Cryptography",
     "authors": ["Bruce Schneier"],
     "year": 1994,
-    "subjects": ["cryptography", "computer-security", "programming"],
+    "subjects": ["cryptography", "computer-security", "programming", "computer-science", "mathematics"],
     "description": "The reference that made cryptographic protocols accessible to working programmers. Dated in its algorithm choices, foundational in its framing."
   },
   {
@@ -388,7 +388,7 @@
     "title": "Sandworm",
     "authors": ["Andy Greenberg"],
     "year": 2019,
-    "subjects": ["computer-security", "true-crime", "cold-war"],
+    "subjects": ["computer-security", "true-crime", "cold-war", "espionage", "authoritarianism"],
     "description": "Reporting on the Russian military unit behind the Ukrainian grid attacks and NotPetya. Traces how state cyberattacks stopped staying contained."
   },
   {
@@ -396,7 +396,7 @@
     "title": "Countdown to Zero Day",
     "authors": ["Kim Zetter"],
     "year": 2014,
-    "subjects": ["computer-security", "cryptography", "espionage"],
+    "subjects": ["computer-security", "cryptography", "espionage", "authoritarianism"],
     "description": "How Stuxnet was found, reverse-engineered, and traced to a state programme aimed at Iranian centrifuges."
   }
 ]
