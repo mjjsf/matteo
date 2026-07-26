@@ -1,9 +1,15 @@
 name: CI
 
 on:
+  # `pull_request` only. Adding a `push` trigger for non-main branches would
+  # double-run this workflow on every push to a branch that has an open PR.
+  # main is covered by the deploy workflow, which runs the same checks.
   pull_request:
-  push:
-    branches-ignore: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   check:
