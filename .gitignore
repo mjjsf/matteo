@@ -98,4 +98,16 @@ coverage/
 logs/
 .docker/
 
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Fetched corpus artifacts.
+# The authored corpus in data/corpus/*.json IS committed; these are outputs of
+# `npm run fetch` / `npm run corpus:merge` and are local to whoever ran them.
+# Note that src/generated/ IS committed on purpose — the baked layout is a
+# reviewable artifact, and a test fails if it goes stale.
+data/corpus.fetched.json
+data/corpus.merged.json
+data/.fetch-cursor.json
+
 # If you have other languages or frameworks (e.g. Android, Xcode, Flutter), tell me and I will tailor this file further.

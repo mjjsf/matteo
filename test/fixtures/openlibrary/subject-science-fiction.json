@@ -1,0 +1,63 @@
+{
+  "name": "science_fiction",
+  "work_count": 12345,
+  "works": [
+    {
+      "key": "/works/OL1234W",
+      "title": "A Well Formed Work",
+      "authors": [{ "name": "Ada Example", "key": "/authors/OL1A" }],
+      "subject": ["Science fiction", "Cyberpunk", "Fiction, general"],
+      "first_publish_year": 1984,
+      "availability": { "isbn": "9780306406157" }
+    },
+    {
+      "key": "/works/OL2W",
+      "title": "Inconsistent Subject Casing",
+      "authors": [{ "name": "Bo Example" }],
+      "subject": ["science-fiction", "Fiction, dystopia, general", "SPACE OPERA"],
+      "first_publish_year": 1999,
+      "availability": { "isbn": "0-306-40615-2" }
+    },
+    {
+      "key": "/works/OL3W",
+      "title": "No Authors Here",
+      "subject": ["Science fiction", "Cyberpunk"],
+      "first_publish_year": 2001
+    },
+    {
+      "key": "/works/OL4W",
+      "title": "Only One Known Subject",
+      "authors": [{ "name": "Cy Example" }],
+      "subject": ["Science fiction", "Something Entirely Unmapped"],
+      "first_publish_year": 2005
+    },
+    {
+      "key": "/works/OL5W",
+      "title": "Missing Year",
+      "authors": [{ "name": "Di Example" }],
+      "subject": ["Science fiction", "Cyberpunk"]
+    },
+    {
+      "key": "/works/OL6W",
+      "title": "Bad Isbn",
+      "authors": [{ "name": "Ed Example" }],
+      "subject": ["Science fiction", "Cyberpunk"],
+      "first_publish_year": 2010,
+      "availability": { "isbn": "notanisbn" }
+    },
+    {
+      "key": "/works/OL7W",
+      "title": "A Well Formed Work",
+      "authors": [{ "name": "Ada Example" }],
+      "subject": ["Science fiction", "Cyberpunk"],
+      "first_publish_year": 1985,
+      "availability": { "isbn": "9791234567896" }
+    },
+    {
+      "title": "   ",
+      "authors": [{ "name": "Fay Example" }],
+      "subject": ["Science fiction", "Cyberpunk"],
+      "first_publish_year": 1990
+    }
+  ]
+}
