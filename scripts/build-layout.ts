@@ -38,16 +38,33 @@ function main(): void {
   console.log(
     `features: ${result.features.vocab.length} kept, ${result.features.prunedCount} pruned (df < ${LAYOUT_CONFIG.minDf})`,
   );
+  const meanSurvivingTags =
+    result.features.survivingSubjectCount.reduce((a, b) => a + b, 0) / (books.length || 1);
+
   console.log(
     `top-3 explained variance: ${(result.explainedVariance3 * 100).toFixed(1)}%${
       result.usedRandomProjection ? ' (after random projection)' : ''
-    }`,
+    }  (weak proxy — see below)`,
   );
-  if (result.explainedVariance3 < 0.12) {
+  console.log(`mean surviving subject tags per book: ${meanSurvivingTags.toFixed(2)}`);
+
+  // The alarm is on tags per book, not on explained variance.
+  //
+  // This used to warn below 12% variance, a figure invented with no basis. It is
+  // a poor signal for two reasons: on sparse categorical features a low value is
+  // normal rather than diagnostic, and it is not actionable — you cannot "fix"
+  // variance directly. Tag density IS actionable, and it is the actual cause.
+  //
+  // For whether the layout is *meaningful*, use scripts/compare-layouts.ts:
+  // neighbourhood purity against the random baseline, plus the spread ratio that
+  // catches branch collapse. Those are measured directly and asserted by tests.
+  if (meanSurvivingTags < 3.5) {
     console.warn(
-      '\n  WARNING: the first three components explain under 12% of variance.\n' +
-        '  The corpus tags are probably too sparse for this layout to mean much.\n' +
-        '  Adding more tags per book will help more than tuning the reducer.\n',
+      `\n  WARNING: only ${meanSurvivingTags.toFixed(2)} surviving subject tags per book.\n` +
+        '  Below ~3.5 there is little to position books by, and the layout will\n' +
+        '  mostly reflect the taxonomy rather than the books. Add tags to the\n' +
+        '  titles listed below.\n' +
+        '  Confirm layout quality with: npx vite-node scripts/compare-layouts.ts\n',
     );
   }
 

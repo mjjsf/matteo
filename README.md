@@ -193,8 +193,28 @@ network access at all.
 | `npm run fetch` | pull more books from Open Library (unverified — see above) |
 | `npm run corpus:merge` | combine authored + fetched |
 
-Reproduce the GitHub Pages subpath build locally with
-`VITE_BASE=/matteo/ npm run build && npm run preview`.
+### Deployment and the base path
+
+The build uses a **relative** base (`./`), so the same artifact works wherever it
+is mounted — a Pages project site at `/matteo/`, a user site or custom domain at
+`/`, or a preview in a subdirectory. Nothing needs to be configured per
+environment.
+
+This matters more than it sounds. With an absolute `/` base, Vite emits
+`/assets/index-*.js`, which 404s on a project page: the deploy reports success
+and the site serves a blank screen. Relative paths are safe here specifically
+because routing is hash-based, so the document's path depth never changes. **If
+path-based routing is ever introduced, the base must become an explicit absolute
+path again** — `VITE_BASE` still overrides it.
+
+To check a subpath deployment locally:
+
+```bash
+npm run build
+mkdir -p /tmp/site/matteo && cp -r dist/* /tmp/site/matteo/
+(cd /tmp/site && python3 -m http.server 4180)
+# open http://localhost:4180/matteo/
+```
 
 ## Licence
 

@@ -4,7 +4,7 @@
     "title": "Neuromancer",
     "authors": ["William Gibson"],
     "year": 1984,
-    "subjects": ["cyberpunk", "artificial-intelligence", "noir"],
+    "subjects": ["cyberpunk", "artificial-intelligence", "noir", "city-life"],
     "description": "A burned-out console cowboy is hired for a run against an AI seeking to merge with its other half. The book that fixed cyberspace, street-level tech, and corporate arcologies as a genre grammar."
   },
   {
@@ -12,7 +12,7 @@
     "title": "Snow Crash",
     "authors": ["Neal Stephenson"],
     "year": 1992,
-    "subjects": ["cyberpunk", "linguistics", "artificial-intelligence"],
+    "subjects": ["cyberpunk", "linguistics", "artificial-intelligence", "city-life"],
     "description": "A pizza-delivering hacker chases a linguistic virus through a franchised, privatized America and its shared virtual Metaverse. Satire and infodump in roughly equal measure."
   },
   {
@@ -28,7 +28,7 @@
     "title": "Altered Carbon",
     "authors": ["Richard K. Morgan"],
     "year": 2002,
-    "subjects": ["cyberpunk", "hardboiled", "noir"],
+    "subjects": ["cyberpunk", "hardboiled", "noir", "criminal-justice"],
     "description": "Consciousness can be moved between bodies, so a soldier is downloaded into a new one to investigate a rich man's apparent suicide. Hardboiled detective structure with immortality as the crime scene."
   },
   {
@@ -36,7 +36,7 @@
     "title": "The Diamond Age",
     "authors": ["Neal Stephenson"],
     "year": 1995,
-    "subjects": ["cyberpunk", "artificial-intelligence", "coming-of-age"],
+    "subjects": ["cyberpunk", "artificial-intelligence", "coming-of-age", "technology-criticism"],
     "description": "In a nanotech world organized into cultural enclaves, a stolen interactive primer educates a poor girl. A serious argument about pedagogy inside an adventure novel."
   },
   {
@@ -44,7 +44,7 @@
     "title": "Dune",
     "authors": ["Frank Herbert"],
     "year": 1965,
-    "subjects": ["space-opera", "ecology", "empire"],
+    "subjects": ["space-opera", "ecology", "empire", "political-theory"],
     "description": "Control of the desert planet Arrakis means control of the spice, and a displaced ducal heir becomes a messiah he half distrusts. Ecology, religion, and imperial politics locked together."
   },
   {
@@ -52,7 +52,7 @@
     "title": "Hyperion",
     "authors": ["Dan Simmons"],
     "year": 1989,
-    "subjects": ["space-opera", "poetry", "short-stories"],
+    "subjects": ["space-opera", "poetry", "short-stories", "comparative-religion"],
     "description": "Seven pilgrims travel to the Time Tombs and tell their stories on the way, each in a different genre register. A Canterbury Tales structure at interstellar scale."
   },
   {
@@ -60,7 +60,7 @@
     "title": "A Fire Upon the Deep",
     "authors": ["Vernor Vinge"],
     "year": 1992,
-    "subjects": ["space-opera", "first-contact", "artificial-intelligence"],
+    "subjects": ["space-opera", "first-contact", "artificial-intelligence", "artificial-life"],
     "description": "A galaxy stratified by zones of possible intelligence, a resurrected malevolent power, and a medieval species of pack minds. Ambitious even by space opera standards."
   },
   {
@@ -76,7 +76,7 @@
     "title": "The Dispossessed",
     "authors": ["Ursula K. Le Guin"],
     "year": 1974,
-    "subjects": ["utopia", "political-theory", "space-opera"],
+    "subjects": ["utopia", "political-theory", "space-opera", "labor"],
     "description": "A physicist travels from an anarchist moon to the capitalist planet it seceded from. Le Guin takes both societies seriously enough to show what each costs."
   },
   {
@@ -92,7 +92,7 @@
     "title": "Consider Phlebas",
     "authors": ["Iain M. Banks"],
     "year": 1987,
-    "subjects": ["space-opera", "artificial-intelligence", "utopia"],
+    "subjects": ["space-opera", "artificial-intelligence", "utopia", "war"],
     "description": "The first Culture novel, told from the perspective of someone fighting against the post-scarcity utopia. Banks introduces his AI Minds by way of their enemies."
   },
   {
@@ -100,7 +100,7 @@
     "title": "Nineteen Eighty-Four",
     "authors": ["George Orwell"],
     "year": 1949,
-    "subjects": ["dystopia", "totalitarianism", "surveillance"],
+    "subjects": ["dystopia", "totalitarianism", "surveillance", "propaganda", "linguistics"],
     "description": "Winston Smith edits the past for a Party that has abolished the possibility of private thought. The appendix on Newspeak is the most chilling part."
   },
   {
@@ -108,7 +108,7 @@
     "title": "Brave New World",
     "authors": ["Aldous Huxley"],
     "year": 1932,
-    "subjects": ["dystopia", "utopia", "genetics"],
+    "subjects": ["dystopia", "utopia", "genetics", "technology-criticism"],
     "description": "A society stabilized by engineered castes, casual pleasure, and a drug that removes objection. Huxley's dystopia is frictionless rather than brutal."
   },
   {
@@ -116,7 +116,7 @@
     "title": "The Handmaid's Tale",
     "authors": ["Margaret Atwood"],
     "year": 1985,
-    "subjects": ["dystopia", "gender", "totalitarianism"],
+    "subjects": ["dystopia", "gender", "totalitarianism", "feminism", "authoritarianism"],
     "description": "A theocratic United States assigns fertile women to households as reproductive property. Atwood insisted every element had a historical precedent."
   },
   {
@@ -124,7 +124,7 @@
     "title": "The Road",
     "authors": ["Cormac McCarthy"],
     "year": 2006,
-    "subjects": ["post-apocalyptic", "family-saga"],
+    "subjects": ["post-apocalyptic", "family-saga", "climate"],
     "description": "A man and his son push a shopping cart south through an ash-covered continent. Stripped of quotation marks, chapter breaks, and nearly all consolation."
   },
   {
@@ -132,7 +132,7 @@
     "title": "Station Eleven",
     "authors": ["Emily St. John Mandel"],
     "year": 2014,
-    "subjects": ["post-apocalyptic", "short-stories"],
+    "subjects": ["post-apocalyptic", "short-stories", "public-health"],
     "description": "A travelling Shakespeare company crosses the Great Lakes twenty years after a flu pandemic. Interested in what art is for once infrastructure is gone."
   },
   {
@@ -140,7 +140,7 @@
     "title": "Parable of the Sower",
     "authors": ["Octavia E. Butler"],
     "year": 1993,
-    "subjects": ["post-apocalyptic", "climate", "race"],
+    "subjects": ["post-apocalyptic", "climate", "race", "comparative-religion"],
     "description": "A young woman with pathological empathy walks north through a collapsing, water-scarce California and founds a religion. Written in 1993 and set in the 2020s."
   },
   {
@@ -148,7 +148,7 @@
     "title": "Kindred",
     "authors": ["Octavia E. Butler"],
     "year": 1979,
-    "subjects": ["time-travel", "race", "gothic"],
+    "subjects": ["time-travel", "race", "gothic", "civil-rights"],
     "description": "A Black woman in 1976 is pulled repeatedly into antebellum Maryland to keep her own ancestor alive. Time travel used to make historical complicity unavoidable."
   },
   {
@@ -156,7 +156,7 @@
     "title": "The Three-Body Problem",
     "authors": ["Liu Cixin"],
     "year": 2008,
-    "subjects": ["first-contact", "physics", "chinese-literature"],
+    "subjects": ["first-contact", "physics", "chinese-literature", "revolution"],
     "description": "A physicist investigates scientist suicides and finds a signal answered during the Cultural Revolution. Ideas-first science fiction on a civilizational timescale."
   },
   {
@@ -164,7 +164,7 @@
     "title": "Solaris",
     "authors": ["Stanisław Lem"],
     "year": 1961,
-    "subjects": ["first-contact", "consciousness", "psychological-horror"],
+    "subjects": ["first-contact", "consciousness", "psychological-horror", "epistemology"],
     "description": "A research station orbits an ocean-planet that responds by materializing the crew's dead. Lem's argument is that genuine alienness would be unintelligible, not humanoid."
   },
   {
@@ -180,7 +180,7 @@
     "title": "Childhood's End",
     "authors": ["Arthur C. Clarke"],
     "year": 1953,
-    "subjects": ["first-contact", "cosmology", "utopia"],
+    "subjects": ["first-contact", "cosmology", "utopia", "comparative-religion"],
     "description": "Benevolent aliens end war and want, then reveal what humanity was being prepared for. Clarke's transcendence is genuinely unsettling rather than triumphant."
   },
   {
@@ -188,7 +188,7 @@
     "title": "Slaughterhouse-Five",
     "authors": ["Kurt Vonnegut"],
     "year": 1969,
-    "subjects": ["time-travel", "world-war-ii", "metafiction"],
+    "subjects": ["time-travel", "world-war-ii", "metafiction", "war"],
     "description": "Billy Pilgrim experiences his life, including the firebombing of Dresden, out of order. The nonlinearity is a way of handling trauma, not a gimmick."
   },
   {
@@ -196,7 +196,7 @@
     "title": "The Time Machine",
     "authors": ["H. G. Wells"],
     "year": 1895,
-    "subjects": ["time-travel", "novella", "class"],
+    "subjects": ["time-travel", "novella", "class", "evolution"],
     "description": "A Victorian inventor travels to a future split into languid Eloi and subterranean Morlocks. Class anxiety projected forward eight hundred thousand years."
   },
   {
@@ -212,7 +212,7 @@
     "title": "The Lord of the Rings",
     "authors": ["J. R. R. Tolkien"],
     "year": 1954,
-    "subjects": ["epic-fantasy", "war", "linguistics"],
+    "subjects": ["epic-fantasy", "war", "linguistics", "fantasy", "medieval-history"],
     "description": "A hobbit carries a ring of total power toward the only place it can be destroyed. Built on invented languages and a genuine sense of deep, lossy history."
   },
   {
@@ -220,7 +220,7 @@
     "title": "A Game of Thrones",
     "authors": ["George R. R. Martin"],
     "year": 1996,
-    "subjects": ["epic-fantasy", "medieval-history", "political-theory"],
+    "subjects": ["epic-fantasy", "medieval-history", "political-theory", "fantasy", "war"],
     "description": "Rival houses manoeuvre for a throne while something worse gathers in the north. Rotating viewpoints and a stated willingness to kill anyone."
   },
   {
@@ -228,7 +228,7 @@
     "title": "A Wizard of Earthsea",
     "authors": ["Ursula K. Le Guin"],
     "year": 1968,
-    "subjects": ["epic-fantasy", "coming-of-age", "taoism"],
+    "subjects": ["epic-fantasy", "coming-of-age", "taoism", "fantasy"],
     "description": "A gifted boy at a wizards' school unleashes a shadow he must spend the book naming. Magic as true naming, and restraint as the actual lesson."
   },
   {
@@ -236,7 +236,7 @@
     "title": "The Fifth Season",
     "authors": ["N. K. Jemisin"],
     "year": 2015,
-    "subjects": ["epic-fantasy", "climate", "class"],
+    "subjects": ["epic-fantasy", "climate", "class", "fantasy", "race"],
     "description": "On a continent of recurring extinction events, people who can quell earthquakes are enslaved for it. Three timelines that turn out to be one."
   },
   {
@@ -244,7 +244,7 @@
     "title": "Jonathan Strange & Mr Norrell",
     "authors": ["Susanna Clarke"],
     "year": 2004,
-    "subjects": ["urban-fantasy", "19th-century", "epic-fantasy"],
+    "subjects": ["urban-fantasy", "19th-century", "epic-fantasy", "fantasy", "war"],
     "description": "Two magicians revive English magic during the Napoleonic wars and fall out badly. Written as a Regency novel complete with invented scholarly footnotes."
   },
   {
@@ -252,7 +252,7 @@
     "title": "The City & the City",
     "authors": ["China Miéville"],
     "year": 2009,
-    "subjects": ["urban-fantasy", "police-procedural", "city-life"],
+    "subjects": ["urban-fantasy", "police-procedural", "city-life", "authoritarianism"],
     "description": "A murder investigation in two cities occupying the same ground, whose residents are trained to unsee each other. Genuine police procedural on an impossible premise."
   },
   {
@@ -260,7 +260,7 @@
     "title": "Neverwhere",
     "authors": ["Neil Gaiman"],
     "year": 1996,
-    "subjects": ["urban-fantasy", "city-life"],
+    "subjects": ["urban-fantasy", "city-life", "fantasy"],
     "description": "A Londoner helps an injured girl and falls into London Below, a city assembled from the tube map's discarded names."
   },
   {
@@ -268,7 +268,7 @@
     "title": "Like Water for Chocolate",
     "authors": ["Laura Esquivel"],
     "year": 1989,
-    "subjects": ["magical-realism", "latin-american-literature"],
+    "subjects": ["magical-realism", "latin-american-literature", "gender", "family-saga"],
     "description": "A youngest daughter forbidden to marry channels her feeling into cooking, and the emotions transfer to whoever eats. Structured around monthly recipes."
   },
   {
@@ -276,7 +276,7 @@
     "title": "The Master and Margarita",
     "authors": ["Mikhail Bulgakov"],
     "year": 1967,
-    "subjects": ["magical-realism", "russian-literature", "totalitarianism"],
+    "subjects": ["magical-realism", "russian-literature", "totalitarianism", "comparative-religion", "authoritarianism"],
     "description": "The Devil and a talking cat arrive in Stalinist Moscow while a parallel narrative retells Pontius Pilate. Written in secret and published decades after its author's death."
   },
   {
@@ -284,7 +284,7 @@
     "title": "Dracula",
     "authors": ["Bram Stoker"],
     "year": 1897,
-    "subjects": ["gothic", "victorian", "psychological-horror"],
+    "subjects": ["gothic", "victorian", "psychological-horror", "horror", "19th-century"],
     "description": "A Transylvanian count relocates to England and is hunted by a small group with telegrams, phonographs, and shorthand. Modern technology versus ancient contagion."
   },
   {
@@ -292,7 +292,7 @@
     "title": "Frankenstein",
     "authors": ["Mary Shelley"],
     "year": 1818,
-    "subjects": ["gothic", "artificial-life", "ethics"],
+    "subjects": ["gothic", "artificial-life", "ethics", "science-writing"],
     "description": "A student assembles a living man and abandons him at first sight. The creature's own eloquent account sits at the centre, which is what makes it more than horror."
   },
   {
@@ -300,7 +300,7 @@
     "title": "Rebecca",
     "authors": ["Daphne du Maurier"],
     "year": 1938,
-    "subjects": ["gothic", "psychological-horror"],
+    "subjects": ["gothic", "psychological-horror", "gender"],
     "description": "A young second wife arrives at Manderley to find the first wife's authority intact and the housekeeper hostile. The narrator is never named."
   },
   {
@@ -308,7 +308,7 @@
     "title": "The Turn of the Screw",
     "authors": ["Henry James"],
     "year": 1898,
-    "subjects": ["gothic", "novella", "psychological-horror"],
+    "subjects": ["gothic", "novella", "psychological-horror", "19th-century"],
     "description": "A governess becomes convinced two children are being visited by the dead. Constructed so that the question of whether the ghosts are real cannot be settled."
   },
   {
@@ -316,7 +316,7 @@
     "title": "At the Mountains of Madness",
     "authors": ["H. P. Lovecraft"],
     "year": 1936,
-    "subjects": ["cosmic-horror", "novella", "natural-history"],
+    "subjects": ["cosmic-horror", "novella", "natural-history", "horror", "cosmology"],
     "description": "An Antarctic expedition uncovers the ruins of a pre-human civilization and its discarded biology. Horror delivered as reluctant scientific report."
   },
   {
@@ -324,7 +324,7 @@
     "title": "Annihilation",
     "authors": ["Jeff VanderMeer"],
     "year": 2014,
-    "subjects": ["cosmic-horror", "ecology", "first-contact"],
+    "subjects": ["cosmic-horror", "ecology", "first-contact", "natural-history"],
     "description": "A biologist enters a coastal zone where biology has been rewritten by something that has no interest in being understood. Field notes as dread."
   },
   {
@@ -332,7 +332,7 @@
     "title": "The Fisherman",
     "authors": ["John Langan"],
     "year": 2016,
-    "subjects": ["cosmic-horror", "psychological-horror"],
+    "subjects": ["cosmic-horror", "psychological-horror", "horror", "gothic"],
     "description": "Two widowers take up fishing in upstate New York and hear a long story about a drowned valley. Grief and cosmic horror braided into one another."
   },
   {
@@ -340,7 +340,7 @@
     "title": "The Haunting of Hill House",
     "authors": ["Shirley Jackson"],
     "year": 1959,
-    "subjects": ["psychological-horror", "gothic"],
+    "subjects": ["psychological-horror", "gothic", "horror"],
     "description": "Four people study a house that seems to select one of them. Jackson keeps the haunting and Eleanor's disintegration inseparable."
   },
   {
@@ -348,7 +348,7 @@
     "title": "We Have Always Lived in the Castle",
     "authors": ["Shirley Jackson"],
     "year": 1962,
-    "subjects": ["psychological-horror", "novella", "family-saga"],
+    "subjects": ["psychological-horror", "novella", "family-saga", "gothic"],
     "description": "Two sisters live in hostile isolation after a poisoning the village has not forgiven. Narrated by someone whose calm is the most alarming thing in the book."
   },
   {
@@ -356,7 +356,7 @@
     "title": "The Shining",
     "authors": ["Stephen King"],
     "year": 1977,
-    "subjects": ["psychological-horror", "gothic", "family-saga"],
+    "subjects": ["psychological-horror", "gothic", "family-saga", "horror"],
     "description": "A recovering alcoholic takes a winter caretaking job at an isolated Colorado hotel with his wife and psychic son. The hotel supplies what he already wanted."
   }
 ]

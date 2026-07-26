@@ -130,7 +130,7 @@ export function BookPoints({ theme, onReady }: Props): React.ReactElement {
 
       if (s.hoveredId !== lastHovered) {
         lastHovered = s.hoveredId;
-        computeRelationBuffer(s.books, s.hoveredId, s.tagMap, relationArray);
+        computeRelationBuffer(s.books, s.hoveredId, s.tagMap, s.taxonomy, relationArray);
         relationAttr.needsUpdate = true;
       }
 
