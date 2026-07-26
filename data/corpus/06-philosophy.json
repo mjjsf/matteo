@@ -1,0 +1,346 @@
+[
+  {
+    "id": "the-republic",
+    "title": "The Republic",
+    "authors": ["Plato"],
+    "year": -375,
+    "subjects": ["ancient-philosophy", "political-theory", "ethics"],
+    "description": "A dialogue on justice that becomes a design for an ideal city, containing the cave, the noble lie, and the banishment of poets."
+  },
+  {
+    "id": "nicomachean-ethics",
+    "title": "Nicomachean Ethics",
+    "authors": ["Aristotle"],
+    "year": -340,
+    "subjects": ["ancient-philosophy", "ethics"],
+    "description": "Virtue as a stable disposition acquired by practice, aimed at a flourishing life rather than rule-following. The origin of virtue ethics."
+  },
+  {
+    "id": "meditations-aurelius",
+    "title": "Meditations",
+    "authors": ["Marcus Aurelius"],
+    "year": 180,
+    "subjects": ["stoicism", "ancient-philosophy", "memoir"],
+    "description": "A Roman emperor's private notes to himself on duty, mortality, and not being ruled by other people's opinions. Never intended for publication."
+  },
+  {
+    "id": "letters-from-a-stoic",
+    "title": "Letters from a Stoic",
+    "authors": ["Seneca"],
+    "year": 65,
+    "subjects": ["stoicism", "ancient-philosophy", "essays"],
+    "description": "Letters on grief, wealth, time, and dying well, from a man who advised Nero and was eventually ordered to kill himself."
+  },
+  {
+    "id": "discourses-epictetus",
+    "title": "Discourses and Selected Writings",
+    "authors": ["Epictetus"],
+    "year": 108,
+    "subjects": ["stoicism", "ancient-philosophy", "ethics"],
+    "description": "A former slave's teaching on separating what is up to us from what is not. Blunter and more practical than Seneca."
+  },
+  {
+    "id": "on-the-nature-of-things",
+    "title": "On the Nature of Things",
+    "authors": ["Lucretius"],
+    "year": -50,
+    "subjects": ["ancient-philosophy", "poetry", "physics"],
+    "description": "Epicurean atomism argued in Latin verse: everything is particles and void, and death is therefore nothing to fear."
+  },
+  {
+    "id": "groundwork-metaphysics-morals",
+    "title": "Groundwork of the Metaphysics of Morals",
+    "authors": ["Immanuel Kant"],
+    "year": 1785,
+    "subjects": ["ethics", "epistemology"],
+    "description": "Derives morality from the form of rational willing alone, producing the categorical imperative. Short, dense, and endlessly argued over."
+  },
+  {
+    "id": "utilitarianism",
+    "title": "Utilitarianism",
+    "authors": ["John Stuart Mill"],
+    "year": 1863,
+    "subjects": ["ethics", "political-theory"],
+    "description": "Defends the greatest happiness principle while trying to accommodate the objection that it flattens higher and lower pleasures."
+  },
+  {
+    "id": "after-virtue",
+    "title": "After Virtue",
+    "authors": ["Alasdair MacIntyre"],
+    "year": 1981,
+    "subjects": ["ethics", "ancient-philosophy", "political-theory"],
+    "description": "Argues modern moral disagreement is interminable because we kept moral vocabulary while discarding the teleology that made it coherent."
+  },
+  {
+    "id": "practical-ethics",
+    "title": "Practical Ethics",
+    "authors": ["Peter Singer"],
+    "year": 1979,
+    "subjects": ["ethics", "philosophy-of-science"],
+    "description": "Applies utilitarian reasoning to animals, abortion, euthanasia, and global poverty, following the arguments to conclusions many readers reject."
+  },
+  {
+    "id": "being-and-time",
+    "title": "Being and Time",
+    "authors": ["Martin Heidegger"],
+    "year": 1927,
+    "subjects": ["existentialism", "epistemology", "consciousness"],
+    "description": "Reopens the question of being by analysing the everyday existence of the entity that asks it. Invents much of its own vocabulary and is unfinished."
+  },
+  {
+    "id": "being-and-nothingness",
+    "title": "Being and Nothingness",
+    "authors": ["Jean-Paul Sartre"],
+    "year": 1943,
+    "subjects": ["existentialism", "consciousness", "ethics"],
+    "description": "Consciousness as a nothingness that must choose, with bad faith as the standard evasion. Contains the waiter who is too perfectly a waiter."
+  },
+  {
+    "id": "the-myth-of-sisyphus",
+    "title": "The Myth of Sisyphus",
+    "authors": ["Albert Camus"],
+    "year": 1942,
+    "subjects": ["existentialism", "essays", "ethics"],
+    "description": "Opens by declaring suicide the only serious philosophical problem, then argues for living without appeal in a universe that offers no meaning."
+  },
+  {
+    "id": "fear-and-trembling",
+    "title": "Fear and Trembling",
+    "authors": ["Søren Kierkegaard"],
+    "year": 1843,
+    "subjects": ["existentialism", "comparative-religion", "ethics"],
+    "description": "Abraham's willingness to sacrifice Isaac as a case that ethics cannot absorb, requiring a leap that cannot be publicly justified."
+  },
+  {
+    "id": "beyond-good-and-evil",
+    "title": "Beyond Good and Evil",
+    "authors": ["Friedrich Nietzsche"],
+    "year": 1886,
+    "subjects": ["existentialism", "ethics", "essays"],
+    "description": "Aphorisms attacking the assumptions behind moral philosophy, including the idea that truth is obviously preferable to illusion."
+  },
+  {
+    "id": "the-second-sex",
+    "title": "The Second Sex",
+    "authors": ["Simone de Beauvoir"],
+    "year": 1949,
+    "subjects": ["feminism", "existentialism", "gender"],
+    "description": "Applies existentialist analysis to women's situation, arguing that one is not born but becomes a woman. Foundational for later feminist theory."
+  },
+  {
+    "id": "the-structure-of-scientific-revolutions",
+    "title": "The Structure of Scientific Revolutions",
+    "authors": ["Thomas S. Kuhn"],
+    "year": 1962,
+    "subjects": ["philosophy-of-science", "epistemology", "biography-of-ideas"],
+    "description": "Science as long periods of puzzle-solving punctuated by paradigm shifts that are not simply cumulative. The source of the overused word."
+  },
+  {
+    "id": "conjectures-and-refutations",
+    "title": "Conjectures and Refutations",
+    "authors": ["Karl Popper"],
+    "year": 1963,
+    "subjects": ["philosophy-of-science", "epistemology", "logic"],
+    "description": "Falsifiability as the mark of a scientific claim, with Marxism and psychoanalysis as the counterexamples."
+  },
+  {
+    "id": "against-method",
+    "title": "Against Method",
+    "authors": ["Paul Feyerabend"],
+    "year": 1975,
+    "subjects": ["philosophy-of-science", "epistemology"],
+    "description": "Argues no single method characterises science and that successful practice has often required breaking the rules. Deliberately provocative."
+  },
+  {
+    "id": "an-enquiry-concerning-human-understanding",
+    "title": "An Enquiry Concerning Human Understanding",
+    "authors": ["David Hume"],
+    "year": 1748,
+    "subjects": ["epistemology", "logic"],
+    "description": "Causation as habit rather than observed necessity, plus the problem of induction and the argument against miracles."
+  },
+  {
+    "id": "meditations-on-first-philosophy",
+    "title": "Meditations on First Philosophy",
+    "authors": ["René Descartes"],
+    "year": 1641,
+    "subjects": ["epistemology", "consciousness"],
+    "description": "Doubts everything doubtable to find one certainty, then rebuilds knowledge from it. The mind-body split that followed set the agenda for centuries."
+  },
+  {
+    "id": "the-view-from-nowhere",
+    "title": "The View From Nowhere",
+    "authors": ["Thomas Nagel"],
+    "year": 1986,
+    "subjects": ["epistemology", "consciousness", "ethics"],
+    "description": "How to reconcile the objective standpoint with the fact of being a particular person. Follows from his question about what it is like to be a bat."
+  },
+  {
+    "id": "what-the-buddha-taught",
+    "title": "What the Buddha Taught",
+    "authors": ["Walpola Rahula"],
+    "year": 1959,
+    "subjects": ["buddhism", "comparative-religion"],
+    "description": "The four noble truths and dependent origination set out from Pali sources by a Theravada monk, without embellishment."
+  },
+  {
+    "id": "zen-mind-beginners-mind",
+    "title": "Zen Mind, Beginner's Mind",
+    "authors": ["Shunryu Suzuki"],
+    "year": 1970,
+    "subjects": ["buddhism", "mysticism", "japanese-literature"],
+    "description": "Talks on posture, breathing, and attention from the Zen teacher who established the San Francisco Zen Center."
+  },
+  {
+    "id": "the-heart-of-the-buddhas-teaching",
+    "title": "The Heart of the Buddha's Teaching",
+    "authors": ["Thich Nhat Hanh"],
+    "year": 1998,
+    "subjects": ["buddhism", "ethics", "mysticism"],
+    "description": "The eightfold path presented as everyday practice by a Vietnamese monk who spent decades in exile for opposing the war."
+  },
+  {
+    "id": "tao-te-ching",
+    "title": "Tao Te Ching",
+    "authors": ["Laozi"],
+    "year": -400,
+    "subjects": ["taoism", "poetry", "political-theory"],
+    "description": "Eighty-one short chapters on yielding, emptiness, and governing by not interfering. Compressed to the point of deliberate ambiguity."
+  },
+  {
+    "id": "zhuangzi",
+    "title": "The Complete Works of Zhuangzi",
+    "authors": ["Zhuangzi"],
+    "year": -300,
+    "subjects": ["taoism", "chinese-literature", "essays"],
+    "description": "Parables and jokes undermining fixed distinctions, including the butterfly dream and the useless tree that survives."
+  },
+  {
+    "id": "the-analects",
+    "title": "The Analects",
+    "authors": ["Confucius"],
+    "year": -450,
+    "subjects": ["confucianism", "ethics", "political-theory"],
+    "description": "Recorded sayings on ritual, learning, and the conduct of the person fit to govern. Ethics as cultivated character rather than rules."
+  },
+  {
+    "id": "mencius",
+    "title": "Mencius",
+    "authors": ["Mencius"],
+    "year": -300,
+    "subjects": ["confucianism", "political-theory", "ethics"],
+    "description": "Dialogues arguing human nature is originally good and that a ruler who fails his people forfeits the mandate to rule. The most politically pointed of the Confucian classics."
+  },
+  {
+    "id": "the-varieties-of-religious-experience",
+    "title": "The Varieties of Religious Experience",
+    "authors": ["William James"],
+    "year": 1902,
+    "subjects": ["comparative-religion", "mysticism", "consciousness"],
+    "description": "Treats conversion and mystical states as psychological data to be examined rather than doctrines to be judged."
+  },
+  {
+    "id": "the-golden-bough",
+    "title": "The Golden Bough",
+    "authors": ["James George Frazer"],
+    "year": 1890,
+    "subjects": ["comparative-religion", "mysticism", "natural-history"],
+    "description": "A vast comparative survey of myth and ritual arguing for an evolution from magic to religion to science. Its method is now rejected; its influence on literature was enormous."
+  },
+  {
+    "id": "the-sacred-and-the-profane",
+    "title": "The Sacred and the Profane",
+    "authors": ["Mircea Eliade"],
+    "year": 1957,
+    "subjects": ["comparative-religion", "mysticism"],
+    "description": "Argues religious people experience space and time as qualitatively divided, with sacred centres organising the world."
+  },
+  {
+    "id": "the-cloud-of-unknowing",
+    "title": "The Cloud of Unknowing",
+    "authors": ["Anonymous"],
+    "year": 1375,
+    "subjects": ["mysticism", "medieval-history", "comparative-religion"],
+    "description": "A fourteenth-century English guide to contemplative prayer that insists God is reached by love rather than knowledge."
+  },
+  {
+    "id": "the-interior-castle",
+    "title": "The Interior Castle",
+    "authors": ["Teresa of Ávila"],
+    "year": 1588,
+    "subjects": ["mysticism", "comparative-religion", "memoir"],
+    "description": "The soul as a castle of seven mansions, described by a Carmelite reformer who was also a formidable administrator."
+  },
+  {
+    "id": "the-conscious-mind",
+    "title": "The Conscious Mind",
+    "authors": ["David J. Chalmers"],
+    "year": 1996,
+    "subjects": ["consciousness", "philosophy-of-science", "mind-and-brain"],
+    "description": "Formulates the hard problem: why physical processing is accompanied by experience at all. Argues no functional account will close the gap."
+  },
+  {
+    "id": "the-ego-tunnel",
+    "title": "The Ego Tunnel",
+    "authors": ["Thomas Metzinger"],
+    "year": 2009,
+    "subjects": ["consciousness", "neuroscience", "mind-and-brain"],
+    "description": "Argues there is no self, only a model of one, drawing on out-of-body experiences and rubber-hand illusions."
+  },
+  {
+    "id": "i-am-a-strange-loop",
+    "title": "I Am a Strange Loop",
+    "authors": ["Douglas Hofstadter"],
+    "year": 2007,
+    "subjects": ["consciousness", "logic", "mind-and-brain"],
+    "description": "A more direct restatement of his thesis that selfhood is a self-referential pattern, written partly as a response to his wife's death."
+  },
+  {
+    "id": "tractatus",
+    "title": "Tractatus Logico-Philosophicus",
+    "authors": ["Ludwig Wittgenstein"],
+    "year": 1921,
+    "subjects": ["logic", "epistemology", "linguistics"],
+    "description": "Numbered propositions on the limits of what can be said, concluding that the reader should now discard the ladder."
+  },
+  {
+    "id": "philosophical-investigations",
+    "title": "Philosophical Investigations",
+    "authors": ["Ludwig Wittgenstein"],
+    "year": 1953,
+    "subjects": ["logic", "linguistics", "epistemology"],
+    "description": "Wittgenstein dismantling his earlier picture theory in favour of meaning as use, language games, and family resemblance."
+  },
+  {
+    "id": "godels-proof",
+    "title": "Gödel's Proof",
+    "authors": ["Ernest Nagel", "James R. Newman"],
+    "year": 1958,
+    "subjects": ["logic", "mathematics"],
+    "description": "A short exposition of the incompleteness theorems for readers without formal logic, keeping the diagonal argument intact."
+  },
+  {
+    "id": "syntactic-structures",
+    "title": "Syntactic Structures",
+    "authors": ["Noam Chomsky"],
+    "year": 1957,
+    "subjects": ["linguistics", "logic", "computer-science"],
+    "description": "The short monograph that made generative grammar the dominant programme in linguistics and killed behaviourist accounts of language."
+  },
+  {
+    "id": "through-the-language-glass",
+    "title": "Through the Language Glass",
+    "authors": ["Guy Deutscher"],
+    "year": 2010,
+    "subjects": ["linguistics", "translation", "consciousness"],
+    "description": "Revisits whether language shapes thought, salvaging modest versions of the claim from colour terms and spatial orientation."
+  },
+  {
+    "id": "metaphors-we-live-by",
+    "title": "Metaphors We Live By",
+    "authors": ["George Lakoff", "Mark Johnson"],
+    "year": 1980,
+    "subjects": ["linguistics", "consciousness", "literary-criticism"],
+    "description": "Argues abstract thought is structured by bodily metaphor — argument as war, time as money — not merely decorated by it."
+  }
+]

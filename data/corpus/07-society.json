@@ -1,0 +1,338 @@
+[
+  {
+    "id": "the-wealth-of-nations",
+    "title": "The Wealth of Nations",
+    "authors": ["Adam Smith"],
+    "year": 1776,
+    "subjects": ["economics", "political-theory", "labor"],
+    "description": "The division of labour, self-interest, and markets as coordination, argued at length and with more suspicion of merchants than the citations suggest."
+  },
+  {
+    "id": "capital-volume-one",
+    "title": "Capital, Volume I",
+    "authors": ["Karl Marx"],
+    "year": 1867,
+    "subjects": ["economics", "political-theory", "labor"],
+    "description": "An analysis of commodity production, surplus value, and accumulation, including long chapters of factory-inspector evidence."
+  },
+  {
+    "id": "the-general-theory",
+    "title": "The General Theory of Employment, Interest and Money",
+    "authors": ["John Maynard Keynes"],
+    "year": 1936,
+    "subjects": ["economics", "democracy"],
+    "description": "Argues that demand can settle at persistent underemployment and that government spending is the remedy. Reoriented macroeconomics."
+  },
+  {
+    "id": "capital-in-the-twenty-first-century",
+    "title": "Capital in the Twenty-First Century",
+    "authors": ["Thomas Piketty"],
+    "year": 2013,
+    "subjects": ["economics", "class", "globalization"],
+    "description": "Two centuries of wealth and income data supporting the claim that returns on capital normally outpace growth, concentrating wealth."
+  },
+  {
+    "id": "the-road-to-serfdom",
+    "title": "The Road to Serfdom",
+    "authors": ["Friedrich Hayek"],
+    "year": 1944,
+    "subjects": ["economics", "political-theory", "authoritarianism"],
+    "description": "Argues central economic planning tends toward coercion because planners cannot possess the dispersed knowledge markets aggregate."
+  },
+  {
+    "id": "poor-economics",
+    "title": "Poor Economics",
+    "authors": ["Abhijit V. Banerjee", "Esther Duflo"],
+    "year": 2011,
+    "subjects": ["economics", "public-health", "globalization"],
+    "description": "Randomised trials on how poor households actually make decisions about food, schooling, and health, against grand development theories."
+  },
+  {
+    "id": "thinking-fast-and-slow",
+    "title": "Thinking, Fast and Slow",
+    "authors": ["Daniel Kahneman"],
+    "year": 2011,
+    "subjects": ["behavioral-economics", "mind-and-brain", "neuroscience"],
+    "description": "Two decades of work on heuristics and biases, organised around fast intuition and slow deliberation. Some studies have since replicated poorly, which the author acknowledged."
+  },
+  {
+    "id": "nudge",
+    "title": "Nudge",
+    "authors": ["Richard H. Thaler", "Cass R. Sunstein"],
+    "year": 2008,
+    "subjects": ["behavioral-economics", "political-theory", "ethics"],
+    "description": "Argues default settings and framing can improve decisions without removing choice. Influential in policy and criticised as paternalism."
+  },
+  {
+    "id": "predictably-irrational",
+    "title": "Predictably Irrational",
+    "authors": ["Dan Ariely"],
+    "year": 2008,
+    "subjects": ["behavioral-economics", "economics"],
+    "description": "Experiments on anchoring, free offers, and the difference between social and market norms. Note that some of this author's later work faced data-integrity findings."
+  },
+  {
+    "id": "misbehaving",
+    "title": "Misbehaving",
+    "authors": ["Richard H. Thaler"],
+    "year": 2015,
+    "subjects": ["behavioral-economics", "economics", "memoir"],
+    "description": "A first-hand history of behavioural economics winning its argument with the rational-agent model, told with the disputes intact."
+  },
+  {
+    "id": "bullshit-jobs",
+    "title": "Bullshit Jobs",
+    "authors": ["David Graeber"],
+    "year": 2018,
+    "subjects": ["labor", "economics", "class"],
+    "description": "Argues a large share of white-collar work is understood as pointless by the people doing it, and asks why that is tolerated."
+  },
+  {
+    "id": "nickel-and-dimed",
+    "title": "Nickel and Dimed",
+    "authors": ["Barbara Ehrenreich"],
+    "year": 2001,
+    "subjects": ["labor", "class", "memoir"],
+    "description": "A journalist works minimum-wage jobs and finds the arithmetic of survival does not close. Direct, and clear about the limits of her own experiment."
+  },
+  {
+    "id": "the-jungle",
+    "title": "The Jungle",
+    "authors": ["Upton Sinclair"],
+    "year": 1906,
+    "subjects": ["labor", "class", "public-health"],
+    "description": "A Lithuanian immigrant family destroyed by Chicago's meatpacking industry. Intended to provoke labour reform; produced food-safety law instead."
+  },
+  {
+    "id": "the-making-of-the-english-working-class",
+    "title": "The Making of the English Working Class",
+    "authors": ["E. P. Thompson"],
+    "year": 1963,
+    "subjects": ["labor", "class", "revolution"],
+    "description": "Recovers the political thought of artisans and weavers between 1780 and 1832, insisting they were agents rather than statistics."
+  },
+  {
+    "id": "leviathan",
+    "title": "Leviathan",
+    "authors": ["Thomas Hobbes"],
+    "year": 1651,
+    "subjects": ["political-theory", "authoritarianism", "ethics"],
+    "description": "Derives absolute sovereignty from the intolerability of the state of nature. Written during a civil war, and it shows."
+  },
+  {
+    "id": "second-treatise",
+    "title": "Second Treatise of Government",
+    "authors": ["John Locke"],
+    "year": 1689,
+    "subjects": ["political-theory", "democracy"],
+    "description": "Government as a trust founded on consent and revocable when it violates natural rights. The direct ancestor of the American founding documents."
+  },
+  {
+    "id": "the-social-contract",
+    "title": "The Social Contract",
+    "authors": ["Jean-Jacques Rousseau"],
+    "year": 1762,
+    "subjects": ["political-theory", "democracy", "revolution"],
+    "description": "Legitimacy from the general will, with an unresolved tension about what happens to those who dissent from it."
+  },
+  {
+    "id": "a-theory-of-justice",
+    "title": "A Theory of Justice",
+    "authors": ["John Rawls"],
+    "year": 1971,
+    "subjects": ["political-theory", "ethics", "democracy"],
+    "description": "Principles chosen behind a veil of ignorance about one's own position. The dominant framework in political philosophy for a generation."
+  },
+  {
+    "id": "the-origins-of-totalitarianism",
+    "title": "The Origins of Totalitarianism",
+    "authors": ["Hannah Arendt"],
+    "year": 1951,
+    "subjects": ["totalitarianism", "authoritarianism", "propaganda"],
+    "description": "Traces Nazi and Stalinist rule to antisemitism, imperialism, and the production of stateless people with no rights to appeal to."
+  },
+  {
+    "id": "democracy-in-america",
+    "title": "Democracy in America",
+    "authors": ["Alexis de Tocqueville"],
+    "year": 1835,
+    "subjects": ["democracy", "political-theory"],
+    "description": "A French aristocrat's report on American associational life, equality, and the risk of majority conformity."
+  },
+  {
+    "id": "how-democracies-die",
+    "title": "How Democracies Die",
+    "authors": ["Steven Levitsky", "Daniel Ziblatt"],
+    "year": 2018,
+    "subjects": ["democracy", "authoritarianism", "political-theory"],
+    "description": "Comparative evidence that democracies now fail through elected officials eroding norms rather than through coups."
+  },
+  {
+    "id": "why-nations-fail",
+    "title": "Why Nations Fail",
+    "authors": ["Daron Acemoglu", "James A. Robinson"],
+    "year": 2012,
+    "subjects": ["democracy", "economics", "colonialism"],
+    "description": "Argues inclusive political institutions, not geography or culture, explain sustained prosperity. Broad comparative history."
+  },
+  {
+    "id": "the-federalist-papers",
+    "title": "The Federalist Papers",
+    "authors": ["Alexander Hamilton", "James Madison", "John Jay"],
+    "year": 1788,
+    "subjects": ["democracy", "political-theory"],
+    "description": "Newspaper essays arguing for ratification, including Madison on factions and the deliberate fragmentation of power."
+  },
+  {
+    "id": "on-tyranny",
+    "title": "On Tyranny",
+    "authors": ["Timothy Snyder"],
+    "year": 2017,
+    "subjects": ["authoritarianism", "totalitarianism", "democracy"],
+    "description": "Twenty short lessons drawn from twentieth-century Europe about how compliance is secured before it is demanded."
+  },
+  {
+    "id": "manufacturing-consent",
+    "title": "Manufacturing Consent",
+    "authors": ["Edward S. Herman", "Noam Chomsky"],
+    "year": 1988,
+    "subjects": ["propaganda", "media-studies", "globalization"],
+    "description": "A model of how ownership, advertising, and sourcing filter news in market democracies without formal censorship."
+  },
+  {
+    "id": "propaganda-ellul",
+    "title": "Propaganda: The Formation of Men's Attitudes",
+    "authors": ["Jacques Ellul"],
+    "year": 1962,
+    "subjects": ["propaganda", "media-studies", "technology-criticism"],
+    "description": "Argues propaganda is a structural feature of mass technological society and that the well-informed are its easiest subjects."
+  },
+  {
+    "id": "the-souls-of-black-folk",
+    "title": "The Souls of Black Folk",
+    "authors": ["W. E. B. Du Bois"],
+    "year": 1903,
+    "subjects": ["race", "civil-rights", "essays"],
+    "description": "Essays introducing double consciousness and the colour line, combining sociology, history, and elegy."
+  },
+  {
+    "id": "the-fire-next-time",
+    "title": "The Fire Next Time",
+    "authors": ["James Baldwin"],
+    "year": 1963,
+    "subjects": ["race", "civil-rights", "essays"],
+    "description": "Two essays — a letter to his nephew and a longer reckoning with the Nation of Islam and American self-deception."
+  },
+  {
+    "id": "between-the-world-and-me",
+    "title": "Between the World and Me",
+    "authors": ["Ta-Nehisi Coates"],
+    "year": 2015,
+    "subjects": ["race", "memoir", "civil-rights"],
+    "description": "A letter to the author's son about the vulnerability of the Black body in America, explicitly written in Baldwin's shadow."
+  },
+  {
+    "id": "the-warmth-of-other-suns",
+    "title": "The Warmth of Other Suns",
+    "authors": ["Isabel Wilkerson"],
+    "year": 2010,
+    "subjects": ["race", "migration", "civil-rights"],
+    "description": "The Great Migration told through three lives leaving the South between 1915 and 1970, built on more than a thousand interviews."
+  },
+  {
+    "id": "a-vindication-of-the-rights-of-woman",
+    "title": "A Vindication of the Rights of Woman",
+    "authors": ["Mary Wollstonecraft"],
+    "year": 1792,
+    "subjects": ["feminism", "gender", "political-theory"],
+    "description": "Argues women appear irrational because they are educated to be ornamental, and that the remedy is schooling and civic standing."
+  },
+  {
+    "id": "gender-trouble",
+    "title": "Gender Trouble",
+    "authors": ["Judith Butler"],
+    "year": 1990,
+    "subjects": ["gender", "feminism", "literary-criticism"],
+    "description": "Argues gender is performatively constituted rather than expressed, and questions whether a stable category of woman can ground politics."
+  },
+  {
+    "id": "invisible-women",
+    "title": "Invisible Women",
+    "authors": ["Caroline Criado Perez"],
+    "year": 2019,
+    "subjects": ["gender", "feminism", "public-health"],
+    "description": "How default-male data in crash tests, drug trials, and city planning produces measurable harm. Argument by accumulated example."
+  },
+  {
+    "id": "a-room-of-ones-own",
+    "title": "A Room of One's Own",
+    "authors": ["Virginia Woolf"],
+    "year": 1929,
+    "subjects": ["feminism", "essays", "literary-criticism"],
+    "description": "An extended essay on why so few women wrote, arguing from money and privacy rather than talent. Invents Shakespeare's sister to make the point."
+  },
+  {
+    "id": "the-uprooted",
+    "title": "Exit West",
+    "authors": ["Mohsin Hamid"],
+    "year": 2017,
+    "subjects": ["migration", "south-asian-literature", "magical-realism"],
+    "description": "Two lovers leave a city sliding into war through doors that open onto other countries. The magical device strips migration down to arrival and aftermath."
+  },
+  {
+    "id": "the-line-becomes-a-river",
+    "title": "The Line Becomes a River",
+    "authors": ["Francisco Cantú"],
+    "year": 2018,
+    "subjects": ["migration", "memoir", "criminal-justice"],
+    "description": "A former Border Patrol agent's account of enforcing a policy he came to see as indefensible. Contested by activists on publication."
+  },
+  {
+    "id": "the-death-and-life-of-great-american-cities",
+    "title": "The Death and Life of Great American Cities",
+    "authors": ["Jane Jacobs"],
+    "year": 1961,
+    "subjects": ["urbanism", "architecture", "city-life"],
+    "description": "An attack on mid-century planning orthodoxy, arguing that mixed use, short blocks, and eyes on the street make neighbourhoods work."
+  },
+  {
+    "id": "seeing-like-a-state",
+    "title": "Seeing Like a State",
+    "authors": ["James C. Scott"],
+    "year": 1998,
+    "subjects": ["urbanism", "political-theory", "authoritarianism"],
+    "description": "Why large state schemes to improve society fail: they replace local knowledge with legible simplifications that omit what made things work."
+  },
+  {
+    "id": "evicted",
+    "title": "Evicted",
+    "authors": ["Matthew Desmond"],
+    "year": 2016,
+    "subjects": ["urbanism", "class", "labor"],
+    "description": "Ethnography of eviction in Milwaukee, following tenants and landlords to argue housing instability is a cause of poverty, not only a symptom."
+  },
+  {
+    "id": "the-world-is-flat",
+    "title": "The World Is Flat",
+    "authors": ["Thomas L. Friedman"],
+    "year": 2005,
+    "subjects": ["globalization", "economics", "technology-criticism"],
+    "description": "An optimistic account of outsourcing and supply chains levelling economic competition. Useful now partly as a record of what that moment believed."
+  },
+  {
+    "id": "the-shock-doctrine",
+    "title": "The Shock Doctrine",
+    "authors": ["Naomi Klein"],
+    "year": 2007,
+    "subjects": ["globalization", "economics", "authoritarianism"],
+    "description": "Argues free-market restructuring has repeatedly been imposed during crises when resistance is impossible."
+  },
+  {
+    "id": "empire-of-cotton",
+    "title": "Empire of Cotton",
+    "authors": ["Sven Beckert"],
+    "year": 2014,
+    "subjects": ["globalization", "colonialism", "labor"],
+    "description": "A single commodity used to trace how slavery, state violence, and industrialisation built the first global economy."
+  }
+]

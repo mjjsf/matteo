@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "roots": [
+    {
+      "id": "fiction",
+      "label": "Literary Fiction",
+      "children": [
+        {
+          "id": "fiction-classics",
+          "label": "Classics",
+          "children": [
+            { "id": "fiction-classics-19c", "label": "19th Century" },
+            { "id": "fiction-classics-modernism", "label": "Modernism" },
+            { "id": "fiction-classics-russian", "label": "Russian Literature" }
+          ]
+        },
+        {
+          "id": "fiction-contemporary",
+          "label": "Contemporary",
+          "children": [
+            { "id": "fiction-contemporary-family", "label": "Family & Generations" },
+            { "id": "fiction-contemporary-coming-of-age", "label": "Coming of Age" },
+            { "id": "fiction-contemporary-postmodern", "label": "Postmodern" }
+          ]
+        },
+        {
+          "id": "fiction-world",
+          "label": "World Literature",
+          "children": [
+            { "id": "fiction-world-latin-american", "label": "Latin American" },
+            { "id": "fiction-world-east-asian", "label": "East Asian" },
+            { "id": "fiction-world-african", "label": "African" },
+            { "id": "fiction-world-south-asian", "label": "South Asian" }
+          ]
+        },
+        {
+          "id": "fiction-short",
+          "label": "Short Forms",
+          "children": [
+            { "id": "fiction-short-stories", "label": "Short Stories" },
+            { "id": "fiction-short-novella", "label": "Novellas" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spec",
+      "label": "Speculative Fiction",
+      "children": [
+        {
+          "id": "spec-sf",
+          "label": "Science Fiction",
+          "children": [
+            { "id": "spec-sf-cyberpunk", "label": "Cyberpunk" },
+            { "id": "spec-sf-space-opera", "label": "Space Opera" },
+            { "id": "spec-sf-dystopia", "label": "Dystopia" },
+            { "id": "spec-sf-first-contact", "label": "First Contact" },
+            { "id": "spec-sf-time", "label": "Time & Causality" }
+          ]
+        },
+        {
+          "id": "spec-fantasy",
+          "label": "Fantasy",
+          "children": [
+            { "id": "spec-fantasy-epic", "label": "Epic Fantasy" },
+            { "id": "spec-fantasy-urban", "label": "Urban Fantasy" },
+            { "id": "spec-fantasy-magical-realism", "label": "Magical Realism" }
+          ]
+        },
+        {
+          "id": "spec-horror",
+          "label": "Horror",
+          "children": [
+            { "id": "spec-horror-gothic", "label": "Gothic" },
+            { "id": "spec-horror-cosmic", "label": "Cosmic Horror" },
+            { "id": "spec-horror-psychological", "label": "Psychological" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crime",
+      "label": "Crime & Thriller",
+      "children": [
+        {
+          "id": "crime-detective",
+          "label": "Detective",
+          "children": [
+            { "id": "crime-detective-hardboiled", "label": "Hardboiled" },
+            { "id": "crime-detective-procedural", "label": "Police Procedural" },
+            { "id": "crime-detective-classic", "label": "Classic Mystery" }
+          ]
+        },
+        {
+          "id": "crime-thriller",
+          "label": "Thriller",
+          "children": [
+            { "id": "crime-thriller-espionage", "label": "Espionage" },
+            { "id": "crime-thriller-legal", "label": "Legal" },
+            { "id": "crime-thriller-techno", "label": "Techno-thriller" }
+          ]
+        },
+        {
+          "id": "crime-true",
+          "label": "True Crime",
+          "children": [
+            { "id": "crime-true-investigation", "label": "Investigations" },
+            { "id": "crime-true-justice", "label": "Courts & Justice" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "label": "History & Biography",
+      "children": [
+        {
+          "id": "history-ancient",
+          "label": "Ancient & Medieval",
+          "children": [
+            { "id": "history-ancient-classical", "label": "Classical Antiquity" },
+            { "id": "history-ancient-medieval", "label": "Medieval" }
+          ]
+        },
+        {
+          "id": "history-modern",
+          "label": "Modern History",
+          "children": [
+            { "id": "history-modern-world-wars", "label": "World Wars" },
+            { "id": "history-modern-cold-war", "label": "Cold War" },
+            { "id": "history-modern-revolution", "label": "Revolutions" },
+            { "id": "history-modern-empire", "label": "Empire & Colonialism" }
+          ]
+        },
+        {
+          "id": "history-lives",
+          "label": "Biography",
+          "children": [
+            { "id": "history-lives-memoir", "label": "Memoir" },
+            { "id": "history-lives-political", "label": "Political Lives" },
+            { "id": "history-lives-scientific", "label": "Scientific Lives" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "label": "Science & Nature",
+      "children": [
+        {
+          "id": "science-physical",
+          "label": "Physical Sciences",
+          "children": [
+            { "id": "science-physical-physics", "label": "Physics" },
+            { "id": "science-physical-cosmology", "label": "Cosmology" },
+            { "id": "science-physical-mathematics", "label": "Mathematics" }
+          ]
+        },
+        {
+          "id": "science-life",
+          "label": "Life Sciences",
+          "children": [
+            { "id": "science-life-evolution", "label": "Evolution" },
+            { "id": "science-life-genetics", "label": "Genetics" },
+            { "id": "science-life-neuroscience", "label": "Neuroscience" },
+            { "id": "science-life-medicine", "label": "Medicine" }
+          ]
+        },
+        {
+          "id": "science-earth",
+          "label": "Earth & Environment",
+          "children": [
+            { "id": "science-earth-ecology", "label": "Ecology" },
+            { "id": "science-earth-climate", "label": "Climate" },
+            { "id": "science-earth-natural-history", "label": "Natural History" }
+          ]
+        },
+        {
+          "id": "science-computing",
+          "label": "Computing",
+          "children": [
+            { "id": "science-computing-cs", "label": "Computer Science" },
+            { "id": "science-computing-ai", "label": "Artificial Intelligence" },
+            { "id": "science-computing-crypto", "label": "Cryptography & Security" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy",
+      "label": "Philosophy & Religion",
+      "children": [
+        {
+          "id": "philosophy-western",
+          "label": "Western Philosophy",
+          "children": [
+            { "id": "philosophy-western-ancient", "label": "Ancient Philosophy" },
+            { "id": "philosophy-western-ethics", "label": "Ethics" },
+            { "id": "philosophy-western-existentialism", "label": "Existentialism" },
+            { "id": "philosophy-western-epistemology", "label": "Knowledge & Science" }
+          ]
+        },
+        {
+          "id": "philosophy-eastern",
+          "label": "Eastern Thought",
+          "children": [
+            { "id": "philosophy-eastern-buddhism", "label": "Buddhism" },
+            { "id": "philosophy-eastern-taoism", "label": "Taoism & Confucianism" }
+          ]
+        },
+        {
+          "id": "philosophy-religion",
+          "label": "Religion",
+          "children": [
+            { "id": "philosophy-religion-comparative", "label": "Comparative Religion" },
+            { "id": "philosophy-religion-mysticism", "label": "Mysticism" }
+          ]
+        },
+        {
+          "id": "philosophy-mind",
+          "label": "Mind & Logic",
+          "children": [
+            { "id": "philosophy-mind-consciousness", "label": "Consciousness" },
+            { "id": "philosophy-mind-logic", "label": "Logic & Language" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "society",
+      "label": "Society & Politics",
+      "children": [
+        {
+          "id": "society-economics",
+          "label": "Economics",
+          "children": [
+            { "id": "society-economics-theory", "label": "Economic Theory" },
+            { "id": "society-economics-behavioral", "label": "Behavioural Economics" },
+            { "id": "society-economics-work", "label": "Work & Labour" }
+          ]
+        },
+        {
+          "id": "society-politics",
+          "label": "Politics",
+          "children": [
+            { "id": "society-politics-theory", "label": "Political Theory" },
+            { "id": "society-politics-democracy", "label": "Democracy" },
+            { "id": "society-politics-authoritarianism", "label": "Authoritarianism" }
+          ]
+        },
+        {
+          "id": "society-culture",
+          "label": "Culture & Identity",
+          "children": [
+            { "id": "society-culture-race", "label": "Race" },
+            { "id": "society-culture-gender", "label": "Gender" },
+            { "id": "society-culture-migration", "label": "Migration" }
+          ]
+        },
+        {
+          "id": "society-place",
+          "label": "Cities & Globe",
+          "children": [
+            { "id": "society-place-urbanism", "label": "Urbanism" },
+            { "id": "society-place-globalization", "label": "Globalisation" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arts",
+      "label": "Arts & Culture",
+      "children": [
+        {
+          "id": "arts-visual",
+          "label": "Visual Arts",
+          "children": [
+            { "id": "arts-visual-art-history", "label": "Art History" },
+            { "id": "arts-visual-photography", "label": "Photography" },
+            { "id": "arts-visual-architecture", "label": "Architecture" }
+          ]
+        },
+        {
+          "id": "arts-music",
+          "label": "Music",
+          "children": [
+            { "id": "arts-music-jazz", "label": "Jazz" },
+            { "id": "arts-music-classical", "label": "Classical" },
+            { "id": "arts-music-popular", "label": "Popular Music" }
+          ]
+        },
+        {
+          "id": "arts-letters",
+          "label": "Letters & Criticism",
+          "children": [
+            { "id": "arts-letters-criticism", "label": "Literary Criticism" },
+            { "id": "arts-letters-essays", "label": "Essays" },
+            { "id": "arts-letters-poetry", "label": "Poetry" }
+          ]
+        },
+        {
+          "id": "arts-media",
+          "label": "Film & Media",
+          "children": [
+            { "id": "arts-media-film", "label": "Film" },
+            { "id": "arts-media-media-studies", "label": "Media & Technology" }
+          ]
+        }
+      ]
+    }
+  ]
+}

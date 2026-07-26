@@ -1,0 +1,362 @@
+[
+  {
+    "id": "ways-of-seeing",
+    "title": "Ways of Seeing",
+    "authors": ["John Berger"],
+    "year": 1972,
+    "subjects": ["art-history", "media-studies", "literary-criticism"],
+    "description": "Seven essays on how reproduction, oil painting, and advertising train the eye, including the argument about the male gaze in the nude."
+  },
+  {
+    "id": "the-story-of-art",
+    "title": "The Story of Art",
+    "authors": ["E. H. Gombrich"],
+    "year": 1950,
+    "subjects": ["art-history", "essays"],
+    "description": "A single-volume narrative from cave painting to modernism, written on the premise that there is no such thing as Art, only artists."
+  },
+  {
+    "id": "the-shock-of-the-new",
+    "title": "The Shock of the New",
+    "authors": ["Robert Hughes"],
+    "year": 1980,
+    "subjects": ["art-history", "architecture", "literary-criticism"],
+    "description": "A century of modern art treated as a series of arguments about the machine, the city, and utopia, with a critic's willingness to judge."
+  },
+  {
+    "id": "the-lives-of-the-artists",
+    "title": "The Lives of the Artists",
+    "authors": ["Giorgio Vasari"],
+    "year": 1550,
+    "subjects": ["art-history", "political-biography"],
+    "description": "Biographies of Italian Renaissance artists by a painter who knew several of them. Unreliable on detail and the origin of most art-historical anecdote."
+  },
+  {
+    "id": "on-photography",
+    "title": "On Photography",
+    "authors": ["Susan Sontag"],
+    "year": 1977,
+    "subjects": ["photography", "essays", "media-studies"],
+    "description": "Essays arguing photographs anaesthetise as readily as they inform, and that the camera turns experience into a collectable image."
+  },
+  {
+    "id": "camera-lucida",
+    "title": "Camera Lucida",
+    "authors": ["Roland Barthes"],
+    "year": 1980,
+    "subjects": ["photography", "literary-criticism", "essays"],
+    "description": "A short, grief-driven meditation on photography that introduces studium and punctum, written after his mother's death."
+  },
+  {
+    "id": "the-americans",
+    "title": "The Americans",
+    "authors": ["Robert Frank"],
+    "year": 1958,
+    "subjects": ["photography", "essays"],
+    "description": "Eighty-three photographs from a two-year drive across the United States that reframed documentary photography as subjective and unflattering."
+  },
+  {
+    "id": "regarding-the-pain-of-others",
+    "title": "Regarding the Pain of Others",
+    "authors": ["Susan Sontag"],
+    "year": 2003,
+    "subjects": ["photography", "war", "ethics"],
+    "description": "Revisits her earlier position to ask what war photographs actually accomplish, and whether compassion or numbness is the honest response."
+  },
+  {
+    "id": "towards-a-new-architecture",
+    "title": "Toward an Architecture",
+    "authors": ["Le Corbusier"],
+    "year": 1923,
+    "subjects": ["architecture", "urbanism", "art-history"],
+    "description": "The manifesto that called the house a machine for living in. Its influence on twentieth-century cities was enormous and not entirely benign."
+  },
+  {
+    "id": "the-architecture-of-happiness",
+    "title": "The Architecture of Happiness",
+    "authors": ["Alain de Botton"],
+    "year": 2006,
+    "subjects": ["architecture", "essays", "urbanism"],
+    "description": "Asks why buildings affect mood and what it would mean to take that seriously as a design criterion."
+  },
+  {
+    "id": "how-buildings-learn",
+    "title": "How Buildings Learn",
+    "authors": ["Stewart Brand"],
+    "year": 1994,
+    "subjects": ["architecture", "urbanism", "technology-criticism"],
+    "description": "Argues buildings should be judged by how well they adapt over decades, and that celebrated designs often adapt worst."
+  },
+  {
+    "id": "kind-of-blue-sketches",
+    "title": "Kind of Blue: The Making of the Miles Davis Masterpiece",
+    "authors": ["Ashley Kahn"],
+    "year": 2000,
+    "subjects": ["jazz", "music-criticism", "popular-music"],
+    "description": "A session-by-session account of the 1959 recording, drawing on studio logs and the surviving participants."
+  },
+  {
+    "id": "blues-people",
+    "title": "Blues People",
+    "authors": ["Amiri Baraka"],
+    "year": 1963,
+    "subjects": ["jazz", "race", "music-criticism"],
+    "description": "Reads the development of blues and jazz as a social history of Black America rather than a sequence of styles."
+  },
+  {
+    "id": "miles-the-autobiography",
+    "title": "Miles: The Autobiography",
+    "authors": ["Miles Davis", "Quincy Troupe"],
+    "year": 1989,
+    "subjects": ["jazz", "memoir", "popular-music"],
+    "description": "Davis on bebop, modal jazz, fusion, and everyone who annoyed him. Profane, self-mythologising, and indispensable."
+  },
+  {
+    "id": "thinking-in-jazz",
+    "title": "Thinking in Jazz",
+    "authors": ["Paul F. Berliner"],
+    "year": 1994,
+    "subjects": ["jazz", "music-criticism", "labor"],
+    "description": "An ethnomusicologist's study of how improvisers actually learn, showing spontaneity resting on years of deliberate preparation."
+  },
+  {
+    "id": "the-rest-is-noise",
+    "title": "The Rest Is Noise",
+    "authors": ["Alex Ross"],
+    "year": 2007,
+    "subjects": ["classical-music", "music-criticism", "cold-war"],
+    "description": "Twentieth-century classical music placed inside its political history, from Strauss through Shostakovich to the American avant-garde."
+  },
+  {
+    "id": "the-classical-style",
+    "title": "The Classical Style",
+    "authors": ["Charles Rosen"],
+    "year": 1971,
+    "subjects": ["classical-music", "music-criticism"],
+    "description": "Haydn, Mozart, and Beethoven analysed by a concert pianist, arguing their innovations were structural rather than expressive."
+  },
+  {
+    "id": "the-cello-suites",
+    "title": "The Cello Suites",
+    "authors": ["Eric Siblin"],
+    "year": 2009,
+    "subjects": ["classical-music", "memoir", "music-criticism"],
+    "description": "Braids Bach's life, Pablo Casals's rediscovery of the manuscript, and the author's own obsession into one narrative."
+  },
+  {
+    "id": "this-is-your-brain-on-music",
+    "title": "This Is Your Brain on Music",
+    "authors": ["Daniel J. Levitin"],
+    "year": 2006,
+    "subjects": ["classical-music", "neuroscience", "mind-and-brain"],
+    "description": "A record producer turned neuroscientist on what happens in the brain during listening, from pitch perception to expectation."
+  },
+  {
+    "id": "please-kill-me",
+    "title": "Please Kill Me",
+    "authors": ["Legs McNeil", "Gillian McCain"],
+    "year": 1996,
+    "subjects": ["popular-music", "music-criticism", "memoir"],
+    "description": "An oral history of American punk assembled entirely from interviews, with no narration to tidy the contradictions."
+  },
+  {
+    "id": "how-music-works",
+    "title": "How Music Works",
+    "authors": ["David Byrne"],
+    "year": 2012,
+    "subjects": ["popular-music", "technology-criticism", "music-criticism"],
+    "description": "Argues music is shaped by the venues and recording technology available, using his own career as the worked example."
+  },
+  {
+    "id": "just-kids",
+    "title": "Just Kids",
+    "authors": ["Patti Smith"],
+    "year": 2010,
+    "subjects": ["popular-music", "memoir", "poetry"],
+    "description": "Smith and Robert Mapplethorpe as young artists in New York, told with the deaths already known and never leaned on."
+  },
+  {
+    "id": "our-band-could-be-your-life",
+    "title": "Our Band Could Be Your Life",
+    "authors": ["Michael Azerrad"],
+    "year": 2001,
+    "subjects": ["popular-music", "labor", "music-criticism"],
+    "description": "Thirteen American indie bands of the 1980s and the touring economics that sustained them before the majors noticed."
+  },
+  {
+    "id": "mimesis",
+    "title": "Mimesis",
+    "authors": ["Erich Auerbach"],
+    "year": 1946,
+    "subjects": ["literary-criticism", "modernism", "essays"],
+    "description": "Traces the representation of reality from Homer to Woolf through close readings, written in Istanbul without access to a research library."
+  },
+  {
+    "id": "the-western-canon",
+    "title": "The Western Canon",
+    "authors": ["Harold Bloom"],
+    "year": 1994,
+    "subjects": ["literary-criticism", "poetry", "essays"],
+    "description": "A defence of aesthetic value against ideological criticism, organised around twenty-six authors with Shakespeare at the centre."
+  },
+  {
+    "id": "how-fiction-works",
+    "title": "How Fiction Works",
+    "authors": ["James Wood"],
+    "year": 2008,
+    "subjects": ["literary-criticism", "essays", "metafiction"],
+    "description": "Short numbered sections on free indirect style, detail, and character, argued from quotation rather than theory."
+  },
+  {
+    "id": "the-anxiety-of-influence",
+    "title": "The Anxiety of Influence",
+    "authors": ["Harold Bloom"],
+    "year": 1973,
+    "subjects": ["literary-criticism", "poetry"],
+    "description": "Argues strong poets write by misreading their predecessors, because originality requires clearing space against them."
+  },
+  {
+    "id": "against-interpretation",
+    "title": "Against Interpretation",
+    "authors": ["Susan Sontag"],
+    "year": 1966,
+    "subjects": ["essays", "literary-criticism", "film"],
+    "description": "Essays arguing criticism has become a way of taming art, and calling for an erotics of attention instead of a hermeneutics."
+  },
+  {
+    "id": "the-white-album",
+    "title": "The White Album",
+    "authors": ["Joan Didion"],
+    "year": 1979,
+    "subjects": ["essays", "memoir", "media-studies"],
+    "description": "Essays on California in the late sixties, including her own psychiatric report, holding fragmentation as both subject and method."
+  },
+  {
+    "id": "consider-the-lobster",
+    "title": "Consider the Lobster",
+    "authors": ["David Foster Wallace"],
+    "year": 2005,
+    "subjects": ["essays", "ethics", "media-studies"],
+    "description": "Essays on a Maine food festival, talk radio, and usage dictionaries, footnoted to the point of formal argument."
+  },
+  {
+    "id": "notes-of-a-native-son",
+    "title": "Notes of a Native Son",
+    "authors": ["James Baldwin"],
+    "year": 1955,
+    "subjects": ["essays", "race", "memoir"],
+    "description": "Baldwin's first essay collection, including the title piece on his father's funeral and the Harlem riot the same week."
+  },
+  {
+    "id": "the-waste-land",
+    "title": "The Waste Land",
+    "authors": ["T. S. Eliot"],
+    "year": 1922,
+    "subjects": ["poetry", "modernism", "literary-criticism"],
+    "description": "A fragmented post-war poem assembled from quotation in several languages, published with its own notes."
+  },
+  {
+    "id": "leaves-of-grass",
+    "title": "Leaves of Grass",
+    "authors": ["Walt Whitman"],
+    "year": 1855,
+    "subjects": ["poetry", "19th-century", "democracy"],
+    "description": "Free verse celebrating the body, labour, and American multiplicity, revised and expanded by its author for nearly forty years."
+  },
+  {
+    "id": "collected-poems-dickinson",
+    "title": "The Complete Poems of Emily Dickinson",
+    "authors": ["Emily Dickinson"],
+    "year": 1890,
+    "subjects": ["poetry", "19th-century"],
+    "description": "Nearly eighteen hundred short poems on death, faith, and perception, almost none published in her lifetime."
+  },
+  {
+    "id": "ariel",
+    "title": "Ariel",
+    "authors": ["Sylvia Plath"],
+    "year": 1965,
+    "subjects": ["poetry", "psychological-horror", "feminism"],
+    "description": "The late poems, written in a burst before her death and published by her husband in an order she had not chosen."
+  },
+  {
+    "id": "north",
+    "title": "North",
+    "authors": ["Seamus Heaney"],
+    "year": 1975,
+    "subjects": ["poetry", "war", "medieval-history"],
+    "description": "Poems connecting Iron Age bog burials to the violence in Northern Ireland, without claiming the parallel settles anything."
+  },
+  {
+    "id": "hitchcock-truffaut",
+    "title": "Hitchcock/Truffaut",
+    "authors": ["François Truffaut"],
+    "year": 1966,
+    "subjects": ["film", "literary-criticism", "media-studies"],
+    "description": "Fifty hours of interviews in which Hitchcock explains his own technique film by film. The book that established him as an artist rather than an entertainer."
+  },
+  {
+    "id": "sculpting-in-time",
+    "title": "Sculpting in Time",
+    "authors": ["Andrei Tarkovsky"],
+    "year": 1986,
+    "subjects": ["film", "essays", "mysticism"],
+    "description": "A director's account of cinema as the recording of time, with little patience for montage theory or symbolic reading."
+  },
+  {
+    "id": "the-story-of-film",
+    "title": "The Story of Film",
+    "authors": ["Mark Cousins"],
+    "year": 2004,
+    "subjects": ["film", "art-history", "globalization"],
+    "description": "A world history of cinema that treats Japanese, Iranian, and West African filmmaking as central rather than peripheral."
+  },
+  {
+    "id": "understanding-media",
+    "title": "Understanding Media",
+    "authors": ["Marshall McLuhan"],
+    "year": 1964,
+    "subjects": ["media-studies", "technology-criticism", "essays"],
+    "description": "The medium is the message, argued in aphorisms about type, radio, and television. Frequently obscure and frequently right."
+  },
+  {
+    "id": "amusing-ourselves-to-death",
+    "title": "Amusing Ourselves to Death",
+    "authors": ["Neil Postman"],
+    "year": 1985,
+    "subjects": ["media-studies", "technology-criticism", "democracy"],
+    "description": "Argues television reorganises public discourse into entertainment, and that Huxley rather than Orwell described the real risk."
+  },
+  {
+    "id": "the-shallows",
+    "title": "The Shallows",
+    "authors": ["Nicholas Carr"],
+    "year": 2010,
+    "subjects": ["technology-criticism", "media-studies", "neuroscience"],
+    "description": "Argues that reading online trains distraction at the expense of sustained attention, drawing on neuroplasticity research."
+  },
+  {
+    "id": "the-age-of-surveillance-capitalism",
+    "title": "The Age of Surveillance Capitalism",
+    "authors": ["Shoshana Zuboff"],
+    "year": 2019,
+    "subjects": ["surveillance", "technology-criticism", "economics"],
+    "description": "Argues behavioural data has become a raw material extracted for prediction markets, and treats this as a new economic logic rather than a privacy problem."
+  },
+  {
+    "id": "the-cluetrain-attention-merchants",
+    "title": "The Attention Merchants",
+    "authors": ["Tim Wu"],
+    "year": 2016,
+    "subjects": ["media-studies", "technology-criticism", "economics"],
+    "description": "A history of the business of harvesting attention, from patent-medicine posters through radio to the social feed."
+  },
+  {
+    "id": "program-or-be-programmed",
+    "title": "Program or Be Programmed",
+    "authors": ["Douglas Rushkoff"],
+    "year": 2010,
+    "subjects": ["technology-criticism", "programming", "media-studies"],
+    "description": "Ten short commands arguing that people who do not understand software will be shaped by the choices embedded in it."
+  }
+]

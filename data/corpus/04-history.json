@@ -1,0 +1,362 @@
+[
+  {
+    "id": "the-histories-herodotus",
+    "title": "The Histories",
+    "authors": ["Herodotus"],
+    "year": -430,
+    "subjects": ["classical-antiquity", "war"],
+    "description": "An inquiry into the Greco-Persian wars that digresses constantly into ethnography, rumour, and marvels. The founding text of history writing, and openly unreliable in places."
+  },
+  {
+    "id": "history-of-the-peloponnesian-war",
+    "title": "History of the Peloponnesian War",
+    "authors": ["Thucydides"],
+    "year": -400,
+    "subjects": ["classical-antiquity", "war", "political-theory"],
+    "description": "A participant's austere account of Athens and Sparta destroying each other. The Melian Dialogue remains the standard citation for realist power politics."
+  },
+  {
+    "id": "spqr",
+    "title": "SPQR: A History of Ancient Rome",
+    "authors": ["Mary Beard"],
+    "year": 2015,
+    "subjects": ["rome", "classical-antiquity", "empire"],
+    "description": "A thousand years of Roman history that keeps asking how we know what we claim to know. Beard is more interested in citizenship and ordinary Romans than in emperors."
+  },
+  {
+    "id": "the-fall-of-the-roman-empire",
+    "title": "The Fall of Rome and the End of Civilization",
+    "authors": ["Bryan Ward-Perkins"],
+    "year": 2005,
+    "subjects": ["rome", "classical-antiquity", "empire"],
+    "description": "Argues from archaeology — pottery, building, literacy — that Rome's end was a genuine material collapse rather than a peaceful transformation."
+  },
+  {
+    "id": "the-twelve-caesars",
+    "title": "The Twelve Caesars",
+    "authors": ["Suetonius"],
+    "year": 121,
+    "subjects": ["rome", "classical-antiquity", "political-biography"],
+    "description": "Biographies of Julius Caesar through Domitian, mixing administrative record with enthusiastic gossip. The source of most lurid imperial anecdotes."
+  },
+  {
+    "id": "montaillou",
+    "title": "Montaillou",
+    "authors": ["Emmanuel Le Roy Ladurie"],
+    "year": 1975,
+    "subjects": ["medieval-history", "comparative-religion"],
+    "description": "The daily life of a Pyrenean village reconstructed from Inquisition interrogation records. Heresy trials turned into an unusually complete social history."
+  },
+  {
+    "id": "a-distant-mirror",
+    "title": "A Distant Mirror",
+    "authors": ["Barbara W. Tuchman"],
+    "year": 1978,
+    "subjects": ["medieval-history", "war"],
+    "description": "The calamitous fourteenth century — plague, schism, and the Hundred Years' War — followed through the life of one French nobleman."
+  },
+  {
+    "id": "the-making-of-the-middle-ages",
+    "title": "The Making of the Middle Ages",
+    "authors": ["R. W. Southern"],
+    "year": 1953,
+    "subjects": ["medieval-history", "comparative-religion"],
+    "description": "How Europe between 970 and 1215 developed the institutions and inner life that made it medieval rather than late antique."
+  },
+  {
+    "id": "the-guns-of-august",
+    "title": "The Guns of August",
+    "authors": ["Barbara W. Tuchman"],
+    "year": 1962,
+    "subjects": ["world-war-i", "war", "political-biography"],
+    "description": "The first month of the First World War, showing how mobilization timetables and misread intentions removed everyone's choices."
+  },
+  {
+    "id": "the-sleepwalkers",
+    "title": "The Sleepwalkers",
+    "authors": ["Christopher Clark"],
+    "year": 2012,
+    "subjects": ["world-war-i", "war", "empire"],
+    "description": "Reconstructs 1914 as a shared failure of many governments rather than a German plan. Deliberately refuses to assign single blame."
+  },
+  {
+    "id": "storm-of-steel",
+    "title": "Storm of Steel",
+    "authors": ["Ernst Jünger"],
+    "year": 1920,
+    "subjects": ["world-war-i", "memoir", "war"],
+    "description": "A German officer's front-line diary of the Western Front, written without disillusionment. Unsettling precisely because it does not condemn."
+  },
+  {
+    "id": "the-second-world-war-beevor",
+    "title": "The Second World War",
+    "authors": ["Antony Beevor"],
+    "year": 2012,
+    "subjects": ["world-war-ii", "war"],
+    "description": "A single-volume global military history that keeps the Pacific, Eastern, and Western theatres in one frame and stays close to individual experience."
+  },
+  {
+    "id": "stalingrad",
+    "title": "Stalingrad",
+    "authors": ["Antony Beevor"],
+    "year": 1998,
+    "subjects": ["world-war-ii", "war", "cold-war"],
+    "description": "The 1942–43 battle reconstructed from Soviet and German archives opened after 1991, including letters never delivered."
+  },
+  {
+    "id": "the-rise-and-fall-of-the-third-reich",
+    "title": "The Rise and Fall of the Third Reich",
+    "authors": ["William L. Shirer"],
+    "year": 1960,
+    "subjects": ["world-war-ii", "totalitarianism", "propaganda"],
+    "description": "A correspondent who reported from Berlin writes the Nazi state's history from captured documents. Dated in interpretation, unmatched as eyewitness synthesis."
+  },
+  {
+    "id": "if-this-is-a-man",
+    "title": "If This Is a Man",
+    "authors": ["Primo Levi"],
+    "year": 1947,
+    "subjects": ["holocaust", "memoir", "ethics"],
+    "description": "A chemist's account of ten months in Auschwitz, written to describe rather than accuse. Its restraint is what gives it force."
+  },
+  {
+    "id": "eichmann-in-jerusalem",
+    "title": "Eichmann in Jerusalem",
+    "authors": ["Hannah Arendt"],
+    "year": 1963,
+    "subjects": ["holocaust", "ethics", "totalitarianism"],
+    "description": "Trial reportage that introduced the banality of evil, arguing Eichmann was thoughtless rather than demonic. Still fiercely disputed."
+  },
+  {
+    "id": "ordinary-men",
+    "title": "Ordinary Men",
+    "authors": ["Christopher R. Browning"],
+    "year": 1992,
+    "subjects": ["holocaust", "ethics", "war"],
+    "description": "How a reserve police battalion of middle-aged German civilians became mass shooters, reconstructed from post-war interrogations."
+  },
+  {
+    "id": "the-cold-war-gaddis",
+    "title": "The Cold War: A New History",
+    "authors": ["John Lewis Gaddis"],
+    "year": 2005,
+    "subjects": ["cold-war", "political-theory"],
+    "description": "A compact synthesis of the whole confrontation by a historian with archival access on both sides."
+  },
+  {
+    "id": "the-wall",
+    "title": "Berlin 1961",
+    "authors": ["Frederick Kempe"],
+    "year": 2011,
+    "subjects": ["cold-war", "political-biography"],
+    "description": "The year Kennedy and Khrushchev brought Berlin to the brink and the wall went up, told almost hour by hour at its crisis points."
+  },
+  {
+    "id": "one-day-in-the-life",
+    "title": "One Day in the Life of Ivan Denisovich",
+    "authors": ["Aleksandr Solzhenitsyn"],
+    "year": 1962,
+    "subjects": ["totalitarianism", "russian-literature", "novella"],
+    "description": "A single ordinary day in a Soviet labour camp, published inside the USSR during the thaw. Its power is in the smallness of the victories."
+  },
+  {
+    "id": "the-gulag-archipelago",
+    "title": "The Gulag Archipelago",
+    "authors": ["Aleksandr Solzhenitsyn"],
+    "year": 1973,
+    "subjects": ["totalitarianism", "memoir", "criminal-justice"],
+    "description": "The Soviet camp system documented from the author's imprisonment and hundreds of survivor accounts, smuggled out for publication."
+  },
+  {
+    "id": "citizens",
+    "title": "Citizens: A Chronicle of the French Revolution",
+    "authors": ["Simon Schama"],
+    "year": 1989,
+    "subjects": ["revolution", "political-theory"],
+    "description": "Argues the Revolution was violent from the start rather than derailed by the Terror. Narrative history with a deliberately revisionist thesis."
+  },
+  {
+    "id": "the-old-regime-and-the-revolution",
+    "title": "The Old Regime and the Revolution",
+    "authors": ["Alexis de Tocqueville"],
+    "year": 1856,
+    "subjects": ["revolution", "political-theory", "democracy"],
+    "description": "Shows how much of the centralized French state the Revolution inherited rather than created. Written by someone who had watched a later revolution fail."
+  },
+  {
+    "id": "the-russian-revolution-figes",
+    "title": "A People's Tragedy",
+    "authors": ["Orlando Figes"],
+    "year": 1996,
+    "subjects": ["revolution", "russian-literature", "totalitarianism"],
+    "description": "The Russian Revolution from 1891 to 1924, following individual lives through famine, war, and Bolshevik consolidation."
+  },
+  {
+    "id": "the-black-jacobins",
+    "title": "The Black Jacobins",
+    "authors": ["C. L. R. James"],
+    "year": 1938,
+    "subjects": ["revolution", "colonialism", "race"],
+    "description": "The Haitian Revolution and Toussaint L'Ouverture, written as both history and anticolonial argument. The first major account to treat it as a revolution of equal standing."
+  },
+  {
+    "id": "king-leopolds-ghost",
+    "title": "King Leopold's Ghost",
+    "authors": ["Adam Hochschild"],
+    "year": 1998,
+    "subjects": ["colonialism", "empire", "true-crime"],
+    "description": "The Congo Free State as a private extraction operation that killed millions, and the early campaign that exposed it."
+  },
+  {
+    "id": "orientalism",
+    "title": "Orientalism",
+    "authors": ["Edward W. Said"],
+    "year": 1978,
+    "subjects": ["colonialism", "literary-criticism", "empire"],
+    "description": "Argues that Western scholarship on the East constructed the object it claimed to describe, and that this served rule. Foundational and much contested."
+  },
+  {
+    "id": "the-scramble-for-africa",
+    "title": "The Scramble for Africa",
+    "authors": ["Thomas Pakenham"],
+    "year": 1991,
+    "subjects": ["colonialism", "empire", "war"],
+    "description": "How European powers partitioned a continent between 1876 and 1912, told through the men who did it and thought it reasonable."
+  },
+  {
+    "id": "late-victorian-holocausts",
+    "title": "Late Victorian Holocausts",
+    "authors": ["Mike Davis"],
+    "year": 2001,
+    "subjects": ["environmental-history", "colonialism", "climate"],
+    "description": "El Niño famines in India, China, and Brazil turned catastrophic by imperial market policy. Climate and politics treated as one causal system."
+  },
+  {
+    "id": "the-long-walk-to-freedom",
+    "title": "Long Walk to Freedom",
+    "authors": ["Nelson Mandela"],
+    "year": 1994,
+    "subjects": ["memoir", "political-biography", "civil-rights"],
+    "description": "Mandela's account of the ANC, the Rivonia trial, and twenty-seven years of imprisonment, much of it drafted on Robben Island."
+  },
+  {
+    "id": "speak-memory",
+    "title": "Speak, Memory",
+    "authors": ["Vladimir Nabokov"],
+    "year": 1951,
+    "subjects": ["memoir", "russian-literature", "essays"],
+    "description": "A pre-revolutionary Russian childhood recovered in deliberately artificial, gorgeous prose. Nabokov treats memory as composition rather than record."
+  },
+  {
+    "id": "the-diary-of-a-young-girl",
+    "title": "The Diary of a Young Girl",
+    "authors": ["Anne Frank"],
+    "year": 1947,
+    "subjects": ["holocaust", "memoir", "coming-of-age"],
+    "description": "Two years of hiding in an Amsterdam annexe, written by a teenager who did not survive. An ordinary adolescent diary in an unbearable setting."
+  },
+  {
+    "id": "hunger-of-memory",
+    "title": "Hunger of Memory",
+    "authors": ["Richard Rodriguez"],
+    "year": 1982,
+    "subjects": ["memoir", "migration", "class"],
+    "description": "An essayist's account of how education carried him out of a Spanish-speaking household and away from his parents. Deliberately unwelcome conclusions."
+  },
+  {
+    "id": "team-of-rivals",
+    "title": "Team of Rivals",
+    "authors": ["Doris Kearns Goodwin"],
+    "year": 2005,
+    "subjects": ["political-biography", "democracy", "civil-rights"],
+    "description": "Lincoln's cabinet, assembled from the men he defeated for the nomination. A study of political management as much as biography."
+  },
+  {
+    "id": "the-power-broker",
+    "title": "The Power Broker",
+    "authors": ["Robert A. Caro"],
+    "year": 1974,
+    "subjects": ["political-biography", "urbanism", "democracy"],
+    "description": "Robert Moses reshaped New York for forty years without ever winning an election. The definitive account of unelected power."
+  },
+  {
+    "id": "the-passage-of-power",
+    "title": "The Years of Lyndon Johnson: The Passage of Power",
+    "authors": ["Robert A. Caro"],
+    "year": 2012,
+    "subjects": ["political-biography", "democracy", "civil-rights"],
+    "description": "Johnson from the humiliations of the vice presidency through the transition after Dallas. Caro's specialty is showing exactly how legislative power is applied."
+  },
+  {
+    "id": "the-double-helix",
+    "title": "The Double Helix",
+    "authors": ["James D. Watson"],
+    "year": 1968,
+    "subjects": ["scientific-biography", "genetics", "memoir"],
+    "description": "A candid, self-serving account of the race to DNA's structure. Notable for how badly it treats Rosalind Franklin, which later became the story."
+  },
+  {
+    "id": "surely-youre-joking",
+    "title": "Surely You're Joking, Mr Feynman!",
+    "authors": ["Richard P. Feynman"],
+    "year": 1985,
+    "subjects": ["scientific-biography", "physics", "memoir"],
+    "description": "Anecdotes from a physicist who enjoyed safecracking and bongo drums as much as quantum electrodynamics."
+  },
+  {
+    "id": "the-man-who-knew-infinity",
+    "title": "The Man Who Knew Infinity",
+    "authors": ["Robert Kanigel"],
+    "year": 1991,
+    "subjects": ["scientific-biography", "mathematics", "south-asian-literature"],
+    "description": "Ramanujan's journey from a clerk's desk in Madras to Cambridge, and his collaboration with Hardy. A biography about how mathematical intuition is legitimised."
+  },
+  {
+    "id": "a-mind-at-play",
+    "title": "A Mind at Play",
+    "authors": ["Jimmy Soni", "Rob Goodman"],
+    "year": 2017,
+    "subjects": ["scientific-biography", "computer-science", "biography-of-ideas"],
+    "description": "Claude Shannon, who founded information theory in a single 1948 paper and then largely lost interest in fame."
+  },
+  {
+    "id": "einstein-isaacson",
+    "title": "Einstein: His Life and Universe",
+    "authors": ["Walter Isaacson"],
+    "year": 2007,
+    "subjects": ["scientific-biography", "physics", "biography-of-ideas"],
+    "description": "Uses newly released letters to connect Einstein's physics, his politics, and a personal life he managed poorly."
+  },
+  {
+    "id": "the-immortal-life-of-henrietta-lacks",
+    "title": "The Immortal Life of Henrietta Lacks",
+    "authors": ["Rebecca Skloot"],
+    "year": 2010,
+    "subjects": ["medicine", "race", "ethics"],
+    "description": "The woman whose cancer cells became the immortal HeLa line without her family's knowledge or benefit. Consent and race in medical research."
+  },
+  {
+    "id": "guns-germs-and-steel",
+    "title": "Guns, Germs, and Steel",
+    "authors": ["Jared Diamond"],
+    "year": 1997,
+    "subjects": ["environmental-history", "empire", "ecology"],
+    "description": "Argues geography and available domesticates, not innate difference, explain which societies conquered others. Popular, influential, and heavily criticised by specialists."
+  },
+  {
+    "id": "the-silk-roads",
+    "title": "The Silk Roads",
+    "authors": ["Peter Frankopan"],
+    "year": 2015,
+    "subjects": ["empire", "globalization", "medieval-history"],
+    "description": "World history recentred on Central Asia and the trade corridors between East and West, with Europe as periphery for most of it."
+  },
+  {
+    "id": "postwar",
+    "title": "Postwar: A History of Europe Since 1945",
+    "authors": ["Tony Judt"],
+    "year": 2005,
+    "subjects": ["cold-war", "political-theory", "democracy"],
+    "description": "Europe from the ruins to the EU, tracking both halves of the continent and the memory politics that followed 1989."
+  }
+]
