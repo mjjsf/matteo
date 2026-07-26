@@ -1,0 +1,101 @@
+# .gitignore for mjjsf/matteo
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.backup
+
+# Environment / secrets
+.env
+.env.*
+.env.local
+secrets.env
+*.pem
+*.key
+*.crt
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+coverage/
+dist/
+build/
+.cache/
+.next/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.Python
+venv/
+env/
+.venv/
+
+# Java / Maven / Gradle
+target/
+*.class
+*.jar
+*.war
+*.ear
+.gradle/
+
+# Go
+/bin/
+/pkg/
+*.exe
+*.test
+
+# Rust
+/target/
+**/*.rs.bk
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.csproj.user
+*.vcxproj.user
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Containers
+docker-compose.override.yml
+.env.docker
+
+# Build system files
+npm-debug.log*
+yarn-debug.log*
+
+# Misc
+coverage/
+logs/
+.docker/
+
+# If you have other languages or frameworks (e.g. Android, Xcode, Flutter), tell me and I will tailor this file further.
