@@ -156,12 +156,13 @@ Library.
 data/taxonomy.json        10 top-level branches, 3 levels, 100 leaves
 data/tagMap.json          raw subject tag -> taxonomy node(s)
 data/unmapped.allow.json  tags with no taxonomy home (see below)
-data/corpus/*.json        910 hand-authored books, one file per branch
+data/legacy-ids.allow.json ids that predate the id rule and are live in URLs
+data/corpus/*.json        1016 hand-authored books, one file per branch
 ```
 
-**Median publication year 2005**, with 57% of the corpus published since 2000.
+**Median publication year 2007**, with 60% of the corpus published since 2000.
 The first 361 books were a literary/academic canon — median year 1979, and no
-vocabulary at all for romance or young adult — so two later passes added ~550
+vocabulary at all for romance or young adult — so three later passes added ~650
 books weighted to modern bestsellers, book-club fiction, romance, thriller, YA
 and fantasy, plus Romance and Young Adult branches.
 
@@ -180,11 +181,19 @@ Wolf Hall to *Bring Up the Bodies* through shared subjects, without asserting
 that the Tudor court is a fantasy kingdom. Inventing a taxonomy node per theme
 would make the tree meaningless; dropping the tags would throw away real signal.
 
-**The corpus is still finite**, and 910 books is the honest limit on
+**The corpus is still finite**, and 1016 books is the honest limit on
 recommendation quality: some seeds have thin or odd neighbours because there is
 genuinely nothing near them. Every description is a real summary of a real book.
 None are generated to pad the count — see the fetch script below for the path to
 a larger corpus.
+
+**A book's id must name that book.** Ids appear in shared URLs (`#/from/{id}`),
+so an id naming a different book makes the link lie about what it opens. A test
+enforces it: every part of an id has to come from the book's own title or
+authors. Abbreviating is fine (`harry-potter-philosophers-stone`), as is an
+author surname for disambiguation (`einstein-isaacson`). Sixteen ids that
+predate the rule and are already live sit in `legacy-ids.allow.json`, because
+renaming them would break links that exist.
 
 The vocabulary is defined before the corpus on purpose, and a test rejects any
 subject tag not in `tagMap.json`. Inconsistent tags (`dystopia` vs `dystopian`)

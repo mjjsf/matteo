@@ -179,7 +179,7 @@
     "description": "The sole survivor of a family massacre, whose testimony convicted her brother, is paid by true-crime hobbyists to reopen it. Kansas farm foreclosure as backdrop."
   },
   {
-    "id": "the-secret-place",
+    "id": "the-likeness",
     "title": "The Likeness",
     "authors": [
       "Tana French"
@@ -254,7 +254,7 @@
     "description": "Salander is named for three murders and goes underground while Blomkvist tries to prove otherwise. Her history stops being background."
   },
   {
-    "id": "the-snowman-nesbo",
+    "id": "the-snowman",
     "title": "The Snowman",
     "authors": [
       "Jo Nesbø"
@@ -269,7 +269,7 @@
     "description": "Harry Hole hunts a killer who leaves a snowman outside the houses of the women he takes. Grim even by Oslo standards."
   },
   {
-    "id": "smilla-s-sense-of-snow",
+    "id": "smillas-sense-of-snow",
     "title": "Smilla's Sense of Snow",
     "authors": [
       "Peter Høeg"
@@ -402,7 +402,7 @@
     "description": "MI5's failures are exiled to Slough House to do paperwork until they resign. A kidnapping gives them something real, which nobody wanted."
   },
   {
-    "id": "gone-tomorrow-killing-floor",
+    "id": "killing-floor",
     "title": "Killing Floor",
     "authors": [
       "Lee Child"
@@ -417,7 +417,7 @@
     "description": "Jack Reacher gets off a bus in a Georgia town and is arrested for a murder committed while he was on it. The first Reacher, and the counterfeiting plot is genuinely clever."
   },
   {
-    "id": "the-firm-grisham-pelican",
+    "id": "the-pelican-brief",
     "title": "The Pelican Brief",
     "authors": [
       "John Grisham"
@@ -461,7 +461,7 @@
     "description": "A new graduate with no clients takes an insurance company to trial over a denied leukaemia claim. Grisham's most convincing courtroom."
   },
   {
-    "id": "presumed-innocent-burden",
+    "id": "the-burden-of-proof",
     "title": "The Burden of Proof",
     "authors": [
       "Scott Turow"
@@ -505,7 +505,7 @@
     "description": "A crime reporter investigating his twin brother's apparent suicide finds a pattern of detectives' deaths quoting Poe."
   },
   {
-    "id": "mystic-river-shutter-island",
+    "id": "shutter-island",
     "title": "Shutter Island",
     "authors": [
       "Dennis Lehane"
@@ -534,7 +534,7 @@
     "description": "Two private investigators look for a four-year-old taken from a Dorchester flat. The moral question at the end has no comfortable answer."
   },
   {
-    "id": "the-silence-of-the-lambs-red-dragon",
+    "id": "red-dragon",
     "title": "Red Dragon",
     "authors": [
       "Thomas Harris"
@@ -807,7 +807,7 @@
     "description": "Four Blackfeet men are pursued a decade after an illegal elk hunt. Horror that takes the entity's grievance seriously."
   },
   {
-    "id": "the-hollow-places-t-kingfisher",
+    "id": "the-twisted-ones",
     "title": "The Twisted Ones",
     "authors": [
       "T. Kingfisher"
@@ -852,7 +852,7 @@
     "description": "A scoutmaster and five boys on a Canadian island meet a starving man carrying an engineered parasite. Genuinely difficult to read in places."
   },
   {
-    "id": "annihilation-borne",
+    "id": "borne",
     "title": "Borne",
     "authors": [
       "Jeff VanderMeer"
@@ -972,7 +972,7 @@
     "description": "A crippled Inquisitor, a vain duellist and a barbarian who wants to stop. Abercrombie takes epic fantasy's furniture and makes everyone worse."
   },
   {
-    "id": "the-first-law-before-they-are-hanged",
+    "id": "before-they-are-hanged",
     "title": "Before They Are Hanged",
     "authors": [
       "Joe Abercrombie"
@@ -1030,7 +1030,7 @@
     "description": "Linked stories introducing Geralt of Rivia, a mutant monster-hunter who keeps finding the monster is a person. Polish fairy tales, turned."
   },
   {
-    "id": "the-fifth-season-obelisk",
+    "id": "the-obelisk-gate",
     "title": "The Obelisk Gate",
     "authors": [
       "N. K. Jemisin"
@@ -1150,7 +1150,7 @@
     "description": "A probationary constable takes a witness statement from a ghost and is apprenticed to the Met's last wizard. Police procedural with river goddesses."
   },
   {
-    "id": "the-dresden-files-storm-front",
+    "id": "storm-front",
     "title": "Storm Front",
     "authors": [
       "Jim Butcher"
@@ -1329,7 +1329,7 @@
     "description": "An ambassador arrives at a vast empire's capital carrying an outdated copy of her murdered predecessor's memories in her head. Won the Hugo."
   },
   {
-    "id": "ancillary-sword",
+    "id": "the-long-way-to-a-small-angry-planet",
     "title": "The Long Way to a Small, Angry Planet",
     "authors": [
       "Becky Chambers"
@@ -1392,7 +1392,7 @@
     "description": "A terraforming experiment fails upward and uplifts spiders instead of monkeys, while the last humans arrive in a failing ark. Millennia of spider civilisation, told seriously."
   },
   {
-    "id": "the-three-body-dark-forest",
+    "id": "the-dark-forest",
     "title": "The Dark Forest",
     "authors": [
       "Liu Cixin"
