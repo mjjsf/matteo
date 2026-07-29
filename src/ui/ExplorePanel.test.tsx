@@ -8,6 +8,7 @@ import neighborsJson from '@/generated/neighbors.json';
 import { Landing } from './Landing';
 import { ExplorePanel } from './ExplorePanel';
 import { DetailPanel } from './DetailPanel';
+import { Footer } from './Footer';
 
 /** The 3D scene is deliberately untested — there is no WebGL in happy-dom and
  *  asserting on three.js internals is not useful signal. What matters here is
@@ -106,6 +107,64 @@ describe('GraphOutline', () => {
   });
 });
 
+describe('collapsing from the list', () => {
+  beforeEach(() => {
+    useStore.getState().seed('neuromancer');
+  });
+
+  const growFirst = (): void => {
+    fireEvent.click(
+      screen.getAllByRole('button', { name: /show books similar to/i })[0] as HTMLElement,
+    );
+  };
+
+  it('offers a hide control only once a book has been grown', () => {
+    render(<ExplorePanel />);
+    expect(screen.queryAllByRole('button', { name: /hide the books grown from/i })).toHaveLength(0);
+    growFirst();
+    expect(
+      screen.getAllByRole('button', { name: /hide the books grown from/i }).length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('removes exactly what was grown, and leaves the rest where it was', () => {
+    render(<ExplorePanel />);
+    const before = useStore.getState().graph.nodes.map((n) => [n.bookId, [...n.target]] as const);
+
+    growFirst();
+    expect(useStore.getState().graph.nodes.length).toBeGreaterThan(before.length);
+
+    fireEvent.click(
+      screen.getAllByRole('button', { name: /hide the books grown from/i })[0] as HTMLElement,
+    );
+
+    const after = useStore.getState().graph.nodes;
+    expect(after).toHaveLength(before.length);
+    // Same books, same coordinates — collapsing one branch must not shuffle the map.
+    expect(after.map((n) => [n.bookId, n.target])).toEqual(
+      before.map(([id, t]) => [id, t]),
+    );
+  });
+
+  it('never leaves the seed collapsible, so the map cannot vanish', () => {
+    render(<ExplorePanel />);
+    const seedRow = screen.queryAllByRole('button', { name: /hide the books grown from neuroman/i });
+    expect(seedRow).toHaveLength(0);
+  });
+
+  it('keeps the expansion path replayable after a collapse', () => {
+    render(<ExplorePanel />);
+    growFirst();
+    fireEvent.click(
+      screen.getAllByRole('button', { name: /hide the books grown from/i })[0] as HTMLElement,
+    );
+    // Every remaining slot in the path must still address a real node, or a
+    // shared link would replay into a different graph.
+    const { path, graph } = useStore.getState();
+    for (const slot of path) expect(graph.nodes[slot]).toBeDefined();
+  });
+});
+
 describe('DetailPanel', () => {
   it('renders nothing when no book is selected', () => {
     const { container } = render(<DetailPanel />);
@@ -127,17 +186,21 @@ describe('DetailPanel', () => {
     useStore.getState().seed('neuromancer');
     const { container } = render(<DetailPanel />);
     const link = screen.getByRole('link') as HTMLAnchorElement;
-    // The refinement travels in the URL...
+    // The refinement travels in the URL, where Amazon acts on it.
     expect(link.getAttribute('href')).toContain('rh=');
-    // ...and the page describes what the link ASKS FOR, never asserting that
-    // this particular book ships with Prime.
-    expect(container.textContent).toContain('filtered to Prime-eligible results');
+    // The explainer line under the button is gone, so there is no longer any
+    // prose here describing the filter — which makes the negative the whole
+    // guarantee, and the one worth asserting: the panel must never state that
+    // this particular book ships with Prime. Nothing in the UI may say it does.
     expect(container.textContent).not.toMatch(/eligible for prime|ships with prime|prime shipping/i);
+    expect(container.textContent).not.toMatch(/prime/i);
   });
 
-  it('shows the affiliate disclosure', () => {
-    useStore.getState().seed('neuromancer');
-    const { container } = render(<DetailPanel />);
+  it('carries the affiliate disclosure in the footer on every screen', () => {
+    // It used to be repeated inside the detail panel as well. That duplicate is
+    // gone; the requirement is not, so the assertion moved to where the single
+    // remaining copy lives rather than being deleted with it.
+    const { container } = render(<Footer />);
     expect(container.textContent).toContain('Amazon Associate');
   });
 });

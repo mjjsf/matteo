@@ -525,6 +525,93 @@ export function expandNode(
   return { graph: { nodes, edges, indexOf }, added };
 }
 
+export interface CollapseResult {
+  graph: Graph;
+  /** Old indices that no longer exist, for the caller to drop references to. */
+  removed: number[];
+  /** Old index -> new index, for every node that survived. */
+  oldToNew: Map<number, number>;
+}
+
+/** Remove everything grown from `nodeIndex`, leaving that node re-growable.
+ *
+ *  Array surgery, deliberately, and NOT a replay of the expansion path. Replaying
+ *  would re-run `openGrowthAxis` against different crowding and land the surviving
+ *  branches somewhere new — so collapsing one branch would visibly reshuffle the
+ *  others, which is the same disorientation `relaxNewNodes` exists to prevent.
+ *  Compacting instead leaves every surviving node's `target` byte-for-byte where
+ *  it was.
+ *
+ *  Survivors are kept in ascending index order. That is what preserves the
+ *  invariant that an array index IS the vertex slot, and it keeps `outline`
+ *  ordering (parents before their children) intact for free, since a child is
+ *  always appended after its parent. */
+export function collapseNode(graph: Graph, nodeIndex: number): CollapseResult {
+  const node = graph.nodes[nodeIndex];
+  const identity = (): CollapseResult => ({
+    graph,
+    removed: [],
+    oldToNew: new Map(graph.nodes.map((_, i) => [i, i])),
+  });
+  if (!node) return identity();
+
+  const childrenOf = new Map<number, number[]>();
+  graph.nodes.forEach((n, i) => {
+    if (n.parentIndex === null) return;
+    const list = childrenOf.get(n.parentIndex);
+    if (list) list.push(i);
+    else childrenOf.set(n.parentIndex, [i]);
+  });
+
+  const doomed = new Set<number>();
+  const stack = [...(childrenOf.get(nodeIndex) ?? [])];
+  while (stack.length > 0) {
+    const i = stack.pop() as number;
+    if (doomed.has(i)) continue;
+    doomed.add(i);
+    for (const child of childrenOf.get(i) ?? []) stack.push(child);
+  }
+  if (doomed.size === 0) return identity();
+
+  const oldToNew = new Map<number, number>();
+  const nodes: GraphNode[] = [];
+  graph.nodes.forEach((n, i) => {
+    if (doomed.has(i)) return;
+    oldToNew.set(i, nodes.length);
+    nodes.push(
+      i === nodeIndex
+        ? // Back to a leaf that invites a click. `expandable` is restored too:
+          // it may have been cleared when every neighbour turned out to be on
+          // screen already, and those neighbours may be the ones just removed.
+          { ...n, expanded: false, expandable: true }
+        : { ...n },
+    );
+  });
+
+  for (const n of nodes) {
+    if (n.parentIndex === null) continue;
+    n.parentIndex = oldToNew.get(n.parentIndex) ?? null;
+  }
+
+  // Cross edges are dropped alongside growth edges when either end goes. They
+  // point at arbitrarily distant nodes, so a stale one would index into whatever
+  // book now occupies that slot and draw a line to the wrong book.
+  const edges: GraphEdge[] = [];
+  for (const e of graph.edges) {
+    if (doomed.has(e.from) || doomed.has(e.to)) continue;
+    const from = oldToNew.get(e.from);
+    const to = oldToNew.get(e.to);
+    if (from === undefined || to === undefined) continue;
+    edges.push({ from, to, kind: e.kind });
+  }
+
+  return {
+    graph: { nodes, edges, indexOf: new Map(nodes.map((n, i) => [n.bookId, i])) },
+    removed: [...doomed],
+    oldToNew,
+  };
+}
+
 export interface OutlineRow {
   slot: Slot;
   bookId: string;

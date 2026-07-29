@@ -1,8 +1,16 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useStore } from '@/state/store';
 import { EDGE_LEN, asSlot } from '@/domain/graph';
+
+/** How long a rollover survives the cursor leaving its node.
+ *
+ *  The card is offset from the cursor, so reaching the buy button inside it means
+ *  crossing empty canvas. Clearing the hover the instant the raycast misses made
+ *  the card impossible to reach: it vanished in the gap. Long enough to cross,
+ *  short enough that it does not feel stuck. */
+const HOVER_GRACE_MS = 200;
 
 /** Hover picking for the graph nodes.
  *
@@ -24,6 +32,27 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
     return r;
   }, []);
 
+  /** Pending grace timer, so a new hit can cancel it. */
+  const clearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const hoverOut = useCallback((): void => {
+    if (clearTimer.current !== null) return;
+    clearTimer.current = setTimeout(() => {
+      clearTimer.current = null;
+      // `setHovered` itself refuses to clear while the pointer is inside the
+      // card, so this stays correct even if the timer wins the race.
+      useStore.getState().setHovered(null);
+    }, HOVER_GRACE_MS);
+  }, []);
+
+  const hoverIn = useCallback((id: string | null): void => {
+    if (clearTimer.current !== null) {
+      clearTimeout(clearTimer.current);
+      clearTimer.current = null;
+    }
+    useStore.getState().setHovered(id);
+  }, []);
+
   useEffect(() => {
     const canvas = gl.domElement;
     const onMove = (event: PointerEvent): void => {
@@ -34,7 +63,10 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
     };
     const onLeave = (): void => {
       ndc.current.inside = false;
-      useStore.getState().setHovered(null);
+      // Grace rather than an immediate clear: moving onto the rollover card fires
+      // this very event, and clearing here is what used to make the card
+      // unreachable.
+      hoverOut();
     };
     const onDown = (): void => {
       dragging.current = true;
@@ -52,8 +84,9 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
       canvas.removeEventListener('pointerleave', onLeave);
       canvas.removeEventListener('pointerdown', onDown);
       window.removeEventListener('pointerup', onUp);
+      if (clearTimer.current !== null) clearTimeout(clearTimer.current);
     };
-  }, [gl]);
+  }, [gl, hoverOut]);
 
   useFrame(() => {
     if (!enabled || !points) return;
@@ -67,7 +100,7 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
     const state = useStore.getState();
     const index = hits[0]?.index;
     if (index === undefined) {
-      state.setHovered(null);
+      hoverOut();
       return;
     }
 
@@ -75,7 +108,8 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
     // conflating the two is what made the previous version hover the wrong book
     // the moment the scene stopped showing every book in corpus order.
     const node = state.graph.nodes[asSlot(index)];
-    state.setHovered(node?.bookId ?? null);
+    if (node) hoverIn(node.bookId);
+    else hoverOut();
   });
 }
 
@@ -106,9 +140,13 @@ export function useClickToExpand(enabled: boolean): void {
       if (slot === undefined) return;
 
       const node = state.graph.nodes[slot];
-      // Clicking an unopened node grows from it; clicking an opened one just
-      // selects, so re-clicking never surprises with a second expansion.
-      if (node && !node.expanded) state.expand(asSlot(slot));
+      if (!node) return;
+      // Clicking an unopened node grows from it; clicking an opened one again
+      // folds it back up, so the map can shrink as well as grow. The seed is
+      // exempt — collapsing it leaves a lone point, which is what Start over is
+      // for, and it would make the whole map vanish on a stray click.
+      if (!node.expanded) state.expand(asSlot(slot));
+      else if (node.generation > 0) state.collapse(asSlot(slot));
     };
 
     canvas.addEventListener('pointerdown', onDown);

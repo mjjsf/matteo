@@ -31,8 +31,19 @@ export function ExplorePanel(): React.ReactElement {
   return (
     <section className="panel panel--explore" aria-labelledby="explore-heading">
       <div className="panel__head">
-        <h1 id="explore-heading" className="brand">
-          matteo
+        {/* The wordmark is on the landing screen; repeating it here spent the top
+            of the panel on something the reader already knows. The seed line
+            below carries `explore-heading` instead — both this panel's
+            `aria-labelledby` and the skip-link in App.tsx target that id, and it
+            is a better label for the panel than the app's own name was. */}
+        <h1 id="explore-heading" className="explore__seed">
+          {seedBook ? (
+            <>
+              Books near <strong>{seedBook.title}</strong>
+            </>
+          ) : (
+            'Books on the map'
+          )}
         </h1>
         <div className="panel__actions">
           <button type="button" className="panel__link" onClick={fitAll}>
@@ -44,14 +55,12 @@ export function ExplorePanel(): React.ReactElement {
         </div>
       </div>
 
-      {seedBook && (
-        <p className="explore__seed">
-          Books near <strong>{seedBook.title}</strong>
-        </p>
-      )}
-
-      <p className="explore__count" aria-live="polite">
-        {count} of {SOFT_CAP} · open a book to grow the map from it
+      {/* The count line is gone from the page, but not from the announcement:
+          growing the map is the main thing that happens here, and a screen
+          reader needs to hear that it changed. Capacity is still explained by
+          `notice` when it is actually reached. */}
+      <p className="visually-hidden" aria-live="polite">
+        {count} of {SOFT_CAP} books on the map
       </p>
 
       {notice && (
