@@ -15,7 +15,10 @@ import type { ThemeColors } from '@/domain/palette';
 const ENTRIES: Array<{ tier: Tier; label: string; note?: string }> = [
   { tier: TIER.seed, label: 'Where you started' },
   { tier: TIER.expandable, label: 'Click to grow', note: 'bright centre' },
-  { tier: TIER.expanded, label: 'Already grown' },
+  // Says what a click does, not just what the colour means: collapsing is
+  // otherwise undiscoverable, since a grown node looks the same as it always did
+  // and nothing else on screen suggests clicking it a second time.
+  { tier: TIER.expanded, label: 'Grown', note: 'click to fold back up' },
   { tier: TIER.exhausted, label: 'No further matches', note: 'faded' },
 ];
 

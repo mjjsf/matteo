@@ -1,13 +1,13 @@
 import { create } from 'zustand';
-import Fuse from 'fuse.js';
 import type { Book, SearchHit } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
-import { createSearchIndex, runSearch } from '@/domain/search';
+import { createSearchIndex, runSearch, type SearchIndex } from '@/domain/search';
 import {
   MAX_NODES,
   SOFT_CAP,
   asSlot,
   childrenAtDepth,
+  collapseNode,
   emptyGraph,
   expandNode,
   graphBounds,
@@ -31,7 +31,7 @@ interface Loaded {
   neighborsFile: NeighborsFile;
   /** Corpus row index. Distinct from a graph `Slot` — see the comment on `Slot`. */
   corpusIndexOf: Map<string, number>;
-  fuse: Fuse<Book>;
+  searchIndex: SearchIndex;
 }
 
 let loaded: Loaded | null = null;
@@ -83,6 +83,12 @@ export interface AppState {
   path: Slot[];
 
   hoveredId: string | null;
+  /** The pointer is inside the rollover card, so the hover must not be cleared.
+   *
+   *  The card sits offset from the cursor, so reaching the buy link inside it
+   *  crosses empty canvas. Without this the card vanished in that gap and could
+   *  never be clicked. */
+  hoverLocked: boolean;
   selectedId: string | null;
   flyTarget: FlyTarget | null;
 
@@ -97,7 +103,14 @@ export interface AppState {
   /** Replay a seed plus an expansion path, for restoring a shared link. */
   restore: (bookId: string, path: number[]) => void;
   expand: (slot: Slot) => void;
+  /** Remove everything grown from `slot`, leaving it re-growable.
+   *
+   *  The counterpart to `expand`, so a map can shrink as well as grow — until now
+   *  it only ever got bigger until you started over. Surviving nodes keep their
+   *  exact positions; see `collapseNode`. */
+  collapse: (slot: Slot) => void;
   setHovered: (id: string | null) => void;
+  lockHover: (locked: boolean) => void;
   select: (id: string | null, opts?: { fly?: boolean }) => void;
   requestFly: (target: Omit<FlyTarget, 'nonce'> | null) => void;
   /** Frame the whole graph. Expansion deliberately flies to the node you just
@@ -156,6 +169,7 @@ export const useStore = create<AppState>((set, get) => ({
   path: [],
 
   hoveredId: null,
+  hoverLocked: false,
   selectedId: null,
   flyTarget: null,
 
@@ -164,7 +178,7 @@ export const useStore = create<AppState>((set, get) => ({
       books: nextBooks,
       neighborsFile,
       corpusIndexOf: new Map(nextBooks.map((b, i) => [b.id, i])),
-      fuse: createSearchIndex(nextBooks),
+      searchIndex: createSearchIndex(nextBooks),
     };
     set({
       status: 'ready',
@@ -174,7 +188,7 @@ export const useStore = create<AppState>((set, get) => ({
       // Run the search against whatever was typed while this was downloading.
       // Without it the list stays empty until the next keystroke, so someone who
       // typed a whole title during the fetch is left looking at nothing.
-      suggestions: runSearch(loaded.fuse, get().query).slice(0, MAX_SUGGESTIONS),
+      suggestions: runSearch(loaded.searchIndex, get().query).slice(0, MAX_SUGGESTIONS),
     });
     if (get().seedWhenReady) {
       set({ seedWhenReady: false });
@@ -189,8 +203,8 @@ export const useStore = create<AppState>((set, get) => ({
     // early, which discarded the keystroke entirely — and because the input is
     // controlled on `query`, that made the field look broken rather than slow:
     // characters typed during the corpus fetch never appeared at all.
-    const fuse = loaded?.fuse;
-    set({ query: q, suggestions: fuse ? runSearch(fuse, q).slice(0, MAX_SUGGESTIONS) : [] });
+    const index = loaded?.searchIndex;
+    set({ query: q, suggestions: index ? runSearch(index, q).slice(0, MAX_SUGGESTIONS) : [] });
   },
 
   seed: (bookId) => {
@@ -224,7 +238,7 @@ export const useStore = create<AppState>((set, get) => ({
 
   seedFromQuery: () => {
     if (!loaded) return false;
-    const best = get().suggestions[0] ?? runSearch(loaded.fuse, get().query)[0];
+    const best = get().suggestions[0] ?? runSearch(loaded.searchIndex, get().query)[0];
     if (!best) return false;
     get().seed(best.book.id);
     return true;
@@ -296,9 +310,44 @@ export const useStore = create<AppState>((set, get) => ({
     });
   },
 
+  collapse: (slot) => {
+    const state = get();
+    const node = state.graph.nodes[slot];
+    if (!node || !node.expanded) return;
+
+    const { graph, removed, oldToNew } = collapseNode(state.graph, slot);
+    if (removed.length === 0) return;
+
+    const gone = new Set(removed.map((i) => state.graph.nodes[i]?.bookId));
+    // The path is a list of slots, and every slot after a removal shifts. Remap
+    // rather than rebuild: a shared link has to keep replaying to this graph.
+    // The collapsed node drops out too — it is no longer an expansion.
+    const path = state.path
+      .filter((s) => s !== slot && oldToNew.has(s))
+      .map((s) => asSlot(oldToNew.get(s) as number));
+
+    set({
+      graph,
+      path,
+      revision: state.revision + 1,
+      notice: null,
+      // Both are book ids, so they only need clearing when the book itself left.
+      selectedId: state.selectedId && gone.has(state.selectedId) ? null : state.selectedId,
+      hoveredId: state.hoveredId && gone.has(state.hoveredId) ? null : state.hoveredId,
+    });
+  },
+
   setHovered: (id) => {
+    // A locked hover ignores only the CLEAR. Moving to a different node still
+    // works, so the pointer never gets trapped on a stale card.
+    if (id === null && get().hoverLocked) return;
     if (get().hoveredId === id) return;
     set({ hoveredId: id });
+  },
+
+  lockHover: (locked) => {
+    if (get().hoverLocked === locked) return;
+    set({ hoverLocked: locked });
   },
 
   select: (id, opts) => {
@@ -363,6 +412,7 @@ export const useStore = create<AppState>((set, get) => ({
       seedWhenReady: false,
       selectedId: null,
       hoveredId: null,
+      hoverLocked: false,
       notice: null,
       flyTarget: null,
     }),

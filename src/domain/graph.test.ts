@@ -9,12 +9,14 @@ import {
   TIER,
   capDirections,
   childrenAtDepth,
+  collapseNode,
   crowding,
   expandNode,
   graphBounds,
   growthAxis,
   growthReach,
   openGrowthAxis,
+  outline,
   placeChildren,
   relaxNewNodes,
   seedGraph,
@@ -365,6 +367,145 @@ describe('expandNode', () => {
         expect(node.generation).toBe(g.nodes[node.parentIndex]!.generation + 1);
       }
     }
+  });
+});
+
+describe('collapseNode', () => {
+  /** Seed -> 6 children; then expand child 1 and child 4, so there are two
+   *  sibling branches and one of them sits in the MIDDLE of the node array. */
+  const twoBranches = (): Graph => {
+    let g = seedGraph('seed');
+    g = expandNode(g, 0, cand(6), 6).graph;
+    g = expandNode(g, 1, cand(6, 100), 6).graph;
+    g = expandNode(g, 4, cand(6, 200), 6).graph;
+    return g;
+  };
+
+  it('removes the whole subtree and nothing else', () => {
+    const g = twoBranches();
+    const doomed = g.nodes.filter((n) => n.parentIndex === 1).map((n) => n.bookId);
+    expect(doomed.length).toBe(6);
+
+    const { graph, removed } = collapseNode(g, 1);
+    expect(removed).toHaveLength(6);
+    expect(graph.nodes).toHaveLength(g.nodes.length - 6);
+    for (const id of doomed) expect(graph.indexOf.has(id)).toBe(false);
+  });
+
+  it('leaves every surviving position bit-identical', () => {
+    // The reason this is array surgery and not a replay: replaying would re-run
+    // the crowding-aware axis choice and move the OTHER branch.
+    const g = twoBranches();
+    const before = new Map(g.nodes.map((n) => [n.bookId, JSON.stringify(n.target)]));
+
+    const { graph } = collapseNode(g, 1);
+
+    for (const n of graph.nodes) {
+      expect(JSON.stringify(n.target), `${n.bookId} moved`).toBe(before.get(n.bookId));
+    }
+  });
+
+  it('makes the collapsed node growable again', () => {
+    const g = twoBranches();
+    g.nodes[1]!.expandable = false; // as `expand` sets it when neighbours run out
+    const { graph, oldToNew } = collapseNode(g, 1);
+    const node = graph.nodes[oldToNew.get(1) as number]!;
+    expect(node.expanded).toBe(false);
+    expect(node.expandable).toBe(true);
+    expect(tierOf(node)).toBe(TIER.expandable);
+  });
+
+  it('keeps the array dense so index still IS the vertex slot', () => {
+    const { graph } = collapseNode(twoBranches(), 1);
+    for (let i = 0; i < graph.nodes.length; i++) {
+      expect(graph.indexOf.get(graph.nodes[i]!.bookId)).toBe(i);
+    }
+    expect(graph.indexOf.size).toBe(graph.nodes.length);
+  });
+
+  it('leaves no edge or parent pointing at a removed node', () => {
+    const { graph } = collapseNode(twoBranches(), 1);
+    for (const e of graph.edges) {
+      expect(e.from).toBeLessThan(graph.nodes.length);
+      expect(e.to).toBeLessThan(graph.nodes.length);
+      expect(e.from).not.toBe(e.to);
+    }
+    for (const n of graph.nodes) {
+      if (n.parentIndex === null) continue;
+      expect(n.parentIndex).toBeLessThan(graph.nodes.length);
+      expect(n.parentIndex).toBeGreaterThanOrEqual(0);
+    }
+  });
+
+  it('keeps parents ahead of their children, so the outline still reads', () => {
+    const { graph } = collapseNode(twoBranches(), 1);
+    graph.nodes.forEach((n, i) => {
+      if (n.parentIndex !== null) expect(n.parentIndex).toBeLessThan(i);
+    });
+    expect(outline(graph)).toHaveLength(graph.nodes.length);
+  });
+
+  it('round-trips exactly when the collapsed branch was the last one grown', () => {
+    // Undoing the most recent expansion returns the graph to precisely the state
+    // it was in beforehand, so re-growing reproduces it bit for bit.
+    const g = twoBranches();
+    const { graph: collapsed, oldToNew } = collapseNode(g, 4);
+    const regrown = expandNode(collapsed, oldToNew.get(4) as number, cand(6, 200), 6).graph;
+    expect(JSON.stringify(regrown.nodes)).toBe(JSON.stringify(g.nodes));
+  });
+
+  it('brings the same books back when an earlier branch is regrown', () => {
+    const g = twoBranches();
+    const { graph: collapsed, oldToNew } = collapseNode(g, 1);
+    const untouched = collapsed.nodes.map((n) => [n.bookId, JSON.stringify(n.target)] as const);
+
+    const regrown = expandNode(collapsed, oldToNew.get(1) as number, cand(6, 100), 6).graph;
+
+    expect(regrown.nodes.map((n) => n.bookId).sort()).toEqual(g.nodes.map((n) => n.bookId).sort());
+    // Nothing that survived the collapse is disturbed by the regrowth either.
+    for (const [id, target] of untouched) {
+      const now = regrown.nodes.find((n) => n.bookId === id)!;
+      expect(JSON.stringify(now.target), `${id} moved`).toBe(target);
+    }
+    // The regrown children may land somewhere new, and should: placement is
+    // crowding-aware, and the sibling branch grown after them is now on screen.
+    // Same books, better-placed — not a regression.
+  });
+
+  it('drops a cross edge whose far end was removed', () => {
+    let g = seedGraph('seed');
+    g = expandNode(g, 0, cand(4), 4).graph;
+    g = expandNode(g, 1, cand(4, 100), 4).graph;
+    // Point node 2 at one of node 1's children — a cross edge into the subtree.
+    const victim = g.nodes.find((n) => n.parentIndex === 1)!.bookId;
+    g = expandNode(g, 2, [{ bookId: victim, weight: 0.9 }], 4).graph;
+    expect(g.edges.some((e) => e.kind === 'cross')).toBe(true);
+
+    const { graph } = collapseNode(g, 1);
+    expect(graph.indexOf.has(victim)).toBe(false);
+    // A surviving cross edge would index whatever book now occupies that slot.
+    for (const e of graph.edges) {
+      expect(graph.nodes[e.from]).toBeDefined();
+      expect(graph.nodes[e.to]).toBeDefined();
+    }
+  });
+
+  it('is a no-op for a leaf, an unknown index, and an unexpanded node', () => {
+    const g = twoBranches();
+    for (const i of [2, 99, g.nodes.length - 1]) {
+      const { graph, removed } = collapseNode(g, i);
+      expect(removed).toEqual([]);
+      expect(graph).toBe(g);
+    }
+  });
+
+  it('can empty the graph back to the seed', () => {
+    let g = seedGraph('seed');
+    g = expandNode(g, 0, cand(6), 6).graph;
+    const { graph } = collapseNode(g, 0);
+    expect(graph.nodes).toHaveLength(1);
+    expect(graph.edges).toHaveLength(0);
+    expect(graph.nodes[0]?.expanded).toBe(false);
   });
 });
 

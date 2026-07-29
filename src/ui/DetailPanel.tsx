@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useStore, bookById } from '@/state/store';
-import { AFFILIATE_DISCLOSURE, amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
+import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
 import { asSlot } from '@/domain/graph';
 import { formatYear } from './format';
 
@@ -78,16 +78,17 @@ export function DetailPanel(): React.ReactElement | null {
         )}
       </div>
 
-      <a className="buy" href={link.href} target="_blank" rel="noopener noreferrer sponsored">
-        {link.label}
-        <span className="buy__hint">{link.hint}</span>
-      </a>
-
       {/* No Prime badge of our own: eligibility can only be verified through
           Amazon's PA-API, so the search link asks Amazon to filter and its page
           reports the result. Claiming it here would be inventing facts about a
-          real product. */}
-      <p className="detail__disclosure">{AFFILIATE_DISCLOSURE}</p>
+          real product — which is why `link.hint` no longer being rendered does
+          not change what this link claims. It never claimed anything.
+
+          The Associates disclosure is not repeated here either: `Footer` renders
+          it on every screen including this one, so this was a duplicate. */}
+      <a className="buy" href={link.href} target="_blank" rel="noopener noreferrer sponsored">
+        {link.label}
+      </a>
     </aside>
   );
 }

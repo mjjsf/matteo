@@ -28,6 +28,7 @@ export function GraphOutline(): React.ReactElement | null {
   const revision = useStore((s) => s.revision);
   const selectedId = useStore((s) => s.selectedId);
   const expand = useStore((s) => s.expand);
+  const collapse = useStore((s) => s.collapse);
   const select = useStore((s) => s.select);
   const setHovered = useStore((s) => s.setHovered);
 
@@ -50,6 +51,7 @@ export function GraphOutline(): React.ReactElement | null {
           if (!book || !node) return null;
           const tier = tierOf(node);
           const canGrow = !node.expanded && node.expandable;
+          const canCollapse = node.expanded && node.generation > 0;
 
           return (
             <li key={`${row.slot}-${row.bookId}`}>
@@ -94,6 +96,20 @@ export function GraphOutline(): React.ReactElement | null {
                     onClick={() => expand(asSlot(row.slot))}
                   >
                     +
+                  </button>
+                )}
+
+                {/* The mirror has to offer collapsing too, or the keyboard path
+                    can grow a map it cannot prune. The seed is exempt, matching
+                    the canvas: folding it up would empty the whole map. */}
+                {canCollapse && (
+                  <button
+                    type="button"
+                    className="outline__grow"
+                    aria-label={`Hide the books grown from ${book.title}`}
+                    onClick={() => collapse(asSlot(row.slot))}
+                  >
+                    −
                   </button>
                 )}
               </div>

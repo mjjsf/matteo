@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useStore, bookById, slotOf } from '@/state/store';
+import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
 import { formatYear } from './format';
 
 /** Rollover card for the node under the cursor: title, byline, and the
@@ -26,6 +27,8 @@ export function BookTooltip({
   const metaRef = useRef<HTMLSpanElement>(null);
   const descRef = useRef<HTMLSpanElement>(null);
   const hintRef = useRef<HTMLSpanElement>(null);
+  const buyRef = useRef<HTMLAnchorElement>(null);
+  const lockHover = useStore((s) => s.lockHover);
 
   useEffect(() => {
     let raf = 0;
@@ -70,10 +73,19 @@ export function BookTooltip({
           hintRef.current.textContent = !node
             ? ''
             : node.expanded
-              ? 'Click to open details'
+              ? // Expanded nodes now fold back up, so say so — this used to read
+                // "Click to open details", which is no longer what a click does.
+                node.generation > 0
+                ? 'Click to hide what grew from this'
+                : 'Your starting book'
               : node.expandable
                 ? 'Click to grow similar books'
                 : 'No further similar books';
+          // Written imperatively, like everything else on this card: rendering it
+          // through React would put the reconciler back in the hover path.
+          if (buyRef.current) {
+            buyRef.current.href = amazonLinkForBook(book, configuredAssociateTag()).href;
+          }
         }
       }
 
@@ -108,11 +120,35 @@ export function BookTooltip({
   }, [cameraRef, pointsRef]);
 
   return (
-    <div className="tooltip" ref={ref} aria-hidden="true">
+    // Still `aria-hidden`, and the link inside is deliberately not tabbable. The
+    // card is reachable only by pointer, and an aria-hidden subtree must not
+    // contain anything focusable. Nothing is lost by it: DetailPanel carries the
+    // same book's buy link as real, focusable DOM, so keyboard and screen-reader
+    // users reach Amazon by that route rather than this one.
+    <div
+      className="tooltip"
+      ref={ref}
+      aria-hidden="true"
+      onPointerEnter={() => lockHover(true)}
+      onPointerLeave={() => {
+        lockHover(false);
+        useStore.getState().setHovered(null);
+      }}
+    >
       <span className="tooltip__title" ref={titleRef} />
       <span className="tooltip__meta" ref={metaRef} />
       <span className="tooltip__desc" ref={descRef} />
       <span className="tooltip__hint" ref={hintRef} />
+      <a
+        className="tooltip__buy"
+        ref={buyRef}
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        tabIndex={-1}
+      >
+        Find on Amazon
+      </a>
     </div>
   );
 }
