@@ -13,6 +13,7 @@ export function ExplorePanel(): React.ReactElement {
   const graph = useStore((s) => s.graph);
   const notice = useStore((s) => s.notice);
   const reset = useStore((s) => s.reset);
+  const fitAll = useStore((s) => s.fitAll);
   const dismissNotice = useStore((s) => s.dismissNotice);
 
   const seedId = graph.nodes[0]?.bookId;
@@ -33,9 +34,14 @@ export function ExplorePanel(): React.ReactElement {
         <h1 id="explore-heading" className="brand">
           matteo
         </h1>
-        <button type="button" className="panel__reset" onClick={reset}>
-          Start over
-        </button>
+        <div className="panel__actions">
+          <button type="button" className="panel__link" onClick={fitAll}>
+            Fit map
+          </button>
+          <button type="button" className="panel__link" onClick={reset}>
+            Start over
+          </button>
+        </div>
       </div>
 
       {seedBook && (

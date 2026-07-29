@@ -3,6 +3,9 @@ import { useStore, bookById } from '@/state/store';
 import { asSlot, outline, tierOf, TIER } from '@/domain/graph';
 import { formatYear } from './format';
 
+/** Deepest level that still gets its own indent step. */
+const MAX_INDENT_LEVELS = 6;
+
 const TIER_NOTE: Record<number, string> = {
   [TIER.seed]: 'starting book',
   [TIER.expandable]: 'can grow',
@@ -52,7 +55,13 @@ export function GraphOutline(): React.ReactElement | null {
             <li key={`${row.slot}-${row.bookId}`}>
               <div
                 className="outline__row"
-                style={{ paddingLeft: `${row.depth * 0.85}rem` }}
+                // Indentation stops growing after a few levels. Unbounded, a
+                // long chain pushed the title clean out of a 330px panel and
+                // left a column of bare `+` buttons with no way to tell what
+                // any of them were. Depth past the cap is still announced in
+                // the visually-hidden text, so nothing is lost to a screen
+                // reader — only the pixels are rationed.
+                style={{ paddingLeft: `${Math.min(row.depth, MAX_INDENT_LEVELS) * 0.7}rem` }}
               >
                 <button
                   type="button"

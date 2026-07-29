@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useStore } from '@/state/store';
-import { MAX_NODES } from '@/domain/graph';
+import { MAX_NODES, type EdgeKind } from '@/domain/graph';
 import type { ThemeColors } from '@/domain/palette';
 
 const MAX_EDGES = MAX_NODES * 2;
@@ -26,10 +26,10 @@ export function GraphEdges({
   theme: ThemeColors;
   pointsRef: React.MutableRefObject<THREE.Points | null>;
 }): React.ReactElement {
-  const linesRef = useRef<THREE.LineSegments>(null);
-  const edgeSlots = useRef<Array<[number, number]>>([]);
+  const growthSlots = useRef<Array<[number, number]>>([]);
+  const crossSlots = useRef<Array<[number, number]>>([]);
 
-  const geometry = useMemo(() => {
+  const makeGeometry = (): THREE.BufferGeometry => {
     const geo = new THREE.BufferGeometry();
     const attr = new THREE.BufferAttribute(new Float32Array(MAX_EDGES * 2 * 3), 3);
     attr.setUsage(THREE.DynamicDrawUsage);
@@ -39,14 +39,34 @@ export function GraphEdges({
     // stale as the graph grows and the edges would vanish.
     geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 1e6);
     return geo;
-  }, []);
+  };
 
-  const material = useMemo(
+  const growthGeo = useMemo(makeGeometry, []);
+  const crossGeo = useMemo(makeGeometry, []);
+
+  // Two materials rather than one, which is what buys the distinction: a single
+  // LineBasicMaterial cannot vary opacity per segment without vertex colours,
+  // and this is still only two draw calls.
+  const growthMat = useMemo(
     () =>
       new THREE.LineBasicMaterial({
         color: new THREE.Color(theme.focus),
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.24,
+        depthWrite: false,
+      }),
+    [theme],
+  );
+
+  const crossMat = useMemo(
+    () =>
+      new THREE.LineBasicMaterial({
+        color: new THREE.Color(theme.focus),
+        transparent: true,
+        // Faint enough to read as texture rather than structure. These say "also
+        // related", and at two hundred books there are enough of them to bury
+        // the branching if drawn at the same weight.
+        opacity: 0.07,
         depthWrite: false,
       }),
     [theme],
@@ -54,36 +74,55 @@ export function GraphEdges({
 
   useEffect(() => {
     let lastRevision = -1;
+    const collect = (
+      s: ReturnType<typeof useStore.getState>,
+      kind: EdgeKind,
+    ): Array<[number, number]> =>
+      s.graph.edges
+        .filter((e) => e.kind === kind)
+        .slice(0, MAX_EDGES)
+        .map((e) => [e.from, e.to] as [number, number]);
+
     const apply = (s: ReturnType<typeof useStore.getState>): void => {
       if (s.revision === lastRevision) return;
       lastRevision = s.revision;
-      edgeSlots.current = s.graph.edges
-        .slice(0, MAX_EDGES)
-        .map((e) => [e.from, e.to] as [number, number]);
-      geometry.setDrawRange(0, edgeSlots.current.length * 2);
+      growthSlots.current = collect(s, 'growth');
+      crossSlots.current = collect(s, 'cross');
+      growthGeo.setDrawRange(0, growthSlots.current.length * 2);
+      crossGeo.setDrawRange(0, crossSlots.current.length * 2);
     };
     apply(useStore.getState());
     return useStore.subscribe(apply);
-  }, [geometry]);
+  }, [growthGeo, crossGeo]);
 
   useFrame(() => {
     const points = pointsRef.current;
-    const edges = edgeSlots.current;
-    if (!points || edges.length === 0) return;
-
+    if (!points) return;
     const src = points.geometry.getAttribute('position').array as Float32Array;
-    const attr = geometry.getAttribute('position') as THREE.BufferAttribute;
-    const dst = attr.array as Float32Array;
 
-    for (let e = 0; e < edges.length; e++) {
-      const [a, b] = edges[e] as [number, number];
-      for (let d = 0; d < 3; d++) {
-        dst[e * 6 + d] = src[a * 3 + d] as number;
-        dst[e * 6 + 3 + d] = src[b * 3 + d] as number;
+    const write = (geo: THREE.BufferGeometry, edges: Array<[number, number]>): void => {
+      if (edges.length === 0) return;
+      const attr = geo.getAttribute('position') as THREE.BufferAttribute;
+      const dst = attr.array as Float32Array;
+      for (let e = 0; e < edges.length; e++) {
+        const [a, b] = edges[e] as [number, number];
+        for (let d = 0; d < 3; d++) {
+          dst[e * 6 + d] = src[a * 3 + d] as number;
+          dst[e * 6 + 3 + d] = src[b * 3 + d] as number;
+        }
       }
-    }
-    attr.needsUpdate = true;
+      attr.needsUpdate = true;
+    };
+
+    write(growthGeo, growthSlots.current);
+    write(crossGeo, crossSlots.current);
   });
 
-  return <lineSegments ref={linesRef} geometry={geometry} material={material} frustumCulled={false} />;
+  return (
+    <>
+      {/* Cross links first, so growth edges draw over them. */}
+      <lineSegments geometry={crossGeo} material={crossMat} frustumCulled={false} />
+      <lineSegments geometry={growthGeo} material={growthMat} frustumCulled={false} />
+    </>
+  );
 }

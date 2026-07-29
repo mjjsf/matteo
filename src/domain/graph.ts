@@ -47,9 +47,19 @@ export interface GraphNode {
   expandable: boolean;
 }
 
+/** How two books on the map came to be connected.
+ *
+ *  `growth` is "I opened that book and this one appeared". `cross` is "this book
+ *  is also similar to one already on screen" — real information, and the reason
+ *  this is a graph rather than a tree, but it links arbitrarily distant nodes.
+ *  At two hundred books those long edges dominate the picture and the branching
+ *  stops being legible, so the renderer draws them as a secondary layer. */
+export type EdgeKind = 'growth' | 'cross';
+
 export interface GraphEdge {
   from: number;
   to: number;
+  kind: EdgeKind;
 }
 
 export interface Graph {
@@ -321,7 +331,7 @@ export function expandNode(
       const nodes = graph.nodes.map((n, i) => (i === nodeIndex ? { ...n, expanded: true } : n));
       const edges = [
         ...graph.edges,
-        ...linkToExisting.map((to) => ({ from: nodeIndex, to })),
+        ...linkToExisting.map((to) => ({ from: nodeIndex, to, kind: 'cross' as const })),
       ];
       return { graph: { ...graph, nodes, edges }, added: [] };
     }
@@ -344,7 +354,10 @@ export function expandNode(
   );
 
   const nodes = graph.nodes.map((n, i) => (i === nodeIndex ? { ...n, expanded: true } : n));
-  const edges = [...graph.edges, ...linkToExisting.map((to) => ({ from: nodeIndex, to }))];
+  const edges = [
+    ...graph.edges,
+    ...linkToExisting.map((to) => ({ from: nodeIndex, to, kind: 'cross' as const })),
+  ];
   const indexOf = new Map(graph.indexOf);
   const added: number[] = [];
 
@@ -359,7 +372,7 @@ export function expandNode(
       expandable: true,
     });
     indexOf.set(c.bookId, index);
-    edges.push({ from: nodeIndex, to: index });
+    edges.push({ from: nodeIndex, to: index, kind: 'growth' });
     added.push(index);
   });
 

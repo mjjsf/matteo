@@ -93,6 +93,10 @@ export interface AppState {
   setHovered: (id: string | null) => void;
   select: (id: string | null, opts?: { fly?: boolean }) => void;
   requestFly: (target: Omit<FlyTarget, 'nonce'> | null) => void;
+  /** Frame the whole graph. Expansion deliberately flies to the node you just
+   *  opened, which is right in the moment and leaves you a long way from
+   *  everything else after twenty of them. This is the way back. */
+  fitAll: () => void;
   dismissNotice: () => void;
   /** Unwind one level. Returns whether anything changed, so the key handler only
    *  swallows Escape when it actually did something. */
@@ -295,6 +299,15 @@ export const useStore = create<AppState>((set, get) => ({
     }
     flyNonce += 1;
     set({ flyTarget: { ...target, nonce: flyNonce } });
+  },
+
+  fitAll: () => {
+    const { graph } = get();
+    if (graph.nodes.length === 0) return;
+    const bounds = graphBounds(graph);
+    // 2.4x the radius clears the 45-degree field of view with margin for the
+    // labels, which extend past the points they belong to.
+    get().requestFly({ position: bounds.center, distance: Math.max(30, bounds.radius * 2.4) });
   },
 
   dismissNotice: () => set({ notice: null }),
