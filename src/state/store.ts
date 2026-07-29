@@ -60,6 +60,13 @@ export interface AppState {
   phase: Phase;
   query: string;
   suggestions: SearchHit[];
+  /** Someone submitted the form before the corpus finished downloading.
+   *
+   *  The landing input is live from first paint, so a fast typist can name a
+   *  book and press Enter while the search index is still being fetched. Without
+   *  this the keypress lands on an empty suggestion list and does nothing, and
+   *  they have to press it again once the list appears. `hydrate` consumes it. */
+  seedWhenReady: boolean;
 
   graph: Graph;
   /** Bumped on any topology change so the scene can react imperatively without
@@ -141,6 +148,7 @@ export const useStore = create<AppState>((set, get) => ({
   phase: 'empty',
   query: '',
   suggestions: [],
+  seedWhenReady: false,
 
   graph: emptyGraph(),
   revision: 0,
@@ -163,15 +171,26 @@ export const useStore = create<AppState>((set, get) => ({
       loadError: null,
       books: nextBooks,
       corpusIndexOf: loaded.corpusIndexOf,
+      // Run the search against whatever was typed while this was downloading.
+      // Without it the list stays empty until the next keystroke, so someone who
+      // typed a whole title during the fetch is left looking at nothing.
+      suggestions: runSearch(loaded.fuse, get().query).slice(0, MAX_SUGGESTIONS),
     });
+    if (get().seedWhenReady) {
+      set({ seedWhenReady: false });
+      get().seedFromQuery();
+    }
   },
 
   failToLoad: (message) => set({ status: 'error', loadError: message }),
 
   setQuery: (q) => {
+    // The query is recorded even before the index exists. It used to return
+    // early, which discarded the keystroke entirely — and because the input is
+    // controlled on `query`, that made the field look broken rather than slow:
+    // characters typed during the corpus fetch never appeared at all.
     const fuse = loaded?.fuse;
-    if (!fuse) return;
-    set({ query: q, suggestions: runSearch(fuse, q).slice(0, MAX_SUGGESTIONS) });
+    set({ query: q, suggestions: fuse ? runSearch(fuse, q).slice(0, MAX_SUGGESTIONS) : [] });
   },
 
   seed: (bookId) => {
@@ -341,6 +360,7 @@ export const useStore = create<AppState>((set, get) => ({
       revision: get().revision + 1,
       query: '',
       suggestions: [],
+      seedWhenReady: false,
       selectedId: null,
       hoveredId: null,
       notice: null,
