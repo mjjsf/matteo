@@ -11,13 +11,71 @@ import { buildTaxonomyIndex, populateMembers } from '@/domain/taxonomy';
 import { loadCorpusForLayout, loadTagMap, loadTaxonomyFile } from '@/domain/fixtures';
 import { FEATURE_CONFIG, buildFeatureMatrix } from '@/domain/features';
 import { inputHash } from '@/domain/hash';
-import { quantise, topKAll, type NeighborsFile } from '@/domain/similarity';
+import { quantise, topKAll, type Neighbor, type NeighborsFile } from '@/domain/similarity';
+import type { Book } from '@/domain/types';
 
 const GENERATED_DIR = fileURLToPath(new URL('../src/generated/', import.meta.url));
 
 /** How many neighbours to bake per book. The UI shows fewer per expansion; the
  *  surplus lets it skip books already on screen without running out. */
 export const NEIGHBOR_K = 16;
+
+/** How many of a book's top neighbours are worth reporting on. */
+const QUALITY_K = 8;
+/** How many weakly-connected books to name. */
+const WEAKEST_N = 10;
+
+/** Diagnostics that are unambiguous, and a note on the ones that are not.
+ *
+ *  **Subject overlap** — the share of a book's top neighbours that share an
+ *  actual subject tag, rather than being matched on broad taxonomy-ancestor
+ *  overlap alone. Ancestor-only matches are the weakest thing the model can
+ *  produce, so this should sit at or very near 1.0.
+ *
+ *  **Weakest seeds** — books whose best match is poor. These are the seeds where
+ *  someone will land and get a disappointing map, and the fix is always the
+ *  same: give the book tags that overlap the rest of the corpus.
+ *
+ *  Deliberately NOT here: an automated judgement of whether a recommendation is
+ *  *good*. Two were tried and both produced mostly false positives.
+ *
+ *   - Comparing each book's primary root against its neighbours' flagged
+ *     *Mrs Dalloway → To the Lighthouse*, which is a perfect match;
+ *     `primaryRootForBook` is a crude count over a multi-tag book.
+ *   - Aggregating the same idea per tag flagged `colonialism` for mapping into
+ *     history while most of its books are novels — which is correct behaviour,
+ *     and precisely how a novel about empire finds the history of empire.
+ *
+ *  The real bug this was chasing — `court-politics` mapped to epic fantasy,
+ *  making *Wolf Hall*'s nearest books *Elantris* and *The Curse of Chalion* —
+ *  was found by reading the lists, and that remains the method. A noisy gate
+ *  would be worse than none, because it trains you to skip the output. */
+function reportQuality(books: Book[], neighbors: Neighbor[][]): void {
+  let subjectSum = 0;
+  let counted = 0;
+
+  books.forEach((book, i) => {
+    const list = neighbors[i]?.slice(0, QUALITY_K) ?? [];
+    if (list.length === 0) return;
+    counted++;
+    const mine = new Set(book.subjects);
+    subjectSum +=
+      list.filter((n) => (books[n.index] as Book).subjects.some((s) => mine.has(s))).length /
+      list.length;
+  });
+
+  if (counted > 0) {
+    console.log(`  subject overlap (top-${QUALITY_K}): ${(subjectSum / counted).toFixed(3)}`);
+  }
+
+  const weakest = books
+    .map((b, i) => ({ id: b.id, score: neighbors[i]?.[0]?.score ?? 0 }))
+    .sort((a, b) => a.score - b.score)
+    .slice(0, WEAKEST_N);
+
+  console.log(`\n  weakest seeds — a reader landing here gets a thin map:`);
+  for (const w of weakest) console.log(`    ${w.score.toFixed(2)}  ${w.id}`);
+}
 
 function main(): void {
   const taxonomyFile = loadTaxonomyFile();
@@ -45,6 +103,8 @@ function main(): void {
   console.log(`  dead ends (0 neighbours): ${empty}`);
   console.log(`  thin (<8 neighbours):     ${thin}`);
   console.log(`  mean best-match score:    ${meanTop.toFixed(3)}`);
+
+  reportQuality(books, neighbors);
 
   if (empty > 0) {
     console.warn(

@@ -337,7 +337,10 @@
       "first-contact",
       "cosmology",
       "utopia",
-      "comparative-religion"
+      "comparative-religion",
+      "science-fiction",
+      "space",
+      "evolution"
     ],
     "description": "Benevolent aliens end war and want, then reveal what humanity was being prepared for. Clarke's transcendence is genuinely unsettling rather than triumphant."
   },
@@ -367,7 +370,10 @@
       "time-travel",
       "novella",
       "class",
-      "evolution"
+      "evolution",
+      "science-fiction",
+      "dystopia",
+      "victorian"
     ],
     "description": "A Victorian inventor travels to a future split into languid Eloi and subterranean Morlocks. Class anxiety projected forward eight hundred thousand years."
   },

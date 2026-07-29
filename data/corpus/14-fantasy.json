@@ -115,7 +115,10 @@
       "urban-fantasy",
       "family-saga",
       "magic-system",
-      "violence"
+      "violence",
+      "epic-fantasy",
+      "grimdark",
+      "court-politics"
     ],
     "description": "Two clans on an island where jade grants warriors superhuman abilities, and a family business that is part martial school, part mafia. A gangster epic."
   },
@@ -520,7 +523,10 @@
       "science-fiction",
       "epic-fantasy",
       "unreliable-narrator",
-      "postmodern"
+      "postmodern",
+      "post-apocalyptic",
+      "monsters",
+      "coming-of-age"
     ],
     "description": "A torturer's apprentice exiled from his guild, in a far future where the sun is dying. Narrated by a man who claims perfect memory and is plainly lying."
   },
@@ -550,7 +556,10 @@
       "first-contact",
       "genetics",
       "science-fiction",
-      "bioethics"
+      "bioethics",
+      "space",
+      "dystopia",
+      "motherhood"
     ],
     "description": "A woman wakes centuries after a nuclear war aboard an alien ship, told humanity will be rebuilt only through interbreeding. Consent is the book's whole subject."
   },

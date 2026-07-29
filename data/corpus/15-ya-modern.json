@@ -2,417 +2,784 @@
   {
     "id": "city-of-bones",
     "title": "City of Bones",
-    "authors": ["Cassandra Clare"],
+    "authors": [
+      "Cassandra Clare"
+    ],
     "year": 2007,
-    "subjects": ["ya-fantasy", "urban-fantasy", "monsters", "first-love"],
+    "subjects": [
+      "ya-fantasy",
+      "urban-fantasy",
+      "monsters",
+      "first-love"
+    ],
     "description": "A Brooklyn teenager watches three tattooed strangers kill something in a nightclub that nobody else can see. The series that carried urban fantasy through the 2010s."
   },
   {
     "id": "clockwork-angel",
     "title": "Clockwork Angel",
-    "authors": ["Cassandra Clare"],
+    "authors": [
+      "Cassandra Clare"
+    ],
     "year": 2010,
-    "subjects": ["ya-fantasy", "victorian", "first-love", "monsters"],
+    "subjects": [
+      "ya-fantasy",
+      "victorian",
+      "first-love",
+      "monsters"
+    ],
     "description": "Victorian London demon-hunters, a girl who can take on the shape of the dead, and clockwork automata. Better plotted than the contemporary series it precedes."
   },
   {
     "id": "cinder",
     "title": "Cinder",
-    "authors": ["Marissa Meyer"],
+    "authors": [
+      "Marissa Meyer"
+    ],
     "year": 2012,
-    "subjects": ["ya-fantasy", "ya-dystopia", "robots", "folklore"],
+    "subjects": [
+      "ya-fantasy",
+      "ya-dystopia",
+      "robots",
+      "folklore"
+    ],
     "description": "Cinderella as a cyborg mechanic in a plague-ridden New Beijing, with a lunar colony threatening war. The fairy-tale retelling that made the shelf."
   },
   {
     "id": "miss-peregrines-home",
     "title": "Miss Peregrine's Home for Peculiar Children",
-    "authors": ["Ransom Riggs"],
+    "authors": [
+      "Ransom Riggs"
+    ],
     "year": 2011,
-    "subjects": ["ya-fantasy", "time-travel", "grief", "photography"],
+    "subjects": [
+      "ya-fantasy",
+      "time-travel",
+      "grief",
+      "photography"
+    ],
     "description": "A boy follows his grandfather's stories to a Welsh island and a house caught in a single 1940 day. Built around real found vernacular photographs."
   },
   {
     "id": "shatter-me",
     "title": "Shatter Me",
-    "authors": ["Tahereh Mafi"],
+    "authors": [
+      "Tahereh Mafi"
+    ],
     "year": 2011,
-    "subjects": ["ya-dystopia", "ya-romance", "chosen-one", "trauma"],
+    "subjects": [
+      "ya-dystopia",
+      "ya-romance",
+      "chosen-one",
+      "trauma"
+    ],
     "description": "A girl imprisoned because her touch kills is taken out of her cell to be used as a weapon. Written in a striking struck-through interior voice."
   },
   {
     "id": "red-queen",
     "title": "Red Queen",
-    "authors": ["Victoria Aveyard"],
+    "authors": [
+      "Victoria Aveyard"
+    ],
     "year": 2015,
-    "subjects": ["ya-dystopia", "ya-fantasy", "class", "revolution"],
+    "subjects": [
+      "ya-dystopia",
+      "ya-fantasy",
+      "class",
+      "revolution"
+    ],
     "description": "A world split between red-blooded commoners and silver-blooded superhumans, and a thief who turns out to be neither. Court intrigue with a rebellion underneath."
   },
   {
     "id": "the-wrath-and-the-dawn",
     "title": "The Wrath and the Dawn",
-    "authors": ["Renée Ahdieh"],
+    "authors": [
+      "Renée Ahdieh"
+    ],
     "year": 2015,
-    "subjects": ["ya-fantasy", "ya-romance", "folklore", "enemies-to-lovers"],
+    "subjects": [
+      "ya-fantasy",
+      "ya-romance",
+      "folklore",
+      "enemies-to-lovers"
+    ],
     "description": "A girl volunteers to marry the caliph who takes a bride every night and kills her by dawn, intending to avenge her friend. A Thousand and One Nights, retold."
   },
   {
     "id": "the-star-touched-queen",
     "title": "The Gilded Wolves",
-    "authors": ["Roshani Chokshi"],
+    "authors": [
+      "Roshani Chokshi"
+    ],
     "year": 2019,
-    "subjects": ["ya-fantasy", "heist", "found-family", "colonialism"],
+    "subjects": [
+      "ya-fantasy",
+      "heist",
+      "found-family",
+      "colonialism"
+    ],
     "description": "A crew of outsiders run a heist through 1889 Paris for a secret order that has excluded every one of them. Puzzle-box plotting and a pointed view of empire."
   },
   {
     "id": "the-scorpio-races",
     "title": "The Scorpio Races",
-    "authors": ["Maggie Stiefvater"],
+    "authors": [
+      "Maggie Stiefvater"
+    ],
     "year": 2011,
-    "subjects": ["ya-fantasy", "folklore", "first-love", "monsters"],
+    "subjects": [
+      "ya-fantasy",
+      "folklore",
+      "first-love",
+      "monsters"
+    ],
     "description": "An island where carnivorous water horses come ashore each November and are raced, usually fatally. A girl enters on an ordinary mare. Atmosphere over plot, and it works."
   },
   {
     "id": "the-raven-boys",
     "title": "The Raven Boys",
-    "authors": ["Maggie Stiefvater"],
+    "authors": [
+      "Maggie Stiefvater"
+    ],
     "year": 2012,
-    "subjects": ["ya-fantasy", "found-family", "ghosts", "first-love"],
+    "subjects": [
+      "ya-fantasy",
+      "found-family",
+      "ghosts",
+      "first-love"
+    ],
     "description": "A psychic's daughter told she will kill her true love with a kiss falls in with four private-school boys hunting a buried Welsh king in Virginia."
   },
   {
     "id": "daughter-of-smoke-and-bone",
     "title": "Daughter of Smoke and Bone",
-    "authors": ["Laini Taylor"],
+    "authors": [
+      "Laini Taylor"
+    ],
     "year": 2011,
-    "subjects": ["ya-fantasy", "ya-romance", "monsters", "parallel-worlds"],
+    "subjects": [
+      "ya-fantasy",
+      "ya-romance",
+      "monsters",
+      "parallel-worlds"
+    ],
     "description": "A blue-haired art student in Prague runs errands collecting teeth for the chimaera who raised her. The war she was born out of is older than she knows."
   },
   {
     "id": "strange-the-dreamer",
     "title": "Strange the Dreamer",
-    "authors": ["Laini Taylor"],
+    "authors": [
+      "Laini Taylor"
+    ],
     "year": 2017,
-    "subjects": ["ya-fantasy", "libraries", "first-love", "grief"],
+    "subjects": [
+      "ya-fantasy",
+      "libraries",
+      "first-love",
+      "grief"
+    ],
     "description": "A librarian obsessed with a city whose name was stolen from memory joins the expedition that finds it. Ornate, and the ending is genuinely cruel."
   },
   {
     "id": "the-sun-is-also-a-star",
     "title": "The Sun Is Also a Star",
-    "authors": ["Nicola Yoon"],
+    "authors": [
+      "Nicola Yoon"
+    ],
     "year": 2016,
-    "subjects": ["ya-romance", "first-love", "immigration", "new-york"],
+    "subjects": [
+      "ya-romance",
+      "first-love",
+      "immigration",
+      "new-york"
+    ],
     "description": "A Jamaican girl twelve hours from deportation and a Korean-American boy on his way to a Yale interview, across one day in New York."
   },
   {
     "id": "everything-everything",
     "title": "Everything, Everything",
-    "authors": ["Nicola Yoon"],
+    "authors": [
+      "Nicola Yoon"
+    ],
     "year": 2015,
-    "subjects": ["ya-romance", "illness", "first-love", "motherhood"],
+    "subjects": [
+      "ya-romance",
+      "illness",
+      "first-love",
+      "motherhood"
+    ],
     "description": "A girl allergic to the outside world has never left her house, and a boy moves in next door. The reveal reframes the whole premise."
   },
   {
     "id": "they-both-die-at-the-end",
     "title": "They Both Die at the End",
-    "authors": ["Adam Silvera"],
+    "authors": [
+      "Adam Silvera"
+    ],
     "year": 2017,
-    "subjects": ["ya-romance", "queer-romance", "grief", "first-love"],
+    "subjects": [
+      "ya-romance",
+      "queer-romance",
+      "grief",
+      "first-love"
+    ],
     "description": "A service calls to tell you it is your last day. Two strangers use an app to find someone to spend it with. The title is not a misdirection."
   },
   {
     "id": "all-the-bright-places",
     "title": "All the Bright Places",
-    "authors": ["Jennifer Niven"],
+    "authors": [
+      "Jennifer Niven"
+    ],
     "year": 2015,
-    "subjects": ["ya-realism", "mental-health", "grief", "first-love"],
+    "subjects": [
+      "ya-realism",
+      "mental-health",
+      "grief",
+      "first-love"
+    ],
     "description": "Two teenagers meet on a school bell tower ledge, each there for their own reasons, and map their Indiana county together. Careful about bipolar disorder."
   },
   {
     "id": "turtles-all-the-way-down",
     "title": "Turtles All the Way Down",
-    "authors": ["John Green"],
+    "authors": [
+      "John Green"
+    ],
     "year": 2017,
-    "subjects": ["ya-realism", "mental-health", "high-school", "first-love"],
+    "subjects": [
+      "ya-realism",
+      "mental-health",
+      "high-school",
+      "first-love"
+    ],
     "description": "A girl with intrusive thoughts about her own gut bacteria investigates a missing billionaire. Green writing his own OCD from the inside."
   },
   {
     "id": "the-poet-x",
     "title": "The Poet X",
-    "authors": ["Elizabeth Acevedo"],
+    "authors": [
+      "Elizabeth Acevedo"
+    ],
     "year": 2018,
-    "subjects": ["ya-realism", "poetry", "religion", "motherhood"],
+    "subjects": [
+      "ya-realism",
+      "poetry",
+      "religion",
+      "motherhood"
+    ],
     "description": "A Dominican-American girl in Harlem writes slam poetry her devout mother would burn. In verse, and it won the National Book Award."
   },
   {
     "id": "with-the-fire-on-high",
     "title": "With the Fire on High",
-    "authors": ["Elizabeth Acevedo"],
+    "authors": [
+      "Elizabeth Acevedo"
+    ],
     "year": 2019,
-    "subjects": ["ya-realism", "motherhood", "high-school", "cooking"],
+    "subjects": [
+      "ya-realism",
+      "motherhood",
+      "high-school",
+      "cooking"
+    ],
     "description": "A teenage mother in Philadelphia with a gift for cooking is offered a culinary course she cannot afford to want. Warm and unsentimental about childcare."
   },
   {
     "id": "on-the-come-up",
     "title": "On the Come Up",
-    "authors": ["Angie Thomas"],
+    "authors": [
+      "Angie Thomas"
+    ],
     "year": 2019,
-    "subjects": ["ya-realism", "race", "poverty", "music"],
+    "subjects": [
+      "ya-realism",
+      "race",
+      "poverty",
+      "music"
+    ],
     "description": "A sixteen-year-old rapper's battle track goes viral for the wrong reasons while her family faces eviction. About being made into a caricature by your own success."
   },
   {
     "id": "dear-martin",
     "title": "Dear Martin",
-    "authors": ["Nic Stone"],
+    "authors": [
+      "Nic Stone"
+    ],
     "year": 2017,
-    "subjects": ["ya-realism", "race", "civil-rights", "high-school"],
+    "subjects": [
+      "ya-realism",
+      "race",
+      "civil-rights",
+      "high-school"
+    ],
     "description": "A scholarship student at a mostly white prep school writes letters to Martin Luther King after being handcuffed for helping a friend."
   },
   {
     "id": "ghost-reynolds",
     "title": "Ghost",
-    "authors": ["Jason Reynolds"],
+    "authors": [
+      "Jason Reynolds"
+    ],
     "year": 2016,
-    "subjects": ["middle-grade", "poverty", "friendship", "trauma"],
+    "subjects": [
+      "middle-grade",
+      "poverty",
+      "friendship",
+      "trauma"
+    ],
     "description": "A boy who learned to run the night his father shot at him joins an elite track team. First of four, one per runner."
   },
   {
     "id": "the-marrow-thieves",
     "title": "The Marrow Thieves",
-    "authors": ["Cherie Dimaline"],
+    "authors": [
+      "Cherie Dimaline"
+    ],
     "year": 2017,
-    "subjects": ["ya-dystopia", "native-american", "survival", "found-family"],
+    "subjects": [
+      "ya-dystopia",
+      "native-american",
+      "survival",
+      "found-family",
+      "dystopia",
+      "post-apocalyptic",
+      "coming-of-age"
+    ],
     "description": "In a world that has lost the ability to dream, Indigenous people are hunted for their bone marrow. A group walks north. Residential schools, barely fictionalised."
   },
   {
     "id": "the-inheritance-games",
     "title": "The Inheritance Games",
-    "authors": ["Jennifer Lynn Barnes"],
+    "authors": [
+      "Jennifer Lynn Barnes"
+    ],
     "year": 2020,
-    "subjects": ["ya-realism", "puzzle", "wealth", "ya-romance"],
+    "subjects": [
+      "ya-realism",
+      "puzzle",
+      "wealth",
+      "ya-romance"
+    ],
     "description": "A girl working diner shifts inherits a billionaire's fortune on condition she lives in his house with the four grandsons she disinherited."
   },
   {
     "id": "a-good-girls-guide-to-murder",
     "title": "A Good Girl's Guide to Murder",
-    "authors": ["Holly Jackson"],
+    "authors": [
+      "Holly Jackson"
+    ],
     "year": 2019,
-    "subjects": ["ya-realism", "murder", "puzzle", "high-school"],
+    "subjects": [
+      "ya-realism",
+      "murder",
+      "puzzle",
+      "high-school"
+    ],
     "description": "A sixth-former reopens a closed murder-suicide for her school project, with case files and interview transcripts reproduced in the text."
   },
   {
     "id": "truly-devious",
     "title": "Truly Devious",
-    "authors": ["Maureen Johnson"],
+    "authors": [
+      "Maureen Johnson"
+    ],
     "year": 2018,
-    "subjects": ["ya-realism", "murder", "puzzle", "school"],
+    "subjects": [
+      "ya-realism",
+      "murder",
+      "puzzle",
+      "school"
+    ],
     "description": "A true-crime obsessive wins a place at a Vermont academy to solve its 1936 kidnapping, and a student dies in her first term."
   },
   {
     "id": "six-of-crows-crooked-kingdom",
     "title": "Crooked Kingdom",
-    "authors": ["Leigh Bardugo"],
+    "authors": [
+      "Leigh Bardugo"
+    ],
     "year": 2016,
-    "subjects": ["ya-fantasy", "heist", "found-family", "revenge"],
+    "subjects": [
+      "ya-fantasy",
+      "heist",
+      "found-family",
+      "revenge"
+    ],
     "description": "The Crows are owed money and a friend, and the city is closing on them. The back half of one story, and it lands everything the first book set up."
   },
   {
     "id": "ninth-house",
     "title": "Ninth House",
-    "authors": ["Leigh Bardugo"],
+    "authors": [
+      "Leigh Bardugo"
+    ],
     "year": 2019,
-    "subjects": ["urban-fantasy", "academia", "murder", "trauma"],
+    "subjects": [
+      "urban-fantasy",
+      "academia",
+      "murder",
+      "trauma"
+    ],
     "description": "A survivor with no qualifications is given a full ride to Yale to monitor the secret societies' real magic. Adult, and considerably darker than her YA."
   },
   {
     "id": "an-ember-in-the-ashes-torch",
     "title": "A Torch Against the Night",
-    "authors": ["Sabaa Tahir"],
+    "authors": [
+      "Sabaa Tahir"
+    ],
     "year": 2016,
-    "subjects": ["ya-fantasy", "war", "revolution", "ya-romance"],
+    "subjects": [
+      "ya-fantasy",
+      "war",
+      "revolution",
+      "ya-romance"
+    ],
     "description": "A prison break across a hostile empire, with three narrators now instead of two. The empire's cruelty stops being background."
   },
   {
     "id": "children-of-virtue-and-vengeance",
     "title": "Children of Virtue and Vengeance",
-    "authors": ["Tomi Adeyemi"],
+    "authors": [
+      "Tomi Adeyemi"
+    ],
     "year": 2019,
-    "subjects": ["ya-fantasy", "revolution", "war", "west-africa"],
+    "subjects": [
+      "ya-fantasy",
+      "revolution",
+      "war",
+      "west-africa"
+    ],
     "description": "Magic is back and now the monarchy has it too. The sequel is largely about whether a liberation movement can avoid becoming what it fought."
   },
   {
     "id": "legendborn",
     "title": "Legendborn",
-    "authors": ["Tracy Deonn"],
+    "authors": [
+      "Tracy Deonn"
+    ],
     "year": 2020,
-    "subjects": ["ya-fantasy", "race", "grief", "mythology"],
+    "subjects": [
+      "ya-fantasy",
+      "race",
+      "grief",
+      "mythology"
+    ],
     "description": "A grieving Black teenager at a UNC early-college programme finds an Arthurian secret society on campus and a bloodline it never accounted for."
   },
   {
     "id": "the-black-witch-cemetery-boys",
     "title": "Cemetery Boys",
-    "authors": ["Aiden Thomas"],
+    "authors": [
+      "Aiden Thomas"
+    ],
     "year": 2020,
-    "subjects": ["ya-fantasy", "queer-romance", "ghosts", "identity"],
+    "subjects": [
+      "ya-fantasy",
+      "queer-romance",
+      "ghosts",
+      "identity"
+    ],
     "description": "A trans Latinx brujo summons a ghost to prove himself to his family and cannot send it back. Warm about family, sharp about being seen."
   },
   {
     "id": "iron-widow",
     "title": "Iron Widow",
-    "authors": ["Xiran Jay Zhao"],
+    "authors": [
+      "Xiran Jay Zhao"
+    ],
     "year": 2021,
-    "subjects": ["ya-fantasy", "feminism", "war", "robots"],
+    "subjects": [
+      "ya-fantasy",
+      "feminism",
+      "war",
+      "robots"
+    ],
     "description": "Girls are fed to giant mecha as fuel for male pilots until one survives and starts killing hers. Furious, and based on China's only female emperor."
   },
   {
     "id": "the-poppy-war-dragon-republic",
     "title": "The Dragon Republic",
-    "authors": ["R. F. Kuang"],
+    "authors": [
+      "R. F. Kuang"
+    ],
     "year": 2019,
-    "subjects": ["epic-fantasy", "war", "revolution", "addiction"],
+    "subjects": [
+      "epic-fantasy",
+      "war",
+      "revolution",
+      "addiction"
+    ],
     "description": "After the atrocity that ended the first book, Rin fights a civil war on the side of a republic she does not trust. Opium addiction written properly."
   },
   {
     "id": "babel-kuang",
     "title": "Babel",
-    "authors": ["R. F. Kuang"],
+    "authors": [
+      "R. F. Kuang"
+    ],
     "year": 2022,
-    "subjects": ["academia", "colonialism", "translation", "revolution"],
+    "subjects": [
+      "academia",
+      "colonialism",
+      "translation",
+      "revolution"
+    ],
     "description": "An Oxford translation institute powers the British empire with silver bars that hold what is lost between languages. A campus novel that argues violence is the only lever."
   },
   {
     "id": "the-atlas-six",
     "title": "The Atlas Six",
-    "authors": ["Olivie Blake"],
+    "authors": [
+      "Olivie Blake"
+    ],
     "year": 2020,
-    "subjects": ["academia", "magic-system", "court-politics", "puzzle"],
+    "subjects": [
+      "academia",
+      "magic-system",
+      "court-politics",
+      "puzzle"
+    ],
     "description": "Six young magicians compete for five places in a secret society guarding the library of Alexandria. Talky, and the arguments are the appeal."
   },
   {
     "id": "vicious-schwab",
     "title": "Vicious",
-    "authors": ["V. E. Schwab"],
+    "authors": [
+      "V. E. Schwab"
+    ],
     "year": 2013,
-    "subjects": ["urban-fantasy", "revenge", "academia", "monsters"],
+    "subjects": [
+      "urban-fantasy",
+      "revenge",
+      "academia",
+      "monsters"
+    ],
     "description": "Two graduate students prove that near-death experiences produce superpowers and try it on each other. Ten years later one is out of prison. No heroes."
   },
   {
     "id": "the-cruel-prince-wicked-king",
     "title": "The Wicked King",
-    "authors": ["Holly Black"],
+    "authors": [
+      "Holly Black"
+    ],
     "year": 2019,
-    "subjects": ["ya-fantasy", "fae", "court-politics", "enemies-to-lovers"],
+    "subjects": [
+      "ya-fantasy",
+      "fae",
+      "court-politics",
+      "enemies-to-lovers"
+    ],
     "description": "Jude holds the faerie throne through a boy who hates her and has five months to make it permanent. The betrayal at the end is the series' best moment."
   },
   {
     "id": "the-song-of-the-lioness",
     "title": "Alanna: The First Adventure",
-    "authors": ["Tamora Pierce"],
+    "authors": [
+      "Tamora Pierce"
+    ],
     "year": 1983,
-    "subjects": ["ya-fantasy", "coming-of-age", "feminism", "chosen-one"],
+    "subjects": [
+      "ya-fantasy",
+      "coming-of-age",
+      "feminism",
+      "chosen-one"
+    ],
     "description": "A girl swaps places with her twin brother and trains as a page in disguise. A generation of fantasy readers started here."
   },
   {
     "id": "sabriel",
     "title": "Sabriel",
-    "authors": ["Garth Nix"],
+    "authors": [
+      "Garth Nix"
+    ],
     "year": 1995,
-    "subjects": ["ya-fantasy", "ghosts", "magic-system", "coming-of-age"],
+    "subjects": [
+      "ya-fantasy",
+      "ghosts",
+      "magic-system",
+      "coming-of-age"
+    ],
     "description": "A schoolgirl crosses the wall into a country where the dead do not stay dead, to find her father the necromancer. The bell-based magic is exceptional."
   },
   {
     "id": "howls-moving-castle-charmed-life",
     "title": "Charmed Life",
-    "authors": ["Diana Wynne Jones"],
+    "authors": [
+      "Diana Wynne Jones"
+    ],
     "year": 1977,
-    "subjects": ["middle-grade", "magic-school", "witches", "family"],
+    "subjects": [
+      "middle-grade",
+      "magic-school",
+      "witches",
+      "family"
+    ],
     "description": "An orphan and his manipulative older sister are taken in by an enchanter, and the boy has nine lives he keeps losing. Sharp about sibling cruelty."
   },
   {
     "id": "the-dark-is-rising",
     "title": "The Dark Is Rising",
-    "authors": ["Susan Cooper"],
+    "authors": [
+      "Susan Cooper"
+    ],
     "year": 1973,
-    "subjects": ["middle-grade", "folklore", "chosen-one", "ya-fantasy"],
+    "subjects": [
+      "middle-grade",
+      "folklore",
+      "chosen-one",
+      "ya-fantasy"
+    ],
     "description": "A boy wakes on his eleventh birthday into deep snow and the knowledge that he is the last of the Old Ones. English midwinter myth, done seriously."
   },
   {
     "id": "the-book-of-three",
     "title": "The Book of Three",
-    "authors": ["Lloyd Alexander"],
+    "authors": [
+      "Lloyd Alexander"
+    ],
     "year": 1964,
-    "subjects": ["middle-grade", "epic-fantasy", "folklore", "coming-of-age"],
+    "subjects": [
+      "middle-grade",
+      "epic-fantasy",
+      "folklore",
+      "coming-of-age"
+    ],
     "description": "An assistant pig-keeper who wants to be a hero, in a Prydain built from Welsh legend. Five books, and the last of them is unusually sad."
   },
   {
     "id": "redwall",
     "title": "Redwall",
-    "authors": ["Brian Jacques"],
+    "authors": [
+      "Brian Jacques"
+    ],
     "year": 1986,
-    "subjects": ["middle-grade", "epic-fantasy", "children-adventure", "monsters"],
+    "subjects": [
+      "middle-grade",
+      "epic-fantasy",
+      "children-adventure",
+      "monsters"
+    ],
     "description": "A mouse defends an abbey from a rat warlord. Written for children at a school for the blind, which is why every feast is described at such length."
   },
   {
     "id": "the-city-of-ember",
     "title": "The City of Ember",
-    "authors": ["Jeanne DuPrau"],
+    "authors": [
+      "Jeanne DuPrau"
+    ],
     "year": 2003,
-    "subjects": ["middle-grade", "ya-dystopia", "puzzle", "children-adventure"],
+    "subjects": [
+      "middle-grade",
+      "ya-dystopia",
+      "puzzle",
+      "children-adventure"
+    ],
     "description": "An underground city whose generator is failing, and two twelve-year-olds with a shredded set of instructions for leaving."
   },
   {
     "id": "the-mysterious-benedict-society",
     "title": "The Mysterious Benedict Society",
-    "authors": ["Trenton Lee Stewart"],
+    "authors": [
+      "Trenton Lee Stewart"
+    ],
     "year": 2007,
-    "subjects": ["middle-grade", "puzzle", "children-adventure", "friendship"],
+    "subjects": [
+      "middle-grade",
+      "puzzle",
+      "children-adventure",
+      "friendship"
+    ],
     "description": "Four gifted orphans pass a very strange entrance exam and are sent undercover into a boarding school broadcasting subliminal messages."
   },
   {
     "id": "artemis-fowl",
     "title": "Artemis Fowl",
-    "authors": ["Eoin Colfer"],
+    "authors": [
+      "Eoin Colfer"
+    ],
     "year": 2001,
-    "subjects": ["middle-grade", "children-adventure", "heist", "urban-fantasy"],
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "heist",
+      "urban-fantasy"
+    ],
     "description": "A twelve-year-old criminal mastermind kidnaps a fairy for ransom and discovers the fairies have better technology than he does."
   },
   {
     "id": "skulduggery-pleasant",
     "title": "Skulduggery Pleasant",
-    "authors": ["Derek Landy"],
+    "authors": [
+      "Derek Landy"
+    ],
     "year": 2007,
-    "subjects": ["middle-grade", "urban-fantasy", "detective", "black-comedy"],
+    "subjects": [
+      "middle-grade",
+      "urban-fantasy",
+      "detective",
+      "black-comedy"
+    ],
     "description": "A twelve-year-old inherits her uncle's estate and his business partner, a skeleton detective. Very funny, and it gets much darker across the series."
   },
   {
     "id": "nevermoor",
     "title": "Nevermoor: The Trials of Morrigan Crow",
-    "authors": ["Jessica Townsend"],
+    "authors": [
+      "Jessica Townsend"
+    ],
     "year": 2017,
-    "subjects": ["middle-grade", "ya-fantasy", "children-adventure", "found-family"],
+    "subjects": [
+      "middle-grade",
+      "ya-fantasy",
+      "children-adventure",
+      "found-family"
+    ],
     "description": "A girl cursed to die on her eleventh birthday is spirited to a hidden city and entered into trials for a society she has no talent for."
   },
   {
     "id": "amari-and-the-night-brothers",
     "title": "Amari and the Night Brothers",
-    "authors": ["B. B. Alston"],
+    "authors": [
+      "B. B. Alston"
+    ],
     "year": 2021,
-    "subjects": ["middle-grade", "ya-fantasy", "race", "magic-school"],
+    "subjects": [
+      "middle-grade",
+      "ya-fantasy",
+      "race",
+      "magic-school"
+    ],
     "description": "A girl on scholarship is recruited to the Bureau of Supernatural Affairs to find her missing brother, and tests as the thing everyone there fears."
   },
   {
     "id": "the-girl-who-drank-the-moon",
     "title": "The Girl Who Drank the Moon",
-    "authors": ["Kelly Barnhill"],
+    "authors": [
+      "Kelly Barnhill"
+    ],
     "year": 2016,
-    "subjects": ["middle-grade", "witches", "motherhood", "folklore"],
+    "subjects": [
+      "middle-grade",
+      "witches",
+      "motherhood",
+      "folklore"
+    ],
     "description": "A town sacrifices an infant to the forest witch each year. The witch has been rescuing them all along, and accidentally feeds one moonlight."
   },
   {
     "id": "when-you-reach-me",
     "title": "When You Reach Me",
-    "authors": ["Rebecca Stead"],
+    "authors": [
+      "Rebecca Stead"
+    ],
     "year": 2009,
-    "subjects": ["middle-grade", "time-travel", "friendship", "new-york"],
+    "subjects": [
+      "middle-grade",
+      "time-travel",
+      "friendship",
+      "new-york"
+    ],
     "description": "A sixth-grader in 1979 Manhattan starts receiving notes that predict things. A quiet mystery that is also a conversation with A Wrinkle in Time."
   }
 ]
