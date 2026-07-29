@@ -108,6 +108,18 @@ export function topKAll(matrix: number[][], k: number, minSim = MIN_SIM): Neighb
   return rows.map((_, r) => topKFor(rows, index, r, k).filter((n) => n.score >= minSim));
 }
 
+/** How many neighbours to bake per book.
+ *
+ *  Lives here rather than in `scripts/build-neighbors.ts` for a reason that cost
+ *  real damage: the freshness test used to import it from the script, and the
+ *  script calls `main()` at module scope. Importing the constant therefore RAN
+ *  THE BAKE — so the test regenerated the artifacts microseconds before checking
+ *  they were up to date, and could never fail. The staleness net was inert, and
+ *  test runs silently rewrote `src/generated/`.
+ *
+ *  A constant shared between a build script and a test belongs to neither. */
+export const NEIGHBOR_K = 16;
+
 /** Baked artifact shape. Scores are quantised to 3dp — they are only used for
  *  ordering and for a mild distance cue, so full float precision is wasted bytes. */
 export interface NeighborsFile {

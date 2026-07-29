@@ -1,6 +1,10 @@
 import { describe, expect, it, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { useStore } from '@/state/store';
+import type { Book } from '@/domain/types';
+import type { NeighborsFile } from '@/domain/similarity';
+import corpusJson from '@/generated/corpus.json';
+import neighborsJson from '@/generated/neighbors.json';
 import { Landing } from './Landing';
 import { ExplorePanel } from './ExplorePanel';
 import { DetailPanel } from './DetailPanel';
@@ -14,7 +18,13 @@ import { DetailPanel } from './DetailPanel';
 // vitest globals are enabled, which they are not here.
 afterEach(cleanup);
 
+// The app fetches these two artifacts at runtime; tests install the same data
+// through the same `hydrate` entry point, so both paths exercise one code path
+// rather than the tests running against a parallel construction.
 beforeEach(() => {
+  useStore
+    .getState()
+    .hydrate(corpusJson as unknown as Book[], neighborsJson as unknown as NeighborsFile);
   useStore.getState().reset();
 });
 

@@ -4,6 +4,7 @@ import type * as THREE from 'three';
 import { FIELD } from '@/domain/palette';
 import { useStore } from '@/state/store';
 import { useUrlSync } from '@/state/urlHash';
+import { useCorpus } from '@/state/useCorpus';
 import { useGlobalKeys } from '@/state/keyboard';
 import { Scene } from '@/scene/Scene';
 import { WebGLGuard } from '@/scene/WebGLGuard';
@@ -35,7 +36,10 @@ export function App(): React.ReactElement {
   const cameraRef = useRef<THREE.Camera | null>(null);
   const pointsRef = useRef<THREE.Points | null>(null);
   const phase = useStore((s) => s.phase);
+  const status = useStore((s) => s.status);
+  const loadError = useStore((s) => s.loadError);
 
+  useCorpus();
   useUrlSync();
   useGlobalKeys();
 
@@ -43,6 +47,29 @@ export function App(): React.ReactElement {
     document.body.style.background = theme.surface;
     document.body.style.color = theme.textPrimary;
   }, [theme]);
+
+  if (status !== 'ready') {
+    return (
+      <div className="app app--empty">
+        <main className="landing">
+          <div className="landing__inner">
+            <h1 className="landing__brand">
+              matteo
+              <span className="landing__sub">
+                {status === 'error' ? 'Could not load the books.' : 'Loading the books…'}
+              </span>
+            </h1>
+            {status === 'error' && (
+              <p className="landing__hint" role="alert">
+                {loadError} — reload to try again.
+              </p>
+            )}
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <WebGLGuard fallback={<ListOnlyApp />}>

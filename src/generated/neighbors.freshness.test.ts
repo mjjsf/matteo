@@ -2,8 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { loadCorpusForLayout, loadTagMap, loadTaxonomyFile } from '@/domain/fixtures';
 import { FEATURE_CONFIG } from '@/domain/features';
 import { inputHash } from '@/domain/hash';
-import { MIN_SIM, type NeighborsFile } from '@/domain/similarity';
-import { NEIGHBOR_K } from '../../scripts/build-neighbors';
+import { MIN_SIM, NEIGHBOR_K, type NeighborsFile } from '@/domain/similarity';
 import neighbors from './neighbors.json';
 import corpus from './corpus.json';
 

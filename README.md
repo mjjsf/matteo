@@ -199,7 +199,37 @@ The vocabulary is defined before the corpus on purpose, and a test rejects any
 subject tag not in `tagMap.json`. Inconsistent tags (`dystopia` vs `dystopian`)
 would quietly degrade the similarity table and nothing else would catch it.
 
-### Growing the corpus
+### Adding books
+
+Drop a JSON array into `data/corpus/`. Nothing needs registering — the loader
+globs the directory in filename order — then re-bake and run the tests:
+
+```bash
+$EDITOR data/corpus/19-whatever.json
+npm run neighbors     # rebuilds src/generated/, commit the result
+npm test
+```
+
+Each entry needs `id`, `title`, `authors`, `year`, at least two `subjects`, and
+an 80–600 character `description`. The tests are the specification, and they
+name what is wrong rather than just failing:
+
+| If you | you get |
+|---|---|
+| reuse an id | `has unique ids: ['neuromancer']` |
+| give one subject | `another-test (1)` |
+| invent a tag | `not-a-real-tag <- another-test` |
+| use a tag no other book has | `not-a-real-tag:1` |
+| name the id after a different book | `stray: shadow, lost` |
+| forget `npm run neighbors` | ``neighbors.json is stale — run `npm run neighbors` `` |
+
+The df≥2 rule is the one that surprises people: a tag on exactly one book cannot
+make two books similar, but IDF gives it the highest possible weight, so it
+would dominate that book's vector and strand it. Either give the tag a second
+book or use an existing one. `data/tagMap.json` and `data/unmapped.allow.json`
+list the vocabulary.
+
+### Growing the corpus automatically
 
 ```bash
 npm run fetch -- --subject science_fiction --subject philosophy --limit 200
@@ -236,6 +266,27 @@ their final positions instead of easing outward. Without WebGL2 the app falls
 back to the same panels at full width, and everything except the map still
 works.
 
+## Scaling past this corpus
+
+The two baked artifacts are **fetched at runtime**, not bundled — `?url` imports
+in `src/state/corpusData.ts`. That is deliberate and load-bearing for growth: at
+1016 books they are 550KB, and importing them directly put all of it in the JS
+bundle, to be parsed before anything rendered. Fetched instead, the code bundle
+stays flat as the corpus grows, the browser's JSON parser beats evaluating an
+equivalent object literal, and a code change no longer invalidates the cached
+corpus. Both requests are same-origin; the app still makes no external calls.
+
+The taxonomy is a **build-time concern only**. It used to be indexed at startup
+— `populateMembers` over every book — and then read by nothing. That is 30KB and
+14ms at this size, growing with the corpus, for no runtime purpose. The bake
+needs it; the browser does not.
+
+What is known to scale: the neighbour search is a sparse inverted index, and
+placement costs depend on the on-screen graph (capped at 220 books), not on
+corpus size. What would need attention beyond a few thousand books: the Fuse
+search index is built in one synchronous pass at hydration (10ms at 1016), and
+descriptions are ~40% of `corpus.json` while only the open book needs one.
+
 ## Layout of the code
 
 ```
@@ -244,6 +295,8 @@ src/state/     zustand store, URL hash routing, buffer selectors
 src/scene/     three.js / react-three-fiber rendering
 src/ui/        React panels and HTML overlays
 src/generated/ machine-written, committed: corpus.json + neighbors.json
+scripts/lib/    build logic, importable without side effects
+scripts/*.ts    thin entry points that call it
 ```
 
 The nodes are one `THREE.Points`, allocated **once** at full capacity and drawn
@@ -274,7 +327,7 @@ network access at all.
 | `npm run build` | typecheck + production build |
 | `npm test` | vitest (pure logic in node, panels in happy-dom) |
 | `npm run typecheck` | tsc only |
-| `npm run neighbors` | re-bake `src/generated/` |
+| `npm run neighbors` | re-bake `src/generated/` (commit the result) |
 | `npm run fetch` | pull more books from Open Library (unverified — see above) |
 | `npm run corpus:merge` | combine authored + fetched |
 

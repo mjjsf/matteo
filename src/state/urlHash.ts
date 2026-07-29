@@ -53,9 +53,14 @@ export function serializeHash(state: HashState): string {
 export function useUrlSync(): void {
   const applying = useRef(false);
   const lastWritten = useRef<string>('');
+  // The corpus arrives asynchronously, and restoring a shared link needs it.
+  // Without this the first load of a `#/from/...` URL silently did nothing,
+  // because every id lookup came back undefined.
+  const status = useStore((s) => s.status);
 
   // URL -> store
   useEffect(() => {
+    if (status !== 'ready') return;
     const apply = (): void => {
       const { seedId, path, openId } = parseHash(window.location.hash);
       const state = useStore.getState();
@@ -81,7 +86,7 @@ export function useUrlSync(): void {
     apply();
     window.addEventListener('hashchange', apply);
     return () => window.removeEventListener('hashchange', apply);
-  }, []);
+  }, [status]);
 
   // store -> URL
   useEffect(() => {

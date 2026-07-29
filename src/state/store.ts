@@ -1,8 +1,7 @@
 import { create } from 'zustand';
 import Fuse from 'fuse.js';
-import type { Book, SearchHit, TagMap, TaxonomyIndex } from '@/domain/types';
+import type { Book, SearchHit } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
-import { buildTaxonomyIndex, populateMembers } from '@/domain/taxonomy';
 import { createSearchIndex, runSearch } from '@/domain/search';
 import {
   MAX_NODES,
@@ -16,20 +15,26 @@ import {
   type Graph,
   type Slot,
 } from '@/domain/graph';
-import corpusJson from '@/generated/corpus.json';
-import neighborsJson from '@/generated/neighbors.json';
-import taxonomyJson from '../../data/taxonomy.json';
-import tagMapJson from '../../data/tagMap.json';
+/** The loaded corpus, or null before `hydrate` runs.
+ *
+ *  Module-level rather than in the store because these are derived indexes, not
+ *  state: nothing re-renders when they change, because they change exactly once.
+ *  Keeping them out of the store also keeps `bookById` and `neighborsOf` cheap
+ *  enough to call from a frame loop.
+ *
+ *  The taxonomy used to be built here too — `populateMembers` over every book —
+ *  and was then read by nothing at all. It cost 30KB of bundle and 14ms of
+ *  startup, both growing with the corpus. It is a build-time concern only: the
+ *  bake needs it, the browser does not. */
+interface Loaded {
+  books: Book[];
+  neighborsFile: NeighborsFile;
+  /** Corpus row index. Distinct from a graph `Slot` — see the comment on `Slot`. */
+  corpusIndexOf: Map<string, number>;
+  fuse: Fuse<Book>;
+}
 
-const books = corpusJson as unknown as Book[];
-const neighborsFile = neighborsJson as unknown as NeighborsFile;
-const tagMap = tagMapJson as unknown as TagMap;
-
-const taxonomy: TaxonomyIndex = populateMembers(buildTaxonomyIndex(taxonomyJson), books, tagMap);
-
-/** Corpus row index. Distinct from a graph `Slot` — see the comment on `Slot`. */
-const corpusIndexOf = new Map<string, number>(books.map((b, i) => [b.id, i]));
-const fuse: Fuse<Book> = createSearchIndex(books);
+let loaded: Loaded | null = null;
 
 /** How many suggestions the landing input offers. */
 export const MAX_SUGGESTIONS = 6;
@@ -43,11 +48,14 @@ export interface FlyTarget {
 
 export type Phase = 'empty' | 'active';
 
+export type Status = 'loading' | 'ready' | 'error';
+
 export interface AppState {
+  status: Status;
+  /** Set only when `status` is 'error'. */
+  loadError: string | null;
   books: Book[];
   corpusIndexOf: Map<string, number>;
-  taxonomy: TaxonomyIndex;
-  tagMap: TagMap;
 
   phase: Phase;
   query: string;
@@ -71,6 +79,10 @@ export interface AppState {
   selectedId: string | null;
   flyTarget: FlyTarget | null;
 
+  /** Install a corpus. Called by `loadCorpus` in the app and directly by tests,
+   *  so both paths exercise the same wiring. */
+  hydrate: (books: Book[], neighborsFile: NeighborsFile) => void;
+  failToLoad: (message: string) => void;
   setQuery: (q: string) => void;
   seed: (bookId: string) => void;
   /** Seed from the current query's best match. Returns false if nothing matched. */
@@ -92,19 +104,21 @@ export interface AppState {
 }
 
 export function bookById(id: string): Book | undefined {
-  const i = corpusIndexOf.get(id);
-  return i === undefined ? undefined : books[i];
+  if (!loaded) return undefined;
+  const i = loaded.corpusIndexOf.get(id);
+  return i === undefined ? undefined : loaded.books[i];
 }
 
 /** Neighbours of a book, best match first, already filtered by the similarity
  *  floor at bake time. */
 export function neighborsOf(bookId: string): Array<{ bookId: string; weight: number }> {
-  const i = corpusIndexOf.get(bookId);
+  if (!loaded) return [];
+  const i = loaded.corpusIndexOf.get(bookId);
   if (i === undefined) return [];
-  const raw = neighborsFile.neighbors[i] ?? [];
+  const raw = loaded.neighborsFile.neighbors[i] ?? [];
   const best = raw[0]?.[1] ?? 1;
   return raw.flatMap(([j, score]) => {
-    const other = books[j];
+    const other = loaded?.books[j];
     if (!other) return [];
     // Normalise against this book's own best match so the radius cue is
     // meaningful even for books whose absolute scores are all modest.
@@ -115,10 +129,10 @@ export function neighborsOf(bookId: string): Array<{ bookId: string; weight: num
 let flyNonce = 0;
 
 export const useStore = create<AppState>((set, get) => ({
-  books,
-  corpusIndexOf,
-  taxonomy,
-  tagMap,
+  status: 'loading',
+  loadError: null,
+  books: [],
+  corpusIndexOf: new Map(),
 
   phase: 'empty',
   query: '',
@@ -133,7 +147,26 @@ export const useStore = create<AppState>((set, get) => ({
   selectedId: null,
   flyTarget: null,
 
+  hydrate: (nextBooks, neighborsFile) => {
+    loaded = {
+      books: nextBooks,
+      neighborsFile,
+      corpusIndexOf: new Map(nextBooks.map((b, i) => [b.id, i])),
+      fuse: createSearchIndex(nextBooks),
+    };
+    set({
+      status: 'ready',
+      loadError: null,
+      books: nextBooks,
+      corpusIndexOf: loaded.corpusIndexOf,
+    });
+  },
+
+  failToLoad: (message) => set({ status: 'error', loadError: message }),
+
   setQuery: (q) => {
+    const fuse = loaded?.fuse;
+    if (!fuse) return;
     set({ query: q, suggestions: runSearch(fuse, q).slice(0, MAX_SUGGESTIONS) });
   },
 
@@ -167,7 +200,8 @@ export const useStore = create<AppState>((set, get) => ({
   },
 
   seedFromQuery: () => {
-    const best = get().suggestions[0] ?? runSearch(fuse, get().query)[0];
+    if (!loaded) return false;
+    const best = get().suggestions[0] ?? runSearch(loaded.fuse, get().query)[0];
     if (!best) return false;
     get().seed(best.book.id);
     return true;
