@@ -1,14 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import {
   CONE_HALF_ANGLE,
+  CROWD_RADIUS,
   EDGE_LEN,
+  MAX_DEFLECTION,
   MIN_NODE_GAP_HARD,
   SOFT_CAP,
   TIER,
+  capDirections,
   childrenAtDepth,
+  crowding,
   expandNode,
   graphBounds,
   growthAxis,
+  growthReach,
+  openGrowthAxis,
   placeChildren,
   relaxNewNodes,
   seedGraph,
@@ -81,6 +87,140 @@ describe('placeChildren', () => {
         for (const v of p) expect(Number.isFinite(v)).toBe(true);
       }
     }
+  });
+});
+
+describe('capDirections', () => {
+  it('keeps every direction inside the cap, unit length, deterministically', () => {
+    const axis: [number, number, number] = [0, 0, 1];
+    const a = capDirections(axis, 16, MAX_DEFLECTION);
+    expect(capDirections(axis, 16, MAX_DEFLECTION)).toEqual(a);
+    for (const d of a) {
+      expect(Math.hypot(d[0], d[1], d[2])).toBeCloseTo(1, 9);
+      expect(Math.acos(Math.max(-1, Math.min(1, d[2])))).toBeLessThanOrEqual(
+        MAX_DEFLECTION + 1e-9,
+      );
+    }
+  });
+});
+
+describe('crowding', () => {
+  const origin: [number, number, number] = [0, 0, 0];
+  const up: [number, number, number] = [0, 1, 0];
+
+  it('is zero when the direction is clear', () => {
+    expect(crowding(origin, up, [])).toBe(0);
+    // Beyond the radius, and behind — neither is in the way.
+    expect(crowding(origin, up, [[0, CROWD_RADIUS + 1, 0]])).toBe(0);
+    expect(crowding(origin, up, [[0, -EDGE_LEN, 0]])).toBe(0);
+  });
+
+  it('is positive when something sits ahead', () => {
+    expect(crowding(origin, up, [[0, EDGE_LEN, 0]])).toBeGreaterThan(0);
+  });
+
+  it('scores nearer and better-aligned occupancy higher', () => {
+    const near = crowding(origin, up, [[0, EDGE_LEN * 0.5, 0]]);
+    const far = crowding(origin, up, [[0, EDGE_LEN * 2, 0]]);
+    expect(near).toBeGreaterThan(far);
+
+    const ahead = crowding(origin, up, [[0, EDGE_LEN, 0]]);
+    const oblique = crowding(origin, up, [[EDGE_LEN, EDGE_LEN, 0]]);
+    expect(ahead).toBeGreaterThan(oblique);
+  });
+});
+
+describe('openGrowthAxis', () => {
+  /** A seed at the origin with one child directly above it, so the child's local
+   *  growth axis is exactly +y and its own fan has not been placed yet. */
+  const withChildAbove = (extra: Array<[number, number, number]> = []): Graph => {
+    let g = seedGraph('seed');
+    g = expandNode(g, 0, [{ bookId: 'child', weight: 1 }], 1).graph;
+    g.nodes[1]!.target = [0, EDGE_LEN, 0];
+    extra.forEach((target, i) => {
+      g.nodes.push({
+        bookId: `blocker${i}`,
+        target,
+        parentIndex: 0,
+        generation: 1,
+        expanded: false,
+        expandable: true,
+      });
+      g.indexOf.set(`blocker${i}`, g.nodes.length - 1);
+    });
+    return g;
+  };
+
+  it('leaves the local axis alone when there is nothing nearby', () => {
+    // The common case must stay bit-identical: this only acts on real conflicts,
+    // and the seed's very first fan always takes this path.
+    const g = withChildAbove();
+    expect(openGrowthAxis(g, 1)).toEqual(growthAxis(g, 1));
+    expect(openGrowthAxis(seedGraph('seed'), 0)).toEqual(growthAxis(seedGraph('seed'), 0));
+  });
+
+  it('turns away from a region another branch already occupies', () => {
+    // A wall of nodes sitting directly on the child's outward axis — exactly the
+    // case that used to fire a whole fan into an existing branch.
+    const wall: Array<[number, number, number]> = [];
+    for (let x = -1; x <= 1; x++) {
+      for (let z = -1; z <= 1; z++) {
+        wall.push([x * 2, EDGE_LEN * 2, z * 2]);
+      }
+    }
+    const g = withChildAbove(wall);
+    const base = growthAxis(g, 1);
+    const open = openGrowthAxis(g, 1);
+    const occupied = g.nodes.filter((_, i) => i !== 1).map((n) => n.target);
+
+    expect(crowding(g.nodes[1]!.target, open, occupied)).toBeLessThan(
+      crowding(g.nodes[1]!.target, base, occupied),
+    );
+
+    // But not so far that the fan stops reading as growing away from its parent.
+    const dot = base[0] * open[0] + base[1] * open[1] + base[2] * open[2];
+    expect(Math.acos(Math.max(-1, Math.min(1, dot)))).toBeLessThanOrEqual(MAX_DEFLECTION + 1e-9);
+  });
+
+  it('is deterministic', () => {
+    const g = withChildAbove([
+      [0, EDGE_LEN * 2, 0],
+      [2, EDGE_LEN * 2, 1],
+    ]);
+    expect(openGrowthAxis(g, 1)).toEqual(openGrowthAxis(g, 1));
+  });
+
+  describe('growthReach', () => {
+    it('is exactly 1 when the chosen direction is clear', () => {
+      const g = withChildAbove();
+      expect(growthReach(g, 1, growthAxis(g, 1))).toBe(1);
+    });
+
+    it('reaches further when even the best direction is still boxed in', () => {
+      // Turning is not always enough: in a dense part of the graph every
+      // direction has something in it, and a fan that cannot go around has to go
+      // past.
+      const box: Array<[number, number, number]> = [];
+      for (let x = -2; x <= 2; x++) {
+        for (let z = -2; z <= 2; z++) {
+          box.push([x * 3, EDGE_LEN * 1.6, z * 3]);
+        }
+      }
+      const g = withChildAbove(box);
+      const reach = growthReach(g, 1, openGrowthAxis(g, 1));
+      expect(reach).toBeGreaterThan(1);
+      // Bounded, or a crowded fan would fling itself off the map.
+      expect(reach).toBeLessThanOrEqual(1.5);
+    });
+
+    it('scales the whole fan, preserving the more-similar-is-nearer ordering', () => {
+      const weights = [1, 0.6, 0.2];
+      const near = placeChildren([0, 0, 0], [0, 1, 0], 3, weights, 1);
+      const far = placeChildren([0, 0, 0], [0, 1, 0], 3, weights, 1.4);
+      for (let i = 0; i < 3; i++) {
+        expect(Math.hypot(...far[i]!) / Math.hypot(...near[i]!)).toBeCloseTo(1.4, 9);
+      }
+    });
   });
 });
 
@@ -158,21 +298,23 @@ describe('expandNode', () => {
   });
 
   it('grows outward rather than folding back over the parent', () => {
+    // Stated as distance from the GRANDPARENT rather than as an angle against a
+    // recomputed axis. Two reasons: the axis a fan was placed with depends on how
+    // crowded the graph was at that moment, so recomputing it later need not give
+    // the same vector; and `openGrowthAxis` may deliberately deflect a fan by up
+    // to MAX_DEFLECTION to find room, which an angle assertion would read as
+    // regression. "Each generation lands further out than the last" is the
+    // property that actually matters, and it survives both.
     const g = grow(10);
     for (const node of g.nodes) {
       if (node.generation < 2 || node.parentIndex === null) continue;
       const parent = g.nodes[node.parentIndex]!;
       if (parent.parentIndex === null) continue;
-      const axis = growthAxis(g, node.parentIndex);
-      const d = [
-        node.target[0] - parent.target[0],
-        node.target[1] - parent.target[1],
-        node.target[2] - parent.target[2],
-      ];
-      const len = Math.hypot(d[0]!, d[1]!, d[2]!);
-      const cos = (d[0]! * axis[0] + d[1]! * axis[1] + d[2]! * axis[2]) / len;
-      // Relaxation may push a child past the nominal cone, but never behind.
-      expect(cos).toBeGreaterThan(0);
+      const grand = g.nodes[parent.parentIndex]!;
+      expect(
+        dist(node.target, grand.target),
+        `${node.bookId} folded back toward ${grand.bookId}`,
+      ).toBeGreaterThan(dist(parent.target, grand.target));
     }
   });
 
