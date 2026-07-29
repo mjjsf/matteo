@@ -78,6 +78,23 @@ export const CONE_HALF_ANGLE = (52 * Math.PI) / 180;
 /** Golden angle — distributes successive children around the axis without them
  *  lining up. */
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
+/** How far a fan may be turned off its local outward direction to find room.
+ *
+ *  Capped rather than unbounded: past roughly 45° the children stop reading as
+ *  growing away from their parent, which is a worse legibility problem than the
+ *  crowding it would be solving. */
+export const MAX_DEFLECTION = (44 * Math.PI) / 180;
+/** Only what sits within this of the expanding node can crowd it out. Beyond it
+ *  the branches are far enough apart to read as separate anyway. */
+export const CROWD_RADIUS = EDGE_LEN * 2.6;
+/** Directions sampled inside the deflection cap when looking for room. */
+const AXIS_CANDIDATES = 32;
+/** Crowding below this counts as clear, and the local axis is kept untouched. */
+const CLEAR_ENOUGH = 0.05;
+/** Price paid, in crowding units, for turning a full 90° off the local axis.
+ *  Small enough that a genuinely clearer direction wins, large enough that a
+ *  near-tie keeps the natural outward one. */
+const DEFLECTION_COST = 0.15;
 /** What relaxation AIMS for. */
 export const MIN_NODE_GAP = EDGE_LEN * 0.42;
 /** What placement GUARANTEES, via the escape pass. Tests assert this one —
@@ -155,45 +172,172 @@ export function growthAxis(graph: Graph, nodeIndex: number): [number, number, nu
   ]);
 }
 
-/** Place `count` children on a spherical cap around `origin`, oriented along
- *  `axis`, using a golden-angle spiral so they fan out evenly and deterministically.
- *  `weights` (0..1, higher = more similar) pull a child slightly closer. */
-export function placeChildren(
-  origin: [number, number, number],
+/** `count` unit directions spread over the spherical cap of half-angle
+ *  `halfAngle` around `axis`, as a golden-angle spiral.
+ *
+ *  Area-uniform, so they spread evenly rather than bunching near the axis, and
+ *  ordered by polar angle: direction 0 is nearest the axis and they fan outward
+ *  from there. Both `placeChildren` and the free-space search below want exactly
+ *  this, which is why it is one function rather than two copies of the maths. */
+export function capDirections(
   axis: [number, number, number],
   count: number,
-  weights: number[],
+  halfAngle: number,
 ): Array<[number, number, number]> {
   const a = normalise(axis);
   const { u, v } = basisFor(a);
+  const cosMax = Math.cos(halfAngle);
 
   const out: Array<[number, number, number]> = [];
-  const cosMax = Math.cos(CONE_HALF_ANGLE);
   for (let i = 0; i < count; i++) {
-    // Area-uniform over the spherical cap, so children spread evenly rather than
-    // bunching near the axis. Because the polar angle grows with i and neighbours
-    // arrive best-match-first, the MOST similar child lands dead ahead on the
-    // growth axis and relevance falls off toward the rim — the ranking is encoded
-    // in the geometry for free.
     const t = count === 1 ? 0 : (i + 0.5) / count;
     const polar = Math.acos(1 - t * (1 - cosMax));
     const azimuth = i * GOLDEN_ANGLE;
 
     const sinP = Math.sin(polar);
     const cosP = Math.cos(polar);
-    const dir: [number, number, number] = [
+    out.push([
       a[0] * cosP + (u[0] * Math.cos(azimuth) + v[0] * Math.sin(azimuth)) * sinP,
       a[1] * cosP + (u[1] * Math.cos(azimuth) + v[1] * Math.sin(azimuth)) * sinP,
       a[2] * cosP + (u[2] * Math.cos(azimuth) + v[2] * Math.sin(azimuth)) * sinP,
-    ];
-
-    // More similar books sit a little nearer, so proximity carries meaning.
-    const w = weights[i] ?? 0.5;
-    const dist = EDGE_LEN * (1.18 - 0.28 * Math.max(0, Math.min(1, w)));
-
-    out.push([origin[0] + dir[0] * dist, origin[1] + dir[1] * dist, origin[2] + dir[2] * dist]);
+    ]);
   }
   return out;
+}
+
+/** Everything a new fan could collide with, seen from the node being expanded.
+ *
+ *  Node positions, plus the MIDPOINT of every growth edge. A branch is its nodes
+ *  *and* the lines between them, and one extra point per edge approximates that
+ *  at no structural cost — without it a fan happily threads between two nodes and
+ *  straight through the edge joining them.
+ *
+ *  Cross edges are left out on purpose: they link arbitrarily distant books and
+ *  are drawn faint for exactly that reason, so counting them as occupancy would
+ *  make every direction look blocked at once. */
+function occupiedPoints(graph: Graph, nodeIndex: number): Array<[number, number, number]> {
+  const out: Array<[number, number, number]> = [];
+  for (let i = 0; i < graph.nodes.length; i++) {
+    if (i === nodeIndex) continue;
+    out.push((graph.nodes[i] as GraphNode).target);
+  }
+  for (const e of graph.edges) {
+    if (e.kind !== 'growth') continue;
+    const a = graph.nodes[e.from];
+    const b = graph.nodes[e.to];
+    if (!a || !b) continue;
+    out.push([
+      (a.target[0] + b.target[0]) / 2,
+      (a.target[1] + b.target[1]) / 2,
+      (a.target[2] + b.target[2]) / 2,
+    ]);
+  }
+  return out;
+}
+
+/** How much of the graph already sits AHEAD of `dir`, seen from `origin`.
+ *  Zero means the direction is clear; larger means more in the way. */
+export function crowding(
+  origin: [number, number, number],
+  dir: [number, number, number],
+  occupied: Array<[number, number, number]>,
+): number {
+  const d = normalise(dir);
+  let score = 0;
+  for (const q of occupied) {
+    const rx = q[0] - origin[0];
+    const ry = q[1] - origin[1];
+    const rz = q[2] - origin[2];
+    const len = Math.hypot(rx, ry, rz);
+    if (len < 1e-6 || len >= CROWD_RADIUS) continue;
+    const cos = (rx * d[0] + ry * d[1] + rz * d[2]) / len;
+    // Behind you is not in your way — which is also why a node's own parent,
+    // always directly behind by construction, contributes nothing here.
+    if (cos <= 0) continue;
+    // Linear falloff with compact support, squared alignment: a direction that
+    // merely grazes a cluster scores far below one aimed into it.
+    score += (1 - len / CROWD_RADIUS) * cos * cos;
+  }
+  return score;
+}
+
+/** The direction `expandNode` actually fans children into: the local outward
+ *  direction, turned toward whatever nearby direction has room.
+ *
+ *  `growthAxis` alone is blind to the rest of the graph, so opening a node whose
+ *  outward direction happens to point at a sibling branch fires eight children
+ *  straight into it. Relaxation then only separates them by MIN_NODE_GAP, so the
+ *  two branches end up interleaved rather than overlapping — which is what reads
+ *  as tangle, and it compounds every generation as adjacent cones converge.
+ *
+ *  Deterministic: fixed candidate set, no randomness, first index wins ties. */
+export function openGrowthAxis(graph: Graph, nodeIndex: number): [number, number, number] {
+  const base = growthAxis(graph, nodeIndex);
+  const node = graph.nodes[nodeIndex];
+  if (!node) return base;
+
+  const occupied = occupiedPoints(graph, nodeIndex);
+  const baseScore = crowding(node.target, base, occupied);
+  // Nothing in the way: keep the natural axis untouched, so this only acts where
+  // there is an actual conflict. The seed's first fan always takes this path.
+  if (baseScore <= CLEAR_ENOUGH) return base;
+
+  let best = base;
+  let bestScore = baseScore;
+  for (const c of capDirections(base, AXIS_CANDIDATES, MAX_DEFLECTION)) {
+    const dot = base[0] * c[0] + base[1] * c[1] + base[2] * c[2];
+    const score = crowding(node.target, c, occupied) + DEFLECTION_COST * (1 - dot);
+    if (score < bestScore) {
+      bestScore = score;
+      best = c;
+    }
+  }
+  return best;
+}
+
+/** How far past the crowd a boxed-in fan reaches, at full crowding. */
+const REACH_GAIN = 0.5;
+/** Crowding at which `growthReach` saturates. */
+const REACH_SATURATION = 2;
+
+/** How far a fan should reach along `axis`, as a multiple of the normal length.
+ *
+ *  Turning toward open space is not always enough — in a dense part of the graph
+ *  even the clearest direction still has something in it, and the fan lands on
+ *  top of a branch it could have cleared by growing a little further. One shared
+ *  multiplier per fan rather than per child, so the "more similar sits nearer"
+ *  ordering within the fan is untouched. */
+export function growthReach(graph: Graph, nodeIndex: number, axis: [number, number, number]): number {
+  const node = graph.nodes[nodeIndex];
+  if (!node) return 1;
+  const residual = crowding(node.target, axis, occupiedPoints(graph, nodeIndex));
+  return 1 + REACH_GAIN * Math.min(1, residual / REACH_SATURATION);
+}
+
+/** Place `count` children on a spherical cap around `origin`, oriented along
+ *  `axis`, using a golden-angle spiral so they fan out evenly and deterministically.
+ *  `weights` (0..1, higher = more similar) pull a child slightly closer.
+ *  `reach` scales the whole fan outward — see `growthReach`. */
+export function placeChildren(
+  origin: [number, number, number],
+  axis: [number, number, number],
+  count: number,
+  weights: number[],
+  reach = 1,
+): Array<[number, number, number]> {
+  // Because the polar angle grows with i and neighbours arrive best-match-first,
+  // the MOST similar child lands dead ahead on the growth axis and relevance
+  // falls off toward the rim — the ranking is encoded in the geometry for free.
+  return capDirections(axis, count, CONE_HALF_ANGLE).map((dir, i) => {
+    // More similar books sit a little nearer, so proximity carries meaning.
+    const w = weights[i] ?? 0.5;
+    const dist = EDGE_LEN * (1.18 - 0.28 * Math.max(0, Math.min(1, w))) * reach;
+    return [
+      origin[0] + dir[0] * dist,
+      origin[1] + dir[1] * dist,
+      origin[2] + dir[2] * dist,
+    ] as [number, number, number];
+  });
 }
 
 /** Push newly placed nodes apart from each other and from everything already on
@@ -342,11 +486,13 @@ export function expandNode(
     };
   }
 
+  const axis = openGrowthAxis(graph, nodeIndex);
   const placed = placeChildren(
     node.target,
-    growthAxis(graph, nodeIndex),
+    axis,
     admitted.length,
     admitted.map((c) => c.weight),
+    growthReach(graph, nodeIndex, axis),
   );
   const settled = relaxNewNodes(
     graph.nodes.map((n) => n.target),
