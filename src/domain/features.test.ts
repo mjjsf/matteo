@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildTaxonomyIndex } from '@/domain/taxonomy';
 import type { Book, TagMap, TaxonomyFile } from '@/domain/types';
-import { LAYOUT_CONFIG } from './config';
-import { buildFeatureMatrix } from './features';
+import { FEATURE_CONFIG, buildFeatureMatrix } from './features';
 
 const file: TaxonomyFile = {
   version: 1,
@@ -32,7 +31,7 @@ const corpus = [
   book('b6', ['y', 'shared'], ['Author Two']),
 ];
 
-const config = { ...LAYOUT_CONFIG, minDf: 2 };
+const config = { ...FEATURE_CONFIG, minDf: 2 };
 const fm = buildFeatureMatrix(corpus, tagMap, index, config);
 
 const columnsOf = (block: string): number[] =>

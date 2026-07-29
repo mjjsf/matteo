@@ -19,15 +19,11 @@ export default defineConfig({
           name: 'node',
           environment: 'node',
           include: [
-            'src/layout/**/*.test.ts',
             'src/domain/**/*.test.ts',
             'src/generated/**/*.test.ts',
             'scripts/**/*.test.ts',
-            // Pure buffer logic with no DOM dependency, and it reads the
-            // authored corpus from disk.
-            'src/state/selectors.test.ts',
-            // Pure geometry, no WebGL involved.
-            'src/scene/searchTreeLayout.test.ts',
+            // Pure decision logic with no WebGL and no DOM involved.
+            'src/scene/motion.test.ts',
           ],
         },
       },
@@ -37,10 +33,6 @@ export default defineConfig({
           name: 'dom',
           environment: 'happy-dom',
           include: ['src/ui/**/*.test.ts?(x)', 'src/state/**/*.test.ts?(x)'],
-          // Runs in the node project instead: it reads the authored corpus from
-          // disk, and happy-dom gives `import.meta.url` an http:// scheme,
-          // which file-system helpers cannot resolve.
-          exclude: ['src/state/selectors.test.ts'],
         },
       },
     ],

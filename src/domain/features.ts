@@ -1,6 +1,30 @@
-import type { Book, TagMap, TaxonomyIndex } from '@/domain/types';
-import { nodesWithAncestorsForBook } from '@/domain/taxonomy';
-import type { LayoutConfig } from './config';
+import type { Book, TagMap, TaxonomyIndex } from './types';
+import { nodesWithAncestorsForBook } from './taxonomy';
+
+export interface FeatureConfig {
+  /** Tags/authors appearing in fewer than this many books are dropped.
+   *  A feature on exactly one book cannot make two books similar, yet IDF gives
+   *  it the highest weight — so hapax features dominate their book's vector and
+   *  make it look uniquely similar to nothing. Pruning matters more than any
+   *  other knob here. */
+  minDf: number;
+  /** Relative weight of the author block. 0.4 makes same-author books
+   *  noticeably similar without letting a prolific author crowd out every
+   *  subject relationship — wrong for a *subject* discovery tool. */
+  authorWeight: number;
+  /** Relative weight of the taxonomy-ancestor block. Without it, two books
+   *  sharing no exact tag but sitting in the same corner of the taxonomy would
+   *  score zero against each other. */
+  taxonomyWeight: number;
+}
+
+/** Part of the neighbours artifact's input hash, so changing any of these forces
+ *  a re-bake rather than silently shipping stale neighbours. */
+export const FEATURE_CONFIG: FeatureConfig = {
+  minDf: 2,
+  authorWeight: 0.4,
+  taxonomyWeight: 0.55,
+};
 
 export interface FeatureMeta {
   block: 'subject' | 'author' | 'taxonomy';
@@ -65,7 +89,7 @@ export function buildFeatureMatrix(
   books: Book[],
   tagMap: TagMap,
   index: TaxonomyIndex,
-  config: LayoutConfig,
+  config: FeatureConfig,
 ): FeatureMatrix {
   const subjectDocs = books.map((b) => b.subjects);
   const authorDocs = books.map((b) => b.authors);

@@ -71,32 +71,12 @@ canvas {
   padding: 16px;
 }
 
-.panel--search {
-  top: 20px;
-  left: 20px;
-  width: 320px;
-  max-height: calc(100vh - 96px);
-  overflow-y: auto;
-}
-
 .panel--detail {
   top: 20px;
   right: 20px;
   width: 360px;
   max-height: calc(100vh - 96px);
   overflow-y: auto;
-}
-
-.panel__heading {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin: 18px 0 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
 }
 
 .panel__close {
@@ -111,72 +91,213 @@ canvas {
 }
 
 .brand {
-  margin: 0 0 14px;
+  margin: 0;
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+}
+
+/* --- landing (zero state) --- */
+
+.app--empty {
   display: flex;
   flex-direction: column;
 }
 
-.brand__sub {
-  font-size: 0.75rem;
+.landing {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  /* Nudged above centre: a block that grows downward as suggestions appear
+     stays put this way, instead of the input sliding under the cursor while
+     someone is still typing into it. */
+  align-content: center;
+  padding-bottom: 12vh;
+}
+
+.landing__inner {
+  width: min(560px, 100%);
+}
+
+.landing__brand {
+  margin: 0 0 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.landing__sub {
+  font-size: 0.95rem;
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   letter-spacing: 0;
 }
 
-/* --- search field --- */
-
-.field label {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-bottom: 6px;
+.landing__form {
+  display: flex;
+  gap: 8px;
 }
 
-.field input {
-  width: 100%;
-  padding: 9px 11px;
+.landing__form input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-primary);
   background: var(--surface);
   border: 1px solid var(--hairline);
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-.field input:focus-visible,
+.landing__form button {
+  padding: 0 20px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: var(--same-author);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.landing__form button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.landing__hint {
+  margin: 12px 2px 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.landing__suggestions {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 6px;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.suggestion--active {
+  background: color-mix(in srgb, var(--same-author) 12%, transparent);
+  border-color: color-mix(in srgb, var(--same-author) 30%, transparent);
+}
+
+.suggestion__title {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.suggestion__meta {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+input:focus-visible,
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
-.field__hint,
-.results__more,
-.results__empty {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin: 8px 0 0;
-  line-height: 1.45;
+/* --- explore panel --- */
+
+.panel--explore {
+  top: 20px;
+  left: 20px;
+  width: 330px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
 }
 
-/* --- results --- */
+.panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
 
-.results {
+.panel__reset {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.74rem;
+  color: var(--same-author);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.explore__seed {
+  margin: 10px 0 2px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.explore__count {
+  margin: 0 0 10px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.explore__notice {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  background: color-mix(in srgb, var(--same-subject) 16%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--same-subject) 40%, transparent);
+}
+
+/* --- graph outline (the DOM mirror of the map) --- */
+
+.outline ul {
   list-style: none;
-  margin: 10px 0 0;
+  margin: 0;
   padding: 0;
 }
 
-.result {
+.outline__row {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.outline__book {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  width: 100%;
+  gap: 1px;
   text-align: left;
-  padding: 7px 9px;
+  padding: 5px 8px;
   background: none;
   border: 1px solid transparent;
   border-radius: 7px;
@@ -185,82 +306,47 @@ a:focus-visible {
   font: inherit;
 }
 
-.result:hover,
-.result--focused {
+.outline__book:hover {
   background: color-mix(in srgb, var(--same-author) 10%, transparent);
-  border-color: color-mix(in srgb, var(--same-author) 26%, transparent);
 }
 
-.result--selected {
+.outline__book--selected {
   background: color-mix(in srgb, var(--same-author) 16%, transparent);
   border-color: var(--same-author);
 }
 
-.result__title {
-  font-size: 0.85rem;
+.outline__title {
+  font-size: 0.82rem;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.result__meta {
-  font-size: 0.72rem;
+.outline__meta {
+  font-size: 0.68rem;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* --- tag tree outline --- */
-
-.tree,
-.tree ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.tree ul {
-  margin-left: 12px;
-  border-left: 1px solid var(--hairline);
-  padding-left: 8px;
-}
-
-.tree__node {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  width: 100%;
-  padding: 4px 7px;
+.outline__grow {
+  flex: none;
+  width: 26px;
   background: none;
-  border: 1px solid transparent;
-  border-radius: 6px;
+  border: 1px solid var(--hairline);
+  border-radius: 7px;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1;
   cursor: pointer;
-  color: inherit;
-  font: inherit;
-  font-size: 0.78rem;
 }
 
-.tree__node:hover {
-  background: color-mix(in srgb, var(--same-subject) 12%, transparent);
-}
-
-.tree__node--active {
-  border-color: var(--same-subject);
-  background: color-mix(in srgb, var(--same-subject) 16%, transparent);
-}
-
-.tree__count {
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.link-button {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  font-size: 0.7rem;
-  text-transform: none;
-  letter-spacing: 0;
+.outline__grow:hover {
+  border-color: var(--same-author);
   color: var(--same-author);
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 /* --- detail --- */
@@ -307,25 +393,42 @@ a:focus-visible {
 }
 
 .chip {
-  font: inherit;
   font-size: 0.72rem;
   padding: 3px 8px;
   border-radius: 999px;
   border: 1px solid var(--hairline);
-  background: none;
   color: var(--text-secondary);
-  cursor: pointer;
-}
-
-.chip:hover {
-  border-color: var(--same-subject);
-  color: var(--text-primary);
 }
 
 .detail__isbn {
   font-size: 0.72rem;
   color: var(--text-muted);
   margin: 14px 0 0;
+}
+
+.detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.detail__grow,
+.detail__reseed {
+  font: inherit;
+  font-size: 0.78rem;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--hairline);
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.detail__grow:hover,
+.detail__reseed:hover {
+  border-color: var(--same-author);
+  color: var(--same-author);
 }
 
 .buy {
@@ -383,81 +486,82 @@ a:focus-visible {
 .tooltip__meta {
   font-size: 0.7rem;
   color: var(--text-muted);
+  margin-bottom: 5px;
 }
 
-/* --- 3D tag-tree labels (HTML overlay, not troika text) --- */
+.tooltip__desc {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  /* Clamped rather than shown in full: a card that changes height as the
+     cursor moves is unreadable, and the detail panel has the whole text. */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
-.tree-labels {
+.tooltip__hint {
+  margin-top: 6px;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- node titles (HTML overlay, not troika text) --- */
+
+.node-labels {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
 }
 
-.tree-label {
+.node-label {
   position: absolute;
   top: 0;
   left: 0;
-  pointer-events: auto;
   transform: translate3d(-9999px, -9999px, 0);
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
+  max-width: 190px;
   white-space: nowrap;
-  font: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: color-mix(in srgb, var(--surface) 82%, transparent);
-  border: 1px solid var(--hairline);
-  border-radius: 6px;
-  padding: 2px 7px;
-  margin-bottom: 6px;
-  cursor: pointer;
+  /* A translucent plate rather than a solid one: the point underneath must
+     stay visible, or a label reads as a mark in its own right. */
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border-radius: 5px;
+  padding: 1px 5px;
 }
 
-.tree-label--root {
-  font-size: 0.8rem;
+.node-label--focus {
+  color: var(--text-primary);
   font-weight: 600;
-  color: var(--text-primary);
-}
-
-.tree-label--active {
-  border-color: var(--same-subject);
-  color: var(--text-primary);
-  background: color-mix(in srgb, var(--same-subject) 16%, var(--surface));
-}
-
-.tree-label__count {
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-  font-weight: 400;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid var(--hairline);
 }
 
 /* --- legend --- */
 
 .legend {
   position: absolute;
-  bottom: 56px;
-  left: 20px;
+  bottom: 40px;
+  /* Centred rather than bottom-left: the explore panel can grow to nearly the
+     full window height, and at that point a bottom-left legend is simply hidden
+     behind it. */
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.72rem;
   color: var(--text-secondary);
   background: var(--panel);
   border: 1px solid var(--hairline);
   border-radius: 10px;
   padding: 10px 12px;
-  opacity: 0.75;
-  transition: opacity 150ms ease;
-}
-
-.legend--active {
-  opacity: 1;
-}
-
-.legend__title {
-  margin: 0 0 6px;
-  font-size: 0.68rem;
-  color: var(--text-muted);
+  opacity: 0.9;
 }
 
 .legend ul {
@@ -465,8 +569,8 @@ a:focus-visible {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 4px 16px;
 }
 
 .legend li {
@@ -488,37 +592,7 @@ a:focus-visible {
   flex: none;
 }
 
-.swatch--size {
-  width: 13px;
-  height: 13px;
-}
-
 /* --- misc --- */
-
-.filter-chip {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--panel);
-  border: 1px solid var(--same-subject);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 0.78rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.filter-chip button {
-  background: none;
-  border: none;
-  color: var(--same-author);
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.72rem;
-}
 
 .footer {
   position: absolute;
@@ -587,8 +661,20 @@ a:focus-visible {
   padding: 0 16px 40px;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 860px) {
-  .panel--search,
+  .panel--explore,
   .panel--detail {
     width: calc(100vw - 40px);
     max-height: 44vh;

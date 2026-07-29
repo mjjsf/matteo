@@ -4,19 +4,14 @@ import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { useStore } from '@/state/store';
+import { EDGE_LEN } from '@/domain/graph';
+import { prefersReducedMotion } from './motion';
 
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
 }
 
 const FLY_MS = 800;
-
-export function prefersReducedMotion(): boolean {
-  return (
-    typeof window !== 'undefined' &&
-    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
-  );
-}
 
 /** Orbit controls plus a camera fly-to.
  *
@@ -25,8 +20,12 @@ export function prefersReducedMotion(): boolean {
  *      to.position = target + normalize(camera.position - target) * distance
  *  That preserves the user's orientation and changes only the framing, which is
  *  what keeps the move from being disorienting. A fixed offset would swing the
- *  camera to an arbitrary side on every selection. */
-export function CameraRig({ radius }: { radius: number }): React.ReactElement {
+ *  camera to an arbitrary side on every expansion — and expansions happen
+ *  constantly here, so that would be unusable.
+ *
+ *  Distance limits derive from `EDGE_LEN` rather than a cloud radius: there is no
+ *  fixed cloud any more, and a graph the user grows can end up any size. */
+export function CameraRig(): React.ReactElement {
   const controlsRef = useRef<OrbitControlsImpl>(null);
   const { camera } = useThree();
   const flyTarget = useStore((s) => s.flyTarget);
@@ -38,8 +37,6 @@ export function CameraRig({ radius }: { radius: number }): React.ReactElement {
     toTarget: THREE.Vector3;
     start: number;
   } | null>(null);
-
-  const userInteracted = useRef(false);
 
   useEffect(() => {
     const controls = controlsRef.current;
@@ -73,7 +70,6 @@ export function CameraRig({ radius }: { radius: number }): React.ReactElement {
   useEffect(() => {
     const cancel = (): void => {
       anim.current = null;
-      userInteracted.current = true;
     };
     window.addEventListener('pointerdown', cancel);
     window.addEventListener('wheel', cancel, { passive: true });
@@ -104,12 +100,8 @@ export function CameraRig({ radius }: { radius: number }): React.ReactElement {
       enableDamping
       dampingFactor={0.08}
       enablePan
-      minDistance={radius * 0.05}
-      maxDistance={radius * 6}
-      // Gentle drift on load to convey depth, stopped for good on first
-      // interaction and disabled entirely under reduced-motion.
-      autoRotate={!prefersReducedMotion() && !userInteracted.current}
-      autoRotateSpeed={0.25}
+      minDistance={EDGE_LEN * 0.4}
+      maxDistance={EDGE_LEN * 40}
       makeDefault
     />
   );

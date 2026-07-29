@@ -1,49 +1,39 @@
 import { useStore } from '@/state/store';
-import { SearchPanel } from './SearchPanel';
+import { Landing } from './Landing';
+import { ExplorePanel } from './ExplorePanel';
 import { DetailPanel } from './DetailPanel';
 import { Footer } from './Footer';
-import { formatYear } from './ResultList';
 
 /** Fallback when WebGL2 is unavailable.
  *
- *  Not a stub: the search, tree, and detail panels are already independent of the
- *  canvas, so this is the same application at full width, plus a browsable list
- *  of the whole corpus in place of the map. */
+ *  Not a stub, and not a different app: the landing input, the graph outline and
+ *  the detail panel are all independent of the canvas and drive the same store,
+ *  so this is the same exploration at full width with the map left out. Growing
+ *  the graph, opening books and buying them all still work. */
 export function ListOnlyApp(): React.ReactElement {
-  const books = useStore((s) => s.books);
-  const query = useStore((s) => s.query);
-  const select = useStore((s) => s.select);
-  const selectedId = useStore((s) => s.selectedId);
+  const phase = useStore((s) => s.phase);
+
+  if (phase === 'empty') {
+    return (
+      <div className="app app--list-only">
+        <p className="notice">
+          Your browser does not support WebGL2, so the 3D map is unavailable. Everything else works
+          — you can still explore books by similarity as a list.
+        </p>
+        <Landing />
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="app app--list-only">
       <p className="notice">
-        Your browser does not support WebGL2, so the 3D map is unavailable. Everything else works —
-        search, subject filtering, and book details.
+        Your browser does not support WebGL2, so the 3D map is unavailable. The list below is the
+        same set of books, in the same order.
       </p>
       <div className="list-only__body">
-        <SearchPanel />
-        {query.trim().length < 2 && (
-          <section className="panel" aria-label="All books">
-            <h2 className="panel__heading">All books</h2>
-            <ul className="results">
-              {books.map((book) => (
-                <li key={book.id}>
-                  <button
-                    type="button"
-                    className={book.id === selectedId ? 'result result--selected' : 'result'}
-                    onClick={() => select(book.id)}
-                  >
-                    <span className="result__title">{book.title}</span>
-                    <span className="result__meta">
-                      {book.authors.join(', ')} · {formatYear(book.year)}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        <ExplorePanel />
         <DetailPanel />
       </div>
       <Footer />

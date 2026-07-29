@@ -7,10 +7,11 @@ import { useUrlSync } from '@/state/urlHash';
 import { useGlobalKeys } from '@/state/keyboard';
 import { Scene } from '@/scene/Scene';
 import { WebGLGuard } from '@/scene/WebGLGuard';
-import { SearchPanel } from '@/ui/SearchPanel';
+import { Landing } from '@/ui/Landing';
+import { ExplorePanel } from '@/ui/ExplorePanel';
 import { DetailPanel } from '@/ui/DetailPanel';
 import { BookTooltip } from '@/ui/BookTooltip';
-import { TreeLabels } from '@/ui/TreeLabels';
+import { NodeLabels } from '@/ui/NodeLabels';
 import { Legend } from '@/ui/Legend';
 import { Footer } from '@/ui/Footer';
 import { ListOnlyApp } from '@/ui/ListOnlyApp';
@@ -30,7 +31,7 @@ function useTheme(): ThemeColors {
   return dark ? DARK : LIGHT;
 }
 
-/** Publishes the R3F camera so the HTML tooltip can project world positions to
+/** Publishes the R3F camera so the HTML overlays can project world positions to
  *  screen space without living inside the Canvas. */
 function CameraPublisher({
   cameraRef,
@@ -47,8 +48,8 @@ function CameraPublisher({
 export function App(): React.ReactElement {
   const theme = useTheme();
   const cameraRef = useRef<THREE.Camera | null>(null);
-  const activeBranchId = useStore((s) => s.activeBranchId);
-  const taxonomy = useStore((s) => s.taxonomy);
+  const pointsRef = useRef<THREE.Points | null>(null);
+  const phase = useStore((s) => s.phase);
 
   useUrlSync();
   useGlobalKeys();
@@ -60,37 +61,31 @@ export function App(): React.ReactElement {
 
   return (
     <WebGLGuard fallback={<ListOnlyApp />}>
-      <div className="app">
-        <a className="skip-link" href="#book-search">
-          Skip to search
-        </a>
-
-        <div className="stage">
-          <Scene theme={theme}>
-            <CameraPublisher cameraRef={cameraRef} />
-          </Scene>
-          <TreeLabels cameraRef={cameraRef} />
-          <BookTooltip cameraRef={cameraRef} />
-          <Legend theme={theme} />
-          {activeBranchId && (
-            <div className="filter-chip" role="status">
-              Filtered to{' '}
-              <strong>{taxonomy.byId.get(activeBranchId)?.label ?? activeBranchId}</strong>
-              <button
-                type="button"
-                onClick={() => useStore.getState().setActiveBranch(null)}
-                aria-label="Clear subject filter"
-              >
-                clear
-              </button>
-            </div>
-          )}
+      {phase === 'empty' ? (
+        <div className="app app--empty">
+          <Landing />
+          <Footer />
         </div>
+      ) : (
+        <div className="app">
+          <a className="skip-link" href="#explore-heading">
+            Skip to the book list
+          </a>
 
-        <SearchPanel />
-        <DetailPanel />
-        <Footer />
-      </div>
+          <div className="stage">
+            <Scene theme={theme} pointsRef={pointsRef}>
+              <CameraPublisher cameraRef={cameraRef} />
+            </Scene>
+            <NodeLabels cameraRef={cameraRef} pointsRef={pointsRef} />
+            <BookTooltip cameraRef={cameraRef} pointsRef={pointsRef} />
+            <Legend theme={theme} />
+          </div>
+
+          <ExplorePanel />
+          <DetailPanel />
+          <Footer />
+        </div>
+      )}
     </WebGLGuard>
   );
 }

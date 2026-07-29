@@ -1,23 +1,28 @@
 # matteo
 
-A searchable book discovery tool. Books are points on a white field in 3D,
-positioned so that shared subjects and authors become visible spatial structure.
-Searching grows a navigable tree of tags in the same space; hovering a point
-lights up its relatives; clicking one opens a description and an Amazon link.
+A book discovery tool. You name one book; it appears alone on a white field in 3D
+and immediately branches to the books most similar to it, labelled with their
+titles. Hovering shows a description. Clicking any book grows a further
+generation from *that* book, and so on — you explore by walking outward, rather
+than by filtering a fixed cloud.
 
 ```bash
 npm install
-npm run layout   # bake the 3D coordinates (committed already; only needed after editing data/)
+npm run neighbors   # bake the similar-books table (committed; only needed after editing data/)
 npm run dev
 ```
 
 ## How it works
 
-**Positions are baked at build time**, not computed in the browser. `npm run
-layout` reads `data/`, builds a book × feature matrix, reduces it to 3D, and
-writes `src/generated/layout.json`. The app just loads coordinates, so first
-paint is instant and every viewer sees an identical layout. A test fails if the
-committed layout goes stale relative to the data.
+The app opens **empty**, with one centred input. There is nothing useful to show
+before we know where someone wants to start, and any pre-populated cloud would be
+arbitrary. Typing offers matches; choosing one seeds the graph and expands it once
+straight away, because a lone point is not a map.
+
+**Similarity is baked at build time**, not computed in the browser. `npm run
+neighbors` reads `data/`, builds a book × feature matrix, and writes each book's
+top-16 most similar books to `src/generated/neighbors.json`. A test fails if the
+committed table goes stale relative to the data.
 
 The feature matrix is three separately L2-normalised blocks, concatenated with
 weights:
@@ -26,35 +31,41 @@ weights:
 |---|---|---|
 | Subjects | 1.0 | IDF per tag — **not** TF-IDF; a tag occurs at most once per book, so there is no term-frequency term |
 | Authors | 0.4 | Enough that an author's books sit near each other, not enough to form isolated author pods that outrank subject structure |
-| Taxonomy ancestors | 0.55 | Makes the layout partly agree with the tag tree, which is what makes the tree's positions meaningful |
+| Taxonomy ancestors | 0.55 | Lets two books with no tag in common still score against each other when they sit in the same corner of the tree |
 
 Tags appearing in only one book are pruned. Such a tag cannot make two books
 similar, yet IDF gives it the *highest* weight — so it would dominate its book's
-vector and fling it to the edge.
+vector and make it look uniquely similar to nothing.
 
-Then: PCA to 30 dimensions → UMAP seeded from the PCA result → a gentle pull
-toward each book's top-level branch → separation of coincident points → scale to
-a fixed radius. `LAYOUT_CONFIG.strategy` switches between `pca3`, `umap`, and
-`hybrid` (the default) so they can be compared.
+Because each block is L2-normalised **before** weighting, a plain dot product
+between two rows is already a valid, comparable similarity — no renormalisation.
+The top-K search is a **sparse inverted index**, not a dense all-pairs cosine:
+rows average ~12 non-zeros, so dense would be N² × D multiply-adds and minutes of
+build time at the target corpus size.
 
-**Why hybrid.** Pure PCA is honest but flat. Pure UMAP looks crisper but its
-global arrangement is seed noise — with sparse tags, hundreds of book pairs share
-no tags at all, so their distances tie and the tie-breaking decides the shape.
-That produces convincing-looking clusters that mean nothing, which is worse than
-a boring layout. Seeding UMAP from PCA keeps local neighbourhoods while making
-the global shape reproducible.
+Neighbour lists are **variable length**, floored at a similarity of 0.1. Padding
+every list to K with weak matches is exactly how a graph fills with nonsense —
+two books sharing only a top-level branch score above zero, so without the floor
+a sparsely-tagged seed would branch to eight arbitrary books that merely happen
+to be Fiction.
 
-Run `npx vite-node scripts/compare-layouts.ts` to measure the alternatives. It
-reports neighbourhood purity (of each book's 10 nearest neighbours, how many
-share its branch) against a random baseline of ~13.5%, plus spread metrics that
-catch over-collapse.
+### Growing the graph
 
-**The attraction strength compounds.** Total pull is
-`1 - (1 - gamma)^iterations`, not `gamma`. At `gamma 0.12` over 40 iterations
-that is a 99.4% pull, which collapses each branch to a single point and yields a
-meaningless 100% purity. The default `0.015` gives ~81% purity while branches
-keep about half the cloud's spread. The table in `src/layout/config.ts` records
-the measurements.
+The seed sits at the origin. When a book is expanded, its children are placed on
+a spherical cap around it, on an axis pointing *away* from its own parent so
+growth heads outward instead of folding back. Children are distributed by a
+golden-angle spiral on an area-uniform cap, and more-similar children sit
+slightly closer.
+
+**Already-placed books never move.** Overlap is resolved by a relaxation that
+adjusts only the newly added nodes and treats everything already on screen as
+fixed. This is the property that keeps expansion from disorienting the reader,
+and a test asserts it bit-identically — if anyone "improves" the relaxation into
+a global one, that test fails on purpose.
+
+At 220 books the graph **stops and says so**, offering to start a new map from any
+book on screen. Losing an exploration someone spent a dozen clicks building, in
+order to make room, is worse than telling them the wall exists.
 
 ## Colour
 
@@ -70,28 +81,23 @@ applies. Running the checks over candidate palettes established that:
   measures ΔE 1.9 under deuteranopia — indistinguishable. macOS labels are chips
   beside text, never marks identified by colour alone.
 
-So the palette is spent on the handful of points related to whatever is under the
-cursor:
+So the palette is spent on the one distinction a reader cannot otherwise
+recover — whether a book can still be opened:
 
 | Role | Light | Dark |
 |---|---|---|
-| Hovered / selected | `#0b0b0b` | `#ffffff` |
-| Same author | `#2A7BF6` (macOS blue) | `#2A7BF6` |
-| Same subject | `#F7821B` (macOS orange) | `#e26f00` |
-| Shares a tag | *no hue* — larger point + ring | same |
-| At rest | `#898781` | `#898781` |
+| Where you started | `#0b0b0b` | `#ffffff` |
+| Can be grown | `#2A7BF6` (macOS blue), bright centre | `#2A7BF6` |
+| Already grown | `#F7821B` (macOS orange) | `#e26f00` |
+| No further matches | `#898781`, faded | `#898781` |
 
 Blue and orange measure CVD ΔE 32.0 light / 31.0 dark against gates of 8 and 15.
 Light-mode orange sits at 2.57:1 against white, which is permitted only because
-the app ships the required relief channel: the DOM result list and an
-always-visible label on the hovered point. Those are load-bearing — don't remove
-them. `src/domain/palette.ts` has the commands to re-validate, and a test pins
-the hexes so an edit breaks CI rather than shipping silently.
-
-There is deliberately no third relation hue, because no safe third macOS hue
-exists. Relation colour also survives dimming during a search, so hovering a
-result reveals relatives the query filtered out — that is the discovery the tool
-is for.
+the app ships the required relief channel: the always-visible legend, the book
+titles drawn beside their nodes, and the DOM outline of the whole graph beside
+the map. Those are load-bearing — don't remove them. `src/domain/palette.ts` has
+the commands to re-validate, and a test pins the hexes so an edit breaks CI
+rather than shipping silently.
 
 ## Amazon links, and the absence of Prime
 
@@ -105,13 +111,24 @@ VITE_AMAZON_ASSOCIATE_TAG=yourtag-20
 in a `.env.local` (git-ignored, so it is documented here rather than committed).
 Without it, links simply carry no tag.
 
-**There is no Prime badge, and no shipping claim.** Prime eligibility is only
-obtainable through Amazon's Product Advertising API, which requires an approved
-Associates account and secret-key request signing that cannot happen in a
-browser. Displaying "ships with Prime" without verifying it would be inventing
-facts about a real product, so the UI says nothing about shipping and lets
-Amazon's own page report it. Adding it for real means PA-API credentials plus a
-small serverless signing endpoint.
+**There is no Prime badge of our own.** Prime eligibility is only obtainable
+through Amazon's Product Advertising API, which requires an approved Associates
+account and secret-key request signing that cannot happen in a browser.
+Displaying "ships with Prime" without verifying it would be inventing facts about
+a real product.
+
+What the app does instead is hand Amazon a search URL carrying its **own
+Prime-eligible refinement**, and let Amazon's page report what it finds. The link
+is labelled by what it *asks for* — "opens an Amazon search filtered to
+Prime-eligible results" — never by what a given book ships with.
+
+The refinement id is **unverified from the environment this was built in**:
+`amazon.com` is blocked there, so it could not be exercised against the live site,
+and it is marketplace-specific (the value in `src/domain/amazon.ts` is for the US
+store). It is chosen to fail safe — an unrecognised `rh` refinement makes Amazon
+return the ordinary unfiltered results, and since nothing on our side claims
+eligibility, a silently ignored refinement cannot become a false claim. Doing it
+properly still means PA-API credentials plus a small serverless signing endpoint.
 
 The seed corpus also carries **no fabricated ISBNs**. A checksum-valid but
 incorrect ISBN would deep-link to the wrong book, which is worse than no link, so
@@ -127,16 +144,23 @@ data/tagMap.json       raw subject tag -> taxonomy node(s)
 data/corpus/*.json     361 hand-authored books, one file per branch
 ```
 
+**The corpus is small and skews old**: median publication year 1979, only 28% from
+2000 onward, and no vocabulary at all for romance or young-adult. It is a
+literary/academic canon rather than "what people most read", which is the honest
+limit on recommendation quality right now — some seeds have thin or odd
+neighbours simply because there is nothing near them. Descriptions are real
+summaries of real books, and are not generated to pad the count.
+
 The vocabulary is defined before the corpus on purpose, and a test rejects any
 subject tag not in `tagMap.json`. Inconsistent tags (`dystopia` vs `dystopian`)
-would quietly degrade the layout and nothing else would catch it.
+would quietly degrade the similarity table and nothing else would catch it.
 
 ### Growing the corpus
 
 ```bash
 npm run fetch -- --subject science_fiction --subject philosophy --limit 200
 npm run corpus:merge
-npm run layout
+npm run neighbors
 npm test
 ```
 
@@ -151,31 +175,48 @@ cannot destroy hand-written work.
 
 ## Accessibility
 
-The canvas is a visualisation *of* the app, not the app. Every function is
-reachable through real DOM: a labelled search input, results as a focusable list,
-the tag tree as a nested list, and a live-region detail panel. The list drives
-the scene, so keyboard and pointer users take the same code path. `Escape`
-unwinds one level per press (selection → branch filter → query) rather than
-clearing everything at once. Without WebGL2 the app falls back to the same
-panels at full width.
+The canvas is a visualisation *of* the app, not the app. The graph has a **DOM
+mirror**: a depth-ordered list where every book is a real button, with a second
+button that grows from it exactly as clicking the node does. Keyboard and screen
+reader users walk the identical graph, not a reduced version of it — verified by
+growing a map from 9 to 17 books with no mouse.
+
+It is deliberately a plain list rather than `role="tree"`: a tree item may not
+contain its own interactive controls, and each row needs two. Depth is announced
+as text instead, which every screen reader handles with no custom keyboard model
+to learn.
+
+`Escape` unwinds one level per press (notice → selection → the whole map) rather
+than clearing everything at once. Under `prefers-reduced-motion` nodes appear at
+their final positions instead of easing outward. Without WebGL2 the app falls
+back to the same panels at full width, and everything except the map still
+works.
 
 ## Layout of the code
 
 ```
 src/domain/    pure logic: taxonomy, search, ISBN, Amazon, palette
-src/layout/    the embedding pipeline (build-time only, never bundled)
 src/state/     zustand store, URL hash routing, buffer selectors
 src/scene/     three.js / react-three-fiber rendering
 src/ui/        React panels and HTML overlays
-src/generated/ machine-written, committed: corpus.json + layout.json
+src/generated/ machine-written, committed: corpus.json + neighbors.json
 ```
 
-The point cloud is one `THREE.Points` with a custom shader — a single draw call,
-with hover and filter state delivered through two mutable buffer attributes.
-Hovering causes zero React renders inside the canvas; routing it through
-component state is what makes this kind of scene feel laggy. Picking is a
+The nodes are one `THREE.Points`, allocated **once** at full capacity and drawn
+via `setDrawRange` — the geometry is never rebuilt, because a graph that grows on
+every click cannot afford to. Edges are a single `LineSegments` over a
+preallocated buffer. Both are driven by `useStore.subscribe` and `useFrame`, so
+hovering and growing cause **zero React renders inside the canvas**; routing that
+through component state is what makes this kind of scene feel laggy. Picking is a
 throttled raycast on a ref rather than R3F's pointer events, which raycast the
 whole scene on every native event.
+
+Two subtleties worth keeping. The vertex index **is** the graph slot, never a
+corpus index — a branded `Slot` type keeps the two from being confused, since
+they coincide only when the scene shows every book in corpus order. And the
+bounding sphere is assigned manually on every change: three's `Points.raycast`
+computes it only when it is `null`, so a graph growing past a stale sphere would
+silently stop being hoverable, with no visual symptom at all.
 
 Labels are HTML overlays rather than 3D text. drei's `<Text>` fetches font data
 from a CDN at runtime, which this app must not do — it has to work with no
@@ -189,7 +230,7 @@ network access at all.
 | `npm run build` | typecheck + production build |
 | `npm test` | vitest (pure logic in node, panels in happy-dom) |
 | `npm run typecheck` | tsc only |
-| `npm run layout` | re-bake `src/generated/` |
+| `npm run neighbors` | re-bake `src/generated/` |
 | `npm run fetch` | pull more books from Open Library (unverified — see above) |
 | `npm run corpus:merge` | combine authored + fetched |
 
