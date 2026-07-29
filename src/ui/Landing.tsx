@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useStore } from '@/state/store';
 import { MIN_QUERY_LENGTH } from '@/domain/search';
 import { formatYear } from './format';
+import { preloadMapStage } from './lazyMapStage';
 
 /** The zero state: one centred question, nothing else.
  *
@@ -79,7 +80,12 @@ export function Landing(): React.ReactElement {
             aria-controls="seed-suggestions"
             aria-activedescendant={chosen ? `seed-option-${active}` : undefined}
             onKeyDown={onKeyDown}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              // Warm the 3D chunk on the first keystroke. By the time a book is
+              // chosen the renderer has almost always arrived.
+              preloadMapStage();
+              setQuery(e.target.value);
+            }}
           />
           <button type="submit" disabled={!chosen}>
             Start

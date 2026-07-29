@@ -268,13 +268,35 @@ works.
 
 ## Scaling past this corpus
 
-The two baked artifacts are **fetched at runtime**, not bundled — `?url` imports
-in `src/state/corpusData.ts`. That is deliberate and load-bearing for growth: at
-1016 books they are 550KB, and importing them directly put all of it in the JS
-bundle, to be parsed before anything rendered. Fetched instead, the code bundle
-stays flat as the corpus grows, the browser's JSON parser beats evaluating an
-equivalent object literal, and a code change no longer invalidates the cached
-corpus. Both requests are same-origin; the app still makes no external calls.
+Two things keep the first screen small, and both matter more as the corpus grows.
+
+**The baked artifacts are fetched, not bundled** — `?url` imports in
+`src/state/corpusData.ts`. At 1016 books they are 550KB, and importing them
+directly put all of it in the JS bundle to be parsed before anything rendered.
+Fetched instead, the code bundle stays flat as the corpus grows, the browser's
+JSON parser beats evaluating an equivalent object literal, and a code change no
+longer invalidates the cached corpus. Both requests are same-origin; the app
+still makes no external calls.
+
+**three.js is in its own chunk.** The app always opens on the landing screen —
+one input box, no 3D — yet the renderer sat in the main bundle. Everything that
+touches `three` now lives behind `src/ui/MapStage.tsx`, imported dynamically by
+`src/ui/lazyMapStage.ts`:
+
+| | main chunk | on demand |
+|---|---|---|
+| before | 1,150 KB (320 KB gz) | — |
+| after | **240 KB (78 KB gz)** | 912 KB (244 KB gz) |
+
+The chunk is preloaded on the first keystroke in the landing input, so it has
+usually arrived by the time a book is chosen. A cold deep link with no keystroke
+still works — Suspense covers it, and the fallback is an empty stage rather than
+a spinner because the panels beside it are already populated and usable.
+
+That boundary is easy to break silently: a single static import of `three` or
+`@react-three/*` from the main side puts it all back while everything still
+compiles and runs. `lazyMapStage.ts` exists so there is one line to get wrong
+rather than two files to keep in agreement.
 
 The taxonomy is a **build-time concern only**. It used to be indexed at startup
 — `populateMembers` over every book — and then read by nothing. That is 30KB and
