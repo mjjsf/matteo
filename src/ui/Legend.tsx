@@ -24,9 +24,9 @@ function colorFor(tier: Tier, theme: ThemeColors): string {
     case TIER.seed:
       return theme.focus;
     case TIER.expandable:
-      return theme.sameAuthor;
+      return theme.expandable;
     case TIER.expanded:
-      return theme.sameSubject;
+      return theme.expanded;
     default:
       return theme.pointResting;
   }

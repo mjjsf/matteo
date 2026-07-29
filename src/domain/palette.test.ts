@@ -1,72 +1,73 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DARK,
-  LIGHT,
-  RELATION,
-  VALIDATED_RELATION_HEXES,
-  colorForRelation,
-  hexToRgbTriple,
-  sizeScaleForRelation,
-} from './palette';
+import { FIELD, VALIDATED_HEXES, hexToRgbTriple } from './palette';
+
+/** Relative luminance and WCAG contrast, so the palette's claimed measurements
+ *  are checked rather than trusted. A comment saying "3.33:1" rots the moment
+ *  someone nudges a hex; this does not. */
+function luminance(hex: string): number {
+  const h = hex.replace('#', '');
+  const channel = (i: number): number => {
+    const c = Number.parseInt(h.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * channel(0) + 0.7152 * channel(2) + 0.0722 * channel(4);
+}
+
+function contrast(a: string, b: string): number {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x) as [number, number];
+  return (hi + 0.05) / (lo + 0.05);
+}
 
 /** These assertions exist so that editing a colour breaks CI rather than
  *  silently breaking the colourblind-safety gates. The hexes were chosen by
- *  running the dataviz validator with `--pairs all` in both modes; see the
- *  comment block in palette.ts for the measured numbers and the commands. */
-describe('validated relation palette', () => {
-  it('uses the exact measured macOS blue and orange steps', () => {
-    expect(VALIDATED_RELATION_HEXES.light).toEqual(['#2A7BF6', '#F7821B']);
-    expect(VALIDATED_RELATION_HEXES.dark).toEqual(['#2A7BF6', '#e26f00']);
+ *  running the dataviz validator with `--pairs all`; see palette.ts for the
+ *  measured numbers and the exact command. */
+describe('validated palette', () => {
+  it('uses the exact measured surface and hue steps', () => {
+    expect(VALIDATED_HEXES.surface).toBe('#F2F0EB');
+    expect(VALIDATED_HEXES.hues).toEqual(['#2A7BF6', '#d16400']);
   });
 
-  it('wires those hexes into the theme objects', () => {
-    expect([LIGHT.sameAuthor, LIGHT.sameSubject]).toEqual([
-      ...VALIDATED_RELATION_HEXES.light,
-    ]);
-    expect([DARK.sameAuthor, DARK.sameSubject]).toEqual([
-      ...VALIDATED_RELATION_HEXES.dark,
-    ]);
+  it('wires those hexes into the theme', () => {
+    expect(FIELD.surface).toBe(VALIDATED_HEXES.surface);
+    expect([FIELD.expandable, FIELD.expanded]).toEqual([...VALIDATED_HEXES.hues]);
   });
 
-  it('keeps macOS blue untouched across modes', () => {
-    // Its lightness sits inside both the light and dark bands, so no restep was
-    // needed and the authentic Finder blue survives in both themes.
-    expect(LIGHT.sameAuthor).toBe(DARK.sameAuthor);
+  it('puts the field on a light greige, never a dark surface', () => {
+    // The brief was a white field of books. Following prefers-color-scheme gave
+    // anyone with a dark desktop a near-black canvas, which is the opposite.
+    // There is one theme on purpose; this test is what stops a dark one
+    // reappearing by accident.
+    expect(luminance(FIELD.surface)).toBeGreaterThan(0.75);
   });
 
-  it('never assigns a third hue to the sharedTag relation', () => {
-    // No safe third macOS hue exists (measured: red<->green 1.9 deuteran,
-    // blue<->purple 4.4 protan). sharedTag is encoded by size instead.
-    expect(colorForRelation(RELATION.sharedTag, LIGHT)).toBe(LIGHT.pointResting);
-    expect(colorForRelation(RELATION.sharedTag, DARK)).toBe(DARK.pointResting);
-    expect(sizeScaleForRelation(RELATION.sharedTag)).toBeGreaterThan(
-      sizeScaleForRelation(RELATION.none),
-    );
+  it('clears the 3:1 contrast floor for every mark on that surface', () => {
+    // This is the win the greige bought. On pure white the only orange inside
+    // the CVD lightness band measures 2.57:1 — legal only under a relief
+    // exemption. Dropping the surface left room to step the orange down.
+    for (const mark of [FIELD.expandable, FIELD.expanded, FIELD.pointResting, FIELD.focus]) {
+      expect(contrast(mark, FIELD.surface)).toBeGreaterThanOrEqual(3);
+    }
   });
 
-  it('gives the two hued relations a size difference too (secondary encoding)', () => {
-    // Light-mode orange sits at 2.57:1, a RELIEF result. Size plus labels plus
-    // the result list are what make that legal; they must not be dropped.
-    expect(sizeScaleForRelation(RELATION.sameAuthor)).toBeGreaterThan(1);
-    expect(sizeScaleForRelation(RELATION.sameSubject)).toBeGreaterThan(1);
+  it('keeps macOS blue authentic', () => {
+    expect(FIELD.expandable).toBe('#2A7BF6');
   });
 
   it('does not use the too-faint #c3c2b7 for resting points', () => {
-    // 1.79:1 on white — invisible as a small mark.
-    expect(LIGHT.pointResting).not.toBe('#c3c2b7');
-    expect(LIGHT.pointResting).toBe('#898781');
+    // 1.5:1 on this surface — invisible as a small mark.
+    expect(FIELD.pointResting).not.toBe('#c3c2b7');
+    expect(contrast('#c3c2b7', FIELD.surface)).toBeLessThan(3);
   });
 
-  it('dims to gray rather than toward the background', () => {
-    // Fading toward white would delete the surrounding cloud and destroy the
-    // single-cluster reading the design depends on.
-    expect(LIGHT.pointDim).not.toBe(LIGHT.surface);
-    expect(DARK.pointDim).not.toBe(DARK.surface);
+  it('uses ink, not a hue, for the focused node', () => {
+    expect(FIELD.focus).toBe('#0b0b0b');
   });
 
-  it('uses ink, not a hue, for the focused point', () => {
-    expect(LIGHT.focus).toBe('#0b0b0b');
-    expect(DARK.focus).toBe('#ffffff');
+  it('keeps body text well clear of the AA floor', () => {
+    expect(contrast(FIELD.textPrimary, FIELD.surface)).toBeGreaterThanOrEqual(7);
+    expect(contrast(FIELD.textSecondary, FIELD.surface)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast(FIELD.textMuted, FIELD.surface)).toBeGreaterThanOrEqual(4.5);
   });
 });
 

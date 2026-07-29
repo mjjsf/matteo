@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useThree } from '@react-three/fiber';
 import type * as THREE from 'three';
-import { DARK, LIGHT, type ThemeColors } from '@/domain/palette';
+import { FIELD } from '@/domain/palette';
 import { useStore } from '@/state/store';
 import { useUrlSync } from '@/state/urlHash';
 import { useGlobalKeys } from '@/state/keyboard';
@@ -15,21 +15,6 @@ import { NodeLabels } from '@/ui/NodeLabels';
 import { Legend } from '@/ui/Legend';
 import { Footer } from '@/ui/Footer';
 import { ListOnlyApp } from '@/ui/ListOnlyApp';
-
-function useTheme(): ThemeColors {
-  const [dark, setDark] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      window.matchMedia?.('(prefers-color-scheme: dark)').matches === true,
-  );
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const onChange = (e: MediaQueryListEvent): void => setDark(e.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return dark ? DARK : LIGHT;
-}
 
 /** Publishes the R3F camera so the HTML overlays can project world positions to
  *  screen space without living inside the Canvas. */
@@ -46,7 +31,7 @@ function CameraPublisher({
 }
 
 export function App(): React.ReactElement {
-  const theme = useTheme();
+  const theme = FIELD;
   const cameraRef = useRef<THREE.Camera | null>(null);
   const pointsRef = useRef<THREE.Points | null>(null);
   const phase = useStore((s) => s.phase);

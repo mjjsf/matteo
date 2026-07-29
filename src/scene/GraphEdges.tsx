@@ -44,9 +44,9 @@ export function GraphEdges({
   const material = useMemo(
     () =>
       new THREE.LineBasicMaterial({
-        color: new THREE.Color(theme.treeEdge.startsWith('#') ? theme.treeEdge : theme.treeNode),
+        color: new THREE.Color(theme.focus),
         transparent: true,
-        opacity: 0.34,
+        opacity: 0.22,
         depthWrite: false,
       }),
     [theme],

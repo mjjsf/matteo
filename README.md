@@ -67,37 +67,51 @@ At 220 books the graph **stops and says so**, offering to start a new map from a
 book on screen. Losing an exploration someone spent a dozen clicks building, in
 order to make room, is worse than telling them the wall exists.
 
-## Colour
+## Colour, and why there is no dark mode
 
-Colour appears **on rollover only** — nothing is colour-coded at rest. That is a
-consequence of measurement, not taste. A 3D point cloud is a scatter, so any two
-marks can end up adjacent and the strict all-pairs colourblind-safety gate
-applies. Running the checks over candidate palettes established that:
+The field is a **warm greige** (`#F2F0EB`) in every environment. There is
+deliberately no `prefers-color-scheme` branch: the whole idea is a light field
+of books, and following the system preference handed anyone with a dark desktop
+a near-black canvas — the opposite of the thing being built.
+
+Greige rather than pure white is an accessibility decision, not only a stylistic
+one. See below.
+
+Colour is spent on the one distinction a reader cannot otherwise recover —
+whether a book can still be opened:
+
+| Role | Colour |
+|---|---|
+| Where you started | `#0b0b0b` ink |
+| Can be grown | `#2A7BF6` (macOS blue), bright centre |
+| Already grown | `#d16400` (macOS orange, stepped) |
+| No further matches | `#898781`, faded |
+
+These hexes are not free to edit. A 3D point field is a scatter, so any two
+marks can end up adjacent and the strict **all-pairs** colourblind gate applies.
+Running the checks over candidate palettes established that:
 
 - The standard 8-hue categorical palette fails all-pairs (CVD ΔE 3.2).
-- The largest set passing in both light and dark is four hues, and those rely on
-  colours near 2.2:1 against white that vanish as small marks.
+- The largest passing set is four hues, and those rely on colours near 2.2:1
+  against white that vanish as small marks.
 - **No three untouched macOS Finder label colours can coexist**: red↔green
   measures ΔE 1.9 under deuteranopia — indistinguishable. macOS labels are chips
   beside text, never marks identified by colour alone.
 
-So the palette is spent on the one distinction a reader cannot otherwise
-recover — whether a book can still be opened:
+**What the greige bought.** On pure white, the only orange that stays inside the
+CVD lightness band measures 2.57:1 — a RELIEF result, legal only because the app
+ships labels and a DOM list. Dropping the surface to `#F2F0EB` left headroom to
+step the orange down to `#d16400`, which measures **3.33:1** and clears the 3:1
+floor outright. Every mark now passes on its own: blue 3.50:1, orange 3.33:1,
+resting points 3.15:1, ink 17.28:1, worst-case CVD ΔE 29.9 against a gate of 8.
 
-| Role | Light | Dark |
-|---|---|---|
-| Where you started | `#0b0b0b` | `#ffffff` |
-| Can be grown | `#2A7BF6` (macOS blue), bright centre | `#2A7BF6` |
-| Already grown | `#F7821B` (macOS orange) | `#e26f00` |
-| No further matches | `#898781`, faded | `#898781` |
+The relief channels are still there and still worth keeping — the always-visible
+legend, the titles drawn beside their nodes, the DOM outline of the graph — but
+the palette no longer depends on them to be legal.
 
-Blue and orange measure CVD ΔE 32.0 light / 31.0 dark against gates of 8 and 15.
-Light-mode orange sits at 2.57:1 against white, which is permitted only because
-the app ships the required relief channel: the always-visible legend, the book
-titles drawn beside their nodes, and the DOM outline of the whole graph beside
-the map. Those are load-bearing — don't remove them. `src/domain/palette.ts` has
-the commands to re-validate, and a test pins the hexes so an edit breaks CI
-rather than shipping silently.
+`src/domain/palette.ts` carries the exact validator command. The test does not
+merely pin the hexes: it recomputes the contrast ratios, so a nudged colour
+fails CI rather than quietly invalidating a comment.
 
 ## Amazon links, and the absence of Prime
 

@@ -1,30 +1,25 @@
 /* Colour roles mirror src/domain/palette.ts. Do not invent new hues here —
-   the relation colours are measured and validated; see that file. */
+   they are measured and validated; see that file for the command and numbers.
+
+   There is deliberately no prefers-color-scheme block. The app is a light field
+   of books in every environment: following the system preference handed anyone
+   with a dark desktop a near-black canvas, which is the opposite of what this
+   is supposed to be. */
 :root {
   color-scheme: light;
-  --surface: #ffffff;
+  --surface: #f2f0eb;
+  /* Panels lift slightly OFF the field rather than sinking into it, so the
+     canvas reads as the ground and the panels as sitting on top. */
+  --panel: #fbfaf7;
+  --panel-translucent: rgba(251, 250, 247, 0.92);
   --text-primary: #0b0b0b;
   --text-secondary: #52514e;
-  --text-muted: #898781;
-  --hairline: rgba(11, 11, 11, 0.1);
-  --panel: rgba(255, 255, 255, 0.92);
-  --same-author: #2a7bf6;
-  --same-subject: #f7821b;
+  --text-muted: #6b6963;
+  --hairline: rgba(11, 11, 11, 0.12);
+  --expandable: #2a7bf6;
+  --expanded: #d16400;
   --focus-ring: #2a7bf6;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --surface: #1a1a19;
-    --text-primary: #ffffff;
-    --text-secondary: #c3c2b7;
-    --text-muted: #898781;
-    --hairline: rgba(255, 255, 255, 0.1);
-    --panel: rgba(26, 26, 25, 0.92);
-    --same-subject: #e26f00;
-  }
 }
 
 * {
@@ -64,7 +59,7 @@ canvas {
 
 .panel {
   position: absolute;
-  background: var(--panel);
+  background: var(--panel-translucent);
   backdrop-filter: blur(8px);
   border: 1px solid var(--hairline);
   border-radius: 12px;
@@ -150,10 +145,10 @@ canvas {
   font: inherit;
   font-size: 1rem;
   color: var(--text-primary);
-  background: var(--surface);
+  background: var(--panel);
   border: 1px solid var(--hairline);
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(11, 11, 11, 0.06);
 }
 
 .landing__form button {
@@ -162,7 +157,7 @@ canvas {
   font-size: 0.9rem;
   font-weight: 500;
   color: #ffffff;
-  background: var(--same-author);
+  background: var(--expandable);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -187,6 +182,7 @@ canvas {
   border: 1px solid var(--hairline);
   border-radius: 12px;
   background: var(--panel);
+  box-shadow: 0 2px 10px rgba(11, 11, 11, 0.05);
 }
 
 .suggestion {
@@ -205,8 +201,8 @@ canvas {
 }
 
 .suggestion--active {
-  background: color-mix(in srgb, var(--same-author) 12%, transparent);
-  border-color: color-mix(in srgb, var(--same-author) 30%, transparent);
+  background: color-mix(in srgb, var(--expandable) 12%, transparent);
+  border-color: color-mix(in srgb, var(--expandable) 30%, transparent);
 }
 
 .suggestion__title {
@@ -249,7 +245,7 @@ a:focus-visible {
   padding: 0;
   font: inherit;
   font-size: 0.74rem;
-  color: var(--same-author);
+  color: var(--expandable);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -272,8 +268,8 @@ a:focus-visible {
   border-radius: 8px;
   font-size: 0.75rem;
   line-height: 1.45;
-  background: color-mix(in srgb, var(--same-subject) 16%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--same-subject) 40%, transparent);
+  background: color-mix(in srgb, var(--expanded) 16%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--expanded) 40%, transparent);
 }
 
 /* --- graph outline (the DOM mirror of the map) --- */
@@ -307,12 +303,12 @@ a:focus-visible {
 }
 
 .outline__book:hover {
-  background: color-mix(in srgb, var(--same-author) 10%, transparent);
+  background: color-mix(in srgb, var(--expandable) 10%, transparent);
 }
 
 .outline__book--selected {
-  background: color-mix(in srgb, var(--same-author) 16%, transparent);
-  border-color: var(--same-author);
+  background: color-mix(in srgb, var(--expandable) 16%, transparent);
+  border-color: var(--expandable);
 }
 
 .outline__title {
@@ -345,8 +341,8 @@ a:focus-visible {
 }
 
 .outline__grow:hover {
-  border-color: var(--same-author);
-  color: var(--same-author);
+  border-color: var(--expandable);
+  color: var(--expandable);
 }
 
 /* --- detail --- */
@@ -427,8 +423,8 @@ a:focus-visible {
 
 .detail__grow:hover,
 .detail__reseed:hover {
-  border-color: var(--same-author);
-  color: var(--same-author);
+  border-color: var(--expandable);
+  color: var(--expandable);
 }
 
 .buy {
@@ -437,7 +433,7 @@ a:focus-visible {
   margin-top: 16px;
   padding: 10px 12px;
   border-radius: 8px;
-  background: var(--same-author);
+  background: var(--expandable);
   color: #ffffff;
   text-decoration: none;
   font-size: 0.88rem;
@@ -469,7 +465,7 @@ a:focus-visible {
   transform: translate3d(-9999px, -9999px, 0);
   margin: 14px 0 0 14px;
   padding: 6px 9px;
-  background: var(--panel);
+  background: var(--panel-translucent);
   border: 1px solid var(--hairline);
   border-radius: 7px;
   display: flex;
@@ -557,7 +553,7 @@ a:focus-visible {
   transform: translateX(-50%);
   font-size: 0.72rem;
   color: var(--text-secondary);
-  background: var(--panel);
+  background: var(--panel-translucent);
   border: 1px solid var(--hairline);
   border-radius: 10px;
   padding: 10px 12px;
@@ -606,7 +602,7 @@ a:focus-visible {
   font-size: 0.66rem;
   color: var(--text-muted);
   border-top: 1px solid var(--hairline);
-  background: var(--panel);
+  background: var(--panel-translucent);
 }
 
 .skip-link {
@@ -628,7 +624,7 @@ a:focus-visible {
 .notice {
   margin: 0;
   padding: 12px 20px;
-  background: color-mix(in srgb, var(--same-subject) 14%, var(--surface));
+  background: color-mix(in srgb, var(--expanded) 14%, var(--surface));
   border-bottom: 1px solid var(--hairline);
   font-size: 0.82rem;
 }
