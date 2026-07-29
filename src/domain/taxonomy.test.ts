@@ -28,11 +28,15 @@ describe('taxonomy structure', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('has at most 8 top-level branches', () => {
-    // Hard cap, not a style preference: beyond a handful of categorical hues no
-    // palette stays distinguishable, and this app's measured palette supports
-    // even fewer. If the taxonomy needs more roots, that is a taxonomy problem.
-    expect(index.rootIds.length).toBeLessThanOrEqual(8);
+  it('keeps the root count reviewable', () => {
+    // This was a hard cap of 8, justified by colour: no palette keeps more than
+    // a handful of categorical hues distinguishable. That reason is gone —
+    // nothing has been coloured by branch since the whole-corpus cloud was
+    // replaced by a graph grown from one book, where hue encodes whether a node
+    // can still be opened. The cap now exists only to keep the top level
+    // something a person can hold in their head, so it is loose and the number
+    // carries no rendering consequence.
+    expect(index.rootIds.length).toBeLessThanOrEqual(12);
   });
 
   it('is no deeper than three levels', () => {

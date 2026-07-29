@@ -2,409 +2,773 @@
   {
     "id": "middlemarch",
     "title": "Middlemarch",
-    "authors": ["George Eliot"],
+    "authors": [
+      "George Eliot"
+    ],
     "year": 1872,
-    "subjects": ["19th-century", "victorian", "family-saga"],
+    "subjects": [
+      "19th-century",
+      "victorian",
+      "family-saga"
+    ],
     "description": "A study of provincial English life in the 1830s, following Dorothea Brooke's thwarted idealism and Tertius Lydgate's compromised ambition. Eliot treats ordinary disappointment with unusual moral seriousness."
   },
   {
     "id": "anna-karenina",
     "title": "Anna Karenina",
-    "authors": ["Leo Tolstoy"],
+    "authors": [
+      "Leo Tolstoy"
+    ],
     "year": 1878,
-    "subjects": ["russian-literature", "19th-century", "family-saga"],
+    "subjects": [
+      "russian-literature",
+      "19th-century",
+      "family-saga"
+    ],
     "description": "Anna's affair with Vronsky destroys her standing in Russian society while Levin searches for a moral basis for ordinary life. Two plots that comment on each other without ever quite touching."
   },
   {
     "id": "war-and-peace",
     "title": "War and Peace",
-    "authors": ["Leo Tolstoy"],
+    "authors": [
+      "Leo Tolstoy"
+    ],
     "year": 1869,
-    "subjects": ["russian-literature", "19th-century", "war", "political-theory"],
+    "subjects": [
+      "russian-literature",
+      "19th-century",
+      "war",
+      "political-theory"
+    ],
     "description": "Russian aristocratic families are carried through the Napoleonic invasion. Tolstoy interleaves domestic life with battlefield chaos, arguing that history is made by countless small acts rather than great men."
   },
   {
     "id": "brothers-karamazov",
     "title": "The Brothers Karamazov",
-    "authors": ["Fyodor Dostoevsky"],
+    "authors": [
+      "Fyodor Dostoevsky"
+    ],
     "year": 1880,
-    "subjects": ["russian-literature", "ethics", "comparative-religion", "existentialism", "family-saga"],
+    "subjects": [
+      "russian-literature",
+      "ethics",
+      "comparative-religion",
+      "existentialism",
+      "family-saga"
+    ],
     "description": "A patricide becomes the frame for an argument about faith, doubt, and moral responsibility among three very different brothers. Contains the Grand Inquisitor parable."
   },
   {
     "id": "crime-and-punishment",
     "title": "Crime and Punishment",
-    "authors": ["Fyodor Dostoevsky"],
+    "authors": [
+      "Fyodor Dostoevsky"
+    ],
     "year": 1866,
-    "subjects": ["russian-literature", "psychological-horror", "ethics", "criminal-justice", "existentialism"],
+    "subjects": [
+      "russian-literature",
+      "psychological-horror",
+      "ethics",
+      "criminal-justice",
+      "existentialism"
+    ],
     "description": "Raskolnikov murders a pawnbroker to prove he is above conventional morality, then spends the novel being dismantled by his own conscience. An early study of rationalized violence."
   },
   {
     "id": "dead-souls",
     "title": "Dead Souls",
-    "authors": ["Nikolai Gogol"],
+    "authors": [
+      "Nikolai Gogol"
+    ],
     "year": 1842,
-    "subjects": ["russian-literature", "19th-century"],
+    "subjects": [
+      "russian-literature",
+      "19th-century"
+    ],
     "description": "Chichikov travels the provinces buying up deceased serfs still listed on tax rolls, in order to mortgage them. A comic survey of provincial Russian venality."
   },
   {
     "id": "madame-bovary",
     "title": "Madame Bovary",
-    "authors": ["Gustave Flaubert"],
+    "authors": [
+      "Gustave Flaubert"
+    ],
     "year": 1857,
-    "subjects": ["19th-century", "family-saga", "gender"],
+    "subjects": [
+      "19th-century",
+      "family-saga",
+      "gender"
+    ],
     "description": "Emma Bovary's romantic expectations, formed by novels, collide with the boredom of a provincial marriage. Flaubert's precision made the ordinary a legitimate subject for serious prose."
   },
   {
     "id": "great-expectations",
     "title": "Great Expectations",
-    "authors": ["Charles Dickens"],
+    "authors": [
+      "Charles Dickens"
+    ],
     "year": 1861,
-    "subjects": ["victorian", "coming-of-age", "class", "19th-century", "criminal-justice"],
+    "subjects": [
+      "victorian",
+      "coming-of-age",
+      "class",
+      "19th-century",
+      "criminal-justice"
+    ],
     "description": "Pip is lifted from a blacksmith's forge into gentility by an unknown benefactor, and discovers what his new status actually cost. Dickens on money, shame, and self-invention."
   },
   {
     "id": "bleak-house",
     "title": "Bleak House",
-    "authors": ["Charles Dickens"],
+    "authors": [
+      "Charles Dickens"
+    ],
     "year": 1853,
-    "subjects": ["victorian", "criminal-justice", "19th-century", "family-saga"],
+    "subjects": [
+      "victorian",
+      "criminal-justice",
+      "19th-century",
+      "family-saga"
+    ],
     "description": "An interminable inheritance suit poisons everyone it touches while a parallel mystery unwinds around Esther Summerson. Dickens's most structurally ambitious attack on institutional delay."
   },
   {
     "id": "jane-eyre",
     "title": "Jane Eyre",
-    "authors": ["Charlotte Brontë"],
+    "authors": [
+      "Charlotte Brontë"
+    ],
     "year": 1847,
-    "subjects": ["victorian", "gothic", "coming-of-age", "gender"],
+    "subjects": [
+      "victorian",
+      "gothic",
+      "coming-of-age",
+      "gender"
+    ],
     "description": "An orphaned governess insists on her own moral standing against a household built on a concealed crime. Combines gothic machinery with an unusually direct first-person voice."
   },
   {
     "id": "wuthering-heights",
     "title": "Wuthering Heights",
-    "authors": ["Emily Brontë"],
+    "authors": [
+      "Emily Brontë"
+    ],
     "year": 1847,
-    "subjects": ["gothic", "victorian", "family-saga", "19th-century"],
+    "subjects": [
+      "gothic",
+      "victorian",
+      "family-saga",
+      "19th-century"
+    ],
     "description": "Heathcliff and Catherine's mutual destruction plays out across two generations on the Yorkshire moors. Told through narrators who barely understand what they are reporting."
   },
   {
     "id": "moby-dick",
     "title": "Moby-Dick",
-    "authors": ["Herman Melville"],
+    "authors": [
+      "Herman Melville"
+    ],
     "year": 1851,
-    "subjects": ["19th-century", "natural-history", "metafiction"],
+    "subjects": [
+      "19th-century",
+      "natural-history",
+      "metafiction"
+    ],
     "description": "Ahab's hunt for the white whale, interrupted constantly by digressions on cetology, rope, and paint. The digressions are the point as much as the chase."
   },
   {
     "id": "ulysses",
     "title": "Ulysses",
-    "authors": ["James Joyce"],
+    "authors": [
+      "James Joyce"
+    ],
     "year": 1922,
-    "subjects": ["modernism", "stream-of-consciousness", "city-life", "metafiction"],
+    "subjects": [
+      "modernism",
+      "stream-of-consciousness",
+      "city-life",
+      "metafiction"
+    ],
     "description": "One Dublin day, mapped onto the Odyssey, rendered in a different prose style almost every chapter. The most systematic demonstration of what interior monologue can carry."
   },
   {
     "id": "mrs-dalloway",
     "title": "Mrs Dalloway",
-    "authors": ["Virginia Woolf"],
+    "authors": [
+      "Virginia Woolf"
+    ],
     "year": 1925,
-    "subjects": ["modernism", "stream-of-consciousness", "city-life", "gender", "war"],
+    "subjects": [
+      "modernism",
+      "stream-of-consciousness",
+      "city-life",
+      "gender",
+      "war"
+    ],
     "description": "A day of party preparation in post-war London, shadowed by a veteran's disintegration. Woolf moves between consciousnesses without transition, letting the city hold them together."
   },
   {
     "id": "to-the-lighthouse",
     "title": "To the Lighthouse",
-    "authors": ["Virginia Woolf"],
+    "authors": [
+      "Virginia Woolf"
+    ],
     "year": 1927,
-    "subjects": ["modernism", "stream-of-consciousness", "family-saga", "gender", "war"],
+    "subjects": [
+      "modernism",
+      "stream-of-consciousness",
+      "family-saga",
+      "gender",
+      "war"
+    ],
     "description": "A family's summer visits to Skye, split by a decade and several deaths delivered in parentheses. Its middle section is one of the great formal risks in English fiction."
   },
   {
     "id": "the-sound-and-the-fury",
     "title": "The Sound and the Fury",
-    "authors": ["William Faulkner"],
+    "authors": [
+      "William Faulkner"
+    ],
     "year": 1929,
-    "subjects": ["modernism", "stream-of-consciousness", "family-saga", "race"],
+    "subjects": [
+      "modernism",
+      "stream-of-consciousness",
+      "family-saga",
+      "race"
+    ],
     "description": "The Compson family's decline told four times, beginning inside the mind of a man who cannot order events in time. Difficulty here is structural argument, not decoration."
   },
   {
     "id": "in-search-of-lost-time-swann",
     "title": "Swann's Way",
-    "authors": ["Marcel Proust"],
+    "authors": [
+      "Marcel Proust"
+    ],
     "year": 1913,
-    "subjects": ["modernism", "stream-of-consciousness", "memoir"],
+    "subjects": [
+      "modernism",
+      "stream-of-consciousness",
+      "memoir"
+    ],
     "description": "The first volume of Proust's novel, where involuntary memory turns a soaked madeleine into a whole recovered childhood. A theory of memory disguised as social comedy."
   },
   {
     "id": "the-trial",
     "title": "The Trial",
-    "authors": ["Franz Kafka"],
+    "authors": [
+      "Franz Kafka"
+    ],
     "year": 1925,
-    "subjects": ["modernism", "criminal-justice", "totalitarianism", "existentialism", "authoritarianism"],
+    "subjects": [
+      "modernism",
+      "criminal-justice",
+      "totalitarianism",
+      "existentialism",
+      "authoritarianism"
+    ],
     "description": "Josef K. is arrested by an authority that never states his charge and never quite convenes. The bureaucracy is not malicious so much as indifferent, which is worse."
   },
   {
     "id": "the-metamorphosis",
     "title": "The Metamorphosis",
-    "authors": ["Franz Kafka"],
+    "authors": [
+      "Franz Kafka"
+    ],
     "year": 1915,
-    "subjects": ["novella", "modernism", "psychological-horror", "existentialism", "family-saga"],
+    "subjects": [
+      "novella",
+      "modernism",
+      "psychological-horror",
+      "existentialism",
+      "family-saga"
+    ],
     "description": "Gregor Samsa wakes as an insect and his family's pity curdles into resentment. The transformation is stated in the first sentence; the novella is about the household's adjustment."
   },
   {
     "id": "the-stranger",
     "title": "The Stranger",
-    "authors": ["Albert Camus"],
+    "authors": [
+      "Albert Camus"
+    ],
     "year": 1942,
-    "subjects": ["existentialism", "novella", "criminal-justice", "colonialism"],
+    "subjects": [
+      "existentialism",
+      "novella",
+      "criminal-justice",
+      "colonialism"
+    ],
     "description": "Meursault kills a man on a beach and is condemned less for the killing than for not grieving at his mother's funeral. Flat prose as a philosophical position."
   },
   {
     "id": "one-hundred-years-of-solitude",
     "title": "One Hundred Years of Solitude",
-    "authors": ["Gabriel García Márquez"],
+    "authors": [
+      "Gabriel García Márquez"
+    ],
     "year": 1967,
-    "subjects": ["magical-realism", "latin-american-literature", "family-saga", "colonialism"],
+    "subjects": [
+      "magical-realism",
+      "latin-american-literature",
+      "family-saga",
+      "colonialism"
+    ],
     "description": "Seven generations of the Buendía family found, populate, and lose the town of Macondo. Miracles are reported in the same register as weather, which is the whole technique."
   },
   {
     "id": "love-in-the-time-of-cholera",
     "title": "Love in the Time of Cholera",
-    "authors": ["Gabriel García Márquez"],
+    "authors": [
+      "Gabriel García Márquez"
+    ],
     "year": 1985,
-    "subjects": ["latin-american-literature", "magical-realism", "family-saga", "gender"],
+    "subjects": [
+      "latin-american-literature",
+      "magical-realism",
+      "family-saga",
+      "gender"
+    ],
     "description": "Florentino waits fifty-one years for Fermina to be widowed. García Márquez treats obsessive devotion as both genuinely romantic and faintly absurd, refusing to choose."
   },
   {
     "id": "pedro-paramo",
     "title": "Pedro Páramo",
-    "authors": ["Juan Rulfo"],
+    "authors": [
+      "Juan Rulfo"
+    ],
     "year": 1955,
-    "subjects": ["latin-american-literature", "magical-realism", "novella", "gothic"],
+    "subjects": [
+      "latin-american-literature",
+      "magical-realism",
+      "novella",
+      "gothic"
+    ],
     "description": "A man goes to Comala to find his father and discovers a village where the living and dead are not clearly distinguished. Short, fragmentary, and the direct ancestor of magical realism."
   },
   {
     "id": "ficciones",
     "title": "Ficciones",
-    "authors": ["Jorge Luis Borges"],
+    "authors": [
+      "Jorge Luis Borges"
+    ],
     "year": 1944,
-    "subjects": ["short-stories", "latin-american-literature", "metafiction", "logic", "epistemology"],
+    "subjects": [
+      "short-stories",
+      "latin-american-literature",
+      "metafiction",
+      "logic",
+      "epistemology"
+    ],
     "description": "Stories about infinite libraries, invented encyclopedias, and a man who rewrites Don Quixote word for word. Borges built the template for fiction as intellectual puzzle."
   },
   {
     "id": "hopscotch",
     "title": "Hopscotch",
-    "authors": ["Julio Cortázar"],
+    "authors": [
+      "Julio Cortázar"
+    ],
     "year": 1963,
-    "subjects": ["latin-american-literature", "postmodern", "metafiction", "existentialism", "city-life"],
+    "subjects": [
+      "latin-american-literature",
+      "postmodern",
+      "metafiction",
+      "existentialism",
+      "city-life"
+    ],
     "description": "A novel with two reading orders, following an Argentine expatriate in Paris and Buenos Aires. The structural game is inseparable from its argument about how life is assembled."
   },
   {
     "id": "the-savage-detectives",
     "title": "The Savage Detectives",
-    "authors": ["Roberto Bolaño"],
+    "authors": [
+      "Roberto Bolaño"
+    ],
     "year": 1998,
-    "subjects": ["latin-american-literature", "postmodern", "poetry", "city-life", "literary-criticism"],
+    "subjects": [
+      "latin-american-literature",
+      "postmodern",
+      "poetry",
+      "city-life",
+      "literary-criticism"
+    ],
     "description": "Two young poets are pursued across decades and continents through dozens of testimonies. A novel about literary ambition that is mostly about failure and time passing."
   },
   {
     "id": "kokoro",
     "title": "Kokoro",
-    "authors": ["Natsume Sōseki"],
+    "authors": [
+      "Natsume Sōseki"
+    ],
     "year": 1914,
-    "subjects": ["japanese-literature", "translation", "existentialism", "family-saga"],
+    "subjects": [
+      "japanese-literature",
+      "translation",
+      "existentialism",
+      "family-saga"
+    ],
     "description": "A student befriends an older man carrying an unexplained guilt from his youth. Sōseki writes the psychological cost of Japan's rapid modernization into a quiet friendship."
   },
   {
     "id": "the-tale-of-genji",
     "title": "The Tale of Genji",
-    "authors": ["Murasaki Shikibu"],
+    "authors": [
+      "Murasaki Shikibu"
+    ],
     "year": 1010,
-    "subjects": ["japanese-literature", "translation", "family-saga", "gender"],
+    "subjects": [
+      "japanese-literature",
+      "translation",
+      "family-saga",
+      "gender"
+    ],
     "description": "Court life and the amorous career of a Heian prince, written by a lady-in-waiting around the year 1000. Frequently called the first novel, and still readable as one."
   },
   {
     "id": "kafka-on-the-shore",
     "title": "Kafka on the Shore",
-    "authors": ["Haruki Murakami"],
+    "authors": [
+      "Haruki Murakami"
+    ],
     "year": 2002,
-    "subjects": ["japanese-literature", "magical-realism", "coming-of-age", "existentialism", "family-saga"],
+    "subjects": [
+      "japanese-literature",
+      "magical-realism",
+      "coming-of-age",
+      "existentialism",
+      "family-saga"
+    ],
     "description": "A runaway teenager and an elderly man who talks to cats move toward each other through a landscape where prophecy and coincidence are indistinguishable."
   },
   {
     "id": "the-vegetarian",
     "title": "The Vegetarian",
-    "authors": ["Han Kang"],
+    "authors": [
+      "Han Kang"
+    ],
     "year": 2007,
-    "subjects": ["japanese-literature", "psychological-horror", "gender", "family-saga", "novella"],
+    "subjects": [
+      "japanese-literature",
+      "psychological-horror",
+      "gender",
+      "family-saga",
+      "novella"
+    ],
     "description": "A Korean woman stops eating meat and keeps subtracting from herself, narrated in three parts by people who refuse to understand her. Bodily refusal as the only available protest."
   },
   {
     "id": "to-live",
     "title": "To Live",
-    "authors": ["Yu Hua"],
+    "authors": [
+      "Yu Hua"
+    ],
     "year": 1993,
-    "subjects": ["chinese-literature", "translation", "family-saga", "revolution"],
+    "subjects": [
+      "chinese-literature",
+      "translation",
+      "family-saga",
+      "revolution"
+    ],
     "description": "A landlord's son loses everything across the Chinese twentieth century and keeps surviving. Delivered plainly, which makes the accumulation of loss harder to deflect."
   },
   {
     "id": "things-fall-apart",
     "title": "Things Fall Apart",
-    "authors": ["Chinua Achebe"],
+    "authors": [
+      "Chinua Achebe"
+    ],
     "year": 1958,
-    "subjects": ["african-literature", "colonialism", "family-saga", "comparative-religion"],
+    "subjects": [
+      "african-literature",
+      "colonialism",
+      "family-saga",
+      "comparative-religion"
+    ],
     "description": "Okonkwo's standing in his Igbo community cannot survive either his own rigidity or the arrival of British missionaries. Written deliberately against colonial accounts of the same events."
   },
   {
     "id": "half-of-a-yellow-sun",
     "title": "Half of a Yellow Sun",
-    "authors": ["Chimamanda Ngozi Adichie"],
+    "authors": [
+      "Chimamanda Ngozi Adichie"
+    ],
     "year": 2006,
-    "subjects": ["african-literature", "war", "family-saga", "colonialism"],
+    "subjects": [
+      "african-literature",
+      "war",
+      "family-saga",
+      "colonialism"
+    ],
     "description": "Three lives intersect during the Nigerian-Biafran war: a professor's houseboy, a twin sister, and an English writer. The war arrives gradually, then completely."
   },
   {
     "id": "season-of-migration-to-the-north",
     "title": "Season of Migration to the North",
-    "authors": ["Tayeb Salih"],
+    "authors": [
+      "Tayeb Salih"
+    ],
     "year": 1966,
-    "subjects": ["african-literature", "colonialism", "novella", "migration", "gender"],
+    "subjects": [
+      "african-literature",
+      "colonialism",
+      "novella",
+      "migration",
+      "gender"
+    ],
     "description": "A Sudanese narrator returns from England to find a village neighbour with a violent London past. A deliberate inversion of Heart of Darkness, travelling the other way."
   },
   {
     "id": "midnights-children",
     "title": "Midnight's Children",
-    "authors": ["Salman Rushdie"],
+    "authors": [
+      "Salman Rushdie"
+    ],
     "year": 1981,
-    "subjects": ["south-asian-literature", "magical-realism", "postmodern", "colonialism", "family-saga"],
+    "subjects": [
+      "south-asian-literature",
+      "magical-realism",
+      "postmodern",
+      "colonialism",
+      "family-saga"
+    ],
     "description": "Saleem Sinai, born at the instant of Indian independence, finds his life handcuffed to the nation's. Allegory carried out at maximum volume and length."
   },
   {
     "id": "a-fine-balance",
     "title": "A Fine Balance",
-    "authors": ["Rohinton Mistry"],
+    "authors": [
+      "Rohinton Mistry"
+    ],
     "year": 1995,
-    "subjects": ["south-asian-literature", "class", "family-saga", "authoritarianism", "city-life"],
+    "subjects": [
+      "south-asian-literature",
+      "class",
+      "family-saga",
+      "authoritarianism",
+      "city-life"
+    ],
     "description": "Four strangers share a cramped apartment during the Indian Emergency. Mistry is unsentimental about how thoroughly poverty and politics can dismantle decent people."
   },
   {
     "id": "the-god-of-small-things",
     "title": "The God of Small Things",
-    "authors": ["Arundhati Roy"],
+    "authors": [
+      "Arundhati Roy"
+    ],
     "year": 1997,
-    "subjects": ["south-asian-literature", "coming-of-age", "class", "family-saga", "gender"],
+    "subjects": [
+      "south-asian-literature",
+      "coming-of-age",
+      "class",
+      "family-saga",
+      "gender"
+    ],
     "description": "Twins in Kerala circle the day their cousin drowned and the caste transgression that followed. Told in a fractured, invented, child-inflected English."
   },
   {
     "id": "beloved",
     "title": "Beloved",
-    "authors": ["Toni Morrison"],
+    "authors": [
+      "Toni Morrison"
+    ],
     "year": 1987,
-    "subjects": ["race", "gothic", "family-saga", "psychological-horror"],
+    "subjects": [
+      "race",
+      "gothic",
+      "family-saga",
+      "psychological-horror",
+      "slavery"
+    ],
     "description": "An escaped enslaved woman is visited by the daughter she killed rather than see returned to slavery. Morrison makes the ghost story the only adequate form for the history."
   },
   {
     "id": "invisible-man",
     "title": "Invisible Man",
-    "authors": ["Ralph Ellison"],
+    "authors": [
+      "Ralph Ellison"
+    ],
     "year": 1952,
-    "subjects": ["race", "coming-of-age", "civil-rights", "city-life"],
+    "subjects": [
+      "race",
+      "coming-of-age",
+      "civil-rights",
+      "city-life"
+    ],
     "description": "An unnamed Black narrator moves through the American South, Harlem, and a political movement that each need him to be something other than himself."
   },
   {
     "id": "gravitys-rainbow",
     "title": "Gravity's Rainbow",
-    "authors": ["Thomas Pynchon"],
+    "authors": [
+      "Thomas Pynchon"
+    ],
     "year": 1973,
-    "subjects": ["postmodern", "metafiction", "world-war-ii", "war", "technology-criticism"],
+    "subjects": [
+      "postmodern",
+      "metafiction",
+      "world-war-ii",
+      "war",
+      "technology-criticism"
+    ],
     "description": "V-2 rockets fall on London in a pattern that seems to anticipate one man's erections. Paranoia, ballistics, and cartel capitalism in a novel that refuses to resolve."
   },
   {
     "id": "white-noise",
     "title": "White Noise",
-    "authors": ["Don DeLillo"],
+    "authors": [
+      "Don DeLillo"
+    ],
     "year": 1985,
-    "subjects": ["postmodern", "media-studies", "technology-criticism", "city-life"],
+    "subjects": [
+      "postmodern",
+      "media-studies",
+      "technology-criticism",
+      "city-life"
+    ],
     "description": "A professor of Hitler studies confronts an airborne toxic event and his own terror of dying. DeLillo hears the language of supermarkets and television as liturgy."
   },
   {
     "id": "infinite-jest",
     "title": "Infinite Jest",
-    "authors": ["David Foster Wallace"],
+    "authors": [
+      "David Foster Wallace"
+    ],
     "year": 1996,
-    "subjects": ["postmodern", "metafiction", "media-studies", "technology-criticism"],
+    "subjects": [
+      "postmodern",
+      "metafiction",
+      "media-studies",
+      "technology-criticism"
+    ],
     "description": "A tennis academy, a halfway house, and a film so entertaining it incapacitates viewers. Wallace's argument about addiction and entertainment runs to a thousand pages and hundreds of endnotes."
   },
   {
     "id": "dubliners",
     "title": "Dubliners",
-    "authors": ["James Joyce"],
+    "authors": [
+      "James Joyce"
+    ],
     "year": 1914,
-    "subjects": ["short-stories", "modernism", "city-life"],
+    "subjects": [
+      "short-stories",
+      "modernism",
+      "city-life"
+    ],
     "description": "Fifteen stories of Dublin paralysis, ending with 'The Dead'. Joyce's epiphanies are mostly small recognitions that nothing will change."
   },
   {
     "id": "the-collected-stories-of-chekhov",
     "title": "The Lady with the Dog and Other Stories",
-    "authors": ["Anton Chekhov"],
+    "authors": [
+      "Anton Chekhov"
+    ],
     "year": 1899,
-    "subjects": ["short-stories", "russian-literature", "19th-century"],
+    "subjects": [
+      "short-stories",
+      "russian-literature",
+      "19th-century"
+    ],
     "description": "Chekhov's mature stories, where plot recedes and a character's situation is simply made visible. The template most subsequent short fiction is written against."
   },
   {
     "id": "nine-stories",
     "title": "Nine Stories",
-    "authors": ["J. D. Salinger"],
+    "authors": [
+      "J. D. Salinger"
+    ],
     "year": 1953,
-    "subjects": ["short-stories", "psychological-horror", "family-saga", "war"],
+    "subjects": [
+      "short-stories",
+      "psychological-horror",
+      "family-saga",
+      "war"
+    ],
     "description": "Nine stories including 'A Perfect Day for Bananafish', preoccupied with damaged veterans and unnervingly perceptive children."
   },
   {
     "id": "heart-of-darkness",
     "title": "Heart of Darkness",
-    "authors": ["Joseph Conrad"],
+    "authors": [
+      "Joseph Conrad"
+    ],
     "year": 1899,
-    "subjects": ["novella", "colonialism", "modernism", "empire"],
+    "subjects": [
+      "novella",
+      "colonialism",
+      "modernism",
+      "empire"
+    ],
     "description": "Marlow travels up the Congo to retrieve the trader Kurtz and finds imperial commerce stripped of its justifications. Much argued over, and worth arguing about."
   },
   {
     "id": "the-old-man-and-the-sea",
     "title": "The Old Man and the Sea",
-    "authors": ["Ernest Hemingway"],
+    "authors": [
+      "Ernest Hemingway"
+    ],
     "year": 1952,
-    "subjects": ["novella", "natural-history", "ecology"],
+    "subjects": [
+      "novella",
+      "natural-history",
+      "ecology"
+    ],
     "description": "An aged Cuban fisherman hooks a marlin larger than his boat and loses it to sharks on the way home. Hemingway's late, pared-back style at its most exposed."
   },
   {
     "id": "the-catcher-in-the-rye",
     "title": "The Catcher in the Rye",
-    "authors": ["J. D. Salinger"],
+    "authors": [
+      "J. D. Salinger"
+    ],
     "year": 1951,
-    "subjects": ["coming-of-age", "city-life", "family-saga"],
+    "subjects": [
+      "coming-of-age",
+      "city-life",
+      "family-saga"
+    ],
     "description": "Holden Caulfield wanders New York after being expelled, narrating in a voice that has been imitated ever since. Adolescent contempt as a defence against grief."
   },
   {
     "id": "a-portrait-of-the-artist",
     "title": "A Portrait of the Artist as a Young Man",
-    "authors": ["James Joyce"],
+    "authors": [
+      "James Joyce"
+    ],
     "year": 1916,
-    "subjects": ["coming-of-age", "modernism", "stream-of-consciousness", "comparative-religion"],
+    "subjects": [
+      "coming-of-age",
+      "modernism",
+      "stream-of-consciousness",
+      "comparative-religion"
+    ],
     "description": "Stephen Dedalus grows from a small boy to a young man deciding to leave Ireland, the prose maturing in step with him. The style is the biography."
   },
   {
     "id": "never-let-me-go",
     "title": "Never Let Me Go",
-    "authors": ["Kazuo Ishiguro"],
+    "authors": [
+      "Kazuo Ishiguro"
+    ],
     "year": 2005,
-    "subjects": ["dystopia", "coming-of-age", "novella", "medicine"],
+    "subjects": [
+      "dystopia",
+      "coming-of-age",
+      "novella",
+      "medicine"
+    ],
     "description": "Students at an English boarding school gradually learn what they were made for. Ishiguro withholds the premise so that acceptance, not horror, becomes the subject."
   },
   {
     "id": "the-remains-of-the-day",
     "title": "The Remains of the Day",
-    "authors": ["Kazuo Ishiguro"],
+    "authors": [
+      "Kazuo Ishiguro"
+    ],
     "year": 1989,
-    "subjects": ["class", "memoir", "family-saga", "war"],
+    "subjects": [
+      "class",
+      "memoir",
+      "family-saga",
+      "war"
+    ],
     "description": "An English butler tours the West Country and slowly reveals how much dignity cost him. An unreliable narrator who is mostly unreliable about himself."
   }
 ]

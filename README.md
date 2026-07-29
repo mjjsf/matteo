@@ -139,17 +139,31 @@ Library.
 ## Data
 
 ```
-data/taxonomy.json     8 top-level branches, 3 levels, 122 nodes
-data/tagMap.json       raw subject tag -> taxonomy node(s)
-data/corpus/*.json     361 hand-authored books, one file per branch
+data/taxonomy.json        10 top-level branches, 3 levels
+data/tagMap.json          raw subject tag -> taxonomy node(s)
+data/unmapped.allow.json  tags with no taxonomy home (see below)
+data/corpus/*.json        691 hand-authored books, one file per branch
 ```
 
-**The corpus is small and skews old**: median publication year 1979, only 28% from
-2000 onward, and no vocabulary at all for romance or young-adult. It is a
-literary/academic canon rather than "what people most read", which is the honest
-limit on recommendation quality right now — some seeds have thin or odd
-neighbours simply because there is nothing near them. Descriptions are real
-summaries of real books, and are not generated to pad the count.
+Median publication year 1999, with half the corpus published since 2000. The
+first 361 books were a literary/academic canon — median year 1979, and no
+vocabulary at all for romance or young adult — so a later pass added ~330 books
+weighted to modern bestsellers, book-club fiction, romance, thriller, YA and
+fantasy, plus Romance and Young Adult branches.
+
+**Two kinds of tag.** A tag in `tagMap.json` names a category the taxonomy has,
+and so contributes to both the subject block and the taxonomy-ancestor block. A
+tag in `unmapped.allow.json` is thematic or a setting — `grief`, `friendship`,
+`london` — with no honest taxonomy home. Those still contribute to similarity
+through the subject block; they simply do not pretend to a place in the
+hierarchy. Inventing a taxonomy node for every theme would make the tree
+meaningless, and dropping the tags would throw away real signal.
+
+**The corpus is still small**, and 691 books is the honest limit on
+recommendation quality: some seeds have thin or odd neighbours because there is
+genuinely nothing near them. Every description is a real summary of a real book.
+None are generated to pad the count — see the fetch script below for the path to
+a larger corpus.
 
 The vocabulary is defined before the corpus on purpose, and a test rejects any
 subject tag not in `tagMap.json`. Inconsistent tags (`dystopia` vs `dystopian`)
