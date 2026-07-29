@@ -22,8 +22,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
-      # Includes the layout freshness test, which fails if src/generated is
+      # Includes the neighbours freshness test, which fails if src/generated is
       # stale relative to the authored corpus. That is the safety net for
-      # committing baked coordinates.
+      # committing a baked similarity table.
       - run: npm test
       - run: npm run build

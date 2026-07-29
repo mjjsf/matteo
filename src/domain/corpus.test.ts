@@ -1,10 +1,25 @@
 import { describe, expect, it } from 'vitest';
-import { loadSeedCorpus, loadTagMap, loadUnmappedAllowlist } from './fixtures';
+import { loadSeedCorpus, loadLegacyIdAllowlist, loadTagMap, loadUnmappedAllowlist } from './fixtures';
 import { isValidIsbn } from './isbn';
 
 const books = loadSeedCorpus();
 const tagMap = loadTagMap();
 const allowlist = new Set(loadUnmappedAllowlist());
+const legacyIds = new Set(loadLegacyIdAllowlist());
+
+const STOPWORDS = new Set(['the', 'a', 'an', 'of', 'and', 'or', 'in', 'on', 'to', 'at', 'is', 'it', 'its', 'for']);
+
+function slugTokens(text: string): Set<string> {
+  return new Set(
+    text
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/['\u2019]/g, '')
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter(Boolean),
+  );
+}
 
 describe('seed corpus integrity', () => {
   it('is non-trivially sized', () => {
@@ -92,6 +107,33 @@ describe('seed corpus integrity', () => {
     }
     const report = [...offenders].map(([tag, ids]) => `${tag} <- ${ids.join(', ')}`);
     expect(report).toEqual([]);
+  });
+
+  it('never gives a book an id naming a different book', () => {
+    // Ids appear in shared URLs (`#/from/{id}`), so an id that names another
+    // book is not cosmetic — it makes the link lie about what it opens. This
+    // caught 97 of them in one authoring pass: `the-shadow-of-what-was-lost`
+    // for Jade City, `the-vanishing-half-yellowface` for Yellowface.
+    //
+    // Abbreviating IS allowed — `harry-potter-philosophers-stone`, or an author
+    // surname for disambiguation as in `einstein-isaacson`. The rule is only
+    // that every part of the id comes from the book's own title or authors.
+    const offenders: string[] = [];
+    for (const b of books) {
+      if (legacyIds.has(b.id)) continue;
+      const allowed = slugTokens(`${b.title} ${b.authors.join(' ')}`);
+      const stray = b.id.split('-').filter((t) => !STOPWORDS.has(t) && !allowed.has(t));
+      if (stray.length > 0) offenders.push(`${b.id} (${b.title}) <- stray: ${stray.join(', ')}`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  it('keeps every legacy id exception still present in the corpus', () => {
+    // data/legacy-ids.allow.json exempts ids that shipped before the rule
+    // existed and are live in URLs. If one is renamed or removed, drop it from
+    // the file rather than leaving a stale exemption behind.
+    const ids = new Set(books.map((b) => b.id));
+    expect([...legacyIds].filter((id) => !ids.has(id))).toEqual([]);
   });
 
   it('has no tag with document frequency below 2', () => {

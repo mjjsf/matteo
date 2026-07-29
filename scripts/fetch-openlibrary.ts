@@ -20,18 +20,18 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type { Book } from '@/domain/types';
 import { loadSeedCorpus, loadTagMap } from '@/domain/fixtures';
+import { normalizeWorks, type OpenLibraryWork } from './lib/openlibraryNormalize';
 import {
-  normalizeWorks,
-  type OpenLibrarySubjectResponse,
-  type OpenLibraryWork,
-} from './lib/openlibraryNormalize';
+  fetchDescription,
+  fetchSubject,
+  pendingSubjects,
+  type FetchLike,
+} from './lib/openlibraryFetch';
 
 const DATA_DIR = fileURLToPath(new URL('../data/', import.meta.url));
 const OUT_FILE = `${DATA_DIR}corpus.fetched.json`;
 const CURSOR_FILE = `${DATA_DIR}.fetch-cursor.json`;
 
-const USER_AGENT =
-  'matteo-book-map/0.1 (+https://github.com/mjjsf/matteo) - building a small book discovery dataset';
 const THROTTLE_MS = 400;
 
 interface Cursor {
@@ -50,32 +50,9 @@ function parseArgs(argv: string[]): { subjects: string[]; limit: number } {
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
 
-/** The entire untested surface, kept deliberately small and injectable. */
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url, {
-    headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' },
-  });
-  if (!response.ok) {
-    throw new Error(`${response.status} ${response.statusText} for ${url}`);
-  }
-  return (await response.json()) as T;
-}
-
-/** Descriptions are not in the subjects response, so they need a second request
- *  per work. Open Library returns either a string or a { value } object. */
-async function fetchDescription(workKey: string): Promise<string | undefined> {
-  try {
-    const work = await fetchJson<{ description?: string | { value?: string } }>(
-      `https://openlibrary.org${workKey}.json`,
-    );
-    const raw = typeof work.description === 'string' ? work.description : work.description?.value;
-    if (!raw) return undefined;
-    // Strip the trailing source attribution Open Library often appends.
-    return raw.split(/\r?\n----------/)[0]?.trim();
-  } catch {
-    return undefined;
-  }
-}
+/** The real fetch, injected once here so everything below it is the code the
+ *  tests in `lib/openlibraryFetch.test.ts` already exercise. */
+const http = globalThis.fetch as unknown as FetchLike;
 
 function loadCursor(): Cursor {
   if (!existsSync(CURSOR_FILE)) return { completedSubjects: [] };
@@ -104,29 +81,27 @@ async function main(): Promise<void> {
   const existingIds = new Set<string>([...seed, ...fetched].map((b) => b.id));
   const collected: Book[] = [...fetched];
 
-  for (const subject of subjects) {
-    if (cursor.completedSubjects.includes(subject)) {
-      console.log(`skipping ${subject} (already completed)`);
-      continue;
-    }
+  const todo = pendingSubjects(subjects, cursor.completedSubjects);
+  for (const skipped of subjects.filter((s) => !todo.includes(s))) {
+    console.log(`skipping ${skipped} (already completed)`);
+  }
 
+  for (const subject of todo) {
     console.log(`fetching subject ${subject} (limit ${limit})…`);
-    const url = `https://openlibrary.org/subjects/${encodeURIComponent(subject)}.json?limit=${limit}`;
-    let response: OpenLibrarySubjectResponse;
+    let works: OpenLibraryWork[];
     try {
-      response = await fetchJson<OpenLibrarySubjectResponse>(url);
+      works = (await fetchSubject(http, subject, limit)).works ?? [];
     } catch (error) {
       console.error(`  failed: ${(error as Error).message}`);
       continue;
     }
 
-    const works: OpenLibraryWork[] = response.works ?? [];
     console.log(`  ${works.length} works returned; fetching descriptions…`);
 
     const descriptions = new Map<string, string>();
     for (const work of works) {
       if (!work.key) continue;
-      const description = await fetchDescription(work.key);
+      const description = await fetchDescription(http, work.key);
       if (description) descriptions.set(work.key, description);
       await sleep(THROTTLE_MS);
     }
@@ -152,7 +127,7 @@ async function main(): Promise<void> {
   }
 
   console.log(`\n${collected.length} fetched books in data/corpus.fetched.json`);
-  console.log('Next: npm run corpus:merge && npm run layout && npm test');
+  console.log('Next: npm run corpus:merge && npm run neighbors && npm test');
 }
 
 void main();

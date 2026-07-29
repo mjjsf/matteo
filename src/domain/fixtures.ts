@@ -27,6 +27,16 @@ export function loadUnmappedAllowlist(): string[] {
   }
 }
 
+/** Ids that predate the "an id must name its own book" rule and are already
+ *  live in shared URLs, so they cannot be renamed without breaking links. */
+export function loadLegacyIdAllowlist(): string[] {
+  try {
+    return JSON.parse(readFileSync(join(DATA_DIR, 'legacy-ids.allow.json'), 'utf8')) as string[];
+  } catch {
+    return [];
+  }
+}
+
 /** The corpus the layout is built from: the merged file when `corpus:merge` has
  *  produced one, otherwise the authored seed alone.
  *

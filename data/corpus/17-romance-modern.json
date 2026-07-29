@@ -1,0 +1,781 @@
+[
+  {
+    "id": "lord-of-scoundrels",
+    "title": "Lord of Scoundrels",
+    "authors": [
+      "Loretta Chase"
+    ],
+    "year": 1995,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "enemies-to-lovers",
+      "marriage-plot"
+    ],
+    "description": "A plain, clever spinster and a man raised to believe he is repulsive. Routinely voted the best historical romance ever written, largely on the strength of the arguing."
+  },
+  {
+    "id": "romancing-mister-bridgerton",
+    "title": "Romancing Mister Bridgerton",
+    "authors": [
+      "Julia Quinn"
+    ],
+    "year": 2002,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "friends-to-lovers",
+      "romantic-comedy"
+    ],
+    "description": "Penelope Featherington has loved Colin Bridgerton for a decade and has also been writing the gossip column ruining half of London."
+  },
+  {
+    "id": "the-duke-who-didnt",
+    "title": "The Duke Who Didn't",
+    "authors": [
+      "Courtney Milan"
+    ],
+    "year": 2020,
+    "subjects": [
+      "historical-romance",
+      "romantic-comedy",
+      "small-town",
+      "second-chance"
+    ],
+    "description": "A woman running a village festival and the half-Chinese duke who has been lying about his title. Milan writes Victorian England with the people who were actually in it."
+  },
+  {
+    "id": "the-suffragette-scandal",
+    "title": "The Suffragette Scandal",
+    "authors": [
+      "Courtney Milan"
+    ],
+    "year": 2014,
+    "subjects": [
+      "historical-romance",
+      "feminism",
+      "victorian",
+      "enemies-to-lovers"
+    ],
+    "description": "A woman running a suffragist newspaper and the charming scoundrel sent to destroy it. The politics are researched and the hero is genuinely a villain first."
+  },
+  {
+    "id": "indigo-jenkins",
+    "title": "Indigo",
+    "authors": [
+      "Beverly Jenkins"
+    ],
+    "year": 1996,
+    "subjects": [
+      "historical-romance",
+      "slavery",
+      "race",
+      "american-midwest"
+    ],
+    "description": "A formerly enslaved woman running an Underground Railroad station shelters a wounded conductor. Jenkins essentially invented Black historical romance."
+  },
+  {
+    "id": "forbidden-jenkins",
+    "title": "Forbidden",
+    "authors": [
+      "Beverly Jenkins"
+    ],
+    "year": 2016,
+    "subjects": [
+      "historical-romance",
+      "race",
+      "western",
+      "marriage-plot"
+    ],
+    "description": "A Black man passing for white in 1870s Virginia City, and the woman who arrives and will not let him keep doing it."
+  },
+  {
+    "id": "slightly-dangerous",
+    "title": "Slightly Dangerous",
+    "authors": [
+      "Mary Balogh"
+    ],
+    "year": 2003,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "marriage-plot",
+      "slow-burn"
+    ],
+    "description": "An impossibly cold duke and a cheerful widow who refuses to be intimidated. Balogh's most-loved book, and the wit is all in the restraint."
+  },
+  {
+    "id": "when-beauty-tamed-the-beast",
+    "title": "When Beauty Tamed the Beast",
+    "authors": [
+      "Eloisa James"
+    ],
+    "year": 2011,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "romantic-comedy",
+      "medicine"
+    ],
+    "description": "A disgraced beauty is sent to a Welsh castle to marry a doctor who behaves exactly like House. Very funny and unusually medical."
+  },
+  {
+    "id": "99-percent-mine",
+    "title": "99 Percent Mine",
+    "authors": [
+      "Sally Thorne"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "friends-to-lovers",
+      "slow-burn",
+      "grief"
+    ],
+    "description": "A woman renovating her grandmother's cottage with her twin's best friend, who she has wanted since she was eight."
+  },
+  {
+    "id": "the-unhoneymooners",
+    "title": "The Unhoneymooners",
+    "authors": [
+      "Christina Lauren"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "enemies-to-lovers",
+      "workplace-romance"
+    ],
+    "description": "The only two guests not poisoned at a wedding take the honeymoon to Hawaii, pretending to be the couple. They loathe each other, briefly."
+  },
+  {
+    "id": "the-soulmate-equation",
+    "title": "The Soulmate Equation",
+    "authors": [
+      "Christina Lauren"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantic-comedy",
+      "science",
+      "motherhood",
+      "slow-burn"
+    ],
+    "description": "A single mother submits DNA to a matchmaking startup and returns a 98% match with its notoriously unpleasant founder."
+  },
+  {
+    "id": "the-friend-zone",
+    "title": "The Friend Zone",
+    "authors": [
+      "Abby Jimenez"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "friends-to-lovers",
+      "illness",
+      "slow-burn"
+    ],
+    "description": "Two people who cannot be together because she believes she cannot have children and he wants a family. Funnier and more painful than that sounds."
+  },
+  {
+    "id": "part-of-your-world",
+    "title": "Part of Your World",
+    "authors": [
+      "Abby Jimenez"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romantic-comedy",
+      "small-town",
+      "class",
+      "slow-burn"
+    ],
+    "description": "An ER doctor from a dynasty of surgeons and a small-town carpenter who is also the mayor. Sharp about what family expectation costs."
+  },
+  {
+    "id": "long-shot-ryan",
+    "title": "Long Shot",
+    "authors": [
+      "Kennedy Ryan"
+    ],
+    "year": 2018,
+    "subjects": [
+      "romance",
+      "domestic-abuse",
+      "second-chance",
+      "race"
+    ],
+    "description": "A woman trapped in a relationship with a basketball star, and the man who met her first. Ryan writes the abuse without flinching or excusing it."
+  },
+  {
+    "id": "before-i-let-go",
+    "title": "Before I Let Go",
+    "authors": [
+      "Kennedy Ryan"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romance",
+      "second-chance",
+      "grief",
+      "mental-health"
+    ],
+    "description": "A divorced couple who still run a restaurant together, and still love each other, and still cannot survive what happened. Second-chance done seriously."
+  },
+  {
+    "id": "it-happened-one-summer",
+    "title": "It Happened One Summer",
+    "authors": [
+      "Tessa Bailey"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantic-comedy",
+      "small-town",
+      "enemies-to-lovers",
+      "family"
+    ],
+    "description": "A Los Angeles socialite is exiled to a Washington fishing town and takes on the gruffest boat captain in it."
+  },
+  {
+    "id": "things-we-never-got-over",
+    "title": "Things We Never Got Over",
+    "authors": [
+      "Lucy Score"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romantic-comedy",
+      "small-town",
+      "enemies-to-lovers",
+      "family"
+    ],
+    "description": "A runaway bride lands in a North Carolina town and is handed a baby and a hostile barber. Enormous on social media and unapologetically comfort reading."
+  },
+  {
+    "id": "the-deal-kennedy",
+    "title": "The Deal",
+    "authors": [
+      "Elle Kennedy"
+    ],
+    "year": 2015,
+    "subjects": [
+      "romantic-comedy",
+      "first-love",
+      "sexual-assault",
+      "slow-burn"
+    ],
+    "description": "A hockey captain tutors a girl in exchange for her pretending to date him. Better than its premise about consent and about her history."
+  },
+  {
+    "id": "love-on-the-brain",
+    "title": "Love on the Brain",
+    "authors": [
+      "Ali Hazelwood"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romantic-comedy",
+      "workplace-romance",
+      "science",
+      "enemies-to-lovers"
+    ],
+    "description": "A neuroscientist co-leads a NASA project with the man she believes sabotaged her in graduate school."
+  },
+  {
+    "id": "the-spanish-love-deception",
+    "title": "The Spanish Love Deception",
+    "authors": [
+      "Elena Armas"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantic-comedy",
+      "workplace-romance",
+      "enemies-to-lovers",
+      "slow-burn"
+    ],
+    "description": "A woman needs a date for her sister's wedding in Spain and the only volunteer is the colleague she cannot stand."
+  },
+  {
+    "id": "happy-place",
+    "title": "Happy Place",
+    "authors": [
+      "Emily Henry"
+    ],
+    "year": 2023,
+    "subjects": [
+      "romantic-comedy",
+      "second-chance",
+      "friendship",
+      "grief"
+    ],
+    "description": "A couple who broke up five months ago and told nobody share a Maine cottage with their oldest friends for one last week."
+  },
+  {
+    "id": "funny-story",
+    "title": "Funny Story",
+    "authors": [
+      "Emily Henry"
+    ],
+    "year": 2024,
+    "subjects": [
+      "romantic-comedy",
+      "small-town",
+      "libraries",
+      "slow-burn"
+    ],
+    "description": "A librarian jilted at the engagement party moves in with the man whose fiancée ran off with hers. They decide to make it look deliberate."
+  },
+  {
+    "id": "every-summer-after",
+    "title": "Every Summer After",
+    "authors": [
+      "Carley Fortune"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romance",
+      "second-chance",
+      "first-love",
+      "small-town"
+    ],
+    "description": "Six summers at a lake house and one wedding a decade later. Alternates between the childhood friendship and the thing that ended it."
+  },
+  {
+    "id": "one-italian-summer",
+    "title": "One Italian Summer",
+    "authors": [
+      "Rebecca Serle"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romance",
+      "grief",
+      "motherhood",
+      "italy"
+    ],
+    "description": "A woman takes the trip to Positano she was meant to take with her mother, and meets her mother there, aged thirty."
+  },
+  {
+    "id": "in-five-years",
+    "title": "In Five Years",
+    "authors": [
+      "Rebecca Serle"
+    ],
+    "year": 2020,
+    "subjects": [
+      "romance",
+      "friendship",
+      "grief",
+      "new-york"
+    ],
+    "description": "A lawyer has one hour of a life five years ahead, with a man she has never met. The book is not the romance you expect it to be."
+  },
+  {
+    "id": "the-wedding-party",
+    "title": "The Wedding Party",
+    "authors": [
+      "Jasmine Guillory"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "enemies-to-lovers",
+      "friendship",
+      "race"
+    ],
+    "description": "Two people who dislike each other and share a best friend keep sleeping together in the run-up to her wedding."
+  },
+  {
+    "id": "seven-days-in-june",
+    "title": "Seven Days in June",
+    "authors": [
+      "Tia Williams"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romance",
+      "second-chance",
+      "race",
+      "addiction"
+    ],
+    "description": "Two novelists who spent one week together as teenagers and have been writing each other into their books ever since."
+  },
+  {
+    "id": "honey-and-spice",
+    "title": "Honey and Spice",
+    "authors": [
+      "Bolu Babalola"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romantic-comedy",
+      "academia",
+      "race",
+      "enemies-to-lovers"
+    ],
+    "description": "A university radio host warns her listeners off a man and is then photographed kissing him. A fake relationship follows, obviously."
+  },
+  {
+    "id": "the-switch",
+    "title": "The Switch",
+    "authors": [
+      "Beth O'Leary"
+    ],
+    "year": 2020,
+    "subjects": [
+      "romantic-comedy",
+      "grief",
+      "small-town",
+      "family"
+    ],
+    "description": "A burnt-out Londoner and her recently widowed grandmother swap houses and lives for two months. Both of them start dating."
+  },
+  {
+    "id": "one-day-in-december",
+    "title": "One Day in December",
+    "authors": [
+      "Josie Silver"
+    ],
+    "year": 2018,
+    "subjects": [
+      "romance",
+      "slow-burn",
+      "friendship",
+      "london"
+    ],
+    "description": "A woman locks eyes with a stranger through a bus window and meets him a year later, as her best friend's boyfriend."
+  },
+  {
+    "id": "the-seven-year-slip",
+    "title": "The Seven Year Slip",
+    "authors": [
+      "Ashley Poston"
+    ],
+    "year": 2023,
+    "subjects": [
+      "romance",
+      "time-travel",
+      "grief",
+      "new-york"
+    ],
+    "description": "A woman inherits her aunt's Manhattan apartment, which sometimes opens onto seven years ago, where a chef is subletting it."
+  },
+  {
+    "id": "in-the-lives-of-puppets",
+    "title": "In the Lives of Puppets",
+    "authors": [
+      "TJ Klune"
+    ],
+    "year": 2023,
+    "subjects": [
+      "queer-romance",
+      "robots",
+      "found-family",
+      "science-fiction"
+    ],
+    "description": "A human boy raised in a forest by machines discovers what his inventor father used to build. Pinocchio inverted, gently."
+  },
+  {
+    "id": "i-kissed-shara-wheeler",
+    "title": "I Kissed Shara Wheeler",
+    "authors": [
+      "Casey McQuiston"
+    ],
+    "year": 2022,
+    "subjects": [
+      "queer-romance",
+      "ya-romance",
+      "high-school",
+      "puzzle"
+    ],
+    "description": "The prom queen kisses three people and vanishes, leaving a scavenger hunt. A queer teen mystery set in an Alabama Christian school."
+  },
+  {
+    "id": "delilah-green-doesnt-care",
+    "title": "Delilah Green Doesn't Care",
+    "authors": [
+      "Ashley Herring Blake"
+    ],
+    "year": 2022,
+    "subjects": [
+      "sapphic",
+      "queer-romance",
+      "romantic-comedy",
+      "small-town"
+    ],
+    "description": "A photographer returns to the town she escaped to shoot her stepsister's wedding and falls for the maid of honour."
+  },
+  {
+    "id": "something-fabulous",
+    "title": "Something Fabulous",
+    "authors": [
+      "Alexis Hall"
+    ],
+    "year": 2022,
+    "subjects": [
+      "queer-romance",
+      "regency",
+      "romantic-comedy",
+      "historical-romance"
+    ],
+    "description": "A duke's proposal is refused, and the ensuing chase across England is conducted almost entirely by farce."
+  },
+  {
+    "id": "a-marvellous-light",
+    "title": "A Marvellous Light",
+    "authors": [
+      "Freya Marske"
+    ],
+    "year": 2021,
+    "subjects": [
+      "queer-romance",
+      "historical-romance",
+      "magic-system",
+      "puzzle"
+    ],
+    "description": "An Edwardian civil servant is accidentally assigned as liaison to a hidden magical bureaucracy and cursed within a week."
+  },
+  {
+    "id": "winters-orbit",
+    "title": "Winter's Orbit",
+    "authors": [
+      "Everina Maxwell"
+    ],
+    "year": 2021,
+    "subjects": [
+      "queer-romance",
+      "space-opera",
+      "court-politics",
+      "marriage-plot"
+    ],
+    "description": "A treaty marriage between an idle prince and a widowed diplomat, complicated by the fact that the previous husband was murdered."
+  },
+  {
+    "id": "she-who-became-the-sun",
+    "title": "She Who Became the Sun",
+    "authors": [
+      "Shelley Parker-Chan"
+    ],
+    "year": 2021,
+    "subjects": [
+      "epic-fantasy",
+      "queer-romance",
+      "war",
+      "identity"
+    ],
+    "description": "A starving girl takes her dead brother's name and his destiny of greatness, in fourteenth-century China. Ambition as a form of hunger."
+  },
+  {
+    "id": "a-court-of-silver-flames",
+    "title": "A Court of Silver Flames",
+    "authors": [
+      "Sarah J. Maas"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantasy",
+      "fae",
+      "trauma",
+      "enemies-to-lovers"
+    ],
+    "description": "Nesta Archeron, the sister nobody liked, is forced into training and therapy. The most character-driven book in the series."
+  },
+  {
+    "id": "house-of-earth-and-blood",
+    "title": "House of Earth and Blood",
+    "authors": [
+      "Sarah J. Maas"
+    ],
+    "year": 2020,
+    "subjects": [
+      "romantasy",
+      "urban-fantasy",
+      "murder",
+      "grief"
+    ],
+    "description": "A half-fae party girl and a fallen angel investigate the murder of her best friend in a modern city full of monsters."
+  },
+  {
+    "id": "the-serpent-and-the-wings-of-night",
+    "title": "The Serpent and the Wings of Night",
+    "authors": [
+      "Carissa Broadbent"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romantasy",
+      "vampires",
+      "survival-games",
+      "enemies-to-lovers"
+    ],
+    "description": "A human adopted by the Nightborn king enters a vampire tournament nobody expects her to survive."
+  },
+  {
+    "id": "a-touch-of-darkness",
+    "title": "A Touch of Darkness",
+    "authors": [
+      "Scarlett St. Clair"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantasy",
+      "mythology",
+      "paranormal-romance",
+      "enemies-to-lovers"
+    ],
+    "description": "Persephone, a journalism student in a modern New Athens, gambles with Hades and loses. Greek myth as contemporary romantasy."
+  },
+  {
+    "id": "kingdom-of-the-wicked",
+    "title": "Kingdom of the Wicked",
+    "authors": [
+      "Kerri Maniscalco"
+    ],
+    "year": 2020,
+    "subjects": [
+      "romantasy",
+      "witches",
+      "murder",
+      "italy"
+    ],
+    "description": "A Sicilian witch investigating her twin's murder makes a bargain with a prince of Hell. Nineteenth-century Palermo, heavily perfumed."
+  },
+  {
+    "id": "half-a-soul",
+    "title": "Half a Soul",
+    "authors": [
+      "Olivia Atwater"
+    ],
+    "year": 2020,
+    "subjects": [
+      "regency",
+      "romantasy",
+      "fae",
+      "romantic-comedy"
+    ],
+    "description": "A young woman whose soul was half-stolen by a faerie as a child cannot feel fear, which makes her a social catastrophe and a good investigator."
+  },
+  {
+    "id": "sorcery-of-thorns",
+    "title": "Sorcery of Thorns",
+    "authors": [
+      "Margaret Rogerson"
+    ],
+    "year": 2019,
+    "subjects": [
+      "ya-fantasy",
+      "libraries",
+      "romantasy",
+      "monsters"
+    ],
+    "description": "An orphan raised in a library of grimoires that scream is accused of releasing one. The books are characters."
+  },
+  {
+    "id": "the-girl-in-the-tower",
+    "title": "The Girl in the Tower",
+    "authors": [
+      "Katherine Arden"
+    ],
+    "year": 2017,
+    "subjects": [
+      "epic-fantasy",
+      "folklore",
+      "identity",
+      "witches"
+    ],
+    "description": "Vasya rides to Moscow disguised as a boy and is caught between a prince, a priest and the frost demon. Second of the Winternight trilogy."
+  },
+  {
+    "id": "a-deadly-education",
+    "title": "A Deadly Education",
+    "authors": [
+      "Naomi Novik"
+    ],
+    "year": 2020,
+    "subjects": [
+      "ya-fantasy",
+      "magic-school",
+      "monsters",
+      "enemies-to-lovers"
+    ],
+    "description": "A school with no teachers, where a quarter of each year is eaten before graduation, and a girl prophesied to become a mass murderer."
+  },
+  {
+    "id": "the-fragile-threads-of-power",
+    "title": "The Fragile Threads of Power",
+    "authors": [
+      "V. E. Schwab"
+    ],
+    "year": 2023,
+    "subjects": [
+      "epic-fantasy",
+      "parallel-worlds",
+      "court-politics",
+      "magic-system"
+    ],
+    "description": "Seven years after the Shades of Magic trilogy, a rebellion, a new Antari, and a girl who can copy any magic she sees."
+  },
+  {
+    "id": "emily-wildes-encyclopaedia-of-faeries",
+    "title": "Emily Wilde's Encyclopaedia of Faeries",
+    "authors": [
+      "Heather Fawcett"
+    ],
+    "year": 2023,
+    "subjects": [
+      "romantasy",
+      "fae",
+      "academia",
+      "folklore"
+    ],
+    "description": "A Cambridge dryadologist doing fieldwork in a northern village, told through her field journal, joined by a colleague she suspects is not entirely human."
+  },
+  {
+    "id": "legends-and-lattes",
+    "title": "Legends & Lattes",
+    "authors": [
+      "Travis Baldree"
+    ],
+    "year": 2022,
+    "subjects": [
+      "epic-fantasy",
+      "kindness",
+      "sapphic",
+      "found-family"
+    ],
+    "description": "An orc barbarian retires to open a coffee shop in a city that has never heard of coffee. Nothing much goes wrong, on purpose."
+  },
+  {
+    "id": "the-very-secret-society-of-irregular-witches",
+    "title": "The Very Secret Society of Irregular Witches",
+    "authors": [
+      "Sangu Mandanna"
+    ],
+    "year": 2022,
+    "subjects": [
+      "witches",
+      "found-family",
+      "romantic-comedy",
+      "kindness"
+    ],
+    "description": "A lonely witch takes a post tutoring three magical children at a rambling house, and is warned off the resident librarian."
+  },
+  {
+    "id": "paybacks-a-witch",
+    "title": "Payback's a Witch",
+    "authors": [
+      "Lana Harper"
+    ],
+    "year": 2021,
+    "subjects": [
+      "witches",
+      "sapphic",
+      "romantic-comedy",
+      "small-town"
+    ],
+    "description": "A witch returns to her magical Illinois hometown for a tournament and allies with two other women wronged by the same man."
+  }
+]

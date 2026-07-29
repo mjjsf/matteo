@@ -1,0 +1,1027 @@
+[
+  {
+    "id": "pride-and-prejudice",
+    "title": "Pride and Prejudice",
+    "authors": [
+      "Jane Austen"
+    ],
+    "year": 1813,
+    "subjects": [
+      "regency",
+      "marriage-plot",
+      "19th-century",
+      "slow-burn"
+    ],
+    "description": "Elizabeth Bennet and Mr Darcy misjudge each other thoroughly before either can admit otherwise. The template almost every romance since has been built on, and still the sharpest on money, class and the cost of being a woman without either."
+  },
+  {
+    "id": "persuasion",
+    "title": "Persuasion",
+    "authors": [
+      "Jane Austen"
+    ],
+    "year": 1817,
+    "subjects": [
+      "regency",
+      "marriage-plot",
+      "second-chance",
+      "19th-century"
+    ],
+    "description": "Anne Elliot, persuaded years ago to refuse the man she loved, meets him again as a prosperous captain. Austen's quietest novel and her most adult, written about regret rather than courtship."
+  },
+  {
+    "id": "emma-austen",
+    "title": "Emma",
+    "authors": [
+      "Jane Austen"
+    ],
+    "year": 1815,
+    "subjects": [
+      "regency",
+      "marriage-plot",
+      "romantic-comedy"
+    ],
+    "description": "A wealthy young woman who is certain she knows what everyone else needs arranges matches that go wrong in every direction. The comedy comes from how long it takes her to see the one in front of her."
+  },
+  {
+    "id": "outlander",
+    "title": "Outlander",
+    "authors": [
+      "Diana Gabaldon"
+    ],
+    "year": 1991,
+    "subjects": [
+      "historical-romance",
+      "wartime-romance",
+      "time-travel",
+      "scotland"
+    ],
+    "description": "A 1945 combat nurse touches a standing stone and wakes in 1743 Scotland, married off to a Highlander to keep her from an English officer. Long, dense with period detail, and unembarrassed about being a love story."
+  },
+  {
+    "id": "the-duke-and-i",
+    "title": "The Duke and I",
+    "authors": [
+      "Julia Quinn"
+    ],
+    "year": 2000,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "marriage-plot",
+      "romantic-comedy"
+    ],
+    "description": "Daphne Bridgerton and the Duke of Hastings fake a courtship to serve both their reputations. Light, fast Regency romance, and the book that pulled the whole genre back onto television."
+  },
+  {
+    "id": "the-hating-game",
+    "title": "The Hating Game",
+    "authors": [
+      "Sally Thorne"
+    ],
+    "year": 2016,
+    "subjects": [
+      "romantic-comedy",
+      "workplace-romance",
+      "slow-burn"
+    ],
+    "description": "Two executive assistants at a merged publishing house wage war across facing desks while competing for the same promotion. Enemies-to-lovers played almost entirely in a single office."
+  },
+  {
+    "id": "beach-read",
+    "title": "Beach Read",
+    "authors": [
+      "Emily Henry"
+    ],
+    "year": 2020,
+    "subjects": [
+      "romantic-comedy",
+      "second-chance",
+      "grief",
+      "book-club"
+    ],
+    "description": "A romance novelist in a creative and financial hole discovers her neighbour is the literary novelist she resented in college. They swap genres for a summer. Funnier and sadder than the cover suggests."
+  },
+  {
+    "id": "people-we-meet-on-vacation",
+    "title": "People We Meet on Vacation",
+    "authors": [
+      "Emily Henry"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantic-comedy",
+      "slow-burn",
+      "friends-to-lovers"
+    ],
+    "description": "Two best friends who take one trip together every summer stop speaking after a trip that went wrong. Told across a decade of holidays, circling the thing neither will say."
+  },
+  {
+    "id": "book-lovers",
+    "title": "Book Lovers",
+    "authors": [
+      "Emily Henry"
+    ],
+    "year": 2022,
+    "subjects": [
+      "romantic-comedy",
+      "small-town",
+      "workplace-romance"
+    ],
+    "description": "A literary agent goes to a small town expecting the plot of every book she has edited and gets the wrong one, repeatedly running into an editor she has clashed with in New York."
+  },
+  {
+    "id": "red-white-and-royal-blue",
+    "title": "Red, White & Royal Blue",
+    "authors": [
+      "Casey McQuiston"
+    ],
+    "year": 2019,
+    "subjects": [
+      "queer-romance",
+      "romantic-comedy",
+      "enemies-to-lovers"
+    ],
+    "description": "The son of the American president and a British prince are forced into a public friendship after a scene at a royal wedding. A political fairy tale, and knowingly one."
+  },
+  {
+    "id": "one-last-stop",
+    "title": "One Last Stop",
+    "authors": [
+      "Casey McQuiston"
+    ],
+    "year": 2021,
+    "subjects": [
+      "queer-romance",
+      "sapphic",
+      "time-travel",
+      "new-york"
+    ],
+    "description": "A cynical twenty-three-year-old falls for a woman on the Q train who turns out to be displaced from 1977 and unable to leave the line. Romance with a genuinely strange premise."
+  },
+  {
+    "id": "the-song-of-achilles",
+    "title": "The Song of Achilles",
+    "authors": [
+      "Madeline Miller"
+    ],
+    "year": 2011,
+    "subjects": [
+      "queer-romance",
+      "mythology",
+      "historical-romance",
+      "book-club"
+    ],
+    "description": "The Iliad told by Patroclus, from boyhood exile through Troy. Miller writes the love plainly and lets the ending do what everyone knows it will do."
+  },
+  {
+    "id": "circe",
+    "title": "Circe",
+    "authors": [
+      "Madeline Miller"
+    ],
+    "year": 2018,
+    "subjects": [
+      "mythology",
+      "historical-fiction",
+      "book-club",
+      "feminism"
+    ],
+    "description": "The witch of Aiaia narrates her own exile, from a slighted nymph in her father's halls to a power the gods have to negotiate with. Odysseus passes through and is not the point."
+  },
+  {
+    "id": "the-seven-husbands-of-evelyn-hugo",
+    "title": "The Seven Husbands of Evelyn Hugo",
+    "authors": [
+      "Taylor Jenkins Reid"
+    ],
+    "year": 2017,
+    "subjects": [
+      "queer-romance",
+      "sapphic",
+      "book-club",
+      "hollywood"
+    ],
+    "description": "An ageing film star finally gives an interview and accounts for seven marriages, none of which were the relationship that mattered. Old Hollywood glamour over a closeted love story."
+  },
+  {
+    "id": "daisy-jones-and-the-six",
+    "title": "Daisy Jones & The Six",
+    "authors": [
+      "Taylor Jenkins Reid"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "rock",
+      "historical-fiction",
+      "slow-burn"
+    ],
+    "description": "An oral history of a fictional seventies band that broke up at the height of its fame. Told entirely as interview transcript, with the members contradicting each other about what happened."
+  },
+  {
+    "id": "malibu-rising",
+    "title": "Malibu Rising",
+    "authors": [
+      "Taylor Jenkins Reid"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "family-saga",
+      "hollywood"
+    ],
+    "description": "Four famous siblings throw their annual party in 1983 Malibu, over the single day and night the house burns down. Family history unfolds in the gaps between hours."
+  },
+  {
+    "id": "it-ends-with-us",
+    "title": "It Ends with Us",
+    "authors": [
+      "Colleen Hoover"
+    ],
+    "year": 2016,
+    "subjects": [
+      "book-club",
+      "domestic-abuse",
+      "second-chance"
+    ],
+    "description": "A woman opening a flower shop in Boston falls for a neurosurgeon, then recognises in him what she watched her mother endure. A romance that turns deliberately into something else."
+  },
+  {
+    "id": "verity",
+    "title": "Verity",
+    "authors": [
+      "Colleen Hoover"
+    ],
+    "year": 2018,
+    "subjects": [
+      "domestic-suspense",
+      "unreliable-narrator",
+      "psychological-horror"
+    ],
+    "description": "A struggling writer hired to finish a bestselling novelist's series finds an unpublished manuscript in the house that reads as a confession. Whether to believe it is the whole book."
+  },
+  {
+    "id": "the-love-hypothesis",
+    "title": "The Love Hypothesis",
+    "authors": [
+      "Ali Hazelwood"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantic-comedy",
+      "workplace-romance",
+      "academia"
+    ],
+    "description": "A biology PhD candidate kisses the department's most disliked professor to prove to a friend she is dating someone. They agree to keep pretending. Set convincingly inside a lab."
+  },
+  {
+    "id": "the-kiss-quotient",
+    "title": "The Kiss Quotient",
+    "authors": [
+      "Helen Hoang"
+    ],
+    "year": 2018,
+    "subjects": [
+      "romantic-comedy",
+      "workplace-romance",
+      "neurodivergence"
+    ],
+    "description": "An autistic econometrician hires an escort to teach her about sex and dating, on the theory that practice is practice. Hoang writes her own diagnosis into the heroine."
+  },
+  {
+    "id": "get-a-life-chloe-brown",
+    "title": "Get a Life, Chloe Brown",
+    "authors": [
+      "Talia Hibbert"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "illness",
+      "slow-burn"
+    ],
+    "description": "A chronically ill web designer writes a list of things she has never done and recruits her building's superintendent to help. Warm without being weightless about pain."
+  },
+  {
+    "id": "the-wedding-date",
+    "title": "The Wedding Date",
+    "authors": [
+      "Jasmine Guillory"
+    ],
+    "year": 2018,
+    "subjects": [
+      "romantic-comedy",
+      "workplace-romance",
+      "slow-burn"
+    ],
+    "description": "Two strangers stuck in a hotel lift agree that one will be the other's plus-one at a wedding that evening. A long-distance relationship neither will name follows."
+  },
+  {
+    "id": "beautiful-ruins",
+    "title": "Beautiful Ruins",
+    "authors": [
+      "Jess Walter"
+    ],
+    "year": 2012,
+    "subjects": [
+      "book-club",
+      "historical-romance",
+      "hollywood",
+      "italy"
+    ],
+    "description": "An Italian innkeeper waits fifty years for an American actress who came to his village during the filming of Cleopatra. Moves between 1962 Liguria and present-day Hollywood."
+  },
+  {
+    "id": "the-notebook",
+    "title": "The Notebook",
+    "authors": [
+      "Nicholas Sparks"
+    ],
+    "year": 1996,
+    "subjects": [
+      "second-chance",
+      "wartime-romance",
+      "small-town"
+    ],
+    "description": "An old man reads a story aloud to a woman with dementia in a nursing home: a summer romance in 1940s North Carolina, separated by class and war. Sentimental on purpose and effective at it."
+  },
+  {
+    "id": "me-before-you",
+    "title": "Me Before You",
+    "authors": [
+      "Jojo Moyes"
+    ],
+    "year": 2012,
+    "subjects": [
+      "book-club",
+      "grief",
+      "disability",
+      "slow-burn"
+    ],
+    "description": "A woman with no prospects takes a job caring for a quadriplegic former banker who intends to end his life. Moyes refuses to resolve the argument the premise sets up."
+  },
+  {
+    "id": "the-giver-of-stars",
+    "title": "The Giver of Stars",
+    "authors": [
+      "Jojo Moyes"
+    ],
+    "year": 2019,
+    "subjects": [
+      "historical-romance",
+      "book-club",
+      "appalachia",
+      "friendship"
+    ],
+    "description": "Five women ride books into the Kentucky mountains for the Depression-era Packhorse Library. The romance shares the page with a story about women being paid to work."
+  },
+  {
+    "id": "dragonfly-in-amber",
+    "title": "Dragonfly in Amber",
+    "authors": [
+      "Diana Gabaldon"
+    ],
+    "year": 1992,
+    "subjects": [
+      "historical-romance",
+      "time-travel",
+      "scotland",
+      "wartime-romance"
+    ],
+    "description": "Claire returns to Scotland twenty years later and tells her daughter what happened in France and at Culloden. The series' bleakest instalment, and the one that sets its shape."
+  },
+  {
+    "id": "a-court-of-thorns-and-roses",
+    "title": "A Court of Thorns and Roses",
+    "authors": [
+      "Sarah J. Maas"
+    ],
+    "year": 2015,
+    "subjects": [
+      "fae",
+      "romantasy",
+      "ya-fantasy",
+      "enemies-to-lovers"
+    ],
+    "description": "A huntress who kills a wolf in the woods is taken across the wall into the faerie lands as payment. Beauty and the Beast reworked, and the book that made romantasy a shelf of its own."
+  },
+  {
+    "id": "a-court-of-mist-and-fury",
+    "title": "A Court of Mist and Fury",
+    "authors": [
+      "Sarah J. Maas"
+    ],
+    "year": 2016,
+    "subjects": [
+      "fae",
+      "romantasy",
+      "slow-burn",
+      "trauma"
+    ],
+    "description": "The sequel that redirects the series, following the aftermath of the first book's bargain rather than its romance. Widely held to be where the series becomes what its readers love."
+  },
+  {
+    "id": "throne-of-glass",
+    "title": "Throne of Glass",
+    "authors": [
+      "Sarah J. Maas"
+    ],
+    "year": 2012,
+    "subjects": [
+      "ya-fantasy",
+      "romantasy",
+      "assassins",
+      "chosen-one"
+    ],
+    "description": "An eighteen-year-old assassin is hauled out of a salt mine to compete as the king's champion. Begins as a tournament story and becomes a very long epic."
+  },
+  {
+    "id": "fourth-wing",
+    "title": "Fourth Wing",
+    "authors": [
+      "Rebecca Yarros"
+    ],
+    "year": 2023,
+    "subjects": [
+      "romantasy",
+      "dragons",
+      "magic-school",
+      "enemies-to-lovers"
+    ],
+    "description": "A scribe-trained woman with a connective tissue disorder is forced into a dragon-riding war college where most cadets die in the first year. The romantasy phenomenon of its year."
+  },
+  {
+    "id": "iron-flame",
+    "title": "Iron Flame",
+    "authors": [
+      "Rebecca Yarros"
+    ],
+    "year": 2023,
+    "subjects": [
+      "romantasy",
+      "dragons",
+      "magic-school",
+      "war"
+    ],
+    "description": "The second year at Basgiath, under a new commandant who intends to break her. Longer and darker than the first, with the war moving from rumour to fact."
+  },
+  {
+    "id": "from-blood-and-ash",
+    "title": "From Blood and Ash",
+    "authors": [
+      "Jennifer L. Armentrout"
+    ],
+    "year": 2020,
+    "subjects": [
+      "romantasy",
+      "paranormal-romance",
+      "fae",
+      "chosen-one"
+    ],
+    "description": "A young woman raised as a sacred vessel, forbidden to be touched or spoken to, falls for the guard assigned to her. Fast-moving and unashamed of its tropes."
+  },
+  {
+    "id": "twilight",
+    "title": "Twilight",
+    "authors": [
+      "Stephenie Meyer"
+    ],
+    "year": 2005,
+    "subjects": [
+      "paranormal-romance",
+      "vampires",
+      "ya-romance",
+      "high-school"
+    ],
+    "description": "A girl moves to a rainy Washington town and falls for a boy who turns out to be a vampire. Whatever else is true of it, it reorganised publishing for a decade."
+  },
+  {
+    "id": "a-discovery-of-witches",
+    "title": "A Discovery of Witches",
+    "authors": [
+      "Deborah Harkness"
+    ],
+    "year": 2011,
+    "subjects": [
+      "paranormal-romance",
+      "vampires",
+      "academia",
+      "witches"
+    ],
+    "description": "A historian of alchemy at the Bodleian calls up a bewitched manuscript and draws every creature in Oxford to her. Written by an actual historian of science, and it shows."
+  },
+  {
+    "id": "voyager",
+    "title": "Voyager",
+    "authors": [
+      "Diana Gabaldon"
+    ],
+    "year": 1993,
+    "subjects": [
+      "historical-romance",
+      "second-chance",
+      "time-travel",
+      "scotland"
+    ],
+    "description": "Claire finds evidence that Jamie survived Culloden and has to decide whether to go back. Half reunion, half sea voyage to the Caribbean."
+  },
+  {
+    "id": "the-flatshare",
+    "title": "The Flatshare",
+    "authors": [
+      "Beth O'Leary"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "slow-burn",
+      "london"
+    ],
+    "description": "Two strangers share a one-bed flat on opposite shifts and communicate entirely by sticky notes for months before meeting. The notes carry more of the book than the meeting does."
+  },
+  {
+    "id": "the-rosie-project",
+    "title": "The Rosie Project",
+    "authors": [
+      "Graeme Simsion"
+    ],
+    "year": 2013,
+    "subjects": [
+      "romantic-comedy",
+      "neurodivergence",
+      "academia"
+    ],
+    "description": "A genetics professor designs a sixteen-page questionnaire to find a wife and meets a barmaid who fails every criterion. Narrated by him, which is the joke and the warmth."
+  },
+  {
+    "id": "bridget-joness-diary",
+    "title": "Bridget Jones's Diary",
+    "authors": [
+      "Helen Fielding"
+    ],
+    "year": 1996,
+    "subjects": [
+      "romantic-comedy",
+      "marriage-plot",
+      "london"
+    ],
+    "description": "A year of a London thirty-something's diary, counted in cigarettes, units of alcohol and pounds. Pride and Prejudice relocated to publishing parties, and it invented a whole genre of them."
+  },
+  {
+    "id": "normal-people",
+    "title": "Normal People",
+    "authors": [
+      "Sally Rooney"
+    ],
+    "year": 2018,
+    "subjects": [
+      "book-club",
+      "first-love",
+      "slow-burn",
+      "ireland"
+    ],
+    "description": "Connell and Marianne circle each other from a Sligo school to Trinity College, together and apart, never quite able to say the thing. Rooney writes class as precisely as she writes desire."
+  },
+  {
+    "id": "conversations-with-friends",
+    "title": "Conversations with Friends",
+    "authors": [
+      "Sally Rooney"
+    ],
+    "year": 2017,
+    "subjects": [
+      "book-club",
+      "queer-romance",
+      "ireland",
+      "romance"
+    ],
+    "description": "Two Dublin students, once a couple, are drawn into the marriage of an older writer and actor. Cool, talky, and unsparing about the narrator's self-deceptions."
+  },
+  {
+    "id": "one-day",
+    "title": "One Day",
+    "authors": [
+      "David Nicholls"
+    ],
+    "year": 2009,
+    "subjects": [
+      "slow-burn",
+      "friends-to-lovers",
+      "book-club",
+      "london"
+    ],
+    "description": "Emma and Dexter on the same date, the fifteenth of July, every year for twenty years. The structure does most of the work and does it beautifully."
+  },
+  {
+    "id": "the-time-travelers-wife",
+    "title": "The Time Traveler's Wife",
+    "authors": [
+      "Audrey Niffenegger"
+    ],
+    "year": 2003,
+    "subjects": [
+      "time-travel",
+      "book-club",
+      "slow-burn",
+      "grief"
+    ],
+    "description": "A man with a genetic disorder that pulls him involuntarily through time, and the woman who has known him since she was six. The chronology is the marriage."
+  },
+  {
+    "id": "the-idea-of-you",
+    "title": "The Idea of You",
+    "authors": [
+      "Robinne Lee"
+    ],
+    "year": 2017,
+    "subjects": [
+      "romantic-comedy",
+      "romance",
+      "hollywood"
+    ],
+    "description": "A thirty-nine-year-old gallery owner takes her daughter to a boy band concert and ends up with the twenty-four-year-old lead singer. Sharper about scrutiny and ageing than the premise implies."
+  },
+  {
+    "id": "the-price-of-salt",
+    "title": "The Price of Salt",
+    "authors": [
+      "Patricia Highsmith"
+    ],
+    "year": 1952,
+    "subjects": [
+      "sapphic",
+      "queer-romance",
+      "1950s",
+      "road-trip"
+    ],
+    "description": "A department store shopgirl and an older woman in the middle of a divorce drive west together. Published under a pseudonym, and notable then for letting both women survive it."
+  },
+  {
+    "id": "giovannis-room",
+    "title": "Giovanni's Room",
+    "authors": [
+      "James Baldwin"
+    ],
+    "year": 1956,
+    "subjects": [
+      "queer-romance",
+      "paris",
+      "1950s",
+      "guilt"
+    ],
+    "description": "An American in Paris, engaged to a woman, takes up with an Italian bartender and cannot forgive himself for it. Baldwin on shame, written when publishing it was a risk."
+  },
+  {
+    "id": "call-me-by-your-name",
+    "title": "Call Me by Your Name",
+    "authors": [
+      "André Aciman"
+    ],
+    "year": 2007,
+    "subjects": [
+      "queer-romance",
+      "first-love",
+      "italy",
+      "slow-burn"
+    ],
+    "description": "A seventeen-year-old and his father's summer houseguest on the Italian Riviera, over six weeks. Written almost entirely in retrospect, which is what makes it hurt."
+  },
+  {
+    "id": "less",
+    "title": "Less",
+    "authors": [
+      "Andrew Sean Greer"
+    ],
+    "year": 2017,
+    "subjects": [
+      "queer-romance",
+      "romantic-comedy",
+      "book-club",
+      "road-trip"
+    ],
+    "description": "A minor novelist accepts every literary invitation on earth to avoid his ex-boyfriend's wedding. A comic novel about turning fifty that won the Pulitzer."
+  },
+  {
+    "id": "the-charioteer",
+    "title": "The Charioteer",
+    "authors": [
+      "Mary Renault"
+    ],
+    "year": 1953,
+    "subjects": [
+      "queer-romance",
+      "wartime-romance",
+      "1950s"
+    ],
+    "description": "A wounded soldier in a wartime English hospital chooses between a conscientious objector and a former schoolmate. Written under censorship and coded accordingly."
+  },
+  {
+    "id": "the-duchess-deal",
+    "title": "The Duchess Deal",
+    "authors": [
+      "Tessa Dare"
+    ],
+    "year": 2017,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "marriage-plot",
+      "romantic-comedy"
+    ],
+    "description": "A scarred duke needs an heir; a seamstress needs security. They negotiate terms. Dare writes Regency with the banter dialled well past period accuracy, deliberately."
+  },
+  {
+    "id": "devil-in-winter",
+    "title": "Devil in Winter",
+    "authors": [
+      "Lisa Kleypas"
+    ],
+    "year": 2006,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "marriage-plot",
+      "slow-burn"
+    ],
+    "description": "A stammering wallflower proposes marriage to a notorious rake to escape her father. Frequently named the best of its era's Regency romances."
+  },
+  {
+    "id": "the-viscount-who-loved-me",
+    "title": "The Viscount Who Loved Me",
+    "authors": [
+      "Julia Quinn"
+    ],
+    "year": 2000,
+    "subjects": [
+      "regency",
+      "historical-romance",
+      "enemies-to-lovers",
+      "romantic-comedy"
+    ],
+    "description": "Anthony Bridgerton sets out to marry a girl he does not love and keeps arguing with her older sister instead. The second Bridgerton, and the sharpest."
+  },
+  {
+    "id": "a-gentleman-in-moscow",
+    "title": "A Gentleman in Moscow",
+    "authors": [
+      "Amor Towles"
+    ],
+    "year": 2016,
+    "subjects": [
+      "historical-fiction",
+      "book-club"
+    ],
+    "description": "A count sentenced to house arrest in the Metropol Hotel in 1922 spends thirty years there. Confinement written as expansion, with a great deal of charm and some real grief."
+  },
+  {
+    "id": "the-guernsey-literary-society",
+    "title": "The Guernsey Literary and Potato Peel Pie Society",
+    "authors": [
+      "Mary Ann Shaffer",
+      "Annie Barrows"
+    ],
+    "year": 2008,
+    "subjects": [
+      "wartime-romance",
+      "book-club",
+      "epistolary",
+      "historical-fiction"
+    ],
+    "description": "A London writer in 1946 begins corresponding with the members of a book club invented on the spot to explain a curfew breach during the German occupation of Guernsey. Told entirely in letters."
+  },
+  {
+    "id": "the-nightingale",
+    "title": "The Nightingale",
+    "authors": [
+      "Kristin Hannah"
+    ],
+    "year": 2015,
+    "subjects": [
+      "wartime-romance",
+      "historical-fiction",
+      "book-club",
+      "france"
+    ],
+    "description": "Two sisters in occupied France take opposite paths through the war, one sheltering airmen, one hiding a Jewish child. Enormously popular, and much harder than its cover suggests."
+  },
+  {
+    "id": "the-four-winds",
+    "title": "The Four Winds",
+    "authors": [
+      "Kristin Hannah"
+    ],
+    "year": 2021,
+    "subjects": [
+      "historical-fiction",
+      "book-club",
+      "great-depression",
+      "family-saga"
+    ],
+    "description": "A Texas panhandle family through the Dust Bowl, then west to the California migrant camps. Hannah writing The Grapes of Wrath from the mother's side."
+  },
+  {
+    "id": "drums-of-autumn",
+    "title": "Drums of Autumn",
+    "authors": [
+      "Diana Gabaldon"
+    ],
+    "year": 1996,
+    "subjects": [
+      "historical-romance",
+      "time-travel",
+      "colonial-america",
+      "family-saga"
+    ],
+    "description": "The Frasers settle in the North Carolina backcountry while their daughter follows them through the stones. The series turns from Scotland to the coming American revolution."
+  },
+  {
+    "id": "the-thorn-birds",
+    "title": "The Thorn Birds",
+    "authors": [
+      "Colleen McCullough"
+    ],
+    "year": 1977,
+    "subjects": [
+      "historical-romance",
+      "family-saga",
+      "religion"
+    ],
+    "description": "Three generations on an Australian sheep station, and a woman's lifelong entanglement with a priest who wants to be a cardinal. The definitive doorstop family romance."
+  },
+  {
+    "id": "gone-with-the-wind",
+    "title": "Gone with the Wind",
+    "authors": [
+      "Margaret Mitchell"
+    ],
+    "year": 1936,
+    "subjects": [
+      "historical-romance",
+      "family-saga",
+      "american-south",
+      "war"
+    ],
+    "description": "Scarlett O'Hara through the Civil War and Reconstruction. Immensely readable and built on a romanticised view of the plantation South that the book never interrogates."
+  },
+  {
+    "id": "forever-amber",
+    "title": "Forever Amber",
+    "authors": [
+      "Kathleen Winsor"
+    ],
+    "year": 1944,
+    "subjects": [
+      "historical-romance",
+      "marriage-plot"
+    ],
+    "description": "An orphan sleeps her way up the Restoration court through plague and fire. Banned in fourteen states, which did its sales no harm at all."
+  },
+  {
+    "id": "the-far-pavilions",
+    "title": "The Far Pavilions",
+    "authors": [
+      "M. M. Kaye"
+    ],
+    "year": 1978,
+    "subjects": [
+      "historical-romance",
+      "india",
+      "colonialism",
+      "family-saga"
+    ],
+    "description": "An English boy raised as a Hindu in nineteenth-century India, and the princess he cannot marry. A vast Raj romance, written from inside the colonial imagination."
+  },
+  {
+    "id": "katherine-seton",
+    "title": "Katherine",
+    "authors": [
+      "Anya Seton"
+    ],
+    "year": 1954,
+    "subjects": [
+      "historical-romance",
+      "marriage-plot"
+    ],
+    "description": "Katherine Swynford and John of Gaunt, whose long liaison eventually produced the Tudors. Meticulous about the fourteenth century and the model for the historical romance since."
+  },
+  {
+    "id": "the-fiery-cross",
+    "title": "The Fiery Cross",
+    "authors": [
+      "Diana Gabaldon"
+    ],
+    "year": 2001,
+    "subjects": [
+      "historical-romance",
+      "colonial-america",
+      "family-saga",
+      "slow-burn"
+    ],
+    "description": "The Frasers on Fraser's Ridge as the Regulator movement builds toward revolution. The most domestic book in the series, and the slowest by design."
+  },
+  {
+    "id": "the-bride-test",
+    "title": "The Bride Test",
+    "authors": [
+      "Helen Hoang"
+    ],
+    "year": 2019,
+    "subjects": [
+      "romantic-comedy",
+      "neurodivergence",
+      "immigration",
+      "slow-burn"
+    ],
+    "description": "A Vietnamese hotel maid is brought to California by a woman determined to find her autistic son a wife. Hoang writes the mother as more than a device."
+  },
+  {
+    "id": "act-your-age-eve-brown",
+    "title": "Act Your Age, Eve Brown",
+    "authors": [
+      "Talia Hibbert"
+    ],
+    "year": 2021,
+    "subjects": [
+      "romantic-comedy",
+      "neurodivergence",
+      "small-town",
+      "enemies-to-lovers"
+    ],
+    "description": "A drifting youngest sister hits a rigid bed-and-breakfast owner with her car and ends up working for him with his arm in a sling. Both leads are autistic, and neither is a lesson."
+  },
+  {
+    "id": "boyfriend-material",
+    "title": "Boyfriend Material",
+    "authors": [
+      "Alexis Hall"
+    ],
+    "year": 2020,
+    "subjects": [
+      "queer-romance",
+      "romantic-comedy",
+      "london",
+      "slow-burn"
+    ],
+    "description": "A charity worker with a bad tabloid reputation fake-dates a rigorously boring barrister to fix it. Very funny, and quietly serious about being the child of famous parents."
+  },
+  {
+    "id": "written-in-the-stars-bellefleur",
+    "title": "Written in the Stars",
+    "authors": [
+      "Alexandria Bellefleur"
+    ],
+    "year": 2020,
+    "subjects": [
+      "sapphic",
+      "queer-romance",
+      "romantic-comedy",
+      "enemies-to-lovers"
+    ],
+    "description": "An astrologer and an actuary who does not believe in any of it fake a relationship for the holidays. Sapphic rom-com built on a very old chassis, cheerfully."
+  },
+  {
+    "id": "the-charm-offensive",
+    "title": "The Charm Offensive",
+    "authors": [
+      "Alison Cochrun"
+    ],
+    "year": 2021,
+    "subjects": [
+      "queer-romance",
+      "romantic-comedy",
+      "mental-health"
+    ],
+    "description": "The star of a Bachelor-style dating show falls for the producer assigned to make him likeable. Kinder about anxiety and medication than most romances manage."
+  },
+  {
+    "id": "under-the-whispering-door",
+    "title": "Under the Whispering Door",
+    "authors": [
+      "TJ Klune"
+    ],
+    "year": 2021,
+    "subjects": [
+      "queer-romance",
+      "grief",
+      "book-club",
+      "ghosts"
+    ],
+    "description": "A dead lawyer is delivered to a tea shop that serves as a waystation, and refuses to walk through the door. A romance about being reluctant to have lived badly."
+  },
+  {
+    "id": "the-house-in-the-cerulean-sea",
+    "title": "The House in the Cerulean Sea",
+    "authors": [
+      "TJ Klune"
+    ],
+    "year": 2020,
+    "subjects": [
+      "queer-romance",
+      "book-club",
+      "found-family",
+      "slow-burn"
+    ],
+    "description": "A caseworker for magical children is sent to inspect an orphanage on an island, including one child who is the literal Antichrist. Gentle to a degree that is nearly a thesis."
+  }
+]

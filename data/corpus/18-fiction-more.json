@@ -1,0 +1,812 @@
+[
+  {
+    "id": "yellowface",
+    "title": "Yellowface",
+    "authors": [
+      "R. F. Kuang"
+    ],
+    "year": 2023,
+    "subjects": [
+      "book-club",
+      "race",
+      "writing",
+      "unreliable-narrator"
+    ],
+    "description": "A white novelist steals her dead friend's manuscript about Chinese labourers in the First World War and publishes it under an ambiguous name. Satire of publishing, narrated by the thief."
+  },
+  {
+    "id": "trust-exercise",
+    "title": "Trust Exercise",
+    "authors": [
+      "Susan Choi"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "school",
+      "unreliable-narrator",
+      "sexual-assault"
+    ],
+    "description": "A performing-arts high school in the 1980s, then a second section that says the first was a novel and gets it wrong. Won the National Book Award."
+  },
+  {
+    "id": "the-topeka-school",
+    "title": "The Topeka School",
+    "authors": [
+      "Ben Lerner"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "family",
+      "linguistics",
+      "american-midwest"
+    ],
+    "description": "A champion high-school debater, his psychoanalyst parents, and the boy on the edge of their circle. On how competitive speech trained a generation to argue in bad faith."
+  },
+  {
+    "id": "the-candy-house",
+    "title": "The Candy House",
+    "authors": [
+      "Jennifer Egan"
+    ],
+    "year": 2022,
+    "subjects": [
+      "book-club",
+      "surveillance",
+      "technology-criticism",
+      "family-saga"
+    ],
+    "description": "A technology that lets you upload and share your entire memory, and the people who refuse. A sibling to Goon Squad rather than a sequel."
+  },
+  {
+    "id": "the-anthropologists",
+    "title": "The Anthropologists",
+    "authors": [
+      "Ayşegül Savaş"
+    ],
+    "year": 2024,
+    "subjects": [
+      "book-club",
+      "immigration",
+      "marriage-plot",
+      "friendship"
+    ],
+    "description": "A couple flat-hunting in a city that is not either of their countries. Very quiet, and about how you build a life without inherited scaffolding."
+  },
+  {
+    "id": "open-water",
+    "title": "Open Water",
+    "authors": [
+      "Caleb Azumah Nelson"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "race",
+      "first-love",
+      "london"
+    ],
+    "description": "Two young Black British artists falling in love in south London, written in the second person. Short, and about being watched by police."
+  },
+  {
+    "id": "assembly-brown",
+    "title": "Assembly",
+    "authors": [
+      "Natasha Brown"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "race",
+      "class",
+      "illness"
+    ],
+    "description": "A Black British woman in banking on the morning of her boyfriend's family garden party, deciding whether to have treatment. A hundred pages, filleted."
+  },
+  {
+    "id": "the-fortune-men",
+    "title": "The Fortune Men",
+    "authors": [
+      "Nadifa Mohamed"
+    ],
+    "year": 2021,
+    "subjects": [
+      "historical-fiction",
+      "race",
+      "criminal-justice",
+      "murder"
+    ],
+    "description": "A Somali sailor wrongly hanged in 1952 Cardiff. Based on the real case of Mahmood Mattan, pardoned forty-six years too late."
+  },
+  {
+    "id": "mayflies",
+    "title": "Mayflies",
+    "authors": [
+      "Andrew O'Hagan"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "friendship",
+      "illness",
+      "scotland"
+    ],
+    "description": "A weekend in Manchester in 1986, and thirty years later one of those friends asks the other for help dying."
+  },
+  {
+    "id": "leave-the-world-behind",
+    "title": "Leave the World Behind",
+    "authors": [
+      "Rumaan Alam"
+    ],
+    "year": 2020,
+    "subjects": [
+      "post-apocalyptic",
+      "book-club",
+      "race",
+      "class"
+    ],
+    "description": "A white family's Long Island holiday rental is interrupted by its Black owners fleeing a blackout in the city. Nobody ever learns what is happening."
+  },
+  {
+    "id": "the-need",
+    "title": "The Need",
+    "authors": [
+      "Helen Phillips"
+    ],
+    "year": 2019,
+    "subjects": [
+      "motherhood",
+      "psychological-horror",
+      "parallel-worlds",
+      "book-club"
+    ],
+    "description": "An exhausted mother of two finds an intruder in the house who knows everything about her. Horror written out of sleep deprivation."
+  },
+  {
+    "id": "nightbitch",
+    "title": "Nightbitch",
+    "authors": [
+      "Rachel Yoder"
+    ],
+    "year": 2021,
+    "subjects": [
+      "motherhood",
+      "black-comedy",
+      "psychological-horror",
+      "identity"
+    ],
+    "description": "A mother who has given up her art career becomes convinced she is turning into a dog. Rage about domestic labour, literalised."
+  },
+  {
+    "id": "the-push",
+    "title": "The Push",
+    "authors": [
+      "Ashley Audrain"
+    ],
+    "year": 2021,
+    "subjects": [
+      "domestic-suspense",
+      "motherhood",
+      "unreliable-narrator",
+      "family"
+    ],
+    "description": "A woman who believes something is wrong with her daughter, and a husband who believes something is wrong with her."
+  },
+  {
+    "id": "we-need-to-talk-about-kevin",
+    "title": "We Need to Talk About Kevin",
+    "authors": [
+      "Lionel Shriver"
+    ],
+    "year": 2003,
+    "subjects": [
+      "motherhood",
+      "violence",
+      "epistolary",
+      "unreliable-narrator"
+    ],
+    "description": "Letters from the mother of a school shooter to her absent husband, working out how much of it was her. Deeply unpleasant and very hard to put down."
+  },
+  {
+    "id": "the-slap",
+    "title": "The Slap",
+    "authors": [
+      "Christos Tsiolkas"
+    ],
+    "year": 2008,
+    "subjects": [
+      "book-club",
+      "family",
+      "class",
+      "immigration"
+    ],
+    "description": "A man slaps someone else's child at a suburban Melbourne barbecue. Eight narrators, none of them likeable, and the marriage arguments are brutal."
+  },
+  {
+    "id": "the-dinner",
+    "title": "The Dinner",
+    "authors": [
+      "Herman Koch"
+    ],
+    "year": 2009,
+    "subjects": [
+      "book-club",
+      "family",
+      "unreliable-narrator",
+      "violence"
+    ],
+    "description": "Two couples at an expensive Amsterdam restaurant, circling what their sons did. Told across the courses by a narrator who gets steadily worse."
+  },
+  {
+    "id": "the-plot",
+    "title": "The Plot",
+    "authors": [
+      "Jean Hanff Korelitz"
+    ],
+    "year": 2021,
+    "subjects": [
+      "domestic-suspense",
+      "writing",
+      "unreliable-narrator",
+      "murder"
+    ],
+    "description": "A failing novelist takes a dead student's unpublished story idea and becomes a bestseller, then starts getting messages."
+  },
+  {
+    "id": "the-it-girl",
+    "title": "The It Girl",
+    "authors": [
+      "Ruth Ware"
+    ],
+    "year": 2022,
+    "subjects": [
+      "domestic-suspense",
+      "murder",
+      "academia",
+      "friendship"
+    ],
+    "description": "Ten years after her Oxford roommate was killed, the woman whose testimony convicted the porter learns he may have been innocent."
+  },
+  {
+    "id": "the-maid",
+    "title": "The Maid",
+    "authors": [
+      "Nita Prose"
+    ],
+    "year": 2022,
+    "subjects": [
+      "cosy-mystery",
+      "murder",
+      "neurodivergence",
+      "class"
+    ],
+    "description": "A hotel maid who takes everything literally finds a guest dead and becomes the obvious suspect."
+  },
+  {
+    "id": "the-appeal",
+    "title": "The Appeal",
+    "authors": [
+      "Janice Hallett"
+    ],
+    "year": 2021,
+    "subjects": [
+      "cosy-mystery",
+      "murder",
+      "epistolary",
+      "puzzle"
+    ],
+    "description": "An amateur dramatics society, a fundraiser for a sick child, and a killing — reconstructed entirely from emails and texts handed to two law students."
+  },
+  {
+    "id": "the-devil-and-the-dark-water",
+    "title": "The Devil and the Dark Water",
+    "authors": [
+      "Stuart Turton"
+    ],
+    "year": 2020,
+    "subjects": [
+      "murder",
+      "puzzle",
+      "historical-fiction",
+      "monsters"
+    ],
+    "description": "A detective in irons aboard a 1634 Dutch East India ship where a demon has announced itself. Locked-room mystery at sea."
+  },
+  {
+    "id": "the-word-is-murder",
+    "title": "The Word Is Murder",
+    "authors": [
+      "Anthony Horowitz"
+    ],
+    "year": 2017,
+    "subjects": [
+      "detective",
+      "murder",
+      "metafiction",
+      "puzzle"
+    ],
+    "description": "A woman plans her funeral and is strangled six hours later. Horowitz writes himself in as the reluctant Watson to a sacked detective."
+  },
+  {
+    "id": "the-last-devil-to-die",
+    "title": "The Last Devil to Die",
+    "authors": [
+      "Richard Osman"
+    ],
+    "year": 2023,
+    "subjects": [
+      "cosy-mystery",
+      "murder",
+      "friendship",
+      "grief"
+    ],
+    "description": "Heroin in an antique shop, and Stephen's dementia advancing. The funniest of the four and by some distance the saddest."
+  },
+  {
+    "id": "the-marlow-murder-club",
+    "title": "The Marlow Murder Club",
+    "authors": [
+      "Robert Thorogood"
+    ],
+    "year": 2021,
+    "subjects": [
+      "cosy-mystery",
+      "murder",
+      "friendship",
+      "small-town"
+    ],
+    "description": "A seventy-seven-year-old crossword setter hears a gunshot across the Thames and assembles two accomplices the police do not want."
+  },
+  {
+    "id": "a-fatal-grace",
+    "title": "A Fatal Grace",
+    "authors": [
+      "Louise Penny"
+    ],
+    "year": 2006,
+    "subjects": [
+      "cosy-mystery",
+      "murder",
+      "small-town",
+      "detective"
+    ],
+    "description": "A widely loathed lifestyle guru is electrocuted at a curling match in Three Pines. Gamache's second, and the village settles into itself."
+  },
+  {
+    "id": "the-eighth-detective",
+    "title": "The Eighth Detective",
+    "authors": [
+      "Alex Pavesi"
+    ],
+    "year": 2020,
+    "subjects": [
+      "murder",
+      "puzzle",
+      "metafiction",
+      "classic-mystery"
+    ],
+    "description": "Seven short detective stories and an editor visiting their reclusive author, who claims they encode a mathematical theory of the genre."
+  },
+  {
+    "id": "the-decagon-house-murders",
+    "title": "The Decagon House Murders",
+    "authors": [
+      "Yukito Ayatsuji"
+    ],
+    "year": 1987,
+    "subjects": [
+      "classic-mystery",
+      "murder",
+      "japan",
+      "puzzle"
+    ],
+    "description": "A university mystery club spends a week on the island where four people died. And Then There Were None, explicitly, from inside Japanese honkaku."
+  },
+  {
+    "id": "the-tokyo-zodiac-murders",
+    "title": "The Tokyo Zodiac Murders",
+    "authors": [
+      "Soji Shimada"
+    ],
+    "year": 1981,
+    "subjects": [
+      "classic-mystery",
+      "murder",
+      "japan",
+      "puzzle"
+    ],
+    "description": "A forty-year-old case involving six dismembered women and an astrological scheme. The reader is formally challenged to solve it before the reveal."
+  },
+  {
+    "id": "malice-higashino",
+    "title": "Malice",
+    "authors": [
+      "Keigo Higashino"
+    ],
+    "year": 1996,
+    "subjects": [
+      "murder",
+      "japan",
+      "unreliable-narrator",
+      "detective"
+    ],
+    "description": "The killer confesses a third of the way in. The rest of the book is the detective refusing to accept the motive he has been given."
+  },
+  {
+    "id": "the-cat-who-saved-books",
+    "title": "The Cat Who Saved Books",
+    "authors": [
+      "Sosuke Natsukawa"
+    ],
+    "year": 2017,
+    "subjects": [
+      "book-club",
+      "libraries",
+      "japan",
+      "grief"
+    ],
+    "description": "A grieving boy inherits a secondhand bookshop and a talking cat who takes him into labyrinths to rescue mistreated books."
+  },
+  {
+    "id": "what-you-are-looking-for-is-in-the-library",
+    "title": "What You Are Looking For Is in the Library",
+    "authors": [
+      "Michiko Aoyama"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "libraries",
+      "japan",
+      "kindness"
+    ],
+    "description": "Five people at a crossroads are given an unexpected book recommendation by a community librarian. Linked stories, very gentle."
+  },
+  {
+    "id": "days-at-the-morisaki-bookshop",
+    "title": "Days at the Morisaki Bookshop",
+    "authors": [
+      "Satoshi Yagisawa"
+    ],
+    "year": 2010,
+    "subjects": [
+      "book-club",
+      "libraries",
+      "japan",
+      "grief"
+    ],
+    "description": "A young woman moves into the room above her uncle's secondhand bookshop in Jimbōchō after a break-up and reads her way out."
+  },
+  {
+    "id": "sweet-bean-paste",
+    "title": "Sweet Bean Paste",
+    "authors": [
+      "Durian Sukegawa"
+    ],
+    "year": 2013,
+    "subjects": [
+      "book-club",
+      "japan",
+      "illness",
+      "kindness"
+    ],
+    "description": "A dorayaki seller hires a seventy-six-year-old woman whose hands are deformed by leprosy. On a real and shameful Japanese quarantine policy."
+  },
+  {
+    "id": "the-memory-police",
+    "title": "The Memory Police",
+    "authors": [
+      "Yoko Ogawa"
+    ],
+    "year": 1994,
+    "subjects": [
+      "dystopia",
+      "japan",
+      "memory",
+      "authoritarianism"
+    ],
+    "description": "On an island where things disappear and everyone forgets they existed, a novelist hides her editor, who cannot forget."
+  },
+  {
+    "id": "1q84",
+    "title": "1Q84",
+    "authors": [
+      "Haruki Murakami"
+    ],
+    "year": 2009,
+    "subjects": [
+      "magical-realism",
+      "japan",
+      "parallel-worlds",
+      "romance"
+    ],
+    "description": "A fitness instructor who kills abusers and a maths teacher ghostwriting a novel, in a 1984 with two moons. Enormous, and it takes its time."
+  },
+  {
+    "id": "hotel-iris",
+    "title": "Hotel Iris",
+    "authors": [
+      "Yoko Ogawa"
+    ],
+    "year": 1996,
+    "subjects": [
+      "japan",
+      "novella",
+      "psychological-horror",
+      "coming-of-age"
+    ],
+    "description": "A seventeen-year-old working her mother's seaside hotel begins a relationship with a much older translator. Cold and deeply uncomfortable."
+  },
+  {
+    "id": "please-look-after-mom",
+    "title": "Please Look After Mom",
+    "authors": [
+      "Kyung-sook Shin"
+    ],
+    "year": 2008,
+    "subjects": [
+      "family",
+      "motherhood",
+      "grief",
+      "book-club"
+    ],
+    "description": "An elderly woman is lost in Seoul Station and her family reconstruct her, discovering how little they knew. Told partly in the second person."
+  },
+  {
+    "id": "if-i-had-your-face",
+    "title": "If I Had Your Face",
+    "authors": [
+      "Frances Cha"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "class",
+      "feminism",
+      "friendship"
+    ],
+    "description": "Four women in a Seoul apartment building, around plastic surgery, room salons and the money it takes to be looked at."
+  },
+  {
+    "id": "the-eighth-life",
+    "title": "The Eighth Life",
+    "authors": [
+      "Nino Haratischvili"
+    ],
+    "year": 2014,
+    "subjects": [
+      "family-saga",
+      "historical-fiction",
+      "war",
+      "book-club"
+    ],
+    "description": "Six generations of a Georgian chocolate-making family across the Soviet century. Nine hundred pages, and a recipe that curses whoever tastes it."
+  },
+  {
+    "id": "the-shadow-king",
+    "title": "The Shadow King",
+    "authors": [
+      "Maaza Mengiste"
+    ],
+    "year": 2019,
+    "subjects": [
+      "historical-fiction",
+      "war",
+      "feminism",
+      "colonialism"
+    ],
+    "description": "Ethiopian women who fought Mussolini's invasion in 1935, and the peasant disguised as the exiled emperor to keep morale up."
+  },
+  {
+    "id": "washington-black",
+    "title": "Washington Black",
+    "authors": [
+      "Esi Edugyan"
+    ],
+    "year": 2018,
+    "subjects": [
+      "historical-fiction",
+      "slavery",
+      "science",
+      "coming-of-age"
+    ],
+    "description": "A boy escapes a Barbados plantation in a hot-air balloon with his owner's naturalist brother, and travels to the Arctic and London."
+  },
+  {
+    "id": "the-book-of-night-women",
+    "title": "The Book of Night Women",
+    "authors": [
+      "Marlon James"
+    ],
+    "year": 2009,
+    "subjects": [
+      "historical-fiction",
+      "slavery",
+      "violence",
+      "feminism"
+    ],
+    "description": "A slave revolt planned by six women on a Jamaican plantation, narrated in a Jamaican patois James built for it. Extremely violent."
+  },
+  {
+    "id": "the-water-dancer",
+    "title": "The Water Dancer",
+    "authors": [
+      "Ta-Nehisi Coates"
+    ],
+    "year": 2019,
+    "subjects": [
+      "historical-fiction",
+      "slavery",
+      "magical-realism",
+      "memory"
+    ],
+    "description": "An enslaved man with a perfect memory and a power tied to water joins the Underground. Coates's first novel."
+  },
+  {
+    "id": "the-prophets",
+    "title": "The Prophets",
+    "authors": [
+      "Robert Jones Jr."
+    ],
+    "year": 2021,
+    "subjects": [
+      "historical-fiction",
+      "slavery",
+      "queer-romance",
+      "religion"
+    ],
+    "description": "Two enslaved young men in love on a Mississippi plantation, and the preacher who turns the community against them."
+  },
+  {
+    "id": "libertie",
+    "title": "Libertie",
+    "authors": [
+      "Kaitlyn Greenidge"
+    ],
+    "year": 2021,
+    "subjects": [
+      "historical-fiction",
+      "race",
+      "motherhood",
+      "medicine"
+    ],
+    "description": "The daughter of a free Black woman doctor in Reconstruction Brooklyn, expected to follow her into medicine and unable to."
+  },
+  {
+    "id": "the-love-songs-of-w-e-b-du-bois",
+    "title": "The Love Songs of W.E.B. Du Bois",
+    "authors": [
+      "Honorée Fanonne Jeffers"
+    ],
+    "year": 2021,
+    "subjects": [
+      "family-saga",
+      "race",
+      "slavery",
+      "academia"
+    ],
+    "description": "Eight hundred pages of a Georgia family from Creek land through slavery to a graduate student writing the history. Songs between the chapters."
+  },
+  {
+    "id": "the-street",
+    "title": "The Street",
+    "authors": [
+      "Ann Petry"
+    ],
+    "year": 1946,
+    "subjects": [
+      "race",
+      "poverty",
+      "motherhood",
+      "violence"
+    ],
+    "description": "A single mother trying to raise a son on 116th Street in Harlem. The first novel by a Black woman to sell a million copies, and it is merciless."
+  },
+  {
+    "id": "passing-larsen",
+    "title": "Passing",
+    "authors": [
+      "Nella Larsen"
+    ],
+    "year": 1929,
+    "subjects": [
+      "race",
+      "identity",
+      "marriage-plot",
+      "novella"
+    ],
+    "description": "Two light-skinned Black women in 1920s Harlem, one of whom lives as white and has married a racist. Under two hundred pages."
+  },
+  {
+    "id": "if-beale-street-could-talk",
+    "title": "If Beale Street Could Talk",
+    "authors": [
+      "James Baldwin"
+    ],
+    "year": 1974,
+    "subjects": [
+      "race",
+      "criminal-justice",
+      "romance",
+      "family"
+    ],
+    "description": "A pregnant nineteen-year-old fighting to free the father of her child from a false rape charge. Baldwin's tenderest novel."
+  },
+  {
+    "id": "another-country",
+    "title": "Another Country",
+    "authors": [
+      "James Baldwin"
+    ],
+    "year": 1962,
+    "subjects": [
+      "race",
+      "queer-romance",
+      "new-york",
+      "grief"
+    ],
+    "description": "A jazz drummer's suicide and the tangle of friends and lovers it leaves in Greenwich Village. Interracial and bisexual, published in 1962."
+  },
+  {
+    "id": "to-paradise",
+    "title": "To Paradise",
+    "authors": [
+      "Hanya Yanagihara"
+    ],
+    "year": 2022,
+    "subjects": [
+      "book-club",
+      "queer-romance",
+      "pandemic",
+      "family-saga"
+    ],
+    "description": "Three Washington Squares — an alternate 1893, an AIDS-era 1993, and a locked-down 2093. The same names recur in different lives."
+  },
+  {
+    "id": "the-sellout",
+    "title": "The Sellout",
+    "authors": [
+      "Paul Beatty"
+    ],
+    "year": 2015,
+    "subjects": [
+      "race",
+      "black-comedy",
+      "satire",
+      "criminal-justice"
+    ],
+    "description": "A man reinstates segregation and slavery in a Los Angeles suburb and ends up before the Supreme Court. First American book to win the Booker."
+  },
+  {
+    "id": "erasure",
+    "title": "Erasure",
+    "authors": [
+      "Percival Everett"
+    ],
+    "year": 2001,
+    "subjects": [
+      "race",
+      "satire",
+      "writing",
+      "black-comedy"
+    ],
+    "description": "A novelist told his work is not Black enough writes a parody of ghetto fiction under a pseudonym, and it becomes a phenomenon."
+  },
+  {
+    "id": "james-everett",
+    "title": "James",
+    "authors": [
+      "Percival Everett"
+    ],
+    "year": 2024,
+    "subjects": [
+      "race",
+      "slavery",
+      "satire",
+      "historical-fiction"
+    ],
+    "description": "Huckleberry Finn from Jim's side, in which he is literate, and the dialect is a performance for white listeners."
+  }
+]

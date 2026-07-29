@@ -1,149 +1,87 @@
 /** Colour tokens for the scene and UI.
  *
  *  These hexes are NOT free to edit. They were selected by running the dataviz
- *  skill's `validate_palette.js` over candidate sets with `--pairs all` (a 3D
- *  point cloud is a scatter: any two marks can end up adjacent, so the
- *  all-pairs gate applies, not the easier adjacent-pairs one).
+ *  skill's `validate_palette.js` with `--pairs all` (a 3D point field is a
+ *  scatter: any two marks can end up adjacent, so the strict all-pairs
+ *  colourblind gate applies, not the easier adjacent-pairs one).
  *
  *  What the measurements established:
  *   - The documented 8-hue palette FAILS all-pairs (CVD ΔE 3.2).
- *   - The largest all-pairs-passing set in both light and dark is 4 hues, and
- *     both such sets rely on ~2.2:1 colours that vanish as small points on white.
- *   - No three untouched macOS Finder label colours can coexist: red↔green is
- *     ΔE 1.9 under deuteranopia, orange↔green 5.0, blue↔purple 4.4. macOS
+ *   - The largest all-pairs-passing set is 4 hues, and those sets rely on
+ *     ~2.2:1 colours that vanish as small points.
+ *   - **No three untouched macOS Finder label colours can coexist**: red↔green
+ *     is ΔE 1.9 under deuteranopia, orange↔green 5.0, blue↔purple 4.4. macOS
  *     labels are chips beside text, never marks distinguished by colour alone.
- *   - macOS blue + orange is the one near-authentic pair that passes, and it
- *     passes with a very large margin.
+ *   - macOS blue + orange is the one near-authentic pair that passes, by a very
+ *     large margin.
  *
- *  Hence: colour is spent on ROLLOVER (the handful of points related to what is
- *  under the cursor), never painted across the whole corpus at rest.
+ *  ## One theme, on a light field
  *
- *  Verification (both must pass before changing anything here):
- *    node scripts/validate_palette.js "#2A7BF6,#F7821B" --mode light --surface "#ffffff" --pairs all
- *    node scripts/validate_palette.js "#2A7BF6,#e26f00" --mode dark  --surface "#1a1a19" --pairs all
+ *  There is deliberately no dark mode. The brief was a *white field* of books,
+ *  and a near-black canvas is not that — following `prefers-color-scheme` meant
+ *  anyone with a dark desktop got the opposite of the thing being asked for. So
+ *  the field is a warm greige in every environment.
  *
- *  Measured: CVD ΔE 32.0 light / 31.0 dark; normal-vision 38.5 / 36.8
- *  (gates are ≥8 and ≥15). Light-mode orange is 2.57:1 against white — a
- *  RELIEF result, legal only because the app ships the required relief
- *  channel: the DOM result list (a table view) plus an always-visible label on
- *  the hovered point. Those are load-bearing, not decoration.
+ *  Greige rather than pure white buys a real accessibility win, not just a
+ *  softer look. On #ffffff the only orange that stays inside the CVD lightness
+ *  band measures 2.57:1 — a RELIEF result, legal only because the app ships
+ *  labels and a DOM list. Dropping the surface to #F2F0EB left room to step the
+ *  orange down to #d16400, which measures 3.33:1 and clears the 3:1 floor
+ *  outright. The relief channels are still there, but the palette no longer
+ *  depends on them.
+ *
+ *  Verification (must pass before changing anything here):
+ *    node validate_palette.js "#2A7BF6,#d16400" --mode light --surface "#F2F0EB" --pairs all
+ *
+ *  Measured on that surface: CVD ΔE 31.0 protan / 29.9 tritan, normal-vision
+ *  35.2 (gates are ≥8 and ≥15), and **all contrast checks pass** — blue 3.50:1,
+ *  orange 3.33:1, resting points 3.15:1, ink 17.28:1.
  */
 
-export const RELATION = {
-  /** No relation to the hovered book — the resting state. */
-  none: 0,
-  /** Shares an author with the hovered book. */
-  sameAuthor: 1,
-  /** Shares the hovered book's taxonomy leaf. */
-  sameSubject: 2,
-  /** Shares at least one raw tag. Encoded by ring + radius, NEVER a third hue —
-   *  no safe third macOS hue exists, as measured above. */
-  sharedTag: 3,
-} as const;
-
-export type RelationKind = (typeof RELATION)[keyof typeof RELATION];
-
 export interface ThemeColors {
-  /** Page and canvas background. The "white field". */
+  /** Page and canvas background. The field the books sit on. */
   surface: string;
   textPrimary: string;
   textSecondary: string;
   textMuted: string;
   hairline: string;
-  /** Point colour at rest. #898781 measures 3.59:1 on white, 4.85:1 on dark.
-   *  Do NOT substitute #c3c2b7 — it is 1.79:1 on white and disappears. */
+  /** Node colour at rest — a book with no similar books left to show.
+   *  #898781 measures 3.15:1 on the greige surface. Do NOT substitute a paler
+   *  grey: #c3c2b7 is 1.5:1 here and disappears as a small mark. */
   pointResting: string;
-  /** De-emphasised points. Dims to GRAY, never toward the background: fading
-   *  toward white would delete the surrounding cloud and destroy the
-   *  single-cluster reading the whole design depends on. */
-  pointDim: string;
-  pointDimAlpha: number;
-  /** The hovered/selected point itself. Ink, not a hue — it is the focus, not
-   *  a category. */
+  /** The seed, and whatever is hovered or selected. Ink, not a hue: it is the
+   *  focus, not a category. */
   focus: string;
-  /** macOS Finder blue. Untouched in both modes (L 0.604 sits inside the dark
-   *  band, so no restep was needed). */
-  sameAuthor: string;
-  /** macOS Finder orange. The dark step is L 0.665 — the authentic #F7821B is
-   *  L 0.725, outside the dark band's 0.48–0.67. */
-  sameSubject: string;
-  /** Taxonomy tree nodes and their edges. */
-  treeNode: string;
-  treeEdge: string;
+  /** A node that can still be grown. macOS Finder blue, untouched. */
+  expandable: string;
+  /** A node already grown. macOS Finder orange, stepped down for contrast. */
+  expanded: string;
+  /** Edges between a book and the books grown from it. */
+  edge: string;
 }
 
-export const LIGHT: ThemeColors = {
-  surface: '#ffffff',
+/** The single theme. Exported as `FIELD` rather than `LIGHT` because there is no
+ *  counterpart to contrast it with — naming it `LIGHT` would imply a `DARK`
+ *  that intentionally does not exist. */
+export const FIELD: ThemeColors = {
+  surface: '#F2F0EB',
   textPrimary: '#0b0b0b',
   textSecondary: '#52514e',
-  textMuted: '#898781',
-  hairline: 'rgba(11,11,11,0.10)',
+  textMuted: '#6b6963',
+  hairline: 'rgba(11,11,11,0.12)',
   pointResting: '#898781',
-  pointDim: '#c9ced8',
-  pointDimAlpha: 0.4,
   focus: '#0b0b0b',
-  sameAuthor: '#2A7BF6',
-  sameSubject: '#F7821B',
-  treeNode: '#52514e',
-  treeEdge: 'rgba(11,11,11,0.22)',
-};
-
-export const DARK: ThemeColors = {
-  surface: '#1a1a19',
-  textPrimary: '#ffffff',
-  textSecondary: '#c3c2b7',
-  textMuted: '#898781',
-  hairline: 'rgba(255,255,255,0.10)',
-  pointResting: '#898781',
-  pointDim: '#3a3a38',
-  pointDimAlpha: 0.5,
-  focus: '#ffffff',
-  sameAuthor: '#2A7BF6',
-  sameSubject: '#e26f00',
-  treeNode: '#c3c2b7',
-  treeEdge: 'rgba(255,255,255,0.22)',
+  expandable: '#2A7BF6',
+  expanded: '#d16400',
+  edge: 'rgba(11,11,11,0.24)',
 };
 
 /** The exact strings the palette test asserts against, so an edit that breaks
- *  the CVD gates fails CI instead of shipping. */
-export const VALIDATED_RELATION_HEXES = {
-  light: ['#2A7BF6', '#F7821B'],
-  dark: ['#2A7BF6', '#e26f00'],
+ *  the measured gates fails CI instead of shipping. */
+export const VALIDATED_HEXES = {
+  surface: '#F2F0EB',
+  hues: ['#2A7BF6', '#d16400'],
 } as const;
-
-export function colorForRelation(kind: RelationKind, theme: ThemeColors): string {
-  switch (kind) {
-    case RELATION.sameAuthor:
-      return theme.sameAuthor;
-    case RELATION.sameSubject:
-      return theme.sameSubject;
-    // sharedTag intentionally has no hue of its own — see RELATION.sharedTag.
-    case RELATION.sharedTag:
-    case RELATION.none:
-    default:
-      return theme.pointResting;
-  }
-}
-
-/** Point radius multiplier per relation. This is the secondary encoding that
- *  makes the palette legal and gives `sharedTag` a channel of its own. */
-export function sizeScaleForRelation(kind: RelationKind): number {
-  switch (kind) {
-    case RELATION.sameAuthor:
-    case RELATION.sameSubject:
-      return 1.55;
-    case RELATION.sharedTag:
-      return 1.25;
-    default:
-      return 1;
-  }
-}
-
-export const RELATION_LEGEND: Array<{ kind: RelationKind; label: string }> = [
-  { kind: RELATION.sameAuthor, label: 'Same author' },
-  { kind: RELATION.sameSubject, label: 'Same subject' },
-  { kind: RELATION.sharedTag, label: 'Shares a tag' },
-];
 
 /** Convert '#rrggbb' to the 0..1 triple a BufferAttribute wants. */
 export function hexToRgbTriple(hex: string): [number, number, number] {

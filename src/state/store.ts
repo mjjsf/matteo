@@ -1,142 +1,281 @@
 import { create } from 'zustand';
 import Fuse from 'fuse.js';
-import type {
-  Book,
-  LayoutFile,
-  SearchHit,
-  SearchTreeNode,
-  TagMap,
-  TaxonomyIndex,
-} from '@/domain/types';
-import { buildTaxonomyIndex, populateMembers } from '@/domain/taxonomy';
-import { buildSearchTree } from '@/domain/searchTree';
-import { createSearchIndex, matchedIdsFor, runSearch } from '@/domain/search';
-import corpusJson from '@/generated/corpus.json';
-import layoutJson from '@/generated/layout.json';
-import taxonomyJson from '../../data/taxonomy.json';
-import tagMapJson from '../../data/tagMap.json';
+import type { Book, SearchHit } from '@/domain/types';
+import type { NeighborsFile } from '@/domain/similarity';
+import { createSearchIndex, runSearch } from '@/domain/search';
+import {
+  MAX_NODES,
+  SOFT_CAP,
+  asSlot,
+  childrenAtDepth,
+  emptyGraph,
+  expandNode,
+  graphBounds,
+  seedGraph,
+  type Graph,
+  type Slot,
+} from '@/domain/graph';
+/** The loaded corpus, or null before `hydrate` runs.
+ *
+ *  Module-level rather than in the store because these are derived indexes, not
+ *  state: nothing re-renders when they change, because they change exactly once.
+ *  Keeping them out of the store also keeps `bookById` and `neighborsOf` cheap
+ *  enough to call from a frame loop.
+ *
+ *  The taxonomy used to be built here too — `populateMembers` over every book —
+ *  and was then read by nothing at all. It cost 30KB of bundle and 14ms of
+ *  startup, both growing with the corpus. It is a build-time concern only: the
+ *  bake needs it, the browser does not. */
+interface Loaded {
+  books: Book[];
+  neighborsFile: NeighborsFile;
+  /** Corpus row index. Distinct from a graph `Slot` — see the comment on `Slot`. */
+  corpusIndexOf: Map<string, number>;
+  fuse: Fuse<Book>;
+}
 
-const books = corpusJson as unknown as Book[];
-const layout = layoutJson as unknown as LayoutFile;
-const tagMap = tagMapJson as unknown as TagMap;
+let loaded: Loaded | null = null;
 
-const taxonomy: TaxonomyIndex = populateMembers(
-  buildTaxonomyIndex(taxonomyJson),
-  books,
-  tagMap,
-);
-
-/** Positions land straight into a Float32Array — no per-point object
- *  allocation, which is why the artifact stores a flat array. */
-const positions = new Float32Array(layout.positions);
-const byId = new Map<string, number>(books.map((b, i) => [b.id, i]));
-const fuse: Fuse<Book> = createSearchIndex(books);
-
-/** Cap on how many results are rendered as DOM rows. The 3D highlighting still
- *  reflects every match. */
-export const MAX_LISTED_RESULTS = 60;
+/** How many suggestions the landing input offers. */
+export const MAX_SUGGESTIONS = 6;
 
 export interface FlyTarget {
   position: [number, number, number];
   distance: number;
-  /** Bumped on every request so re-selecting the same book re-triggers the
-   *  animation; an object-identity check on equal coordinates would not. */
+  /** Bumped every request so re-flying to identical coordinates still animates. */
   nonce: number;
 }
 
+export type Phase = 'empty' | 'active';
+
+export type Status = 'loading' | 'ready' | 'error';
+
 export interface AppState {
+  status: Status;
+  /** Set only when `status` is 'error'. */
+  loadError: string | null;
   books: Book[];
-  byId: Map<string, number>;
-  positions: Float32Array;
-  taxonomy: TaxonomyIndex;
-  tagMap: TagMap;
-  radius: number;
+  corpusIndexOf: Map<string, number>;
+
+  phase: Phase;
+  query: string;
+  suggestions: SearchHit[];
+
+  graph: Graph;
+  /** Bumped on any topology change so the scene can react imperatively without
+   *  subscribing to the node array itself. */
+  revision: number;
+  /** Set when an expansion was refused, so the UI can say why instead of the
+   *  click appearing to do nothing. */
+  notice: string | null;
+  /** Slots expanded since seeding, in order.
+   *
+   *  This is what makes a shared link restore an actual exploration rather than
+   *  just a starting book. Placement is deterministic, so replaying the seed and
+   *  then these slots in order reproduces the identical graph. */
+  path: Slot[];
 
   hoveredId: string | null;
   selectedId: string | null;
-  activeBranchId: string | null;
-  query: string;
-  results: SearchHit[];
-  /** null = no active search (show everything). An empty Set = searched and
-   *  found nothing (dim everything). These must stay distinct. */
-  matchedIds: Set<string> | null;
-  searchTree: SearchTreeNode[];
-  focusedResultIndex: number;
   flyTarget: FlyTarget | null;
 
+  /** Install a corpus. Called by `loadCorpus` in the app and directly by tests,
+   *  so both paths exercise the same wiring. */
+  hydrate: (books: Book[], neighborsFile: NeighborsFile) => void;
+  failToLoad: (message: string) => void;
+  setQuery: (q: string) => void;
+  seed: (bookId: string) => void;
+  /** Seed from the current query's best match. Returns false if nothing matched. */
+  seedFromQuery: () => boolean;
+  /** Replay a seed plus an expansion path, for restoring a shared link. */
+  restore: (bookId: string, path: number[]) => void;
+  expand: (slot: Slot) => void;
   setHovered: (id: string | null) => void;
   select: (id: string | null, opts?: { fly?: boolean }) => void;
-  setActiveBranch: (id: string | null, opts?: { fly?: boolean }) => void;
-  setQuery: (q: string) => void;
-  setFocusedResultIndex: (i: number) => void;
-  /** The nonce is assigned internally, so callers pass only where to go. */
   requestFly: (target: Omit<FlyTarget, 'nonce'> | null) => void;
-  /** Unwinds one level per call: selection, then branch, then query.
-   *  Returns true if anything changed. */
+  /** Frame the whole graph. Expansion deliberately flies to the node you just
+   *  opened, which is right in the moment and leaves you a long way from
+   *  everything else after twenty of them. This is the way back. */
+  fitAll: () => void;
+  dismissNotice: () => void;
+  /** Unwind one level. Returns whether anything changed, so the key handler only
+   *  swallows Escape when it actually did something. */
   escape: () => boolean;
+  reset: () => void;
+  /** Start a fresh graph from a book already on screen — the escape hatch when
+   *  the graph is full, and better than pruning branches someone chose to grow. */
+  reseedFrom: (bookId: string) => void;
 }
 
-export function positionOf(state: Pick<AppState, 'byId' | 'positions'>, id: string):
-  | [number, number, number]
-  | null {
-  const idx = state.byId.get(id);
-  if (idx === undefined) return null;
-  return [
-    state.positions[idx * 3] ?? 0,
-    state.positions[idx * 3 + 1] ?? 0,
-    state.positions[idx * 3 + 2] ?? 0,
-  ];
+export function bookById(id: string): Book | undefined {
+  if (!loaded) return undefined;
+  const i = loaded.corpusIndexOf.get(id);
+  return i === undefined ? undefined : loaded.books[i];
 }
 
-/** Centroid and bounding radius of a set of books, for framing the camera. */
-export function centroidOf(
-  state: Pick<AppState, 'byId' | 'positions'>,
-  ids: Iterable<string>,
-): { center: [number, number, number]; radius: number } | null {
-  let n = 0;
-  let cx = 0;
-  let cy = 0;
-  let cz = 0;
-  const points: Array<[number, number, number]> = [];
-  for (const id of ids) {
-    const p = positionOf(state, id);
-    if (!p) continue;
-    points.push(p);
-    cx += p[0];
-    cy += p[1];
-    cz += p[2];
-    n++;
-  }
-  if (n === 0) return null;
-  cx /= n;
-  cy /= n;
-  cz /= n;
-  let radius = 0;
-  for (const p of points) {
-    radius = Math.max(radius, Math.hypot(p[0] - cx, p[1] - cy, p[2] - cz));
-  }
-  return { center: [cx, cy, cz], radius };
+/** Neighbours of a book, best match first, already filtered by the similarity
+ *  floor at bake time. */
+export function neighborsOf(bookId: string): Array<{ bookId: string; weight: number }> {
+  if (!loaded) return [];
+  const i = loaded.corpusIndexOf.get(bookId);
+  if (i === undefined) return [];
+  const raw = loaded.neighborsFile.neighbors[i] ?? [];
+  const best = raw[0]?.[1] ?? 1;
+  return raw.flatMap(([j, score]) => {
+    const other = loaded?.books[j];
+    if (!other) return [];
+    // Normalise against this book's own best match so the radius cue is
+    // meaningful even for books whose absolute scores are all modest.
+    return [{ bookId: other.id, weight: best > 0 ? score / best : 0.5 }];
+  });
 }
 
 let flyNonce = 0;
 
 export const useStore = create<AppState>((set, get) => ({
-  books,
-  byId,
-  positions,
-  taxonomy,
-  tagMap,
-  radius: layout.bounds.radius,
+  status: 'loading',
+  loadError: null,
+  books: [],
+  corpusIndexOf: new Map(),
+
+  phase: 'empty',
+  query: '',
+  suggestions: [],
+
+  graph: emptyGraph(),
+  revision: 0,
+  notice: null,
+  path: [],
 
   hoveredId: null,
   selectedId: null,
-  activeBranchId: null,
-  query: '',
-  results: [],
-  matchedIds: null,
-  searchTree: [],
-  focusedResultIndex: -1,
   flyTarget: null,
+
+  hydrate: (nextBooks, neighborsFile) => {
+    loaded = {
+      books: nextBooks,
+      neighborsFile,
+      corpusIndexOf: new Map(nextBooks.map((b, i) => [b.id, i])),
+      fuse: createSearchIndex(nextBooks),
+    };
+    set({
+      status: 'ready',
+      loadError: null,
+      books: nextBooks,
+      corpusIndexOf: loaded.corpusIndexOf,
+    });
+  },
+
+  failToLoad: (message) => set({ status: 'error', loadError: message }),
+
+  setQuery: (q) => {
+    const fuse = loaded?.fuse;
+    if (!fuse) return;
+    set({ query: q, suggestions: runSearch(fuse, q).slice(0, MAX_SUGGESTIONS) });
+  },
+
+  seed: (bookId) => {
+    const book = bookById(bookId);
+    if (!book) return;
+
+    let graph = seedGraph(bookId);
+    // Expand immediately: a lone point is not a map. The first generation is
+    // what makes the idea legible in the first second.
+    const candidates = neighborsOf(bookId);
+    const result = expandNode(graph, 0, candidates, childrenAtDepth(0), MAX_NODES);
+    graph = result.graph;
+    if (graph.nodes[0]) graph.nodes[0].expandable = candidates.length > 0;
+
+    set({
+      phase: 'active',
+      graph,
+      path: [],
+      revision: get().revision + 1,
+      selectedId: bookId,
+      notice: null,
+      suggestions: [],
+    });
+    // Framed on the centre of what was placed, not on the seed. Growth heads
+    // outward along +Y from the origin, so targeting the seed would park the
+    // whole first generation in the top half of the screen with dead space
+    // below. Far enough back that it clears the side panels, which together take
+    // roughly half the width on a laptop screen.
+    get().requestFly({ position: graphBounds(graph).center, distance: 38 });
+  },
+
+  seedFromQuery: () => {
+    if (!loaded) return false;
+    const best = get().suggestions[0] ?? runSearch(loaded.fuse, get().query)[0];
+    if (!best) return false;
+    get().seed(best.book.id);
+    return true;
+  },
+
+  restore: (bookId, path) => {
+    if (!bookById(bookId)) return;
+    get().seed(bookId);
+    // Replayed through the same action a click uses, so a restored graph is
+    // built by exactly the code that built the original — no second placement
+    // path that could drift out of agreement with the first.
+    for (const slot of path) get().expand(asSlot(slot));
+    set({ selectedId: bookId });
+  },
+
+  expand: (slot) => {
+    const state = get();
+    const node = state.graph.nodes[slot];
+    if (!node) return;
+
+    if (state.graph.nodes.length >= SOFT_CAP) {
+      set({
+        notice: `This graph is full at ${SOFT_CAP} books. Open a book and start a new map from it.`,
+      });
+      return;
+    }
+
+    const candidates = neighborsOf(node.bookId);
+    const result = expandNode(
+      state.graph,
+      slot,
+      candidates,
+      childrenAtDepth(node.generation),
+      SOFT_CAP,
+    );
+
+    if (result.added.length === 0) {
+      const graph = result.graph;
+      // Mark it a leaf so it stops inviting a click that cannot do anything.
+      const target = graph.nodes[slot];
+      if (target) target.expandable = false;
+      set({
+        graph: { ...graph },
+        revision: state.revision + 1,
+        notice:
+          result.reason === 'at-capacity'
+            ? `This graph is full at ${SOFT_CAP} books. Open a book and start a new map from it.`
+            : result.reason === 'already-expanded'
+              ? null
+              : 'No further similar books — this is a leaf.',
+      });
+      return;
+    }
+
+    // A node whose neighbours are now all on screen becomes a leaf.
+    const graph = result.graph;
+    for (const index of result.added) {
+      const child = graph.nodes[index];
+      if (child) child.expandable = neighborsOf(child.bookId).length > 0;
+    }
+
+    set({ graph, path: [...state.path, slot], revision: state.revision + 1, notice: null });
+    // Framed on the node that was just expanded, not on the whole graph: the new
+    // children are what the click asked for, and pulling back to fit everything
+    // would shrink them away with each generation.
+    get().requestFly({
+      position: node.target,
+      distance: Math.max(30, graphBounds(graph).radius * 0.8),
+    });
+  },
 
   setHovered: (id) => {
     if (get().hoveredId === id) return;
@@ -145,52 +284,13 @@ export const useStore = create<AppState>((set, get) => ({
 
   select: (id, opts) => {
     set({ selectedId: id });
-    if (id && opts?.fly) {
-      const state = get();
-      const p = positionOf(state, id);
-      if (p) get().requestFly({ position: p, distance: state.radius * 0.28 });
-    }
-  },
-
-  setActiveBranch: (id, opts) => {
-    set({ activeBranchId: id });
-    if (id && opts?.fly) {
-      const state = get();
-      const members = state.taxonomy.membersOf.get(id);
-      if (members) {
-        const frame = centroidOf(state, members);
-        if (frame) {
-          get().requestFly({
-            position: frame.center,
-            distance: Math.max(frame.radius * 1.9, state.radius * 0.2),
-          });
-        }
-      }
-    }
-  },
-
-  setQuery: (q) => {
+    if (!id || !opts?.fly) return;
     const state = get();
-    const results = runSearch(fuse, q);
-    const matchedIds = matchedIdsFor(results, q);
-    const matchedBooks = matchedIds
-      ? results.map((r) => r.book)
-      : [];
-    set({
-      query: q,
-      results,
-      matchedIds,
-      focusedResultIndex: -1,
-      searchTree: matchedIds
-        ? buildSearchTree(matchedBooks, state.tagMap, state.taxonomy)
-        : [],
-      // A branch filter scoped to the previous query is meaningless once the
-      // query changes.
-      activeBranchId: null,
-    });
+    const slot = state.graph.indexOf.get(id);
+    if (slot === undefined) return;
+    const node = state.graph.nodes[slot];
+    if (node) get().requestFly({ position: node.target, distance: 22 });
   },
-
-  setFocusedResultIndex: (i) => set({ focusedResultIndex: i }),
 
   requestFly: (target) => {
     if (!target) {
@@ -201,20 +301,69 @@ export const useStore = create<AppState>((set, get) => ({
     set({ flyTarget: { ...target, nonce: flyNonce } });
   },
 
+  fitAll: () => {
+    const { graph } = get();
+    if (graph.nodes.length === 0) return;
+    const bounds = graphBounds(graph);
+    // 2.4x the radius clears the 45-degree field of view with margin for the
+    // labels, which extend past the points they belong to.
+    get().requestFly({ position: bounds.center, distance: Math.max(30, bounds.radius * 2.4) });
+  },
+
+  dismissNotice: () => set({ notice: null }),
+
+  // One level per press — notice, then selection, then the whole map. Clearing
+  // everything at once would throw away an exploration someone spent a dozen
+  // clicks building, which is exactly the kind of thing that is infuriating
+  // every single time it happens.
   escape: () => {
     const state = get();
-    if (state.selectedId !== null) {
+    if (state.notice) {
+      set({ notice: null });
+      return true;
+    }
+    if (state.selectedId) {
       set({ selectedId: null });
       return true;
     }
-    if (state.activeBranchId !== null) {
-      set({ activeBranchId: null });
-      return true;
-    }
-    if (state.query !== '') {
-      get().setQuery('');
+    if (state.phase === 'active') {
+      get().reset();
       return true;
     }
     return false;
   },
+
+  reset: () =>
+    set({
+      phase: 'empty',
+      graph: emptyGraph(),
+      path: [],
+      revision: get().revision + 1,
+      query: '',
+      suggestions: [],
+      selectedId: null,
+      hoveredId: null,
+      notice: null,
+      flyTarget: null,
+    }),
+
+  reseedFrom: (bookId) => {
+    get().reset();
+    get().seed(bookId);
+  },
 }));
+
+/** Slot of a book currently on screen, or null. */
+export function slotOf(state: AppState, bookId: string): Slot | null {
+  const i = state.graph.indexOf.get(bookId);
+  return i === undefined ? null : asSlot(i);
+}
+
+/** Settled position of a book currently on screen. Returns null for books that
+ *  are in the corpus but not in the graph — the old version returned a position
+ *  for any book, which under a subgraph would draw rings at phantom locations. */
+export function positionOf(state: AppState, bookId: string): [number, number, number] | null {
+  const slot = slotOf(state, bookId);
+  if (slot === null) return null;
+  return state.graph.nodes[slot]?.target ?? null;
+}

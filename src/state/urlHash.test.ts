@@ -3,76 +3,70 @@ import { parseHash, serializeHash } from './urlHash';
 
 describe('parseHash', () => {
   it('parses an empty hash', () => {
-    expect(parseHash('')).toEqual({ bookId: null, branchId: null, query: '' });
-    expect(parseHash('#')).toEqual({ bookId: null, branchId: null, query: '' });
+    expect(parseHash('')).toEqual({ seedId: null, path: [], openId: null });
+    expect(parseHash('#')).toEqual({ seedId: null, path: [], openId: null });
   });
 
-  it('parses a book route', () => {
-    expect(parseHash('#/book/dune')).toEqual({ bookId: 'dune', branchId: null, query: '' });
+  it('parses a seed route', () => {
+    expect(parseHash('#/from/dune')).toEqual({ seedId: 'dune', path: [], openId: null });
   });
 
-  it('parses a branch route', () => {
-    expect(parseHash('#/branch/spec-sf')).toEqual({
-      bookId: null,
-      branchId: 'spec-sf',
-      query: '',
+  it('parses an expansion path', () => {
+    expect(parseHash('#/from/dune/via/3,7,12')).toEqual({
+      seedId: 'dune',
+      path: [3, 7, 12],
+      openId: null,
     });
   });
 
-  it('parses a combined branch + book route', () => {
-    expect(parseHash('#/branch/spec-sf/book/dune')).toEqual({
-      bookId: 'dune',
-      branchId: 'spec-sf',
-      query: '',
-    });
+  it('parses the open book', () => {
+    expect(parseHash('#/from/dune?open=neuromancer').openId).toBe('neuromancer');
   });
 
-  it('parses a query', () => {
-    expect(parseHash('#?q=cyberpunk').query).toBe('cyberpunk');
-    expect(parseHash('#/book/dune?q=desert').query).toBe('desert');
+  it('decodes percent-encoded ids', () => {
+    expect(parseHash('#/from/a%20b').seedId).toBe('a b');
+    expect(parseHash('#/from/dune?open=a%20b').openId).toBe('a b');
   });
 
-  it('decodes percent-encoded ids and queries', () => {
-    expect(parseHash('#/book/a%20b').bookId).toBe('a b');
-    expect(parseHash('#?q=science%20fiction').query).toBe('science fiction');
+  it('drops junk in the expansion path rather than replaying NaN', () => {
+    // A hand-edited or truncated URL must degrade to a shorter valid walk, not
+    // to a graph built from garbage slot numbers.
+    expect(parseHash('#/from/dune/via/2,oops,-4,9').path).toEqual([2, 9]);
   });
 
   it('does not throw on malformed input', () => {
-    for (const bad of ['#/book', '#/branch', '#///', '#/unknown/thing', '#?']) {
+    for (const bad of ['#/from', '#/via', '#///', '#/unknown/thing', '#?']) {
       expect(() => parseHash(bad)).not.toThrow();
     }
-    expect(parseHash('#/book').bookId).toBeNull();
+    expect(parseHash('#/from').seedId).toBeNull();
   });
 });
 
 describe('serializeHash', () => {
-  it('produces an empty string when there is nothing to encode', () => {
-    expect(serializeHash({ bookId: null, branchId: null, query: '' })).toBe('');
-    expect(serializeHash({ bookId: null, branchId: null, query: '   ' })).toBe('');
+  it('produces an empty string without a seed', () => {
+    // No seed means no map, and a path or an open book without one is not a
+    // state that can be restored.
+    expect(serializeHash({ seedId: null, path: [], openId: null })).toBe('');
+    expect(serializeHash({ seedId: null, path: [1, 2], openId: 'dune' })).toBe('');
   });
 
   it('encodes each shape', () => {
-    expect(serializeHash({ bookId: 'dune', branchId: null, query: '' })).toBe('#/book/dune');
-    expect(serializeHash({ bookId: null, branchId: 'spec-sf', query: '' })).toBe('#/branch/spec-sf');
-    expect(serializeHash({ bookId: 'dune', branchId: 'spec-sf', query: '' })).toBe(
-      '#/branch/spec-sf/book/dune',
+    expect(serializeHash({ seedId: 'dune', path: [], openId: null })).toBe('#/from/dune');
+    expect(serializeHash({ seedId: 'dune', path: [3, 7], openId: null })).toBe('#/from/dune/via/3,7');
+    expect(serializeHash({ seedId: 'dune', path: [], openId: 'neuromancer' })).toBe(
+      '#/from/dune?open=neuromancer',
     );
-    expect(serializeHash({ bookId: null, branchId: null, query: 'noir' })).toBe('#?q=noir');
   });
 
   it('round-trips every shape', () => {
     const cases = [
-      { bookId: 'dune', branchId: null, query: '' },
-      { bookId: null, branchId: 'spec-sf', query: '' },
-      { bookId: 'dune', branchId: 'spec-sf', query: 'desert' },
-      { bookId: null, branchId: null, query: 'science fiction' },
+      { seedId: 'dune', path: [], openId: null },
+      { seedId: 'dune', path: [3, 7, 12], openId: null },
+      { seedId: 'dune', path: [1], openId: 'neuromancer' },
+      { seedId: 'a b', path: [], openId: 'c d' },
     ];
     for (const c of cases) {
       expect(parseHash(serializeHash(c))).toEqual(c);
     }
-  });
-
-  it('trims the query rather than encoding whitespace', () => {
-    expect(serializeHash({ bookId: null, branchId: null, query: '  noir  ' })).toBe('#?q=noir');
   });
 });

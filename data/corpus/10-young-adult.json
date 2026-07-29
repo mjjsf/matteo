@@ -1,0 +1,1059 @@
+[
+  {
+    "id": "the-hunger-games",
+    "title": "The Hunger Games",
+    "authors": [
+      "Suzanne Collins"
+    ],
+    "year": 2008,
+    "subjects": [
+      "ya-dystopia",
+      "survival-games",
+      "chosen-one",
+      "class"
+    ],
+    "description": "Katniss Everdeen volunteers for a televised fight to the death so her sister will not have to. Collins wrote it thinking about reality television and the Iraq war, and it shows in the coverage more than the combat."
+  },
+  {
+    "id": "catching-fire",
+    "title": "Catching Fire",
+    "authors": [
+      "Suzanne Collins"
+    ],
+    "year": 2009,
+    "subjects": [
+      "ya-dystopia",
+      "survival-games",
+      "revolution",
+      "propaganda"
+    ],
+    "description": "Victory makes Katniss a symbol the Capitol cannot control and cannot kill outright. The middle book, where the series turns from survival to insurrection."
+  },
+  {
+    "id": "mockingjay",
+    "title": "Mockingjay",
+    "authors": [
+      "Suzanne Collins"
+    ],
+    "year": 2010,
+    "subjects": [
+      "ya-dystopia",
+      "revolution",
+      "propaganda",
+      "trauma"
+    ],
+    "description": "The rebellion needs Katniss on camera more than in the field. An unusually bleak ending for a bestselling trilogy, and pointedly unsatisfying about what war leaves."
+  },
+  {
+    "id": "the-ballad-of-songbirds-and-snakes",
+    "title": "The Ballad of Songbirds and Snakes",
+    "authors": [
+      "Suzanne Collins"
+    ],
+    "year": 2020,
+    "subjects": [
+      "ya-dystopia",
+      "survival-games",
+      "propaganda"
+    ],
+    "description": "The tenth Hunger Games, mentored by an eighteen-year-old Coriolanus Snow. A prequel that declines to make its future dictator sympathetic for long."
+  },
+  {
+    "id": "divergent",
+    "title": "Divergent",
+    "authors": [
+      "Veronica Roth"
+    ],
+    "year": 2011,
+    "subjects": [
+      "ya-dystopia",
+      "chosen-one",
+      "ya-romance",
+      "chicago"
+    ],
+    "description": "A Chicago sorted into five factions by disposition, and a girl who fits none of them. The most successful of the many books that followed The Hunger Games."
+  },
+  {
+    "id": "the-maze-runner",
+    "title": "The Maze Runner",
+    "authors": [
+      "James Dashner"
+    ],
+    "year": 2009,
+    "subjects": [
+      "ya-dystopia",
+      "survival-games",
+      "amnesia"
+    ],
+    "description": "Boys with no memories wake in a walled glade beside a maze that rearranges itself nightly. Puzzle-box premise, and the questions are better than the answers."
+  },
+  {
+    "id": "the-giver",
+    "title": "The Giver",
+    "authors": [
+      "Lois Lowry"
+    ],
+    "year": 1993,
+    "subjects": [
+      "ya-dystopia",
+      "middle-grade",
+      "memory",
+      "conformity"
+    ],
+    "description": "A boy in a community without colour, weather or pain is assigned to receive its memories. The book that taught a generation what a dystopia was, at about eleven."
+  },
+  {
+    "id": "unwind",
+    "title": "Unwind",
+    "authors": [
+      "Neal Shusterman"
+    ],
+    "year": 2007,
+    "subjects": [
+      "ya-dystopia",
+      "bioethics",
+      "survival-games"
+    ],
+    "description": "A civil war over abortion ends in a compromise: children between thirteen and eighteen can be retroactively terminated by having every part of them transplanted. Follows three teenagers running."
+  },
+  {
+    "id": "scythe",
+    "title": "Scythe",
+    "authors": [
+      "Neal Shusterman"
+    ],
+    "year": 2016,
+    "subjects": [
+      "ya-dystopia",
+      "bioethics",
+      "immortality",
+      "chosen-one"
+    ],
+    "description": "In a world that has cured death, a licensed order of scythes must kill to control population. Two teenagers are apprenticed and told only one will be chosen."
+  },
+  {
+    "id": "legend-lu",
+    "title": "Legend",
+    "authors": [
+      "Marie Lu"
+    ],
+    "year": 2011,
+    "subjects": [
+      "ya-dystopia",
+      "ya-romance",
+      "class",
+      "revolution"
+    ],
+    "description": "A military prodigy hunts the Republic's most wanted criminal, who is fifteen and from the slums. Told in alternating voices that converge on the same lie."
+  },
+  {
+    "id": "harry-potter-philosophers-stone",
+    "title": "Harry Potter and the Philosopher's Stone",
+    "authors": [
+      "J. K. Rowling"
+    ],
+    "year": 1997,
+    "subjects": [
+      "ya-fantasy",
+      "magic-school",
+      "chosen-one",
+      "middle-grade"
+    ],
+    "description": "An orphan living in a cupboard learns on his eleventh birthday that he is a wizard. Whatever its later reputation, it reorganised children's publishing entirely."
+  },
+  {
+    "id": "harry-potter-prisoner-of-azkaban",
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "authors": [
+      "J. K. Rowling"
+    ],
+    "year": 1999,
+    "subjects": [
+      "ya-fantasy",
+      "magic-school",
+      "time-travel",
+      "chosen-one"
+    ],
+    "description": "An escaped prisoner is hunting Harry, and the truth about his parents' betrayal is not what he was told. Usually named the best-constructed book in the series."
+  },
+  {
+    "id": "harry-potter-goblet-of-fire",
+    "title": "Harry Potter and the Goblet of Fire",
+    "authors": [
+      "J. K. Rowling"
+    ],
+    "year": 2000,
+    "subjects": [
+      "ya-fantasy",
+      "magic-school",
+      "survival-games",
+      "chosen-one"
+    ],
+    "description": "A schools tournament with three lethal tasks, and an ending that turns the series from adventure into war. The point where the books got long and dark."
+  },
+  {
+    "id": "the-lightning-thief",
+    "title": "The Lightning Thief",
+    "authors": [
+      "Rick Riordan"
+    ],
+    "year": 2005,
+    "subjects": [
+      "middle-grade",
+      "mythology",
+      "children-adventure",
+      "chosen-one"
+    ],
+    "description": "A dyslexic twelve-year-old discovers he is the son of Poseidon and is accused of stealing Zeus's master bolt. Greek myth relocated to summer camp, very funny about it."
+  },
+  {
+    "id": "northern-lights",
+    "title": "Northern Lights",
+    "authors": [
+      "Philip Pullman"
+    ],
+    "year": 1995,
+    "subjects": [
+      "ya-fantasy",
+      "middle-grade",
+      "children-adventure",
+      "religion"
+    ],
+    "description": "Lyra Belacqua leaves Oxford for the ice, chasing stolen children and a substance the Church would rather nobody understood. Sold in America as The Golden Compass."
+  },
+  {
+    "id": "the-subtle-knife",
+    "title": "The Subtle Knife",
+    "authors": [
+      "Philip Pullman"
+    ],
+    "year": 1997,
+    "subjects": [
+      "ya-fantasy",
+      "children-adventure",
+      "religion",
+      "parallel-worlds"
+    ],
+    "description": "Lyra meets a boy from our Oxford and a knife that cuts windows between worlds. The trilogy's argument with Paradise Lost becomes explicit."
+  },
+  {
+    "id": "a-wrinkle-in-time",
+    "title": "A Wrinkle in Time",
+    "authors": [
+      "Madeleine L'Engle"
+    ],
+    "year": 1962,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "physics",
+      "conformity"
+    ],
+    "description": "Three children travel by tesseract to rescue a scientist father from a planet where every house is identical. Rejected by dozens of publishers for being too strange for children."
+  },
+  {
+    "id": "the-lion-the-witch-and-the-wardrobe",
+    "title": "The Lion, the Witch and the Wardrobe",
+    "authors": [
+      "C. S. Lewis"
+    ],
+    "year": 1950,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "religion",
+      "ya-fantasy"
+    ],
+    "description": "Four evacuated children find a country in permanent winter through the back of a wardrobe. The Christian allegory is not hidden, and the snow is still the best thing in it."
+  },
+  {
+    "id": "the-hobbit",
+    "title": "The Hobbit",
+    "authors": [
+      "J. R. R. Tolkien"
+    ],
+    "year": 1937,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "epic-fantasy",
+      "dragons"
+    ],
+    "description": "A comfortable hobbit is bullied into a dragon-burglary by thirteen dwarves and a wizard. Written for Tolkien's children and much lighter than what it led to."
+  },
+  {
+    "id": "the-amber-spyglass",
+    "title": "The Amber Spyglass",
+    "authors": [
+      "Philip Pullman"
+    ],
+    "year": 2000,
+    "subjects": [
+      "ya-fantasy",
+      "religion",
+      "parallel-worlds",
+      "first-love"
+    ],
+    "description": "The trilogy's conclusion goes to the land of the dead and stages a second Fall. Divisive, ambitious, and unusually willing to make its child readers grieve."
+  },
+  {
+    "id": "the-fault-in-our-stars",
+    "title": "The Fault in Our Stars",
+    "authors": [
+      "John Green"
+    ],
+    "year": 2012,
+    "subjects": [
+      "ya-realism",
+      "first-love",
+      "grief",
+      "illness"
+    ],
+    "description": "Two teenagers meet at a cancer support group and go to Amsterdam to confront a novelist. Green refuses to make either of them noble about dying."
+  },
+  {
+    "id": "looking-for-alaska",
+    "title": "Looking for Alaska",
+    "authors": [
+      "John Green"
+    ],
+    "year": 2005,
+    "subjects": [
+      "ya-realism",
+      "high-school",
+      "grief",
+      "first-love"
+    ],
+    "description": "A boy at an Alabama boarding school falls for a girl who is more damaged than he can see. Structured as a countdown to something, then an aftermath."
+  },
+  {
+    "id": "the-perks-of-being-a-wallflower",
+    "title": "The Perks of Being a Wallflower",
+    "authors": [
+      "Stephen Chbosky"
+    ],
+    "year": 1999,
+    "subjects": [
+      "ya-realism",
+      "high-school",
+      "trauma",
+      "epistolary"
+    ],
+    "description": "A freshman writes letters to a stranger about his first year, his friends, and something he has not let himself remember. Frequently banned, and read anyway."
+  },
+  {
+    "id": "speak-anderson",
+    "title": "Speak",
+    "authors": [
+      "Laurie Halse Anderson"
+    ],
+    "year": 1999,
+    "subjects": [
+      "ya-realism",
+      "high-school",
+      "trauma",
+      "sexual-assault"
+    ],
+    "description": "A girl who called the police at a summer party is frozen out of her freshman year and stops speaking. Anderson writes the silence as a physical condition."
+  },
+  {
+    "id": "the-hate-u-give",
+    "title": "The Hate U Give",
+    "authors": [
+      "Angie Thomas"
+    ],
+    "year": 2017,
+    "subjects": [
+      "ya-realism",
+      "violence",
+      "race",
+      "high-school"
+    ],
+    "description": "A sixteen-year-old is the only witness when a police officer shoots her childhood friend. Moves between her Black neighbourhood and her mostly white school."
+  },
+  {
+    "id": "eleanor-and-park",
+    "title": "Eleanor & Park",
+    "authors": [
+      "Rainbow Rowell"
+    ],
+    "year": 2013,
+    "subjects": [
+      "ya-romance",
+      "first-love",
+      "high-school",
+      "poverty"
+    ],
+    "description": "Two misfits share a school bus seat in 1986 Omaha, then comics, then a mixtape. The home Eleanor is escaping is drawn without any softening."
+  },
+  {
+    "id": "fangirl",
+    "title": "Fangirl",
+    "authors": [
+      "Rainbow Rowell"
+    ],
+    "year": 2013,
+    "subjects": [
+      "ya-romance",
+      "first-love",
+      "academia",
+      "mental-health"
+    ],
+    "description": "A twin who writes enormously popular fan fiction starts university without her sister. Rowell takes fandom seriously as a way of being a person."
+  },
+  {
+    "id": "simon-vs-the-homo-sapiens-agenda",
+    "title": "Simon vs. the Homo Sapiens Agenda",
+    "authors": [
+      "Becky Albertalli"
+    ],
+    "year": 2015,
+    "subjects": [
+      "ya-romance",
+      "queer-romance",
+      "high-school",
+      "first-love"
+    ],
+    "description": "A closeted sixteen-year-old emailing an anonymous classmate is blackmailed by someone who found the messages. Warm, and specific about the theft of being outed."
+  },
+  {
+    "id": "aristotle-and-dante",
+    "title": "Aristotle and Dante Discover the Secrets of the Universe",
+    "authors": [
+      "Benjamin Alire Sáenz"
+    ],
+    "year": 2012,
+    "subjects": [
+      "ya-romance",
+      "queer-romance",
+      "first-love",
+      "family"
+    ],
+    "description": "Two Mexican-American boys meet at a swimming pool in 1987 El Paso. Slow, quiet, and as much about their fathers as about each other."
+  },
+  {
+    "id": "ill-give-you-the-sun",
+    "title": "I'll Give You the Sun",
+    "authors": [
+      "Jandy Nelson"
+    ],
+    "year": 2014,
+    "subjects": [
+      "ya-realism",
+      "queer-romance",
+      "grief",
+      "art"
+    ],
+    "description": "Twins tell alternating halves of the same story three years apart, one before their mother's death and one after. The prose is extravagant and mostly earns it."
+  },
+  {
+    "id": "we-were-liars",
+    "title": "We Were Liars",
+    "authors": [
+      "E. Lockhart"
+    ],
+    "year": 2014,
+    "subjects": [
+      "ya-realism",
+      "unreliable-narrator",
+      "grief",
+      "wealth"
+    ],
+    "description": "A wealthy family's private island, four teenagers, and a summer the narrator cannot remember. Built entirely around a withheld fact."
+  },
+  {
+    "id": "one-of-us-is-lying",
+    "title": "One of Us Is Lying",
+    "authors": [
+      "Karen M. McManus"
+    ],
+    "year": 2017,
+    "subjects": [
+      "ya-realism",
+      "high-school",
+      "unreliable-narrator",
+      "murder"
+    ],
+    "description": "Five students go into detention and one dies. The Breakfast Club with a murder investigation, and each of the four suspects had a secret worth killing over."
+  },
+  {
+    "id": "sadie",
+    "title": "Sadie",
+    "authors": [
+      "Courtney Summers"
+    ],
+    "year": 2018,
+    "subjects": [
+      "ya-realism",
+      "true-crime",
+      "trauma",
+      "unreliable-narrator"
+    ],
+    "description": "A girl hunting her sister's killer, told against a true-crime podcast retracing her route. The podcast format is used for more than novelty."
+  },
+  {
+    "id": "long-way-down",
+    "title": "Long Way Down",
+    "authors": [
+      "Jason Reynolds"
+    ],
+    "year": 2017,
+    "subjects": [
+      "ya-realism",
+      "violence",
+      "grief",
+      "poetry"
+    ],
+    "description": "Sixty seconds in a lift, a boy with his brother's gun, and a floor-by-floor visitation by the dead. Written in verse and read in an hour."
+  },
+  {
+    "id": "the-book-thief",
+    "title": "The Book Thief",
+    "authors": [
+      "Markus Zusak"
+    ],
+    "year": 2005,
+    "subjects": [
+      "ya-realism",
+      "historical-fiction",
+      "holocaust",
+      "book-club"
+    ],
+    "description": "A foster girl in Nazi Germany steals books and reads them in a basement to a hidden Jewish man. Narrated by Death, who is tired and not unkind."
+  },
+  {
+    "id": "the-outsiders",
+    "title": "The Outsiders",
+    "authors": [
+      "S. E. Hinton"
+    ],
+    "year": 1967,
+    "subjects": [
+      "ya-realism",
+      "class",
+      "high-school",
+      "grief"
+    ],
+    "description": "Greasers and Socs in 1960s Oklahoma, and the night that ends in a body. Hinton was seventeen when she wrote it, which is why the voices land."
+  },
+  {
+    "id": "a-monster-calls",
+    "title": "A Monster Calls",
+    "authors": [
+      "Patrick Ness"
+    ],
+    "year": 2011,
+    "subjects": [
+      "middle-grade",
+      "grief",
+      "illness",
+      "ya-fantasy"
+    ],
+    "description": "A yew tree walks to a boy's window at seven minutes past midnight to tell him three stories and demand a fourth. His mother is dying. Devastating and short."
+  },
+  {
+    "id": "the-knife-of-never-letting-go",
+    "title": "The Knife of Never Letting Go",
+    "authors": [
+      "Patrick Ness"
+    ],
+    "year": 2008,
+    "subjects": [
+      "ya-dystopia",
+      "ya-fantasy",
+      "colonialism",
+      "chosen-one"
+    ],
+    "description": "A colony where every man's thoughts are audible, and a boy who finds a pocket of silence in the swamp. The typography does real work in the noise."
+  },
+  {
+    "id": "six-of-crows",
+    "title": "Six of Crows",
+    "authors": [
+      "Leigh Bardugo"
+    ],
+    "year": 2015,
+    "subjects": [
+      "ya-fantasy",
+      "heist",
+      "found-family",
+      "grimdark"
+    ],
+    "description": "Six criminals are hired for an impossible prison break in a mercantile city built on gambling debt. A heist novel with six points of view and no wasted one."
+  },
+  {
+    "id": "shadow-and-bone",
+    "title": "Shadow and Bone",
+    "authors": [
+      "Leigh Bardugo"
+    ],
+    "year": 2012,
+    "subjects": [
+      "ya-fantasy",
+      "chosen-one",
+      "ya-romance",
+      "magic-school"
+    ],
+    "description": "An orphan mapmaker discovers she can summon light and is taken to court to be trained as its saviour. Russian-inflected fantasy, and the setting outlasted the plot."
+  },
+  {
+    "id": "the-cruel-prince",
+    "title": "The Cruel Prince",
+    "authors": [
+      "Holly Black"
+    ],
+    "year": 2018,
+    "subjects": [
+      "ya-fantasy",
+      "fae",
+      "enemies-to-lovers",
+      "romantasy"
+    ],
+    "description": "A human girl raised in the faerie court by the man who murdered her parents decides to make herself indispensable. Vicious court politics, and the romance is not comfortable."
+  },
+  {
+    "id": "an-ember-in-the-ashes",
+    "title": "An Ember in the Ashes",
+    "authors": [
+      "Sabaa Tahir"
+    ],
+    "year": 2015,
+    "subjects": [
+      "ya-fantasy",
+      "revolution",
+      "ya-romance",
+      "slavery"
+    ],
+    "description": "A slave in a Roman-inflected empire and a soldier who hates what he is being trained into. Alternating voices, and the empire is genuinely brutal."
+  },
+  {
+    "id": "children-of-blood-and-bone",
+    "title": "Children of Blood and Bone",
+    "authors": [
+      "Tomi Adeyemi"
+    ],
+    "year": 2018,
+    "subjects": [
+      "ya-fantasy",
+      "chosen-one",
+      "revolution",
+      "west-africa"
+    ],
+    "description": "A West African-inspired kingdom where magic was destroyed and its practitioners' descendants are marked by white hair. A quest to bring it back, pursued by the crown prince."
+  },
+  {
+    "id": "the-poppy-war",
+    "title": "The Poppy War",
+    "authors": [
+      "R. F. Kuang"
+    ],
+    "year": 2018,
+    "subjects": [
+      "ya-fantasy",
+      "grimdark",
+      "magic-school",
+      "war"
+    ],
+    "description": "A war orphan tests into an elite military academy, then into a war modelled closely on the Second Sino-Japanese War. Begins as a school story and does not stay one."
+  },
+  {
+    "id": "a-darker-shade-of-magic",
+    "title": "A Darker Shade of Magic",
+    "authors": [
+      "V. E. Schwab"
+    ],
+    "year": 2015,
+    "subjects": [
+      "ya-fantasy",
+      "parallel-worlds",
+      "magic-school",
+      "london"
+    ],
+    "description": "Four Londons layered on each other, and one of the last magicians able to walk between them. The smuggling is what starts the trouble."
+  },
+  {
+    "id": "the-invisible-life-of-addie-larue",
+    "title": "The Invisible Life of Addie LaRue",
+    "authors": [
+      "V. E. Schwab"
+    ],
+    "year": 2020,
+    "subjects": [
+      "ya-fantasy",
+      "book-club",
+      "immortality",
+      "slow-burn"
+    ],
+    "description": "A woman trades her soul for immortality and is cursed to be forgotten by everyone she meets. Three hundred years later a man in a bookshop remembers her."
+  },
+  {
+    "id": "eragon",
+    "title": "Eragon",
+    "authors": [
+      "Christopher Paolini"
+    ],
+    "year": 2002,
+    "subjects": [
+      "ya-fantasy",
+      "dragons",
+      "chosen-one",
+      "epic-fantasy"
+    ],
+    "description": "A farm boy finds a dragon egg. Paolini was fifteen when he wrote it and the influences are visible, which did nothing to slow it down."
+  },
+  {
+    "id": "graceling",
+    "title": "Graceling",
+    "authors": [
+      "Kristin Cashore"
+    ],
+    "year": 2008,
+    "subjects": [
+      "ya-fantasy",
+      "ya-romance",
+      "assassins",
+      "chosen-one"
+    ],
+    "description": "A girl whose Grace appears to be killing is used as her uncle's enforcer until she learns what her ability actually is. The romance refuses marriage on principle."
+  },
+  {
+    "id": "the-ruby-in-the-smoke",
+    "title": "The Ruby in the Smoke",
+    "authors": [
+      "Philip Pullman"
+    ],
+    "year": 1985,
+    "subjects": [
+      "ya-realism",
+      "victorian",
+      "murder",
+      "children-adventure"
+    ],
+    "description": "A sixteen-year-old in 1872 London investigates her father's drowning and a phrase that kills a man on hearing it. Opium, pawnbrokers and a very capable heroine."
+  },
+  {
+    "id": "howls-moving-castle",
+    "title": "Howl's Moving Castle",
+    "authors": [
+      "Diana Wynne Jones"
+    ],
+    "year": 1986,
+    "subjects": [
+      "ya-fantasy",
+      "middle-grade",
+      "witches",
+      "romantic-comedy"
+    ],
+    "description": "A hatmaker cursed into an old woman's body takes work as a cleaner in a wandering wizard's castle. Funnier and more intricate than the film, and differently plotted."
+  },
+  {
+    "id": "coraline",
+    "title": "Coraline",
+    "authors": [
+      "Neil Gaiman"
+    ],
+    "year": 2002,
+    "subjects": [
+      "middle-grade",
+      "psychological-horror",
+      "children-adventure"
+    ],
+    "description": "A bored girl finds a door to a flat exactly like her own, where her other mother has buttons for eyes and would like her to stay. Genuinely frightening at any age."
+  },
+  {
+    "id": "the-graveyard-book",
+    "title": "The Graveyard Book",
+    "authors": [
+      "Neil Gaiman"
+    ],
+    "year": 2008,
+    "subjects": [
+      "middle-grade",
+      "ya-fantasy",
+      "children-adventure",
+      "ghosts"
+    ],
+    "description": "A toddler whose family is murdered is raised by the dead in a graveyard. The Jungle Book restaged among headstones, chapter by chapter as he grows."
+  },
+  {
+    "id": "holes",
+    "title": "Holes",
+    "authors": [
+      "Louis Sachar"
+    ],
+    "year": 1998,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "class",
+      "family"
+    ],
+    "description": "A boy wrongly convicted is sent to a desert camp where boys dig a hole a day. Three timelines converge with unusual precision for a children's book."
+  },
+  {
+    "id": "bridge-to-terabithia",
+    "title": "Bridge to Terabithia",
+    "authors": [
+      "Katherine Paterson"
+    ],
+    "year": 1977,
+    "subjects": [
+      "middle-grade",
+      "grief",
+      "friendship",
+      "poverty"
+    ],
+    "description": "Two lonely children invent a kingdom in the woods across a creek. Then one of them crosses alone. Still one of the most frequently challenged books in American schools."
+  },
+  {
+    "id": "the-westing-game",
+    "title": "The Westing Game",
+    "authors": [
+      "Ellen Raskin"
+    ],
+    "year": 1978,
+    "subjects": [
+      "middle-grade",
+      "murder",
+      "children-adventure",
+      "puzzle"
+    ],
+    "description": "Sixteen heirs are paired off and given clues to a millionaire's death, with the estate going to whoever solves it. A fair-play mystery that trusts children to keep up."
+  },
+  {
+    "id": "matilda",
+    "title": "Matilda",
+    "authors": [
+      "Roald Dahl"
+    ],
+    "year": 1988,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "school",
+      "family"
+    ],
+    "description": "A gifted child with contemptible parents and a monstrous headmistress discovers she can move things with her mind. Dahl at his most gleefully unfair to adults."
+  },
+  {
+    "id": "charlottes-web",
+    "title": "Charlotte's Web",
+    "authors": [
+      "E. B. White"
+    ],
+    "year": 1952,
+    "subjects": [
+      "middle-grade",
+      "friendship",
+      "grief"
+    ],
+    "description": "A spider saves a pig by writing about him in her web. White wrote the plainest possible sentences about death and it has never stopped working."
+  },
+  {
+    "id": "anne-of-green-gables",
+    "title": "Anne of Green Gables",
+    "authors": [
+      "L. M. Montgomery"
+    ],
+    "year": 1908,
+    "subjects": [
+      "middle-grade",
+      "coming-of-age",
+      "family",
+      "small-town"
+    ],
+    "description": "An orphan sent by mistake to a Prince Edward Island farm that asked for a boy. Talkative, imaginative, and much sharper about being unwanted than its reputation suggests."
+  },
+  {
+    "id": "little-women",
+    "title": "Little Women",
+    "authors": [
+      "Louisa May Alcott"
+    ],
+    "year": 1868,
+    "subjects": [
+      "coming-of-age",
+      "family-saga",
+      "19th-century",
+      "marriage-plot"
+    ],
+    "description": "Four sisters in Civil War Massachusetts, and Jo March refusing the plot everyone has for her. Alcott wrote it for money and resented the marriages her publisher demanded."
+  },
+  {
+    "id": "the-secret-garden",
+    "title": "The Secret Garden",
+    "authors": [
+      "Frances Hodgson Burnett"
+    ],
+    "year": 1911,
+    "subjects": [
+      "middle-grade",
+      "coming-of-age",
+      "grief",
+      "family"
+    ],
+    "description": "A sour orphan sent to a Yorkshire manor finds a walled garden nobody has entered in ten years. Two unpleasant children become tolerable through gardening, roughly."
+  },
+  {
+    "id": "the-phantom-tollbooth",
+    "title": "The Phantom Tollbooth",
+    "authors": [
+      "Norton Juster"
+    ],
+    "year": 1961,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "puzzle"
+    ],
+    "description": "A bored boy drives a toy car through a tollbooth into a land where words and numbers are at war. Almost entirely puns, and the puns are load-bearing."
+  },
+  {
+    "id": "wonder",
+    "title": "Wonder",
+    "authors": [
+      "R. J. Palacio"
+    ],
+    "year": 2012,
+    "subjects": [
+      "middle-grade",
+      "school",
+      "disability",
+      "family"
+    ],
+    "description": "A boy with a facial difference starts fifth grade after years of homeschooling. Told from several viewpoints, including the sister everyone forgets."
+  },
+  {
+    "id": "the-crossover",
+    "title": "The Crossover",
+    "authors": [
+      "Kwame Alexander"
+    ],
+    "year": 2014,
+    "subjects": [
+      "middle-grade",
+      "poetry",
+      "family"
+    ],
+    "description": "Twin basketball players and their father's failing heart, written in verse that moves at the speed of the game. Won the Newbery on the strength of its rhythm."
+  },
+  {
+    "id": "brown-girl-dreaming",
+    "title": "Brown Girl Dreaming",
+    "authors": [
+      "Jacqueline Woodson"
+    ],
+    "year": 2014,
+    "subjects": [
+      "middle-grade",
+      "poetry",
+      "memoir",
+      "race"
+    ],
+    "description": "Woodson's childhood between South Carolina and Brooklyn in the 1960s and 70s, in verse. About segregation, family, and taking a long time to learn to read."
+  },
+  {
+    "id": "new-kid",
+    "title": "New Kid",
+    "authors": [
+      "Jerry Craft"
+    ],
+    "year": 2019,
+    "subjects": [
+      "middle-grade",
+      "graphic-novel",
+      "race",
+      "school"
+    ],
+    "description": "A Black seventh-grader is sent to a wealthy private school instead of art school. The first graphic novel to win the Newbery, and precise about small daily indignities."
+  },
+  {
+    "id": "smile-telgemeier",
+    "title": "Smile",
+    "authors": [
+      "Raina Telgemeier"
+    ],
+    "year": 2010,
+    "subjects": [
+      "middle-grade",
+      "graphic-novel",
+      "memoir",
+      "school"
+    ],
+    "description": "Telgemeier knocks out her front teeth in sixth grade and spends years in orthodontics while her friendships curdle. Autobiographical, and hugely influential on the shelf."
+  },
+  {
+    "id": "el-deafo",
+    "title": "El Deafo",
+    "authors": [
+      "Cece Bell"
+    ],
+    "year": 2014,
+    "subjects": [
+      "middle-grade",
+      "graphic-novel",
+      "disability",
+      "memoir"
+    ],
+    "description": "Bell's childhood deafness and the bulky hearing aid she reimagined as a superpower. Funny about the exhaustion of lip-reading a whole classroom."
+  },
+  {
+    "id": "the-tale-of-despereaux",
+    "title": "The Tale of Despereaux",
+    "authors": [
+      "Kate DiCamillo"
+    ],
+    "year": 2003,
+    "subjects": [
+      "middle-grade",
+      "children-adventure",
+      "friendship"
+    ],
+    "description": "A mouse with oversized ears who loves a princess, a rat who loves light, and a serving girl who wants a crown. Narrated directly to the reader, sometimes sternly."
+  },
+  {
+    "id": "because-of-winn-dixie",
+    "title": "Because of Winn-Dixie",
+    "authors": [
+      "Kate DiCamillo"
+    ],
+    "year": 2000,
+    "subjects": [
+      "middle-grade",
+      "small-town",
+      "grief",
+      "friendship"
+    ],
+    "description": "A preacher's daughter adopts a stray dog in a Florida town and collects its lonely adults. Slight on plot and unusually good on loneliness."
+  },
+  {
+    "id": "the-sea-of-monsters",
+    "title": "The Sea of Monsters",
+    "authors": [
+      "Rick Riordan"
+    ],
+    "year": 2006,
+    "subjects": [
+      "middle-grade",
+      "mythology",
+      "children-adventure",
+      "friendship"
+    ],
+    "description": "Percy sails the Sea of Monsters for the Golden Fleece to save the camp's magical border. The Odyssey compressed into a summer road trip."
+  },
+  {
+    "id": "diary-of-a-wimpy-kid",
+    "title": "Diary of a Wimpy Kid",
+    "authors": [
+      "Jeff Kinney"
+    ],
+    "year": 2007,
+    "subjects": [
+      "middle-grade",
+      "school",
+      "graphic-novel",
+      "family"
+    ],
+    "description": "A middle-schooler's illustrated journal, in which he is consistently the least sympathetic person in every anecdote he tells. Enormously popular with the age it mocks."
+  }
+]

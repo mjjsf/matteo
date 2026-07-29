@@ -1,21 +1,20 @@
 import { useEffect, useRef } from 'react';
-import { useStore } from '@/state/store';
+import { useStore, bookById } from '@/state/store';
 import { AFFILIATE_DISCLOSURE, amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
-import { formatYear } from './ResultList';
+import { asSlot } from '@/domain/graph';
+import { formatYear } from './format';
 
-/** Detail panel for the selected book. */
+/** Detail panel for the selected book, with the buy link. */
 export function DetailPanel(): React.ReactElement | null {
   const selectedId = useStore((s) => s.selectedId);
-  const books = useStore((s) => s.books);
-  const byId = useStore((s) => s.byId);
-  const tagMap = useStore((s) => s.tagMap);
-  const taxonomy = useStore((s) => s.taxonomy);
-  const setActiveBranch = useStore((s) => s.setActiveBranch);
+  const graph = useStore((s) => s.graph);
+  const revision = useStore((s) => s.revision);
+  const expand = useStore((s) => s.expand);
   const select = useStore((s) => s.select);
+  const reseedFrom = useStore((s) => s.reseedFrom);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  const index = selectedId ? byId.get(selectedId) : undefined;
-  const book = index !== undefined ? books[index] : undefined;
+  const book = selectedId ? bookById(selectedId) : undefined;
 
   useEffect(() => {
     if (book) headingRef.current?.focus();
@@ -24,10 +23,21 @@ export function DetailPanel(): React.ReactElement | null {
   if (!book) return null;
 
   const link = amazonLinkForBook(book, configuredAssociateTag());
+  // `revision` is read only to re-render when `expand` flips a node's flags in
+  // place — the graph object alone does not always change identity for those.
+  void revision;
+  const slot = graph.indexOf.get(book.id);
+  const node = slot === undefined ? undefined : graph.nodes[slot];
+  const canGrow = node !== undefined && !node.expanded && node.expandable;
 
   return (
     <aside className="panel panel--detail" aria-live="polite" aria-label="Selected book">
-      <button type="button" className="panel__close" onClick={() => select(null)} aria-label="Close details">
+      <button
+        type="button"
+        className="panel__close"
+        onClick={() => select(null)}
+        aria-label="Close details"
+      >
         ×
       </button>
 
@@ -42,22 +52,11 @@ export function DetailPanel(): React.ReactElement | null {
 
       <h3 className="detail__heading">Subjects</h3>
       <ul className="chips">
-        {book.subjects.map((tag) => {
-          const nodeId = tagMap[tag]?.[0];
-          const label = nodeId ? (taxonomy.byId.get(nodeId)?.label ?? tag) : tag;
-          return (
-            <li key={tag}>
-              <button
-                type="button"
-                className="chip"
-                title={`Show everything in ${label}`}
-                onClick={() => nodeId && setActiveBranch(nodeId, { fly: true })}
-              >
-                {tag.replace(/-/g, ' ')}
-              </button>
-            </li>
-          );
-        })}
+        {book.subjects.map((tag) => (
+          <li key={tag} className="chip">
+            {tag.replace(/-/g, ' ')}
+          </li>
+        ))}
       </ul>
 
       {book.isbn13 && (
@@ -66,16 +65,28 @@ export function DetailPanel(): React.ReactElement | null {
         </p>
       )}
 
+      <div className="detail__actions">
+        {canGrow && slot !== undefined && (
+          <button type="button" className="detail__grow" onClick={() => expand(asSlot(slot))}>
+            Show similar books
+          </button>
+        )}
+        {node !== undefined && node.generation > 0 && (
+          <button type="button" className="detail__reseed" onClick={() => reseedFrom(book.id)}>
+            Start a new map here
+          </button>
+        )}
+      </div>
+
       <a className="buy" href={link.href} target="_blank" rel="noopener noreferrer sponsored">
         {link.label}
-        <span className="buy__hint">
-          {link.kind === 'dp' ? 'opens the product page' : 'opens a search — no ISBN on file'}
-        </span>
+        <span className="buy__hint">{link.hint}</span>
       </a>
 
-      {/* Deliberately no Prime badge or shipping claim: verifying eligibility
-          needs Amazon's PA-API, and asserting it without that would be making
-          up facts about a real product. */}
+      {/* No Prime badge of our own: eligibility can only be verified through
+          Amazon's PA-API, so the search link asks Amazon to filter and its page
+          reports the result. Claiming it here would be inventing facts about a
+          real product. */}
       <p className="detail__disclosure">{AFFILIATE_DISCLOSURE}</p>
     </aside>
   );

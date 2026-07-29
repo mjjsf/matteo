@@ -54,52 +54,6 @@ export interface TaxonomyIndex {
 /** raw subject tag -> taxonomy node ids it classifies into. */
 export type TagMap = Record<string, string[]>;
 
-/** Baked layout artifact, written by `scripts/build-layout.ts`. */
-export interface LayoutFile {
-  version: number;
-  /** sha256 of corpus + taxonomy + tagMap + config. Guards staleness. */
-  inputHash: string;
-  config: LayoutConfigEcho;
-  bounds: { radius: number };
-  /** Flat [x0,y0,z0,x1,y1,z1,...] in `bookIds` order, rounded to 4dp.
-   *  Flat rather than objects: ~40% smaller as JSON and loads straight into a
-   *  Float32Array with no per-point allocation. */
-  positions: number[];
-  bookIds: string[];
-  /** Diagnostics, not used at runtime — see build-layout output. */
-  diagnostics: {
-    explainedVariance3: number;
-    prunedTagCount: number;
-    keptFeatureCount: number;
-    weakestBooks: Array<{ id: string; norm: number }>;
-  };
-}
-
-export interface LayoutConfigEcho {
-  seed: number;
-  strategy: LayoutStrategy;
-  minDf: number;
-  authorWeight: number;
-  taxonomyWeight: number;
-  radius: number;
-}
-
-export type LayoutStrategy = 'pca3' | 'umap' | 'hybrid';
-
-/** A node in the tree built from the current search results. */
-export interface SearchTreeNode {
-  id: string;
-  label: string;
-  depth: number;
-  parentId: string | null;
-  /** Matched books mapped to this node or any descendant. */
-  matchCount: number;
-  /** Ids of matched books, for centroid computation. */
-  matchedBookIds: string[];
-  /** Ids of taxonomy nodes collapsed into this one (single-child chains). */
-  collapsedFrom: string[];
-}
-
 export interface SearchHit {
   book: Book;
   score: number;

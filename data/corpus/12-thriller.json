@@ -1,0 +1,1422 @@
+[
+  {
+    "id": "the-girl-on-the-train",
+    "title": "The Girl on the Train",
+    "authors": [
+      "Paula Hawkins"
+    ],
+    "year": 2015,
+    "subjects": [
+      "domestic-suspense",
+      "unreliable-narrator",
+      "addiction",
+      "murder"
+    ],
+    "description": "A blackout drinker who watches the same house from the same commuter train every morning becomes a witness to a disappearance she cannot remember. Three narrators, all of them lying."
+  },
+  {
+    "id": "the-silent-patient",
+    "title": "The Silent Patient",
+    "authors": [
+      "Alex Michaelides"
+    ],
+    "year": 2019,
+    "subjects": [
+      "domestic-suspense",
+      "unreliable-narrator",
+      "mental-health",
+      "murder"
+    ],
+    "description": "A painter shoots her husband and never speaks again; the therapist who takes her case is more invested than he admits. Built entirely around one reveal."
+  },
+  {
+    "id": "behind-closed-doors",
+    "title": "Behind Closed Doors",
+    "authors": [
+      "B. A. Paris"
+    ],
+    "year": 2016,
+    "subjects": [
+      "domestic-suspense",
+      "domestic-abuse",
+      "marriage-plot"
+    ],
+    "description": "A couple everyone envies, and a wife who is never left alone with anyone. Alternates between the courtship and the house she cannot leave."
+  },
+  {
+    "id": "the-woman-in-the-window",
+    "title": "The Woman in the Window",
+    "authors": [
+      "A. J. Finn"
+    ],
+    "year": 2018,
+    "subjects": [
+      "domestic-suspense",
+      "unreliable-narrator",
+      "mental-health",
+      "murder"
+    ],
+    "description": "An agoraphobic child psychologist drinking through old films believes she has watched a murder across the street. Rear Window with a narrator nobody believes, including herself."
+  },
+  {
+    "id": "big-little-lies",
+    "title": "Big Little Lies",
+    "authors": [
+      "Liane Moriarty"
+    ],
+    "year": 2014,
+    "subjects": [
+      "domestic-suspense",
+      "domestic-abuse",
+      "motherhood",
+      "murder"
+    ],
+    "description": "Three mothers at an Australian primary school, building toward a death at a trivia night. The gossip chorus between chapters is the best device in it."
+  },
+  {
+    "id": "the-husbands-secret",
+    "title": "The Husband's Secret",
+    "authors": [
+      "Liane Moriarty"
+    ],
+    "year": 2013,
+    "subjects": [
+      "domestic-suspense",
+      "marriage-plot",
+      "guilt",
+      "motherhood"
+    ],
+    "description": "A woman finds a letter from her husband to be opened after his death. He is alive. Three women's lives converge on what it says."
+  },
+  {
+    "id": "the-couple-next-door",
+    "title": "The Couple Next Door",
+    "authors": [
+      "Shari Lapena"
+    ],
+    "year": 2016,
+    "subjects": [
+      "domestic-suspense",
+      "kidnapping",
+      "marriage-plot"
+    ],
+    "description": "A couple leave the baby monitor on and go to dinner next door. The baby is gone when they get back, and neither of them is telling the police everything."
+  },
+  {
+    "id": "the-last-thing-he-told-me",
+    "title": "The Last Thing He Told Me",
+    "authors": [
+      "Laura Dave"
+    ],
+    "year": 2021,
+    "subjects": [
+      "domestic-suspense",
+      "marriage-plot",
+      "family",
+      "identity"
+    ],
+    "description": "A man vanishes leaving a note reading protect her, and his wife and hostile stepdaughter go looking for who he actually was."
+  },
+  {
+    "id": "the-wife-between-us",
+    "title": "The Wife Between Us",
+    "authors": [
+      "Greer Hendricks",
+      "Sarah Pekkanen"
+    ],
+    "year": 2018,
+    "subjects": [
+      "domestic-suspense",
+      "unreliable-narrator",
+      "marriage-plot",
+      "divorce"
+    ],
+    "description": "A discarded first wife watches her ex-husband's engagement to a younger woman. The book depends on you assuming you know which is which."
+  },
+  {
+    "id": "before-i-go-to-sleep",
+    "title": "Before I Go to Sleep",
+    "authors": [
+      "S. J. Watson"
+    ],
+    "year": 2011,
+    "subjects": [
+      "domestic-suspense",
+      "amnesia",
+      "unreliable-narrator",
+      "marriage-plot"
+    ],
+    "description": "A woman whose memory resets every night keeps a journal her husband does not know about. Each morning she reads what she no longer knows."
+  },
+  {
+    "id": "sharp-objects",
+    "title": "Sharp Objects",
+    "authors": [
+      "Gillian Flynn"
+    ],
+    "year": 2006,
+    "subjects": [
+      "domestic-suspense",
+      "murder",
+      "trauma",
+      "motherhood"
+    ],
+    "description": "A reporter returns to her Missouri hometown to cover two dead girls and stays with the mother she has been avoiding. Flynn's first, and the meanest."
+  },
+  {
+    "id": "dark-places",
+    "title": "Dark Places",
+    "authors": [
+      "Gillian Flynn"
+    ],
+    "year": 2009,
+    "subjects": [
+      "domestic-suspense",
+      "murder",
+      "poverty",
+      "unreliable-narrator"
+    ],
+    "description": "The sole survivor of a family massacre, whose testimony convicted her brother, is paid by true-crime hobbyists to reopen it. Kansas farm foreclosure as backdrop."
+  },
+  {
+    "id": "the-likeness",
+    "title": "The Likeness",
+    "authors": [
+      "Tana French"
+    ],
+    "year": 2008,
+    "subjects": [
+      "murder",
+      "identity",
+      "friendship",
+      "unreliable-narrator"
+    ],
+    "description": "A detective goes undercover as a murder victim who was using an identity she herself invented, moving into the house the dead woman shared with four students."
+  },
+  {
+    "id": "broken-harbour",
+    "title": "Broken Harbour",
+    "authors": [
+      "Tana French"
+    ],
+    "year": 2012,
+    "subjects": [
+      "murder",
+      "domestic-suspense",
+      "ireland",
+      "poverty"
+    ],
+    "description": "A family attacked in a half-built ghost estate outside Dublin after the crash, with holes punched through the walls. French on what the recession did to people."
+  },
+  {
+    "id": "the-cuckoos-calling",
+    "title": "The Cuckoo's Calling",
+    "authors": [
+      "Robert Galbraith"
+    ],
+    "year": 2013,
+    "subjects": [
+      "murder",
+      "detective",
+      "london",
+      "class"
+    ],
+    "description": "A one-legged veteran turned private detective investigates a supermodel's fall from a balcony. Published pseudonymously and better for having been read cold."
+  },
+  {
+    "id": "the-girl-with-the-dragon-tattoo",
+    "title": "The Girl with the Dragon Tattoo",
+    "authors": [
+      "Stieg Larsson"
+    ],
+    "year": 2005,
+    "subjects": [
+      "murder",
+      "nordic-noir",
+      "sexual-assault",
+      "journalism"
+    ],
+    "description": "A disgraced journalist and a hacker with a state guardian investigate a disappearance on a private island forty years cold. The book that exported Nordic noir."
+  },
+  {
+    "id": "the-girl-who-played-with-fire",
+    "title": "The Girl Who Played with Fire",
+    "authors": [
+      "Stieg Larsson"
+    ],
+    "year": 2006,
+    "subjects": [
+      "murder",
+      "nordic-noir",
+      "violence",
+      "journalism"
+    ],
+    "description": "Salander is named for three murders and goes underground while Blomkvist tries to prove otherwise. Her history stops being background."
+  },
+  {
+    "id": "the-snowman",
+    "title": "The Snowman",
+    "authors": [
+      "Jo Nesbø"
+    ],
+    "year": 2007,
+    "subjects": [
+      "murder",
+      "nordic-noir",
+      "detective",
+      "serial-killer"
+    ],
+    "description": "Harry Hole hunts a killer who leaves a snowman outside the houses of the women he takes. Grim even by Oslo standards."
+  },
+  {
+    "id": "smillas-sense-of-snow",
+    "title": "Smilla's Sense of Snow",
+    "authors": [
+      "Peter Høeg"
+    ],
+    "year": 1992,
+    "subjects": [
+      "murder",
+      "nordic-noir",
+      "colonialism"
+    ],
+    "description": "A Greenlandic woman in Copenhagen reads a dead boy's footprints in the snow and knows he did not fall. Turns from investigation to Arctic expedition."
+  },
+  {
+    "id": "the-redbreast",
+    "title": "The Redbreast",
+    "authors": [
+      "Jo Nesbø"
+    ],
+    "year": 2000,
+    "subjects": [
+      "murder",
+      "nordic-noir",
+      "detective",
+      "war"
+    ],
+    "description": "A rare rifle surfaces in Oslo and the trail runs back to Norwegians who fought on the Eastern Front for the Germans. The best-plotted Harry Hole."
+  },
+  {
+    "id": "faceless-killers",
+    "title": "Faceless Killers",
+    "authors": [
+      "Henning Mankell"
+    ],
+    "year": 1991,
+    "subjects": [
+      "murder",
+      "nordic-noir",
+      "detective",
+      "immigration"
+    ],
+    "description": "Kurt Wallander investigates a farm couple's murder while a dying word sets off attacks on refugees. The first Wallander, and it set the tone for the genre."
+  },
+  {
+    "id": "the-day-of-the-jackal",
+    "title": "The Day of the Jackal",
+    "authors": [
+      "Frederick Forsyth"
+    ],
+    "year": 1971,
+    "subjects": [
+      "espionage",
+      "assassins",
+      "procedural",
+      "france"
+    ],
+    "description": "An English assassin is hired to kill de Gaulle, and a French detective has to find a man with no name. The suspense survives knowing de Gaulle died in bed."
+  },
+  {
+    "id": "the-bourne-identity",
+    "title": "The Bourne Identity",
+    "authors": [
+      "Robert Ludlum"
+    ],
+    "year": 1980,
+    "subjects": [
+      "espionage",
+      "amnesia",
+      "assassins",
+      "conspiracy"
+    ],
+    "description": "A man pulled from the Mediterranean with no memory and a Zurich account number discovers he is extremely good at violence. The template for a hundred imitators."
+  },
+  {
+    "id": "the-eagle-has-landed",
+    "title": "The Eagle Has Landed",
+    "authors": [
+      "Jack Higgins"
+    ],
+    "year": 1975,
+    "subjects": [
+      "espionage",
+      "war",
+      "conspiracy"
+    ],
+    "description": "German paratroopers land in a Norfolk village to kidnap Churchill. Higgins makes the Germans the protagonists and it works."
+  },
+  {
+    "id": "the-constant-gardener",
+    "title": "The Constant Gardener",
+    "authors": [
+      "John le Carré"
+    ],
+    "year": 2001,
+    "subjects": [
+      "espionage",
+      "fraud",
+      "colonialism",
+      "grief"
+    ],
+    "description": "A mild British diplomat in Nairobi investigates his activist wife's murder and finds a drug trial. Le Carré after the Cold War, angrier and less ambiguous."
+  },
+  {
+    "id": "a-perfect-spy",
+    "title": "A Perfect Spy",
+    "authors": [
+      "John le Carré"
+    ],
+    "year": 1986,
+    "subjects": [
+      "espionage",
+      "family",
+      "identity",
+      "guilt"
+    ],
+    "description": "A senior intelligence officer disappears to a Devon boarding house and writes his life for his son. Le Carré's most autobiographical, built around a confidence-trickster father."
+  },
+  {
+    "id": "slow-horses",
+    "title": "Slow Horses",
+    "authors": [
+      "Mick Herron"
+    ],
+    "year": 2010,
+    "subjects": [
+      "espionage",
+      "conspiracy",
+      "london",
+      "black-comedy"
+    ],
+    "description": "MI5's failures are exiled to Slough House to do paperwork until they resign. A kidnapping gives them something real, which nobody wanted."
+  },
+  {
+    "id": "killing-floor",
+    "title": "Killing Floor",
+    "authors": [
+      "Lee Child"
+    ],
+    "year": 1997,
+    "subjects": [
+      "thriller",
+      "conspiracy",
+      "small-town",
+      "violence"
+    ],
+    "description": "Jack Reacher gets off a bus in a Georgia town and is arrested for a murder committed while he was on it. The first Reacher, and the counterfeiting plot is genuinely clever."
+  },
+  {
+    "id": "the-pelican-brief",
+    "title": "The Pelican Brief",
+    "authors": [
+      "John Grisham"
+    ],
+    "year": 1992,
+    "subjects": [
+      "legal-thriller",
+      "conspiracy",
+      "journalism",
+      "murder"
+    ],
+    "description": "A law student writes a speculative brief about two dead Supreme Court justices and people start dying around her."
+  },
+  {
+    "id": "the-client",
+    "title": "The Client",
+    "authors": [
+      "John Grisham"
+    ],
+    "year": 1993,
+    "subjects": [
+      "legal-thriller",
+      "murder",
+      "children"
+    ],
+    "description": "An eleven-year-old witnesses a lawyer's suicide and learns where a senator's body is buried. He hires an attorney with a hundred dollars."
+  },
+  {
+    "id": "the-rainmaker",
+    "title": "The Rainmaker",
+    "authors": [
+      "John Grisham"
+    ],
+    "year": 1995,
+    "subjects": [
+      "legal-thriller",
+      "fraud",
+      "illness",
+      "class"
+    ],
+    "description": "A new graduate with no clients takes an insurance company to trial over a denied leukaemia claim. Grisham's most convincing courtroom."
+  },
+  {
+    "id": "the-burden-of-proof",
+    "title": "The Burden of Proof",
+    "authors": [
+      "Scott Turow"
+    ],
+    "year": 1990,
+    "subjects": [
+      "legal-thriller",
+      "family",
+      "grief",
+      "fraud"
+    ],
+    "description": "A defence attorney comes home to find his wife dead in the garage and spends the book discovering what she was hiding. Turow's follow-up, and slower by design."
+  },
+  {
+    "id": "the-lincoln-lawyer",
+    "title": "The Lincoln Lawyer",
+    "authors": [
+      "Michael Connelly"
+    ],
+    "year": 2005,
+    "subjects": [
+      "legal-thriller",
+      "murder",
+      "detective"
+    ],
+    "description": "A defence attorney who works from the back of a town car gets a wealthy client and realises he may have failed an earlier one badly."
+  },
+  {
+    "id": "the-poet-connelly",
+    "title": "The Poet",
+    "authors": [
+      "Michael Connelly"
+    ],
+    "year": 1996,
+    "subjects": [
+      "serial-killer",
+      "journalism",
+      "murder",
+      "detective"
+    ],
+    "description": "A crime reporter investigating his twin brother's apparent suicide finds a pattern of detectives' deaths quoting Poe."
+  },
+  {
+    "id": "shutter-island",
+    "title": "Shutter Island",
+    "authors": [
+      "Dennis Lehane"
+    ],
+    "year": 2003,
+    "subjects": [
+      "psychological-horror",
+      "unreliable-narrator",
+      "mental-health",
+      "murder"
+    ],
+    "description": "Two US marshals go to a hospital for the criminally insane in 1954 Boston Harbor to find an escaped patient. Everything is exactly what it looks like, and is not."
+  },
+  {
+    "id": "gone-baby-gone",
+    "title": "Gone, Baby, Gone",
+    "authors": [
+      "Dennis Lehane"
+    ],
+    "year": 1998,
+    "subjects": [
+      "detective",
+      "kidnapping",
+      "addiction"
+    ],
+    "description": "Two private investigators look for a four-year-old taken from a Dorchester flat. The moral question at the end has no comfortable answer."
+  },
+  {
+    "id": "red-dragon",
+    "title": "Red Dragon",
+    "authors": [
+      "Thomas Harris"
+    ],
+    "year": 1981,
+    "subjects": [
+      "serial-killer",
+      "detective",
+      "psychological-horror"
+    ],
+    "description": "A retired FBI profiler is brought back to catch a family annihilator and consults the man who nearly killed him. Lecter's first appearance, in a supporting part."
+  },
+  {
+    "id": "i-am-pilgrim",
+    "title": "I Am Pilgrim",
+    "authors": [
+      "Terry Hayes"
+    ],
+    "year": 2013,
+    "subjects": [
+      "espionage",
+      "violence",
+      "procedural",
+      "conspiracy"
+    ],
+    "description": "A retired intelligence officer is pulled back over a New York hotel murder that connects to a bioweapon plot. Very long, very propulsive."
+  },
+  {
+    "id": "the-martian",
+    "title": "The Martian",
+    "authors": [
+      "Andy Weir"
+    ],
+    "year": 2011,
+    "subjects": [
+      "survival",
+      "space",
+      "engineering",
+      "black-comedy"
+    ],
+    "description": "An astronaut left for dead on Mars keeps himself alive with botany and duct tape. Self-published first, and the arithmetic mostly checks out."
+  },
+  {
+    "id": "project-hail-mary",
+    "title": "Project Hail Mary",
+    "authors": [
+      "Andy Weir"
+    ],
+    "year": 2021,
+    "subjects": [
+      "space",
+      "first-contact",
+      "engineering",
+      "amnesia"
+    ],
+    "description": "A man wakes on a spacecraft with no memory, two dead crewmates, and a mission to save the sun. The first contact goes better than usual."
+  },
+  {
+    "id": "dark-matter-crouch",
+    "title": "Dark Matter",
+    "authors": [
+      "Blake Crouch"
+    ],
+    "year": 2016,
+    "subjects": [
+      "parallel-worlds",
+      "thriller",
+      "marriage-plot",
+      "identity"
+    ],
+    "description": "A physics teacher is abducted and wakes in a life where he made the other choice. The premise escalates in a way that is hard to put down."
+  },
+  {
+    "id": "recursion",
+    "title": "Recursion",
+    "authors": [
+      "Blake Crouch"
+    ],
+    "year": 2019,
+    "subjects": [
+      "thriller",
+      "memory",
+      "time-travel",
+      "grief"
+    ],
+    "description": "People start remembering lives they did not live. A detective and a neuroscientist work out what a memory chair has done to causality."
+  },
+  {
+    "id": "the-passage-cronin",
+    "title": "The Passage",
+    "authors": [
+      "Justin Cronin"
+    ],
+    "year": 2010,
+    "subjects": [
+      "post-apocalyptic",
+      "vampires",
+      "pandemic",
+      "survival"
+    ],
+    "description": "A military virus trial produces something that empties North America, then jumps ninety years to a colony running out of batteries. Vast and unusually well written for the shelf."
+  },
+  {
+    "id": "swan-song",
+    "title": "Swan Song",
+    "authors": [
+      "Robert McCammon"
+    ],
+    "year": 1987,
+    "subjects": [
+      "post-apocalyptic",
+      "survival",
+      "religion",
+      "psychological-horror"
+    ],
+    "description": "Nuclear war, and survivors converging on a child who can heal. Frequently compared to The Stand and rather nastier."
+  },
+  {
+    "id": "the-stand",
+    "title": "The Stand",
+    "authors": [
+      "Stephen King"
+    ],
+    "year": 1978,
+    "subjects": [
+      "post-apocalyptic",
+      "pandemic",
+      "religion",
+      "survival"
+    ],
+    "description": "A weaponised flu kills most of America and the survivors are drawn to either a Nebraska farmhouse or Las Vegas. King's longest and his most ambitious."
+  },
+  {
+    "id": "it-king",
+    "title": "It",
+    "authors": [
+      "Stephen King"
+    ],
+    "year": 1986,
+    "subjects": [
+      "psychological-horror",
+      "coming-of-age",
+      "small-town",
+      "friendship"
+    ],
+    "description": "Seven children fight something in a Maine town's sewers, then return as adults having forgotten it. The childhood half is why it endures."
+  },
+  {
+    "id": "misery",
+    "title": "Misery",
+    "authors": [
+      "Stephen King"
+    ],
+    "year": 1987,
+    "subjects": [
+      "psychological-horror",
+      "survival",
+      "writing"
+    ],
+    "description": "A romance novelist crashes his car and is nursed by his self-described number one fan, who does not like how the last book ended. Two rooms and a typewriter."
+  },
+  {
+    "id": "pet-sematary",
+    "title": "Pet Sematary",
+    "authors": [
+      "Stephen King"
+    ],
+    "year": 1983,
+    "subjects": [
+      "psychological-horror",
+      "grief",
+      "small-town",
+      "family"
+    ],
+    "description": "A burial ground behind a Maine house returns what is buried in it, changed. King held it back for years because he thought it went too far."
+  },
+  {
+    "id": "salems-lot",
+    "title": "'Salem's Lot",
+    "authors": [
+      "Stephen King"
+    ],
+    "year": 1975,
+    "subjects": [
+      "vampires",
+      "psychological-horror",
+      "small-town",
+      "gothic"
+    ],
+    "description": "Dracula relocated to a Maine town that nobody outside would notice emptying. King's second novel and his most straightforwardly frightening."
+  },
+  {
+    "id": "the-exorcist",
+    "title": "The Exorcist",
+    "authors": [
+      "William Peter Blatty"
+    ],
+    "year": 1971,
+    "subjects": [
+      "psychological-horror",
+      "religion",
+      "motherhood",
+      "possession"
+    ],
+    "description": "A film star's daughter deteriorates in ways medicine cannot explain and a Jesuit losing his faith is called. The medical procedures are the worst part."
+  },
+  {
+    "id": "rosemarys-baby",
+    "title": "Rosemary's Baby",
+    "authors": [
+      "Ira Levin"
+    ],
+    "year": 1967,
+    "subjects": [
+      "psychological-horror",
+      "motherhood",
+      "possession",
+      "new-york"
+    ],
+    "description": "A young wife in a Manhattan building becomes pregnant and cannot get anyone to take her fears seriously. The horror is the not being believed."
+  },
+  {
+    "id": "the-stepford-wives",
+    "title": "The Stepford Wives",
+    "authors": [
+      "Ira Levin"
+    ],
+    "year": 1972,
+    "subjects": [
+      "psychological-horror",
+      "feminism",
+      "suburbia",
+      "conformity",
+      "marriage-plot",
+      "monsters",
+      "robots"
+    ],
+    "description": "A photographer moves to a Connecticut town where the women are uniformly serene and domestic. A hundred and forty pages and it added a word to the language."
+  },
+  {
+    "id": "mexican-gothic",
+    "title": "Mexican Gothic",
+    "authors": [
+      "Silvia Moreno-Garcia"
+    ],
+    "year": 2020,
+    "subjects": [
+      "gothic",
+      "psychological-horror",
+      "colonialism"
+    ],
+    "description": "A 1950s Mexico City socialite visits her cousin at an English family's decaying silver-mining house in the mountains. The house is doing something."
+  },
+  {
+    "id": "the-only-good-indians",
+    "title": "The Only Good Indians",
+    "authors": [
+      "Stephen Graham Jones"
+    ],
+    "year": 2020,
+    "subjects": [
+      "psychological-horror",
+      "native-american",
+      "guilt",
+      "revenge",
+      "folklore",
+      "monsters",
+      "ghosts"
+    ],
+    "description": "Four Blackfeet men are pursued a decade after an illegal elk hunt. Horror that takes the entity's grievance seriously."
+  },
+  {
+    "id": "the-twisted-ones",
+    "title": "The Twisted Ones",
+    "authors": [
+      "T. Kingfisher"
+    ],
+    "year": 2019,
+    "subjects": [
+      "psychological-horror",
+      "cosmic-horror",
+      "gothic",
+      "appalachia"
+    ],
+    "description": "A woman clearing her dead grandmother's hoarder house in North Carolina finds a journal and, behind the treeline, the thing it describes."
+  },
+  {
+    "id": "bird-box",
+    "title": "Bird Box",
+    "authors": [
+      "Josh Malerman"
+    ],
+    "year": 2014,
+    "subjects": [
+      "post-apocalyptic",
+      "psychological-horror",
+      "survival",
+      "motherhood"
+    ],
+    "description": "Something outside drives anyone who sees it to kill. A woman rows two children down a river blindfolded. The withholding is the whole device."
+  },
+  {
+    "id": "the-troop",
+    "title": "The Troop",
+    "authors": [
+      "Nick Cutter"
+    ],
+    "year": 2014,
+    "subjects": [
+      "psychological-horror",
+      "survival",
+      "bioethics",
+      "children"
+    ],
+    "description": "A scoutmaster and five boys on a Canadian island meet a starving man carrying an engineered parasite. Genuinely difficult to read in places."
+  },
+  {
+    "id": "borne",
+    "title": "Borne",
+    "authors": [
+      "Jeff VanderMeer"
+    ],
+    "year": 2017,
+    "subjects": [
+      "post-apocalyptic",
+      "bioethics",
+      "environment",
+      "motherhood"
+    ],
+    "description": "A scavenger in a ruined city finds something growing on the flank of a giant flying bear and raises it. Stranger and warmer than that sounds."
+  },
+  {
+    "id": "the-girl-with-all-the-gifts",
+    "title": "The Girl with All the Gifts",
+    "authors": [
+      "M. R. Carey"
+    ],
+    "year": 2014,
+    "subjects": [
+      "post-apocalyptic",
+      "pandemic",
+      "children",
+      "survival"
+    ],
+    "description": "A gifted child is strapped into a wheelchair at gunpoint every morning to go to lessons. A fungal apocalypse told from the wrong side of it."
+  },
+  {
+    "id": "world-war-z",
+    "title": "World War Z",
+    "authors": [
+      "Max Brooks"
+    ],
+    "year": 2006,
+    "subjects": [
+      "post-apocalyptic",
+      "pandemic",
+      "war",
+      "epistolary"
+    ],
+    "description": "An oral history of a zombie war, country by country. The form lets Brooks write about logistics, quarantine politics and refugee flows rather than gore."
+  },
+  {
+    "id": "the-name-of-the-wind",
+    "title": "The Name of the Wind",
+    "authors": [
+      "Patrick Rothfuss"
+    ],
+    "year": 2007,
+    "subjects": [
+      "epic-fantasy",
+      "magic-school",
+      "chosen-one",
+      "music"
+    ],
+    "description": "A legendary figure running an inn under another name tells his own story over three days. Beautifully written, and the trilogy remains unfinished."
+  },
+  {
+    "id": "the-way-of-kings",
+    "title": "The Way of Kings",
+    "authors": [
+      "Brandon Sanderson"
+    ],
+    "year": 2010,
+    "subjects": [
+      "epic-fantasy",
+      "war",
+      "magic-system",
+      "chosen-one"
+    ],
+    "description": "A world scoured by storms, an army of bridge-carrying slaves, and a magic system with rules Sanderson intends to hold for ten volumes."
+  },
+  {
+    "id": "mistborn",
+    "title": "Mistborn: The Final Empire",
+    "authors": [
+      "Brandon Sanderson"
+    ],
+    "year": 2006,
+    "subjects": [
+      "epic-fantasy",
+      "heist",
+      "magic-system",
+      "revolution"
+    ],
+    "description": "A thieving crew plans to rob a god-emperor whose prophesied hero already failed a thousand years ago. Metal-based magic with strict costs, which is the appeal."
+  },
+  {
+    "id": "the-lies-of-locke-lamora",
+    "title": "The Lies of Locke Lamora",
+    "authors": [
+      "Scott Lynch"
+    ],
+    "year": 2006,
+    "subjects": [
+      "epic-fantasy",
+      "heist",
+      "grimdark",
+      "friendship"
+    ],
+    "description": "Con artists in a Venice-like city work a long fraud on the nobility while something worse moves through the underworld. Very funny until it is not."
+  },
+  {
+    "id": "the-blade-itself",
+    "title": "The Blade Itself",
+    "authors": [
+      "Joe Abercrombie"
+    ],
+    "year": 2006,
+    "subjects": [
+      "grimdark",
+      "epic-fantasy",
+      "violence",
+      "war"
+    ],
+    "description": "A crippled Inquisitor, a vain duellist and a barbarian who wants to stop. Abercrombie takes epic fantasy's furniture and makes everyone worse."
+  },
+  {
+    "id": "before-they-are-hanged",
+    "title": "Before They Are Hanged",
+    "authors": [
+      "Joe Abercrombie"
+    ],
+    "year": 2007,
+    "subjects": [
+      "grimdark",
+      "epic-fantasy",
+      "war"
+    ],
+    "description": "A siege, a doomed quest and a losing campaign in the north, all going badly at once. The middle volume, and the bleakest."
+  },
+  {
+    "id": "prince-of-thorns",
+    "title": "Prince of Thorns",
+    "authors": [
+      "Mark Lawrence"
+    ],
+    "year": 2011,
+    "subjects": [
+      "grimdark",
+      "epic-fantasy",
+      "revenge",
+      "post-apocalyptic"
+    ],
+    "description": "A thirteen-year-old prince leading a company of murderers back toward the father who let his mother die. Narrated by him, and he is not redeemed."
+  },
+  {
+    "id": "the-black-company",
+    "title": "The Black Company",
+    "authors": [
+      "Glen Cook"
+    ],
+    "year": 1984,
+    "subjects": [
+      "grimdark",
+      "epic-fantasy",
+      "war"
+    ],
+    "description": "A mercenary company's annalist records a campaign for a side that is plainly evil. Written in a flat soldier's voice, and it invented grimdark."
+  },
+  {
+    "id": "the-last-wish",
+    "title": "The Last Wish",
+    "authors": [
+      "Andrzej Sapkowski"
+    ],
+    "year": 1993,
+    "subjects": [
+      "epic-fantasy",
+      "monsters",
+      "grimdark",
+      "folklore"
+    ],
+    "description": "Linked stories introducing Geralt of Rivia, a mutant monster-hunter who keeps finding the monster is a person. Polish fairy tales, turned."
+  },
+  {
+    "id": "the-obelisk-gate",
+    "title": "The Obelisk Gate",
+    "authors": [
+      "N. K. Jemisin"
+    ],
+    "year": 2016,
+    "subjects": [
+      "epic-fantasy",
+      "environment",
+      "slavery",
+      "motherhood"
+    ],
+    "description": "The second Broken Earth novel, in an underground comm during a season that may not end. Won the Hugo, as did the books either side of it."
+  },
+  {
+    "id": "the-priory-of-the-orange-tree",
+    "title": "The Priory of the Orange Tree",
+    "authors": [
+      "Samantha Shannon"
+    ],
+    "year": 2019,
+    "subjects": [
+      "epic-fantasy",
+      "dragons",
+      "sapphic",
+      "chosen-one"
+    ],
+    "description": "An eight-hundred-page standalone with two dragon traditions, a queen who must produce an heir, and a hidden order of mages. Deliberately not a series."
+  },
+  {
+    "id": "piranesi",
+    "title": "Piranesi",
+    "authors": [
+      "Susanna Clarke"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "puzzle",
+      "parallel-worlds",
+      "memory"
+    ],
+    "description": "A man lives in an infinite house of statues and tides, keeping meticulous journals, and is certain there are only two people in the world. Short and remarkable."
+  },
+  {
+    "id": "the-night-circus",
+    "title": "The Night Circus",
+    "authors": [
+      "Erin Morgenstern"
+    ],
+    "year": 2011,
+    "subjects": [
+      "book-club",
+      "magic-system",
+      "slow-burn",
+      "victorian"
+    ],
+    "description": "Two magicians are bound as children to a duel neither understands, staged inside a circus that appears without warning. Atmosphere well ahead of plot, on purpose."
+  },
+  {
+    "id": "the-ten-thousand-doors-of-january",
+    "title": "The Ten Thousand Doors of January",
+    "authors": [
+      "Alix E. Harrow"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "parallel-worlds",
+      "colonialism",
+      "coming-of-age"
+    ],
+    "description": "A ward of a wealthy collector finds a book about doors between worlds and recognises her own life in it. Nested narratives, and pointed about who collects what."
+  },
+  {
+    "id": "the-city-we-became",
+    "title": "The City We Became",
+    "authors": [
+      "N. K. Jemisin"
+    ],
+    "year": 2020,
+    "subjects": [
+      "urban-fantasy",
+      "new-york",
+      "cosmic-horror",
+      "race"
+    ],
+    "description": "New York's five boroughs each incarnate as a person to defend the city being born. Jemisin arguing directly with Lovecraft's politics."
+  },
+  {
+    "id": "the-rook",
+    "title": "The Rook",
+    "authors": [
+      "Daniel O'Malley"
+    ],
+    "year": 2012,
+    "subjects": [
+      "urban-fantasy",
+      "amnesia",
+      "espionage",
+      "black-comedy"
+    ],
+    "description": "A woman wakes in a London park surrounded by bodies with a letter from her previous self explaining that she runs a supernatural civil service."
+  },
+  {
+    "id": "rivers-of-london",
+    "title": "Rivers of London",
+    "authors": [
+      "Ben Aaronovitch"
+    ],
+    "year": 2011,
+    "subjects": [
+      "urban-fantasy",
+      "detective",
+      "london",
+      "ghosts"
+    ],
+    "description": "A probationary constable takes a witness statement from a ghost and is apprenticed to the Met's last wizard. Police procedural with river goddesses."
+  },
+  {
+    "id": "storm-front",
+    "title": "Storm Front",
+    "authors": [
+      "Jim Butcher"
+    ],
+    "year": 2000,
+    "subjects": [
+      "urban-fantasy",
+      "detective",
+      "chicago",
+      "monsters"
+    ],
+    "description": "Chicago's only professional wizard, listed in the phone book, consults for the police on a double murder by magic. Hardboiled detective with a staff."
+  },
+  {
+    "id": "good-omens",
+    "title": "Good Omens",
+    "authors": [
+      "Terry Pratchett",
+      "Neil Gaiman"
+    ],
+    "year": 1990,
+    "subjects": [
+      "black-comedy",
+      "religion",
+      "urban-fantasy",
+      "post-apocalyptic"
+    ],
+    "description": "An angel and a demon who have grown fond of England try to stop the apocalypse, having misplaced the Antichrist eleven years ago."
+  },
+  {
+    "id": "guards-guards",
+    "title": "Guards! Guards!",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 1989,
+    "subjects": [
+      "black-comedy",
+      "epic-fantasy",
+      "detective",
+      "dragons"
+    ],
+    "description": "The Ankh-Morpork Night Watch, three men and a dog, against a summoned dragon and a plot to restore the monarchy. The best entry point to Discworld."
+  },
+  {
+    "id": "small-gods",
+    "title": "Small Gods",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 1992,
+    "subjects": [
+      "black-comedy",
+      "religion",
+      "epic-fantasy",
+      "philosophy"
+    ],
+    "description": "A great god is reduced to a tortoise because only one person still actually believes in him. Pratchett's sharpest book about institutions and faith."
+  },
+  {
+    "id": "night-watch-pratchett",
+    "title": "Night Watch",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 2002,
+    "subjects": [
+      "black-comedy",
+      "time-travel",
+      "revolution",
+      "detective"
+    ],
+    "description": "Commander Vimes is thrown back thirty years and has to mentor his younger self through a revolution he already knows the ending of. The darkest Discworld."
+  },
+  {
+    "id": "the-hitchhikers-guide-to-the-galaxy",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "authors": [
+      "Douglas Adams"
+    ],
+    "year": 1979,
+    "subjects": [
+      "black-comedy",
+      "space",
+      "first-contact"
+    ],
+    "description": "Earth is demolished for a bypass and the last Englishman is rescued by a researcher for a guidebook. Every joke in it has been quoted to death and still works."
+  },
+  {
+    "id": "uprooted",
+    "title": "Uprooted",
+    "authors": [
+      "Naomi Novik"
+    ],
+    "year": 2015,
+    "subjects": [
+      "epic-fantasy",
+      "folklore",
+      "slow-burn",
+      "witches"
+    ],
+    "description": "A village girl taken by the wizard who guards the valley turns out to be the wrong choice, and the corrupted Wood is worse than anyone admits. Polish folklore throughout."
+  },
+  {
+    "id": "spinning-silver",
+    "title": "Spinning Silver",
+    "authors": [
+      "Naomi Novik"
+    ],
+    "year": 2018,
+    "subjects": [
+      "epic-fantasy",
+      "folklore",
+      "fae",
+      "slow-burn"
+    ],
+    "description": "A moneylender's daughter who turns silver into gold attracts the attention of a winter king. Rumpelstiltskin rebuilt around debt, antisemitism and cold."
+  },
+  {
+    "id": "the-bear-and-the-nightingale",
+    "title": "The Bear and the Nightingale",
+    "authors": [
+      "Katherine Arden"
+    ],
+    "year": 2017,
+    "subjects": [
+      "epic-fantasy",
+      "folklore",
+      "religion",
+      "witches"
+    ],
+    "description": "A girl in medieval northern Rus can see the household spirits her stepmother's priest is determined to starve out. Russian folklore, and the winter is a character."
+  },
+  {
+    "id": "the-goblin-emperor",
+    "title": "The Goblin Emperor",
+    "authors": [
+      "Katherine Addison"
+    ],
+    "year": 2014,
+    "subjects": [
+      "epic-fantasy",
+      "court-politics",
+      "kindness"
+    ],
+    "description": "The despised half-goblin fourth son inherits an empire after an airship crash and has to govern a court that despises him. Almost entirely protocol, and gripping."
+  },
+  {
+    "id": "gideon-the-ninth",
+    "title": "Gideon the Ninth",
+    "authors": [
+      "Tamsyn Muir"
+    ],
+    "year": 2019,
+    "subjects": [
+      "sapphic",
+      "space",
+      "puzzle",
+      "grimdark"
+    ],
+    "description": "Necromancers and their swordsmen are summoned to a decaying palace to solve trials nobody explains. Lesbian necromancers in space, and it means it."
+  },
+  {
+    "id": "a-memory-called-empire",
+    "title": "A Memory Called Empire",
+    "authors": [
+      "Arkady Martine"
+    ],
+    "year": 2019,
+    "subjects": [
+      "space",
+      "court-politics",
+      "identity",
+      "sapphic"
+    ],
+    "description": "An ambassador arrives at a vast empire's capital carrying an outdated copy of her murdered predecessor's memories in her head. Won the Hugo."
+  },
+  {
+    "id": "the-long-way-to-a-small-angry-planet",
+    "title": "The Long Way to a Small, Angry Planet",
+    "authors": [
+      "Becky Chambers"
+    ],
+    "year": 2014,
+    "subjects": [
+      "space",
+      "found-family",
+      "first-contact",
+      "kindness"
+    ],
+    "description": "The crew of a tunnelling ship take a long job to a dangerous system. Almost plotless by design; the point is the people sharing the galley."
+  },
+  {
+    "id": "a-psalm-for-the-wild-built",
+    "title": "A Psalm for the Wild-Built",
+    "authors": [
+      "Becky Chambers"
+    ],
+    "year": 2021,
+    "subjects": [
+      "kindness",
+      "environment",
+      "robots",
+      "philosophy",
+      "science-fiction",
+      "utopia",
+      "found-family"
+    ],
+    "description": "A tea monk meets the first robot seen since they gained consciousness and walked into the forest centuries ago. It wants to know what people need."
+  },
+  {
+    "id": "all-systems-red",
+    "title": "All Systems Red",
+    "authors": [
+      "Martha Wells"
+    ],
+    "year": 2017,
+    "subjects": [
+      "space",
+      "robots",
+      "black-comedy",
+      "identity"
+    ],
+    "description": "A security android that has hacked its own governor module wants mainly to be left alone with its serials. The clients keep nearly dying instead."
+  },
+  {
+    "id": "children-of-time",
+    "title": "Children of Time",
+    "authors": [
+      "Adrian Tchaikovsky"
+    ],
+    "year": 2015,
+    "subjects": [
+      "space",
+      "evolution",
+      "first-contact",
+      "environment"
+    ],
+    "description": "A terraforming experiment fails upward and uplifts spiders instead of monkeys, while the last humans arrive in a failing ark. Millennia of spider civilisation, told seriously."
+  },
+  {
+    "id": "the-dark-forest",
+    "title": "The Dark Forest",
+    "authors": [
+      "Liu Cixin"
+    ],
+    "year": 2008,
+    "subjects": [
+      "space",
+      "first-contact"
+    ],
+    "description": "Humanity has four centuries before the fleet arrives and can be read by the enemy's particles at all times, except inside its own head. The dark forest hypothesis in full."
+  },
+  {
+    "id": "blindsight",
+    "title": "Blindsight",
+    "authors": [
+      "Peter Watts"
+    ],
+    "year": 2006,
+    "subjects": [
+      "first-contact",
+      "consciousness",
+      "space",
+      "cosmic-horror"
+    ],
+    "description": "A crew including a resurrected vampire investigates an object at the edge of the solar system that may be intelligent without being conscious. Bleak and heavily footnoted."
+  }
+]

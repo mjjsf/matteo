@@ -1,0 +1,915 @@
+[
+  {
+    "id": "hello-beautiful",
+    "title": "Hello Beautiful",
+    "authors": [
+      "Ann Napolitano"
+    ],
+    "year": 2023,
+    "subjects": [
+      "book-club",
+      "family-saga",
+      "grief",
+      "marriage-plot"
+    ],
+    "description": "Four sisters in Chicago and the damaged young man who marries one of them. Little Women reworked, and the estrangement at its centre lasts decades."
+  },
+  {
+    "id": "dear-edward",
+    "title": "Dear Edward",
+    "authors": [
+      "Ann Napolitano"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "grief",
+      "survival",
+      "family"
+    ],
+    "description": "A twelve-year-old is the only survivor of a plane crash that kills his family. Alternates the flight with the years after."
+  },
+  {
+    "id": "my-sisters-keeper",
+    "title": "My Sister's Keeper",
+    "authors": [
+      "Jodi Picoult"
+    ],
+    "year": 2004,
+    "subjects": [
+      "book-club",
+      "bioethics",
+      "illness",
+      "family"
+    ],
+    "description": "A girl conceived as a tissue match for her leukaemic sister sues her parents for control of her own body. Picoult's method: an ethical dilemma, every viewpoint."
+  },
+  {
+    "id": "small-great-things",
+    "title": "Small Great Things",
+    "authors": [
+      "Jodi Picoult"
+    ],
+    "year": 2016,
+    "subjects": [
+      "book-club",
+      "race",
+      "legal-thriller",
+      "medicine"
+    ],
+    "description": "A Black labour nurse is ordered not to touch a white supremacist couple's baby, and the baby dies. Told by the nurse, the father and the defence lawyer."
+  },
+  {
+    "id": "what-alice-forgot",
+    "title": "What Alice Forgot",
+    "authors": [
+      "Liane Moriarty"
+    ],
+    "year": 2009,
+    "subjects": [
+      "book-club",
+      "amnesia",
+      "marriage-plot",
+      "motherhood"
+    ],
+    "description": "A woman comes round after a fall having lost ten years, and cannot understand why she is divorcing a husband she still adores."
+  },
+  {
+    "id": "apples-never-fall",
+    "title": "Apples Never Fall",
+    "authors": [
+      "Liane Moriarty"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "domestic-suspense",
+      "family-saga",
+      "marriage-plot"
+    ],
+    "description": "A retired tennis coach's wife disappears and all four adult children privately suspect their father. Comic and then not, as usual."
+  },
+  {
+    "id": "our-missing-hearts",
+    "title": "Our Missing Hearts",
+    "authors": [
+      "Celeste Ng"
+    ],
+    "year": 2022,
+    "subjects": [
+      "dystopia",
+      "book-club",
+      "motherhood",
+      "authoritarianism"
+    ],
+    "description": "An America where children are removed from parents deemed unpatriotic, and a boy looking for his Chinese-American poet mother. Libraries do the resistance."
+  },
+  {
+    "id": "on-earth-were-briefly-gorgeous",
+    "title": "On Earth We're Briefly Gorgeous",
+    "authors": [
+      "Ocean Vuong"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "queer-romance",
+      "immigration",
+      "addiction"
+    ],
+    "description": "A letter from a Vietnamese-American son to a mother who cannot read it. Poet's prose, on labour, opioids and first love in Hartford."
+  },
+  {
+    "id": "beautiful-world-where-are-you",
+    "title": "Beautiful World, Where Are You",
+    "authors": [
+      "Sally Rooney"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "friendship",
+      "ireland",
+      "epistolary"
+    ],
+    "description": "Two friends in their late twenties email each other about beauty, collapse and their unsatisfactory relationships. The emails carry the argument."
+  },
+  {
+    "id": "intermezzo",
+    "title": "Intermezzo",
+    "authors": [
+      "Sally Rooney"
+    ],
+    "year": 2024,
+    "subjects": [
+      "book-club",
+      "grief",
+      "family",
+      "ireland"
+    ],
+    "description": "Two brothers, a chess player and a lawyer, in the months after their father's death. Rooney's longest and most formally varied novel."
+  },
+  {
+    "id": "dept-of-speculation",
+    "title": "Dept. of Speculation",
+    "authors": [
+      "Jenny Offill"
+    ],
+    "year": 2014,
+    "subjects": [
+      "book-club",
+      "marriage-plot",
+      "motherhood",
+      "novella"
+    ],
+    "description": "A marriage coming apart, told in numbered fragments with facts about astronauts and Buddhist monks between them. Under two hundred pages."
+  },
+  {
+    "id": "weather-offill",
+    "title": "Weather",
+    "authors": [
+      "Jenny Offill"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "environment",
+      "family",
+      "mental-health"
+    ],
+    "description": "A university librarian answering mail for a climate podcast slides into dread. Same fragmentary method, aimed at the end of the world."
+  },
+  {
+    "id": "outline-cusk",
+    "title": "Outline",
+    "authors": [
+      "Rachel Cusk"
+    ],
+    "year": 2014,
+    "subjects": [
+      "book-club",
+      "divorce",
+      "metafiction"
+    ],
+    "description": "A writer teaching in Athens listens while other people talk about themselves. She is almost entirely absent, which is the technique and the subject."
+  },
+  {
+    "id": "the-friend-nunez",
+    "title": "The Friend",
+    "authors": [
+      "Sigrid Nunez"
+    ],
+    "year": 2018,
+    "subjects": [
+      "book-club",
+      "grief",
+      "writing",
+      "friendship"
+    ],
+    "description": "A woman inherits her dead friend's Great Dane in a New York flat that does not allow dogs. On suicide, writing and the animal in the room."
+  },
+  {
+    "id": "small-things-like-these",
+    "title": "Small Things Like These",
+    "authors": [
+      "Claire Keegan"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "religion",
+      "ireland",
+      "novella"
+    ],
+    "description": "A coal merchant in 1985 New Ross finds a girl locked in the convent coal shed and must decide whether to notice. A hundred and ten pages, and complete."
+  },
+  {
+    "id": "foster-keegan",
+    "title": "Foster",
+    "authors": [
+      "Claire Keegan"
+    ],
+    "year": 2010,
+    "subjects": [
+      "book-club",
+      "novella",
+      "children",
+      "ireland"
+    ],
+    "description": "A girl is left with relatives for a summer and finds out what being looked after feels like. Almost nothing is stated and everything lands."
+  },
+  {
+    "id": "young-mungo",
+    "title": "Young Mungo",
+    "authors": [
+      "Douglas Stuart"
+    ],
+    "year": 2022,
+    "subjects": [
+      "queer-romance",
+      "poverty",
+      "addiction",
+      "violence"
+    ],
+    "description": "A Protestant boy and a Catholic boy in 1990s Glasgow, and the fishing trip Mungo's mother sends him on with two strangers."
+  },
+  {
+    "id": "girl-woman-other",
+    "title": "Girl, Woman, Other",
+    "authors": [
+      "Bernardine Evaristo"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "race",
+      "feminism",
+      "london"
+    ],
+    "description": "Twelve mostly Black British women across a century, in prose that dispenses with full stops. Shared the Booker in 2019."
+  },
+  {
+    "id": "queenie",
+    "title": "Queenie",
+    "authors": [
+      "Candice Carty-Williams"
+    ],
+    "year": 2019,
+    "subjects": [
+      "book-club",
+      "race",
+      "mental-health",
+      "london"
+    ],
+    "description": "A Jamaican-British woman comes apart after a break-up, in a London that keeps telling her she is imagining the racism. Funny and hard to read at once."
+  },
+  {
+    "id": "luster",
+    "title": "Luster",
+    "authors": [
+      "Raven Leilani"
+    ],
+    "year": 2020,
+    "subjects": [
+      "book-club",
+      "race",
+      "affairs",
+      "art"
+    ],
+    "description": "A young Black woman sleeping with a married man ends up living in his house with his wife and adopted Black daughter. Very sharp, very uncomfortable."
+  },
+  {
+    "id": "detransition-baby",
+    "title": "Detransition, Baby",
+    "authors": [
+      "Torrey Peters"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "identity",
+      "motherhood",
+      "queer-romance"
+    ],
+    "description": "A trans woman, her detransitioned ex, and his pregnant boss consider raising a child between the three of them. Comic, and pointed about who gets a family."
+  },
+  {
+    "id": "crying-in-h-mart",
+    "title": "Crying in H Mart",
+    "authors": [
+      "Michelle Zauner"
+    ],
+    "year": 2021,
+    "subjects": [
+      "memoir",
+      "grief",
+      "identity",
+      "cooking"
+    ],
+    "description": "A musician's mother dies of cancer and she cooks her way back toward being Korean. The supermarket aisles do most of the emotional work."
+  },
+  {
+    "id": "educated",
+    "title": "Educated",
+    "authors": [
+      "Tara Westover"
+    ],
+    "year": 2018,
+    "subjects": [
+      "memoir",
+      "family",
+      "religion",
+      "academia"
+    ],
+    "description": "Raised by survivalists in Idaho with no birth certificate and no schooling, Westover teaches herself enough to reach Cambridge. On what leaving costs."
+  },
+  {
+    "id": "becoming-obama",
+    "title": "Becoming",
+    "authors": [
+      "Michelle Obama"
+    ],
+    "year": 2018,
+    "subjects": [
+      "memoir",
+      "race",
+      "politics-and-government",
+      "family"
+    ],
+    "description": "From the South Side of Chicago to the White House, with the parts about being a working mother given as much room as the campaigns."
+  },
+  {
+    "id": "born-a-crime",
+    "title": "Born a Crime",
+    "authors": [
+      "Trevor Noah"
+    ],
+    "year": 2016,
+    "subjects": [
+      "memoir",
+      "race",
+      "black-comedy"
+    ],
+    "description": "Born to a Black mother and a white father when that was literally illegal in South Africa. Very funny, and his mother is the real subject."
+  },
+  {
+    "id": "wild-strayed",
+    "title": "Wild",
+    "authors": [
+      "Cheryl Strayed"
+    ],
+    "year": 2012,
+    "subjects": [
+      "memoir",
+      "grief",
+      "nature",
+      "addiction"
+    ],
+    "description": "Eleven hundred miles of the Pacific Crest Trail alone, with no experience, after her mother's death and her marriage's end."
+  },
+  {
+    "id": "h-is-for-hawk",
+    "title": "H Is for Hawk",
+    "authors": [
+      "Helen Macdonald"
+    ],
+    "year": 2014,
+    "subjects": [
+      "memoir",
+      "grief",
+      "nature-writing",
+      "nature"
+    ],
+    "description": "Macdonald trains a goshawk after her father's sudden death, alongside T. H. White's account of failing at the same thing."
+  },
+  {
+    "id": "the-glass-castle",
+    "title": "The Glass Castle",
+    "authors": [
+      "Jeannette Walls"
+    ],
+    "year": 2005,
+    "subjects": [
+      "memoir",
+      "poverty",
+      "family",
+      "addiction"
+    ],
+    "description": "A childhood of squatting, hunger and a charismatic alcoholic father who promised a house made of glass. Told without a word of self-pity."
+  },
+  {
+    "id": "know-my-name",
+    "title": "Know My Name",
+    "authors": [
+      "Chanel Miller"
+    ],
+    "year": 2019,
+    "subjects": [
+      "memoir",
+      "sexual-assault",
+      "criminal-justice",
+      "feminism"
+    ],
+    "description": "The woman known in court papers as Emily Doe writes the Stanford assault case back into her own name. On what a trial does to a witness."
+  },
+  {
+    "id": "when-breath-becomes-air",
+    "title": "When Breath Becomes Air",
+    "authors": [
+      "Paul Kalanithi"
+    ],
+    "year": 2016,
+    "subjects": [
+      "memoir",
+      "medicine",
+      "illness",
+      "grief"
+    ],
+    "description": "A neurosurgeon diagnosed with terminal lung cancer at thirty-six writes about what makes a life worth living. Unfinished, and his wife closes it."
+  },
+  {
+    "id": "in-the-dream-house",
+    "title": "In the Dream House",
+    "authors": [
+      "Carmen Maria Machado"
+    ],
+    "year": 2019,
+    "subjects": [
+      "memoir",
+      "sapphic",
+      "domestic-abuse",
+      "metafiction"
+    ],
+    "description": "An abusive relationship between two women, told in short chapters each borrowing a genre. Written partly because the archive of such stories barely exists."
+  },
+  {
+    "id": "heavy",
+    "title": "Heavy",
+    "authors": [
+      "Kiese Laymon"
+    ],
+    "year": 2018,
+    "subjects": [
+      "memoir",
+      "race",
+      "motherhood",
+      "addiction"
+    ],
+    "description": "Addressed directly to his mother, on weight, gambling, Mississippi and the things Black families do not say to each other."
+  },
+  {
+    "id": "hunger-gay",
+    "title": "Hunger",
+    "authors": [
+      "Roxane Gay"
+    ],
+    "year": 2017,
+    "subjects": [
+      "memoir",
+      "sexual-assault",
+      "trauma",
+      "feminism"
+    ],
+    "description": "A memoir of Gay's body, and of the assault at twelve that she ate her way out of reach after. Refuses the transformation the genre expects."
+  },
+  {
+    "id": "a-thousand-ships",
+    "title": "A Thousand Ships",
+    "authors": [
+      "Natalie Haynes"
+    ],
+    "year": 2019,
+    "subjects": [
+      "mythology",
+      "feminism",
+      "book-club",
+      "war"
+    ],
+    "description": "The Trojan war told entirely by its women, from Hecuba to the Amazons to Penelope losing patience by letter."
+  },
+  {
+    "id": "the-silence-of-the-girls",
+    "title": "The Silence of the Girls",
+    "authors": [
+      "Pat Barker"
+    ],
+    "year": 2018,
+    "subjects": [
+      "mythology",
+      "feminism",
+      "war",
+      "slavery"
+    ],
+    "description": "Briseis, a queen taken as Achilles' prize, narrates the Iliad from inside the camp. Barker writes the slavery as slavery."
+  },
+  {
+    "id": "ariadne",
+    "title": "Ariadne",
+    "authors": [
+      "Jennifer Saint"
+    ],
+    "year": 2021,
+    "subjects": [
+      "mythology",
+      "feminism",
+      "book-club",
+      "family"
+    ],
+    "description": "The princess who gave Theseus the thread, and the sister he did not abandon. On the women myth uses and discards."
+  },
+  {
+    "id": "the-wolf-den",
+    "title": "The Wolf Den",
+    "authors": [
+      "Elodie Harper"
+    ],
+    "year": 2021,
+    "subjects": [
+      "historical-fiction",
+      "slavery",
+      "rome",
+      "friendship"
+    ],
+    "description": "Enslaved women in a Pompeii brothel five years before the eruption. Researched from the actual graffiti on the walls of the Lupanar."
+  },
+  {
+    "id": "hild",
+    "title": "Hild",
+    "authors": [
+      "Nicola Griffith"
+    ],
+    "year": 2013,
+    "subjects": [
+      "historical-fiction",
+      "medieval-history",
+      "religion",
+      "sapphic"
+    ],
+    "description": "The girlhood of the woman who became St Hilda of Whitby, as a king's seer in seventh-century Northumbria. Dense with the period's texture and politics."
+  },
+  {
+    "id": "wolf-hall",
+    "title": "Wolf Hall",
+    "authors": [
+      "Hilary Mantel"
+    ],
+    "year": 2009,
+    "subjects": [
+      "historical-fiction",
+      "court-politics",
+      "religion",
+      "book-club"
+    ],
+    "description": "Thomas Cromwell from a blacksmith's yard to the centre of Henry VIII's government. Present tense, third person, and it changed the historical novel."
+  },
+  {
+    "id": "bring-up-the-bodies",
+    "title": "Bring Up the Bodies",
+    "authors": [
+      "Hilary Mantel"
+    ],
+    "year": 2012,
+    "subjects": [
+      "historical-fiction",
+      "court-politics",
+      "murder",
+      "religion"
+    ],
+    "description": "Nine months in which Cromwell dismantles Anne Boleyn. Tighter than Wolf Hall, and it won Mantel a second Booker."
+  },
+  {
+    "id": "the-essex-serpent",
+    "title": "The Essex Serpent",
+    "authors": [
+      "Sarah Perry"
+    ],
+    "year": 2016,
+    "subjects": [
+      "historical-fiction",
+      "victorian",
+      "religion",
+      "science"
+    ],
+    "description": "A widow hunting a fossil in the Blackwater estuary and a vicar who thinks the villagers' sea serpent is a moral panic. Faith against natural history, in 1893."
+  },
+  {
+    "id": "the-miniaturist",
+    "title": "The Miniaturist",
+    "authors": [
+      "Jessie Burton"
+    ],
+    "year": 2014,
+    "subjects": [
+      "historical-fiction",
+      "marriage-plot",
+      "queer-romance",
+      "book-club"
+    ],
+    "description": "A young wife in 1686 Amsterdam is given a cabinet-sized replica of her house, and the miniatures start arriving before the events they depict."
+  },
+  {
+    "id": "the-binding",
+    "title": "The Binding",
+    "authors": [
+      "Bridget Collins"
+    ],
+    "year": 2019,
+    "subjects": [
+      "historical-fiction",
+      "queer-romance",
+      "libraries",
+      "memory"
+    ],
+    "description": "Bookbinders take unwanted memories and bind them into volumes that must never be read by their owners. An apprentice finds a book with his own name on it."
+  },
+  {
+    "id": "the-mercies",
+    "title": "The Mercies",
+    "authors": [
+      "Kiran Millwood Hargrave"
+    ],
+    "year": 2020,
+    "subjects": [
+      "historical-fiction",
+      "witches",
+      "sapphic",
+      "religion"
+    ],
+    "description": "A storm drowns forty men off a Norwegian island in 1617, leaving the women to run everything, until a commissioner arrives to look for witchcraft."
+  },
+  {
+    "id": "the-doll-factory",
+    "title": "The Doll Factory",
+    "authors": [
+      "Elizabeth Macneal"
+    ],
+    "year": 2019,
+    "subjects": [
+      "historical-fiction",
+      "victorian",
+      "art",
+      "psychological-horror"
+    ],
+    "description": "A doll painter in 1850 London becomes a Pre-Raphaelite model and acquires an admirer who collects things."
+  },
+  {
+    "id": "the-seven-or-eight-deaths-of-stella-fortuna",
+    "title": "The Seven or Eight Deaths of Stella Fortuna",
+    "authors": [
+      "Juliet Grames"
+    ],
+    "year": 2019,
+    "subjects": [
+      "family-saga",
+      "immigration",
+      "italy",
+      "book-club"
+    ],
+    "description": "A Calabrian woman's near-fatal accidents across a century, and the silence between two sisters after they reach Connecticut."
+  },
+  {
+    "id": "the-island-of-sea-women",
+    "title": "The Island of Sea Women",
+    "authors": [
+      "Lisa See"
+    ],
+    "year": 2019,
+    "subjects": [
+      "historical-fiction",
+      "friendship",
+      "war",
+      "book-club"
+    ],
+    "description": "Two women in the all-female diving collectives of Jeju Island, through Japanese occupation, war and a massacre nobody was allowed to mention for decades."
+  },
+  {
+    "id": "the-mountains-sing",
+    "title": "The Mountains Sing",
+    "authors": [
+      "Nguyễn Phan Quế Mai"
+    ],
+    "year": 2020,
+    "subjects": [
+      "historical-fiction",
+      "family-saga",
+      "war",
+      "book-club"
+    ],
+    "description": "A grandmother and granddaughter across Vietnamese land reform, famine and the war, told from inside rather than from the American side."
+  },
+  {
+    "id": "the-covenant-of-water",
+    "title": "The Covenant of Water",
+    "authors": [
+      "Abraham Verghese"
+    ],
+    "year": 2023,
+    "subjects": [
+      "family-saga",
+      "medicine",
+      "india",
+      "book-club"
+    ],
+    "description": "Three generations in Kerala, in a family where someone in each drowns. Seven hundred pages by a physician, and the medicine is exact."
+  },
+  {
+    "id": "cutting-for-stone",
+    "title": "Cutting for Stone",
+    "authors": [
+      "Abraham Verghese"
+    ],
+    "year": 2009,
+    "subjects": [
+      "family-saga",
+      "medicine",
+      "immigration",
+      "book-club"
+    ],
+    "description": "Twin brothers born to a nun in an Addis Ababa mission hospital, and the surgeon father who fled. Ethiopia's coup, then a New York emergency room."
+  },
+  {
+    "id": "shantaram",
+    "title": "Shantaram",
+    "authors": [
+      "Gregory David Roberts"
+    ],
+    "year": 2003,
+    "subjects": [
+      "book-club",
+      "india",
+      "addiction",
+      "violence"
+    ],
+    "description": "An escaped Australian convict runs a free clinic in a Bombay slum and falls in with the mafia. Nine hundred pages, and its relationship to fact is contested."
+  },
+  {
+    "id": "the-white-tiger",
+    "title": "The White Tiger",
+    "authors": [
+      "Aravind Adiga"
+    ],
+    "year": 2008,
+    "subjects": [
+      "book-club",
+      "india",
+      "class",
+      "murder"
+    ],
+    "description": "A driver writes to the Chinese premier explaining how he became an entrepreneur, which involved killing his employer. Won the Booker."
+  },
+  {
+    "id": "human-acts",
+    "title": "Human Acts",
+    "authors": [
+      "Han Kang"
+    ],
+    "year": 2014,
+    "subjects": [
+      "historical-fiction",
+      "violence",
+      "grief",
+      "revolution"
+    ],
+    "description": "The 1980 Gwangju uprising and its long aftermath, told by seven voices including a corpse. Han won the Nobel in 2024."
+  },
+  {
+    "id": "bunny",
+    "title": "Bunny",
+    "authors": [
+      "Mona Awad"
+    ],
+    "year": 2019,
+    "subjects": [
+      "academia",
+      "psychological-horror",
+      "black-comedy",
+      "friendship"
+    ],
+    "description": "A scholarship student at an elite MFA is absorbed by four women who call each other Bunny and whose workshop produces something alive."
+  },
+  {
+    "id": "my-year-of-rest-and-relaxation",
+    "title": "My Year of Rest and Relaxation",
+    "authors": [
+      "Ottessa Moshfegh"
+    ],
+    "year": 2018,
+    "subjects": [
+      "book-club",
+      "mental-health",
+      "black-comedy",
+      "new-york"
+    ],
+    "description": "A beautiful, wealthy, deeply unpleasant narrator decides to sleep for a year on prescription drugs. Set in 2000, ending where you expect."
+  },
+  {
+    "id": "the-idiot-batuman",
+    "title": "The Idiot",
+    "authors": [
+      "Elif Batuman"
+    ],
+    "year": 2017,
+    "subjects": [
+      "academia",
+      "first-love",
+      "black-comedy",
+      "linguistics"
+    ],
+    "description": "A Harvard freshman in 1995 conducts a relationship almost entirely by email with a Hungarian mathematician. Very funny about being nineteen and literal."
+  },
+  {
+    "id": "trust-diaz",
+    "title": "Trust",
+    "authors": [
+      "Hernan Diaz"
+    ],
+    "year": 2022,
+    "subjects": [
+      "book-club",
+      "wealth",
+      "metafiction",
+      "unreliable-narrator"
+    ],
+    "description": "Four documents about the same 1920s financier and his wife, each correcting the last. Won the Pulitzer, and the fourth section rewrites everything."
+  },
+  {
+    "id": "bewilderment",
+    "title": "Bewilderment",
+    "authors": [
+      "Richard Powers"
+    ],
+    "year": 2021,
+    "subjects": [
+      "book-club",
+      "environment",
+      "neurodivergence",
+      "grief"
+    ],
+    "description": "An astrobiologist raising a neurodivergent son alone enrols him in experimental neurofeedback recorded from his dead mother."
+  },
+  {
+    "id": "north-woods",
+    "title": "North Woods",
+    "authors": [
+      "Daniel Mason"
+    ],
+    "year": 2023,
+    "subjects": [
+      "book-club",
+      "nature",
+      "ghosts",
+      "historical-fiction"
+    ],
+    "description": "Four hundred years of one house in the Massachusetts woods, through apple growers, a painter, a schizophrenic and several beetles."
+  },
+  {
+    "id": "the-hearts-invisible-furies",
+    "title": "The Heart's Invisible Furies",
+    "authors": [
+      "John Boyne"
+    ],
+    "year": 2017,
+    "subjects": [
+      "queer-romance",
+      "ireland",
+      "family-saga",
+      "book-club"
+    ],
+    "description": "Seventy years of a gay Irishman's life in seven-year jumps, from a girl thrown out of her village in 1945. Very funny and completely brutal."
+  },
+  {
+    "id": "milkman",
+    "title": "Milkman",
+    "authors": [
+      "Anna Burns"
+    ],
+    "year": 2018,
+    "subjects": [
+      "book-club",
+      "ireland",
+      "violence",
+      "unreliable-narrator"
+    ],
+    "description": "An eighteen-year-old in an unnamed Troubles-era city is pursued by a paramilitary and destroyed by gossip. Nobody in it is named. Won the Booker."
+  }
+]

@@ -2,44 +2,30 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useStore } from '@/state/store';
+import { EDGE_LEN, asSlot } from '@/domain/graph';
 
-/** Hover picking for the point cloud.
+/** Hover picking for the graph nodes.
  *
- *  Deliberately NOT R3F's `onPointerMove` on the Points object: R3F's event
- *  system raycasts on every native pointer event and allocates an intersections
- *  array each time. Here a single canvas listener writes NDC coordinates into a
- *  ref (no React state), and the raycast runs at most every other frame inside
- *  `useFrame`, skipped entirely while the camera is being dragged.
- *
- *  `Points` raycasting is a per-vertex distance-to-ray test, so a few thousand
- *  of those every other frame is well under a millisecond. GPU picking would be
- *  the move past ~50k points, but `readPixels` stalls the pipeline every frame,
- *  so it is a real trade rather than a free upgrade. */
-export function usePointPicking(
-  points: THREE.Points | null,
-  enabled: boolean,
-  radius: number,
-): void {
+ *  Not R3F's `onPointerMove`: that raycasts the whole scene on every native
+ *  pointer event and allocates an intersections array each time. Here one canvas
+ *  listener writes NDC into a ref, and the raycast runs at most every other frame,
+ *  skipped entirely while the camera is being dragged. */
+export function usePointPicking(points: THREE.Points | null, enabled: boolean): void {
   const { camera, gl } = useThree();
-  const ndc = useRef<{ x: number; y: number; inside: boolean }>({
-    x: 0,
-    y: 0,
-    inside: false,
-  });
+  const ndc = useRef({ x: 0, y: 0, inside: false });
   const dragging = useRef(false);
   const frame = useRef(0);
 
   const raycaster = useMemo(() => {
     const r = new THREE.Raycaster();
-    // World units. Combined with size attenuation this gives a hit radius that
-    // tracks apparent size, so near points are easier to hit — which is correct.
-    r.params.Points = { threshold: radius * 0.012 };
+    // A fixed world-space threshold, derived from the edge length rather than
+    // from any global cloud radius — there is no global cloud any more.
+    r.params.Points = { threshold: EDGE_LEN * 0.075 };
     return r;
-  }, [radius]);
+  }, []);
 
   useEffect(() => {
     const canvas = gl.domElement;
-
     const onMove = (event: PointerEvent): void => {
       const rect = canvas.getBoundingClientRect();
       ndc.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
@@ -75,41 +61,27 @@ export function usePointPicking(
     if (frame.current % 2 !== 0) return;
     if (dragging.current || !ndc.current.inside) return;
 
-    raycaster.setFromCamera(
-      new THREE.Vector2(ndc.current.x, ndc.current.y),
-      camera,
-    );
+    raycaster.setFromCamera(new THREE.Vector2(ndc.current.x, ndc.current.y), camera);
     const hits = raycaster.intersectObject(points, false);
 
     const state = useStore.getState();
-    if (hits.length === 0) {
+    const index = hits[0]?.index;
+    if (index === undefined) {
       state.setHovered(null);
       return;
     }
 
-    // Prefer the nearest hit that is not dimmed out by the current filter —
-    // hovering something the user has filtered away would be confusing.
-    const stateAttr = points.geometry.getAttribute('aState');
-    let chosen: number | null = null;
-    for (const hit of hits) {
-      const index = hit.index;
-      if (index === undefined) continue;
-      if (stateAttr && stateAttr.getX(index) < 0.5) continue;
-      chosen = index;
-      break;
-    }
-    if (chosen === null) {
-      state.setHovered(null);
-      return;
-    }
-
-    state.setHovered(state.books[chosen]?.id ?? null);
+    // The vertex index IS the graph slot. It is emphatically NOT a corpus index —
+    // conflating the two is what made the previous version hover the wrong book
+    // the moment the scene stopped showing every book in corpus order.
+    const node = state.graph.nodes[asSlot(index)];
+    state.setHovered(node?.bookId ?? null);
   });
 }
 
-/** Click-to-select, sharing the same hover result so a click always selects
- *  exactly what the ring is showing. */
-export function useClickToSelect(enabled: boolean): void {
+/** Click to select, and click again to grow. Shares the hover result, so a click
+ *  always acts on exactly what the ring is showing. */
+export function useClickToExpand(enabled: boolean): void {
   const { gl } = useThree();
 
   useEffect(() => {
@@ -121,11 +93,22 @@ export function useClickToSelect(enabled: boolean): void {
       downAt = { x: e.clientX, y: e.clientY, t: Date.now() };
     };
     const onUp = (e: PointerEvent): void => {
-      // Ignore drags — an orbit gesture should not select.
-      const moved = Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y);
-      if (moved > 5 || Date.now() - downAt.t > 600) return;
-      const { hoveredId, select } = useStore.getState();
-      select(hoveredId ?? null, { fly: hoveredId !== null });
+      // Ignore orbit gestures.
+      if (Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 5) return;
+      if (Date.now() - downAt.t > 600) return;
+
+      const state = useStore.getState();
+      const id = state.hoveredId;
+      if (!id) return;
+
+      const slot = state.graph.indexOf.get(id);
+      state.select(id);
+      if (slot === undefined) return;
+
+      const node = state.graph.nodes[slot];
+      // Clicking an unopened node grows from it; clicking an opened one just
+      // selects, so re-clicking never surprises with a second expansion.
+      if (node && !node.expanded) state.expand(asSlot(slot));
     };
 
     canvas.addEventListener('pointerdown', onDown);

@@ -1,64 +1,83 @@
 import { useEffect, useRef } from 'react';
-import { useStore } from '@/state/store';
+import { useStore, bookById } from '@/state/store';
 
 /** Hash routing, deliberately — GitHub Pages has no rewrite rules, so path
  *  routing would 404 on refresh or on a shared deep link.
  *
- *  Shapes: `#/book/{id}`, `#/branch/{nodeId}`, `#/branch/{nodeId}/book/{id}`,
- *  each optionally with `?q=…`. */
+ *  Shape: `#/from/{seedBookId}` plus optionally `/via/{slot,slot,…}` and
+ *  `?open={bookId}`.
+ *
+ *  The `via` list is the point. A link carrying only the seed would restore a
+ *  starting book and throw away the exploration someone actually wanted to
+ *  share. Placement is fully deterministic, so replaying the seed and then those
+ *  expansions in order reproduces the identical graph — which is why the slots
+ *  are worth the extra characters. */
 export interface HashState {
-  bookId: string | null;
-  branchId: string | null;
-  query: string;
+  seedId: string | null;
+  path: number[];
+  openId: string | null;
 }
 
 export function parseHash(hash: string): HashState {
   const raw = hash.replace(/^#/, '');
-  const [path = '', search = ''] = raw.split('?');
+  const [pathPart = '', search = ''] = raw.split('?');
   const params = new URLSearchParams(search);
-  const query = params.get('q') ?? '';
 
-  const parts = path.split('/').filter(Boolean);
-  let bookId: string | null = null;
-  let branchId: string | null = null;
+  const parts = pathPart.split('/').filter(Boolean);
+  let seedId: string | null = null;
+  let via = '';
   for (let i = 0; i < parts.length - 1; i++) {
-    if (parts[i] === 'book') bookId = decodeURIComponent(parts[i + 1] as string);
-    if (parts[i] === 'branch') branchId = decodeURIComponent(parts[i + 1] as string);
+    if (parts[i] === 'from') seedId = decodeURIComponent(parts[i + 1] as string);
+    if (parts[i] === 'via') via = decodeURIComponent(parts[i + 1] as string);
   }
-  return { bookId, branchId, query };
+
+  const path = via
+    .split(',')
+    .map((s) => Number.parseInt(s, 10))
+    // Non-numeric junk is dropped rather than replayed as NaN, which `expand`
+    // would treat as an unknown slot and silently ignore anyway.
+    .filter((n) => Number.isInteger(n) && n >= 0);
+
+  return { seedId, path, openId: params.get('open') };
 }
 
 export function serializeHash(state: HashState): string {
-  let path = '';
-  if (state.branchId) path += `/branch/${encodeURIComponent(state.branchId)}`;
-  if (state.bookId) path += `/book/${encodeURIComponent(state.bookId)}`;
-  const q = state.query.trim() ? `?q=${encodeURIComponent(state.query.trim())}` : '';
-  return path || q ? `#${path}${q}` : '';
+  if (!state.seedId) return '';
+  let path = `/from/${encodeURIComponent(state.seedId)}`;
+  if (state.path.length > 0) path += `/via/${state.path.join(',')}`;
+  const q = state.openId ? `?open=${encodeURIComponent(state.openId)}` : '';
+  return `#${path}${q}`;
 }
-
-const DEBOUNCE_MS = 300;
 
 /** Two-way sync between the store and the URL hash. */
 export function useUrlSync(): void {
   const applying = useRef(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastWritten = useRef<string>('');
+  // The corpus arrives asynchronously, and restoring a shared link needs it.
+  // Without this the first load of a `#/from/...` URL silently did nothing,
+  // because every id lookup came back undefined.
+  const status = useStore((s) => s.status);
 
   // URL -> store
   useEffect(() => {
+    if (status !== 'ready') return;
     const apply = (): void => {
-      const { bookId, branchId, query } = parseHash(window.location.hash);
+      const { seedId, path, openId } = parseHash(window.location.hash);
       const state = useStore.getState();
+
+      // Nothing to restore, or this is the hash we ourselves just wrote.
+      if (!seedId || !bookById(seedId)) return;
+      const current = serializeHash({
+        seedId: state.graph.nodes[0]?.bookId ?? null,
+        path: state.path,
+        openId: state.selectedId,
+      });
+      if (current === window.location.hash) return;
+
       applying.current = true;
       try {
-        if (query !== state.query) state.setQuery(query);
-        // Unknown ids are ignored silently rather than throwing.
-        if (branchId !== state.activeBranchId) {
-          state.setActiveBranch(state.taxonomy.byId.has(branchId ?? '') ? branchId : null);
-        }
-        if (bookId !== state.selectedId) {
-          state.select(state.byId.has(bookId ?? '') ? bookId : null, { fly: true });
-        }
+        state.restore(seedId, path);
+        if (openId && bookById(openId)) useStore.getState().select(openId);
       } finally {
         applying.current = false;
       }
@@ -67,42 +86,30 @@ export function useUrlSync(): void {
     apply();
     window.addEventListener('hashchange', apply);
     return () => window.removeEventListener('hashchange', apply);
-  }, []);
+  }, [status]);
 
   // store -> URL
   useEffect(() => {
-    const write = (replace: boolean, hash: string): void => {
-      if (hash === lastWritten.current) return;
-      lastWritten.current = hash;
-      const url = `${window.location.pathname}${window.location.search}${hash || '#'}`;
-      if (replace) window.history.replaceState(null, '', url);
-      else window.history.pushState(null, '', url);
-    };
-
     return useStore.subscribe((s, prev) => {
       if (applying.current) return;
 
       const hash = serializeHash({
-        bookId: s.selectedId,
-        branchId: s.activeBranchId,
-        query: s.query,
+        seedId: s.graph.nodes[0]?.bookId ?? null,
+        path: s.path,
+        openId: s.selectedId,
       });
+      if (hash === lastWritten.current) return;
 
-      // Selections and branch changes are navigations — Back should undo them.
-      // Query keystrokes are not, or typing would create dozens of entries.
-      const structural =
-        s.selectedId !== prev.selectedId || s.activeBranchId !== prev.activeBranchId;
+      // Seeding and expanding are navigations — Back should undo them. Merely
+      // opening a book replaces, so browsing details does not fill the history
+      // with entries nobody wants to step through.
+      const structural = s.graph.nodes[0]?.bookId !== prev.graph.nodes[0]?.bookId
+        || s.path.length !== prev.path.length;
 
-      if (structural) {
-        if (timer.current) clearTimeout(timer.current);
-        write(false, hash);
-        return;
-      }
-
-      if (s.query !== prev.query) {
-        if (timer.current) clearTimeout(timer.current);
-        timer.current = setTimeout(() => write(true, hash), DEBOUNCE_MS);
-      }
+      lastWritten.current = hash;
+      const url = `${window.location.pathname}${window.location.search}${hash || '#'}`;
+      if (structural) window.history.pushState(null, '', url);
+      else window.history.replaceState(null, '', url);
     });
   }, []);
 }
