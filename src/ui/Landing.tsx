@@ -19,6 +19,7 @@ export function Landing(): React.ReactElement {
   const suggestions = useStore((s) => s.suggestions);
   const seed = useStore((s) => s.seed);
   const bookCount = useStore((s) => s.books.length);
+  const status = useStore((s) => s.status);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [active, setActive] = useState(0);
@@ -33,8 +34,14 @@ export function Landing(): React.ReactElement {
     setActive(0);
   }, [suggestions]);
 
+  const ready = status === 'ready';
   const typing = query.trim().length >= MIN_QUERY_LENGTH;
   const chosen = suggestions[active];
+  // Submitting is allowed before the corpus lands — the store remembers the
+  // intent and seeds the moment the index exists. Otherwise a fast typist who
+  // names a book and hits Enter during the fetch gets nothing and has to press
+  // it a second time.
+  const canSubmit = chosen !== undefined || (!ready && typing);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (suggestions.length === 0) return;
@@ -60,6 +67,7 @@ export function Landing(): React.ReactElement {
           onSubmit={(e) => {
             e.preventDefault();
             if (chosen) seed(chosen.book.id);
+            else if (!ready && typing) useStore.setState({ seedWhenReady: true });
           }}
         >
           <label className="visually-hidden" htmlFor="book-search">
@@ -87,12 +95,22 @@ export function Landing(): React.ReactElement {
               setQuery(e.target.value);
             }}
           />
-          <button type="submit" disabled={!chosen}>
+          <button type="submit" disabled={!canSubmit}>
             Start
           </button>
         </form>
 
-        {typing && suggestions.length === 0 && (
+        {/* While loading, say so — including mid-typing. The empty suggestion
+            list is legitimate during the fetch, so the "no match" line would be
+            confidently wrong; but showing nothing at all leaves someone who has
+            typed a whole title watching a blank space with no explanation. */}
+        {!ready && (
+          <p className="landing__hint" role="status">
+            Loading the books… you can type ahead.
+          </p>
+        )}
+
+        {ready && typing && suggestions.length === 0 && (
           <p className="landing__hint" role="status">
             No book in the collection matches that. Try an author, or a different title.
           </p>
@@ -121,7 +139,9 @@ export function Landing(): React.ReactElement {
           </ul>
         )}
 
-        {!typing && (
+        {/* `bookCount` is 0 until the corpus arrives; the loading line above
+            covers that window instead. */}
+        {ready && !typing && (
           <p className="landing__hint">
             {bookCount} books, mapped by shared subjects and authors.
           </p>

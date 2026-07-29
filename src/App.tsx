@@ -30,22 +30,23 @@ export function App(): React.ReactElement {
     document.body.style.color = theme.textPrimary;
   }, [theme]);
 
-  if (status !== 'ready') {
+  // Only a hard failure replaces the landing screen. While the corpus is still
+  // downloading, `Landing` renders as normal — the input is live and focused
+  // from first paint, and its suggestion list fills in when the data arrives.
+  // This used to return early on anything but 'ready', which meant there was no
+  // field at all to type into for the length of two JSON fetches.
+  if (status === 'error') {
     return (
       <div className="app app--empty">
         <main className="landing">
           <div className="landing__inner">
             <h1 className="landing__brand">
               matteo
-              <span className="landing__sub">
-                {status === 'error' ? 'Could not load the books.' : 'Loading the books…'}
-              </span>
+              <span className="landing__sub">Could not load the books.</span>
             </h1>
-            {status === 'error' && (
-              <p className="landing__hint" role="alert">
-                {loadError} — reload to try again.
-              </p>
-            )}
+            <p className="landing__hint" role="alert">
+              {loadError} — reload to try again.
+            </p>
           </div>
         </main>
         <Footer />
