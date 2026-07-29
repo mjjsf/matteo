@@ -238,11 +238,21 @@ npm run neighbors
 npm test
 ```
 
-**The fetch script's HTTP path is unverified.** It was written in an environment
-where `openlibrary.org` is blocked by network policy, so it has never been run
-end to end. The *parsing* is well covered — every transform lives in
-`scripts/lib/openlibraryNormalize.ts` and is tested against committed samples of
-the real API shape — but expect to adjust the request layer on first real run.
+**The fetch script has never run against the live service.** `openlibrary.org`
+is blocked from the environment this was built in — it answers 403 at the
+egress proxy — so no part of it has been exercised end to end.
+
+What that narrows to is one claim: that the endpoint still answers in the shape
+recorded in `test/fixtures/openlibrary/`. Everything built on that answer is
+tested. Parsing lives in `scripts/lib/openlibraryNormalize.ts`; the request layer
+lives in `scripts/lib/openlibraryFetch.ts` and takes its `fetch` as an argument,
+so `openlibraryFetch.test.ts` drives it with a stub and checks subject encoding,
+the required User-Agent, non-2xx handling, both description shapes the API
+returns, attribution stripping, a description failure not aborting the run, and
+resume-after-interrupt.
+
+Expect to confirm the response shape on first real run rather than to debug the
+request code.
 It writes only to `data/corpus.fetched.json` and never touches the authored
 files, and the merge lets the authored corpus win every conflict, so a bad run
 cannot destroy hand-written work.
