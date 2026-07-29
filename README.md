@@ -153,27 +153,34 @@ Library.
 ## Data
 
 ```
-data/taxonomy.json        10 top-level branches, 3 levels
+data/taxonomy.json        10 top-level branches, 3 levels, 100 leaves
 data/tagMap.json          raw subject tag -> taxonomy node(s)
 data/unmapped.allow.json  tags with no taxonomy home (see below)
-data/corpus/*.json        691 hand-authored books, one file per branch
+data/corpus/*.json        910 hand-authored books, one file per branch
 ```
 
-Median publication year 1999, with half the corpus published since 2000. The
-first 361 books were a literary/academic canon — median year 1979, and no
-vocabulary at all for romance or young adult — so a later pass added ~330 books
-weighted to modern bestsellers, book-club fiction, romance, thriller, YA and
-fantasy, plus Romance and Young Adult branches.
+**Median publication year 2005**, with 57% of the corpus published since 2000.
+The first 361 books were a literary/academic canon — median year 1979, and no
+vocabulary at all for romance or young adult — so two later passes added ~550
+books weighted to modern bestsellers, book-club fiction, romance, thriller, YA
+and fantasy, plus Romance and Young Adult branches.
 
 **Two kinds of tag.** A tag in `tagMap.json` names a category the taxonomy has,
 and so contributes to both the subject block and the taxonomy-ancestor block. A
-tag in `unmapped.allow.json` is thematic or a setting — `grief`, `friendship`,
-`london` — with no honest taxonomy home. Those still contribute to similarity
-through the subject block; they simply do not pretend to a place in the
-hierarchy. Inventing a taxonomy node for every theme would make the tree
-meaningless, and dropping the tags would throw away real signal.
+tag in `unmapped.allow.json` has no honest taxonomy home. Those still contribute
+to similarity through the subject block; they simply do not claim a place in the
+hierarchy.
 
-**The corpus is still small**, and 691 books is the honest limit on
+Two things end up there. Settings and themes — `grief`, `friendship`, `london`.
+And, less obviously, tags that name a *situation spanning genres*:
+`court-politics`, `heist`, `assassins`, `survival`. Forcing those into one
+branch makes the ancestor block actively wrong — mapping `court-politics` to
+epic fantasy pulled *Wolf Hall* toward *Elantris*. Allowlisted, it still binds
+Wolf Hall to *Bring Up the Bodies* through shared subjects, without asserting
+that the Tudor court is a fantasy kingdom. Inventing a taxonomy node per theme
+would make the tree meaningless; dropping the tags would throw away real signal.
+
+**The corpus is still finite**, and 910 books is the honest limit on
 recommendation quality: some seeds have thin or odd neighbours because there is
 genuinely nothing near them. Every description is a real summary of a real book.
 None are generated to pad the count — see the fetch script below for the path to

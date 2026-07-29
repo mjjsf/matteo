@@ -1,0 +1,426 @@
+[
+  {
+    "id": "the-guest-list",
+    "title": "The Guest List",
+    "authors": ["Lucy Foley"],
+    "year": 2020,
+    "subjects": ["domestic-suspense", "murder", "unreliable-narrator", "ireland"],
+    "description": "A wedding on a remote Irish island, a storm, and a body. Told from six viewpoints in the hours before and after, each of them withholding something."
+  },
+  {
+    "id": "the-hunting-party",
+    "title": "The Hunting Party",
+    "authors": ["Lucy Foley"],
+    "year": 2018,
+    "subjects": ["domestic-suspense", "murder", "friendship", "scotland"],
+    "description": "Nine Oxford friends see in the New Year at a Highland hunting lodge, snowed in, and one of them does not leave. The friendships were rotten long before the snow."
+  },
+  {
+    "id": "in-a-dark-dark-wood",
+    "title": "In a Dark, Dark Wood",
+    "authors": ["Ruth Ware"],
+    "year": 2015,
+    "subjects": ["domestic-suspense", "amnesia", "unreliable-narrator", "murder"],
+    "description": "A reclusive writer is invited to the hen weekend of a friend she has not spoken to in ten years, and wakes in hospital with blood on her hands and no memory."
+  },
+  {
+    "id": "the-woman-in-cabin-10",
+    "title": "The Woman in Cabin 10",
+    "authors": ["Ruth Ware"],
+    "year": 2016,
+    "subjects": ["domestic-suspense", "unreliable-narrator", "murder", "journalism"],
+    "description": "A travel journalist on a small luxury cruise sees a woman thrown overboard from the cabin next door. Every passenger is accounted for."
+  },
+  {
+    "id": "the-turn-of-the-key",
+    "title": "The Turn of the Key",
+    "authors": ["Ruth Ware"],
+    "year": 2019,
+    "subjects": ["domestic-suspense", "gothic", "unreliable-narrator", "ghosts"],
+    "description": "A nanny writes to a lawyer from prison, insisting she did not kill the child. A smart-home Scottish house that will not stop watching, told as one long letter."
+  },
+  {
+    "id": "the-last-house-on-needless-street",
+    "title": "The Last House on Needless Street",
+    "authors": ["Catriona Ward"],
+    "year": 2021,
+    "subjects": ["psychological-horror", "unreliable-narrator", "trauma", "murder"],
+    "description": "A boarded-up house, a man suspected of an old disappearance, his daughter, and his cat, who narrates chapters. Almost nothing here is what it first appears."
+  },
+  {
+    "id": "the-final-girl-support-group",
+    "title": "The Final Girl Support Group",
+    "authors": ["Grady Hendrix"],
+    "year": 2021,
+    "subjects": ["psychological-horror", "trauma", "murder", "black-comedy"],
+    "description": "Six women who each survived a massacre meet in group therapy, until someone starts finishing the job. Horror-movie tropes taken seriously as trauma."
+  },
+  {
+    "id": "the-southern-book-clubs-guide-to-slaying-vampires",
+    "title": "The Southern Book Club's Guide to Slaying Vampires",
+    "authors": ["Grady Hendrix"],
+    "year": 2020,
+    "subjects": ["vampires", "psychological-horror", "american-south", "book-club"],
+    "description": "A 1990s Charleston book club realises the charming new neighbour is preying on children nobody in their circle considers important. Nobody believes the housewives."
+  },
+  {
+    "id": "the-only-one-left",
+    "title": "Home Before Dark",
+    "authors": ["Riley Sager"],
+    "year": 2020,
+    "subjects": ["gothic", "domestic-suspense", "ghosts", "unreliable-narrator"],
+    "description": "A woman returns to the house her father wrote a bestselling haunting memoir about, determined to prove he made it up. Alternates with the book he wrote."
+  },
+  {
+    "id": "the-last-time-i-lied",
+    "title": "The Last Time I Lied",
+    "authors": ["Riley Sager"],
+    "year": 2018,
+    "subjects": ["domestic-suspense", "murder", "unreliable-narrator", "school"],
+    "description": "A painter returns as an instructor to the summer camp where three girls vanished from her cabin. She lied to the police then and is still lying."
+  },
+  {
+    "id": "then-she-was-gone",
+    "title": "Then She Was Gone",
+    "authors": ["Lisa Jewell"],
+    "year": 2017,
+    "subjects": ["domestic-suspense", "kidnapping", "grief", "motherhood"],
+    "description": "Ten years after her daughter disappeared, a mother meets a charming man whose small daughter looks exactly like the girl she lost."
+  },
+  {
+    "id": "the-family-upstairs",
+    "title": "The Family Upstairs",
+    "authors": ["Lisa Jewell"],
+    "year": 2019,
+    "subjects": ["domestic-suspense", "family", "murder", "unreliable-narrator"],
+    "description": "A woman inherits a Chelsea house where three bodies were found and a baby left alive twenty-five years earlier. Three narrators converge on what the cult in the house did."
+  },
+  {
+    "id": "behind-her-eyes",
+    "title": "Behind Her Eyes",
+    "authors": ["Sarah Pinborough"],
+    "year": 2017,
+    "subjects": ["domestic-suspense", "marriage-plot", "unreliable-narrator", "affairs"],
+    "description": "A single mother sleeps with a man in a bar, then finds he is her new boss, then befriends his wife. The ending is the most argued-about of its decade."
+  },
+  {
+    "id": "the-housemaid",
+    "title": "The Housemaid",
+    "authors": ["Freida McFadden"],
+    "year": 2022,
+    "subjects": ["domestic-suspense", "unreliable-narrator", "class", "marriage-plot"],
+    "description": "A woman with a criminal record takes live-in work for a wealthy couple and is given an attic room that locks from the outside. Fast, mean and hugely popular."
+  },
+  {
+    "id": "i-let-you-go",
+    "title": "I Let You Go",
+    "authors": ["Clare Mackintosh"],
+    "year": 2014,
+    "subjects": ["domestic-suspense", "grief", "unreliable-narrator", "domestic-abuse"],
+    "description": "A woman flees to the Welsh coast after a hit-and-run kills a child. The detective chapters and hers are not describing what you assume."
+  },
+  {
+    "id": "the-chain",
+    "title": "The Chain",
+    "authors": ["Adrian McKinty"],
+    "year": 2019,
+    "subjects": ["thriller", "kidnapping", "motherhood", "conspiracy"],
+    "description": "Your child has been taken. To get her back you must pay, and then abduct someone else's child. A premise that does not let up."
+  },
+  {
+    "id": "tell-no-one",
+    "title": "Tell No One",
+    "authors": ["Harlan Coben"],
+    "year": 2001,
+    "subjects": ["thriller", "murder", "conspiracy", "grief"],
+    "description": "Eight years after his wife's murder, a paediatrician gets an email containing a live webcam image of a woman who looks exactly like her."
+  },
+  {
+    "id": "the-stranger-coben",
+    "title": "The Stranger",
+    "authors": ["Harlan Coben"],
+    "year": 2015,
+    "subjects": ["thriller", "domestic-suspense", "marriage-plot", "conspiracy"],
+    "description": "A man at a sports bar tells a stranger a true and devastating secret about his wife, then leaves. The suburbs unravel from there."
+  },
+  {
+    "id": "the-good-daughter",
+    "title": "The Good Daughter",
+    "authors": ["Karin Slaughter"],
+    "year": 2017,
+    "subjects": ["thriller", "legal-thriller", "trauma", "family"],
+    "description": "Two sisters, twenty-eight years after the attack that killed their mother, are pulled back into their small Georgia town by a school shooting."
+  },
+  {
+    "id": "pretty-girls",
+    "title": "Pretty Girls",
+    "authors": ["Karin Slaughter"],
+    "year": 2015,
+    "subjects": ["thriller", "serial-killer", "family", "violence"],
+    "description": "Two estranged sisters are reunited by a disappearance that echoes their own sister's, twenty years earlier. Unusually brutal, and deliberately so."
+  },
+  {
+    "id": "the-dry",
+    "title": "The Dry",
+    "authors": ["Jane Harper"],
+    "year": 2016,
+    "subjects": ["detective", "murder", "small-town", "class"],
+    "description": "A federal agent returns to his drought-stricken Victorian hometown for a funeral and reopens the death that drove him out as a teenager."
+  },
+  {
+    "id": "force-of-nature",
+    "title": "Force of Nature",
+    "authors": ["Jane Harper"],
+    "year": 2017,
+    "subjects": ["detective", "murder", "survival", "nature"],
+    "description": "Five women go into the bush on a corporate retreat and four come out. Alternates between the search and the walk that went wrong."
+  },
+  {
+    "id": "black-water-rising",
+    "title": "Black Water Rising",
+    "authors": ["Attica Locke"],
+    "year": 2009,
+    "subjects": ["legal-thriller", "race", "murder", "civil-rights"],
+    "description": "A struggling Black lawyer in 1981 Houston pulls a woman from the bayou and finds himself between an oil company and a union fight."
+  },
+  {
+    "id": "bluebird-bluebird",
+    "title": "Bluebird, Bluebird",
+    "authors": ["Attica Locke"],
+    "year": 2017,
+    "subjects": ["detective", "race", "murder", "american-south"],
+    "description": "A Black Texas Ranger investigates two bodies pulled from the same bayou in a highway town where the law is not on his side."
+  },
+  {
+    "id": "the-power-of-the-dog",
+    "title": "The Power of the Dog",
+    "authors": ["Don Winslow"],
+    "year": 2005,
+    "subjects": ["thriller", "violence", "conspiracy", "addiction"],
+    "description": "Thirty years of the American drug war, from a DEA agent's first raid to the cartels it created. Enormous, angry and closely researched."
+  },
+  {
+    "id": "a-is-for-alibi",
+    "title": "A Is for Alibi",
+    "authors": ["Sue Grafton"],
+    "year": 1982,
+    "subjects": ["detective", "hardboiled", "murder", "noir"],
+    "description": "Kinsey Millhone takes a case from a woman just out of prison for a murder she says she did not commit. The first of a twenty-five-letter alphabet."
+  },
+  {
+    "id": "indemnity-only",
+    "title": "Indemnity Only",
+    "authors": ["Sara Paretsky"],
+    "year": 1982,
+    "subjects": ["detective", "hardboiled", "chicago", "labor"],
+    "description": "V. I. Warshawski is hired to find a missing girl and lands in an insurance fraud running through a Chicago union. Hardboiled with the politics left in."
+  },
+  {
+    "id": "postmortem",
+    "title": "Postmortem",
+    "authors": ["Patricia Cornwell"],
+    "year": 1990,
+    "subjects": ["procedural", "serial-killer", "medicine", "detective"],
+    "description": "A chief medical examiner works a series of stranglings in Richmond. The first novel to put forensic pathology at the centre, and it started a genre."
+  },
+  {
+    "id": "knots-and-crosses",
+    "title": "Knots and Crosses",
+    "authors": ["Ian Rankin"],
+    "year": 1987,
+    "subjects": ["police-procedural", "detective", "murder", "scotland"],
+    "description": "The first Rebus. An Edinburgh detective receiving anonymous knotted string and crosses in the post is being taunted by someone from his own past."
+  },
+  {
+    "id": "black-and-blue",
+    "title": "Black and Blue",
+    "authors": ["Ian Rankin"],
+    "year": 1997,
+    "subjects": ["police-procedural", "detective", "murder", "scotland"],
+    "description": "Rebus works a copycat of a real unsolved 1960s Glasgow killer while under investigation himself. Widely held to be the best of the series."
+  },
+  {
+    "id": "the-mermaids-singing",
+    "title": "The Mermaids Singing",
+    "authors": ["Val McDermid"],
+    "year": 1995,
+    "subjects": ["serial-killer", "procedural", "psychological-horror", "detective"],
+    "description": "A clinical psychologist profiles a killer torturing men in a northern English city. Grim, and it made British crime fiction take profiling seriously."
+  },
+  {
+    "id": "the-blackhouse",
+    "title": "The Blackhouse",
+    "authors": ["Peter May"],
+    "year": 2011,
+    "subjects": ["detective", "murder", "small-town", "scotland"],
+    "description": "An Edinburgh detective is sent back to the Isle of Lewis where he grew up, to a killing that matches one in the city. The island does most of the work."
+  },
+  {
+    "id": "raven-black",
+    "title": "Raven Black",
+    "authors": ["Ann Cleeves"],
+    "year": 2006,
+    "subjects": ["detective", "murder", "small-town", "nordic-noir"],
+    "description": "A teenage girl is found strangled in the Shetland snow and the island decides an odd old man did it. Jimmy Perez is not so sure."
+  },
+  {
+    "id": "the-crossing-places",
+    "title": "The Crossing Places",
+    "authors": ["Elly Griffiths"],
+    "year": 2009,
+    "subjects": ["detective", "murder", "academia", "nature"],
+    "description": "A forensic archaeologist on the Norfolk saltmarsh is asked whether some bones are Iron Age or a child missing for ten years."
+  },
+  {
+    "id": "garnethill",
+    "title": "Garnethill",
+    "authors": ["Denise Mina"],
+    "year": 1998,
+    "subjects": ["detective", "murder", "mental-health", "scotland"],
+    "description": "A woman with a psychiatric history wakes to find her lover's throat cut in her Glasgow flat and is the only suspect. She investigates it herself."
+  },
+  {
+    "id": "the-cutting-season",
+    "title": "The Cutting Season",
+    "authors": ["Attica Locke"],
+    "year": 2012,
+    "subjects": ["murder", "race", "slavery", "american-south"],
+    "description": "The manager of a Louisiana plantation-turned-event-venue finds a migrant worker's body at the fence, beside the old slave quarters."
+  },
+  {
+    "id": "we-begin-at-the-end",
+    "title": "We Begin at the End",
+    "authors": ["Chris Whitaker"],
+    "year": 2020,
+    "subjects": ["murder", "small-town", "family", "grief"],
+    "description": "A thirteen-year-old raising her brother in a California coastal town, and the police chief who cannot fix what he set in motion thirty years ago."
+  },
+  {
+    "id": "long-bright-river",
+    "title": "Long Bright River",
+    "authors": ["Liz Moore"],
+    "year": 2020,
+    "subjects": ["police-procedural", "addiction", "poverty", "family"],
+    "description": "A Philadelphia patrol officer works a string of deaths among women who sell sex in Kensington while her own sister, an addict, goes missing."
+  },
+  {
+    "id": "the-searcher",
+    "title": "The Searcher",
+    "authors": ["Tana French"],
+    "year": 2020,
+    "subjects": ["detective", "small-town", "ireland", "western"],
+    "description": "A retired Chicago cop doing up a cottage in the west of Ireland is asked by a local child to find a missing brother. A western in everything but setting."
+  },
+  {
+    "id": "in-the-woods-faithful-place",
+    "title": "Faithful Place",
+    "authors": ["Tana French"],
+    "year": 2010,
+    "subjects": ["detective", "murder", "family", "ireland"],
+    "description": "An undercover detective is dragged back to the Dublin tenement street he escaped when a suitcase turns up in a derelict house — his girlfriend's, from 1985."
+  },
+  {
+    "id": "the-thursday-murder-club-bullet",
+    "title": "The Bullet That Missed",
+    "authors": ["Richard Osman"],
+    "year": 2022,
+    "subjects": ["cosy-mystery", "murder", "friendship", "journalism"],
+    "description": "The retirement-village four take on a decade-old television reporter's death and are blackmailed into a killing of their own."
+  },
+  {
+    "id": "a-rising-man",
+    "title": "A Rising Man",
+    "authors": ["Abir Mukherjee"],
+    "year": 2016,
+    "subjects": ["detective", "murder", "colonialism", "india"],
+    "description": "A Scotland Yard veteran arrives in 1919 Calcutta and works a British official's murder with an Indian sergeant nobody will listen to."
+  },
+  {
+    "id": "the-devotion-of-suspect-x",
+    "title": "The Devotion of Suspect X",
+    "authors": ["Keigo Higashino"],
+    "year": 2005,
+    "subjects": ["murder", "puzzle", "japan", "mathematics"],
+    "description": "A mathematics teacher helps his neighbour cover up a killing. You are told who did it in the first chapter; the puzzle is how the alibi works."
+  },
+  {
+    "id": "out-kirino",
+    "title": "Out",
+    "authors": ["Natsuo Kirino"],
+    "year": 1997,
+    "subjects": ["murder", "japan", "labor", "violence"],
+    "description": "Four women on the night shift at a bento factory dispose of a husband's body and find a use for the skill. Bleak about women's work in Japan."
+  },
+  {
+    "id": "the-shadow-district",
+    "title": "The Shadow District",
+    "authors": ["Arnaldur Indriðason"],
+    "year": 2013,
+    "subjects": ["nordic-noir", "detective", "murder", "world-war-ii"],
+    "description": "A ninety-year-old is smothered in Reykjavík, and the case runs back to a wartime killing when Iceland was full of American soldiers."
+  },
+  {
+    "id": "the-hypnotist",
+    "title": "The Hypnotist",
+    "authors": ["Lars Kepler"],
+    "year": 2009,
+    "subjects": ["nordic-noir", "serial-killer", "procedural", "psychological-horror"],
+    "description": "A Stockholm detective persuades a disgraced hypnotist to question the only survivor of a family massacre, a boy who saw it happen."
+  },
+  {
+    "id": "the-laughing-policeman-roseanna",
+    "title": "Roseanna",
+    "authors": ["Maj Sjöwall", "Per Wahlöö"],
+    "year": 1965,
+    "subjects": ["police-procedural", "nordic-noir", "murder", "detective"],
+    "description": "A body dredged from a canal takes months of patient, unglamorous police work to name. The first Martin Beck, and the root of Scandinavian crime fiction."
+  },
+  {
+    "id": "gorky-park",
+    "title": "Gorky Park",
+    "authors": ["Martin Cruz Smith"],
+    "year": 1981,
+    "subjects": ["detective", "murder", "cold-war", "espionage"],
+    "description": "Three faceless bodies in the Moscow snow, and a Soviet investigator who keeps going after both the KGB and the FBI would rather he stopped."
+  },
+  {
+    "id": "the-name-of-the-rose",
+    "title": "The Name of the Rose",
+    "authors": ["Umberto Eco"],
+    "year": 1980,
+    "subjects": ["classic-mystery", "medieval-history", "libraries", "religion"],
+    "description": "A Franciscan and his novice investigate deaths in a 1327 Italian abbey. A detective novel that is also a treatise on semiotics and heresy."
+  },
+  {
+    "id": "the-secret-adversary",
+    "title": "Murder on the Orient Express",
+    "authors": ["Agatha Christie"],
+    "year": 1934,
+    "subjects": ["classic-mystery", "detective", "murder", "puzzle"],
+    "description": "Poirot, a stranded train in a snowdrift, and twelve suspects. The solution is famous enough to have become a figure of speech."
+  },
+  {
+    "id": "the-abc-murders",
+    "title": "The A.B.C. Murders",
+    "authors": ["Agatha Christie"],
+    "year": 1936,
+    "subjects": ["classic-mystery", "detective", "serial-killer", "puzzle"],
+    "description": "A killer works alphabetically through towns and victims, taunting Poirot by post. The trick is hiding one murder inside a pattern."
+  },
+  {
+    "id": "gaudy-night",
+    "title": "Gaudy Night",
+    "authors": ["Dorothy L. Sayers"],
+    "year": 1935,
+    "subjects": ["classic-mystery", "academia", "feminism", "detective"],
+    "description": "Harriet Vane investigates poison-pen letters at her Oxford women's college. As much an argument about whether women should have intellectual work as a mystery."
+  },
+  {
+    "id": "the-nine-tailors",
+    "title": "The Nine Tailors",
+    "authors": ["Dorothy L. Sayers"],
+    "year": 1934,
+    "subjects": ["classic-mystery", "detective", "murder", "small-town"],
+    "description": "Lord Peter Wimsey, a fenland village, a set of church bells and an unidentifiable corpse. The bell-ringing is not decoration; it is the murder weapon."
+  }
+]

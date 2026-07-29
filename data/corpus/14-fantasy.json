@@ -1,0 +1,797 @@
+[
+  {
+    "id": "assassins-apprentice",
+    "title": "Assassin's Apprentice",
+    "authors": [
+      "Robin Hobb"
+    ],
+    "year": 1995,
+    "subjects": [
+      "epic-fantasy",
+      "assassins",
+      "court-politics",
+      "coming-of-age"
+    ],
+    "description": "A king's bastard is handed over to the royal household and trained quietly as a poisoner. First-person, unglamorous, and far more interested in loneliness than in swordplay."
+  },
+  {
+    "id": "ship-of-magic",
+    "title": "Ship of Magic",
+    "authors": [
+      "Robin Hobb"
+    ],
+    "year": 1998,
+    "subjects": [
+      "epic-fantasy",
+      "family-saga",
+      "court-politics",
+      "monsters"
+    ],
+    "description": "A trading family's living ship wakes on the death of its captain, in a city built on debts to something older. Slower and stranger than the Farseer books."
+  },
+  {
+    "id": "the-eye-of-the-world",
+    "title": "The Eye of the World",
+    "authors": [
+      "Robert Jordan"
+    ],
+    "year": 1990,
+    "subjects": [
+      "epic-fantasy",
+      "chosen-one",
+      "magic-system",
+      "coming-of-age"
+    ],
+    "description": "Three young men are chased out of a farming village by creatures that should not exist. The opening of a fourteen-volume series that defined 1990s fantasy."
+  },
+  {
+    "id": "a-clash-of-kings",
+    "title": "A Clash of Kings",
+    "authors": [
+      "George R. R. Martin"
+    ],
+    "year": 1998,
+    "subjects": [
+      "epic-fantasy",
+      "court-politics",
+      "war",
+      "grimdark"
+    ],
+    "description": "Five claimants, one throne, and a comet nobody can agree how to read. The second Song of Ice and Fire, and the point the war becomes unmanageable."
+  },
+  {
+    "id": "a-storm-of-swords",
+    "title": "A Storm of Swords",
+    "authors": [
+      "George R. R. Martin"
+    ],
+    "year": 2000,
+    "subjects": [
+      "epic-fantasy",
+      "court-politics",
+      "war",
+      "grimdark"
+    ],
+    "description": "The longest and most eventful volume, containing the two scenes most readers of the series can name without prompting. Widely held to be its peak."
+  },
+  {
+    "id": "the-last-argument-of-kings",
+    "title": "Last Argument of Kings",
+    "authors": [
+      "Joe Abercrombie"
+    ],
+    "year": 2008,
+    "subjects": [
+      "grimdark",
+      "epic-fantasy",
+      "war",
+      "court-politics"
+    ],
+    "description": "The First Law trilogy closes by revealing that the quest, the war and the politics were all being steered by someone who was never a hero."
+  },
+  {
+    "id": "best-served-cold",
+    "title": "Best Served Cold",
+    "authors": [
+      "Joe Abercrombie"
+    ],
+    "year": 2009,
+    "subjects": [
+      "grimdark",
+      "revenge",
+      "epic-fantasy",
+      "violence"
+    ],
+    "description": "A mercenary thrown off a balcony sets out to kill the seven men who did it. A revenge tragedy that keeps asking whether the arithmetic is worth it."
+  },
+  {
+    "id": "the-shadow-of-what-was-lost",
+    "title": "Jade City",
+    "authors": [
+      "Fonda Lee"
+    ],
+    "year": 2017,
+    "subjects": [
+      "urban-fantasy",
+      "family-saga",
+      "magic-system",
+      "violence"
+    ],
+    "description": "Two clans on an island where jade grants warriors superhuman abilities, and a family business that is part martial school, part mafia. A gangster epic."
+  },
+  {
+    "id": "the-grace-of-kings",
+    "title": "The Grace of Kings",
+    "authors": [
+      "Ken Liu"
+    ],
+    "year": 2015,
+    "subjects": [
+      "epic-fantasy",
+      "revolution",
+      "war",
+      "court-politics"
+    ],
+    "description": "A bandit and a nobleman lead a rebellion against an empire, then find they want different things. Modelled on the Chu-Han contention rather than medieval Europe."
+  },
+  {
+    "id": "trail-of-lightning",
+    "title": "Trail of Lightning",
+    "authors": [
+      "Rebecca Roanhorse"
+    ],
+    "year": 2018,
+    "subjects": [
+      "urban-fantasy",
+      "native-american",
+      "post-apocalyptic",
+      "monsters"
+    ],
+    "description": "A monster hunter in a drowned world, inside the walls of a Diné nation where the old gods walk again. Navajo cosmology, not the usual borrowings."
+  },
+  {
+    "id": "the-city-of-brass",
+    "title": "The City of Brass",
+    "authors": [
+      "S. A. Chakraborty"
+    ],
+    "year": 2017,
+    "subjects": [
+      "epic-fantasy",
+      "court-politics",
+      "magic-system",
+      "religion"
+    ],
+    "description": "A Cairo con artist summons a djinn warrior for real and is taken to a hidden city where her ancestry is a political problem. Islamic-world folklore, richly built."
+  },
+  {
+    "id": "the-tiger-and-the-wolf",
+    "title": "Tigana",
+    "authors": [
+      "Guy Gavriel Kay"
+    ],
+    "year": 1990,
+    "subjects": [
+      "epic-fantasy",
+      "war",
+      "magic-system",
+      "grief"
+    ],
+    "description": "A conquered province has had its name magically erased, so that nobody born outside it can hear the word. A novel about occupation and what memory is for."
+  },
+  {
+    "id": "the-lions-of-al-rassan",
+    "title": "The Lions of Al-Rassan",
+    "authors": [
+      "Guy Gavriel Kay"
+    ],
+    "year": 1995,
+    "subjects": [
+      "epic-fantasy",
+      "war",
+      "religion",
+      "historical-fiction"
+    ],
+    "description": "A physician, a soldier-poet and a captain on three sides of a holy war, in a peninsula plainly modelled on Moorish Spain. Kay's most admired book."
+  },
+  {
+    "id": "gardens-of-the-moon",
+    "title": "Gardens of the Moon",
+    "authors": [
+      "Steven Erikson"
+    ],
+    "year": 1999,
+    "subjects": [
+      "epic-fantasy",
+      "war",
+      "magic-system",
+      "grimdark"
+    ],
+    "description": "Drops you into the middle of an imperial campaign with no explanation of the gods, the magic or the history. Famously difficult, and ten volumes follow."
+  },
+  {
+    "id": "the-curse-of-chalion",
+    "title": "The Curse of Chalion",
+    "authors": [
+      "Lois McMaster Bujold"
+    ],
+    "year": 2001,
+    "subjects": [
+      "epic-fantasy",
+      "court-politics",
+      "religion",
+      "chosen-one"
+    ],
+    "description": "A broken former courtier returns from the galleys as a tutor and finds himself the only person able to lift a curse on the royal house. Theology done properly."
+  },
+  {
+    "id": "the-warriors-apprentice",
+    "title": "The Warrior's Apprentice",
+    "authors": [
+      "Lois McMaster Bujold"
+    ],
+    "year": 1986,
+    "subjects": [
+      "space-opera",
+      "black-comedy",
+      "disability",
+      "court-politics"
+    ],
+    "description": "A physically frail aristocrat fails the military academy entrance and accidentally acquires a mercenary fleet by talking. The Vorkosigan books at their most fun."
+  },
+  {
+    "id": "the-left-hand-of-darkness-dispossessed",
+    "title": "The Lathe of Heaven",
+    "authors": [
+      "Ursula K. Le Guin"
+    ],
+    "year": 1971,
+    "subjects": [
+      "science-fiction",
+      "parallel-worlds",
+      "dystopia",
+      "psychological-horror"
+    ],
+    "description": "A man whose dreams retroactively change reality is put in the care of a therapist who decides to use him. Utopia by increments, each worse than the last."
+  },
+  {
+    "id": "a-wizard-of-earthsea-tehanu",
+    "title": "The Tombs of Atuan",
+    "authors": [
+      "Ursula K. Le Guin"
+    ],
+    "year": 1971,
+    "subjects": [
+      "ya-fantasy",
+      "coming-of-age",
+      "religion",
+      "epic-fantasy"
+    ],
+    "description": "A girl taken as a child to serve nameless powers in a labyrinth meets a thief in her own dark. Almost entirely underground, and the best of Earthsea."
+  },
+  {
+    "id": "words-of-radiance",
+    "title": "Words of Radiance",
+    "authors": [
+      "Brandon Sanderson"
+    ],
+    "year": 2014,
+    "subjects": [
+      "epic-fantasy",
+      "magic-system",
+      "war",
+      "chosen-one"
+    ],
+    "description": "The second Stormlight book, in which several thousand pages of setup pay off at once. Sanderson's reputation for endings rests largely on this one."
+  },
+  {
+    "id": "elantris",
+    "title": "Elantris",
+    "authors": [
+      "Brandon Sanderson"
+    ],
+    "year": 2005,
+    "subjects": [
+      "epic-fantasy",
+      "magic-system",
+      "religion",
+      "court-politics"
+    ],
+    "description": "A city of god-like beings fell into rot overnight, and a prince wakes up transformed into one of them the day before his wedding. Sanderson's first novel."
+  },
+  {
+    "id": "the-blade-of-tyshalle-red-rising",
+    "title": "Red Rising",
+    "authors": [
+      "Pierce Brown"
+    ],
+    "year": 2014,
+    "subjects": [
+      "dystopia",
+      "space",
+      "revolution",
+      "survival-games"
+    ],
+    "description": "A miner on Mars discovers his caste has been lied to for generations and is surgically remade to infiltrate the ruling class's war academy."
+  },
+  {
+    "id": "leviathan-wakes",
+    "title": "Leviathan Wakes",
+    "authors": [
+      "James S. A. Corey"
+    ],
+    "year": 2011,
+    "subjects": [
+      "space-opera",
+      "detective",
+      "first-contact",
+      "conspiracy"
+    ],
+    "description": "An ice hauler's crew and a burnt-out Ceres detective converge on a missing woman and a war between Earth, Mars and the Belt. Noir plumbing in hard-ish SF."
+  },
+  {
+    "id": "caliban-s-war",
+    "title": "Caliban's War",
+    "authors": [
+      "James S. A. Corey"
+    ],
+    "year": 2012,
+    "subjects": [
+      "space-opera",
+      "war",
+      "first-contact",
+      "politics-and-government"
+    ],
+    "description": "A marine, a botanist looking for his daughter, and a UN politician who steals every scene she is in. The Expanse widens without losing the plumbing."
+  },
+  {
+    "id": "hyperion-fall",
+    "title": "The Fall of Hyperion",
+    "authors": [
+      "Dan Simmons"
+    ],
+    "year": 1990,
+    "subjects": [
+      "space-opera",
+      "artificial-intelligence",
+      "war",
+      "religion"
+    ],
+    "description": "The answers to the first book's seven pilgrim stories, and a war that turns out to have been running for centuries in machine time."
+  },
+  {
+    "id": "the-forever-war",
+    "title": "The Forever War",
+    "authors": [
+      "Joe Haldeman"
+    ],
+    "year": 1974,
+    "subjects": [
+      "space-opera",
+      "war",
+      "time-travel",
+      "science-fiction"
+    ],
+    "description": "Relativistic travel means soldiers return centuries after they left, to a society that no longer recognises them. Written by a Vietnam veteran, and it shows."
+  },
+  {
+    "id": "ender-s-game",
+    "title": "Ender's Game",
+    "authors": [
+      "Orson Scott Card"
+    ],
+    "year": 1985,
+    "subjects": [
+      "science-fiction",
+      "survival-games",
+      "war",
+      "children"
+    ],
+    "description": "A six-year-old is taken to an orbital battle school to be shaped into a commander against an alien fleet. The training is the cruelty and the point."
+  },
+  {
+    "id": "old-mans-war",
+    "title": "Old Man's War",
+    "authors": [
+      "John Scalzi"
+    ],
+    "year": 2005,
+    "subjects": [
+      "space-opera",
+      "war",
+      "science-fiction",
+      "black-comedy"
+    ],
+    "description": "You may enlist in the colonial defence forces at seventy-five. They do not tell you what they do with your body until you have signed."
+  },
+  {
+    "id": "the-quantum-thief",
+    "title": "The Quantum Thief",
+    "authors": [
+      "Hannu Rajaniemi"
+    ],
+    "year": 2010,
+    "subjects": [
+      "science-fiction",
+      "heist",
+      "cyberpunk",
+      "artificial-intelligence"
+    ],
+    "description": "A thief broken out of a prison where inmates repeatedly kill each other in game theory dilemmas, in a Mars city where privacy is a currency. Dense and unapologetic."
+  },
+  {
+    "id": "accelerando",
+    "title": "Accelerando",
+    "authors": [
+      "Charles Stross"
+    ],
+    "year": 2005,
+    "subjects": [
+      "science-fiction",
+      "artificial-intelligence",
+      "technology-criticism",
+      "family-saga"
+    ],
+    "description": "Three generations across a technological singularity, from patent trolling to uploaded minds arguing over solar system real estate. Ideas per page, extremely high."
+  },
+  {
+    "id": "the-windup-girl",
+    "title": "The Windup Girl",
+    "authors": [
+      "Paolo Bacigalupi"
+    ],
+    "year": 2009,
+    "subjects": [
+      "dystopia",
+      "environment",
+      "genetics",
+      "post-apocalyptic"
+    ],
+    "description": "Bangkok after the oil, where calorie companies own the seed stock and an engineered woman is a piece of property. Won the Hugo and the Nebula."
+  },
+  {
+    "id": "the-city-and-the-city-perdido",
+    "title": "Perdido Street Station",
+    "authors": [
+      "China Miéville"
+    ],
+    "year": 2000,
+    "subjects": [
+      "urban-fantasy",
+      "monsters",
+      "city-life",
+      "science-fiction"
+    ],
+    "description": "A rogue scientist in a vast industrial city releases something that eats dreams. Miéville throwing every genre he likes into one enormous machine."
+  },
+  {
+    "id": "the-sparrow",
+    "title": "The Sparrow",
+    "authors": [
+      "Mary Doria Russell"
+    ],
+    "year": 1996,
+    "subjects": [
+      "first-contact",
+      "religion",
+      "trauma",
+      "space"
+    ],
+    "description": "A Jesuit mission to the first inhabited planet found, and the single survivor's interrogation forty years later. A novel about faith surviving evidence, or not."
+  },
+  {
+    "id": "a-canticle-for-leibowitz",
+    "title": "A Canticle for Leibowitz",
+    "authors": [
+      "Walter M. Miller Jr."
+    ],
+    "year": 1959,
+    "subjects": [
+      "post-apocalyptic",
+      "religion",
+      "science-fiction",
+      "libraries"
+    ],
+    "description": "Monks in the American desert preserve fragments of pre-war engineering they cannot read, across eighteen hundred years and one repeated mistake."
+  },
+  {
+    "id": "riddley-walker",
+    "title": "Riddley Walker",
+    "authors": [
+      "Russell Hoban"
+    ],
+    "year": 1980,
+    "subjects": [
+      "post-apocalyptic",
+      "science-fiction",
+      "linguistics",
+      "religion"
+    ],
+    "description": "Two thousand years after a nuclear war, in a Kent that has forgotten everything, written entirely in a decayed English you have to learn as you read."
+  },
+  {
+    "id": "the-book-of-the-new-sun",
+    "title": "The Shadow of the Torturer",
+    "authors": [
+      "Gene Wolfe"
+    ],
+    "year": 1980,
+    "subjects": [
+      "science-fiction",
+      "epic-fantasy",
+      "unreliable-narrator",
+      "postmodern"
+    ],
+    "description": "A torturer's apprentice exiled from his guild, in a far future where the sun is dying. Narrated by a man who claims perfect memory and is plainly lying."
+  },
+  {
+    "id": "kindred-parable-talents",
+    "title": "Parable of the Talents",
+    "authors": [
+      "Octavia E. Butler"
+    ],
+    "year": 1998,
+    "subjects": [
+      "dystopia",
+      "religion",
+      "race",
+      "post-apocalyptic"
+    ],
+    "description": "The sequel to Sower, in which a Christian nationalist president is elected on the promise to make America great again. Published in 1998."
+  },
+  {
+    "id": "dawn-butler",
+    "title": "Dawn",
+    "authors": [
+      "Octavia E. Butler"
+    ],
+    "year": 1987,
+    "subjects": [
+      "first-contact",
+      "genetics",
+      "science-fiction",
+      "bioethics"
+    ],
+    "description": "A woman wakes centuries after a nuclear war aboard an alien ship, told humanity will be rebuilt only through interbreeding. Consent is the book's whole subject."
+  },
+  {
+    "id": "the-fifth-head-of-cerberus-stone-sky",
+    "title": "The Stone Sky",
+    "authors": [
+      "N. K. Jemisin"
+    ],
+    "year": 2017,
+    "subjects": [
+      "epic-fantasy",
+      "environment",
+      "motherhood",
+      "slavery"
+    ],
+    "description": "The Broken Earth closes by explaining what broke the world, and it was not a natural disaster. Third consecutive Hugo for the same trilogy."
+  },
+  {
+    "id": "the-hundred-thousand-kingdoms",
+    "title": "The Hundred Thousand Kingdoms",
+    "authors": [
+      "N. K. Jemisin"
+    ],
+    "year": 2010,
+    "subjects": [
+      "epic-fantasy",
+      "court-politics",
+      "religion",
+      "romantasy"
+    ],
+    "description": "A northern outsider is summoned to a palace where enslaved gods serve the ruling family and named a candidate for the throne."
+  },
+  {
+    "id": "the-space-between-worlds",
+    "title": "The Space Between Worlds",
+    "authors": [
+      "Micaiah Johnson"
+    ],
+    "year": 2020,
+    "subjects": [
+      "parallel-worlds",
+      "class",
+      "identity",
+      "science-fiction"
+    ],
+    "description": "You can only travel to a parallel world where your counterpart is dead, which makes people from dangerous places the most employable travellers."
+  },
+  {
+    "id": "this-is-how-you-lose-the-time-war",
+    "title": "This Is How You Lose the Time War",
+    "authors": [
+      "Amal El-Mohtar",
+      "Max Gladstone"
+    ],
+    "year": 2019,
+    "subjects": [
+      "time-travel",
+      "sapphic",
+      "epistolary",
+      "war"
+    ],
+    "description": "Two agents on opposite sides of a war through time write each other increasingly reckless letters. Short, ornate, and almost entirely correspondence."
+  },
+  {
+    "id": "the-fifth-elephant-mort",
+    "title": "Mort",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 1987,
+    "subjects": [
+      "black-comedy",
+      "epic-fantasy",
+      "coming-of-age"
+    ],
+    "description": "Death takes an apprentice so he can have a holiday, and the boy immediately saves someone he was supposed to collect. The first genuinely good Discworld."
+  },
+  {
+    "id": "going-postal",
+    "title": "Going Postal",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 2004,
+    "subjects": [
+      "black-comedy",
+      "epic-fantasy",
+      "fraud",
+      "work"
+    ],
+    "description": "A condemned con artist is offered a choice between hanging and running the derelict post office. Pratchett on infrastructure, monopolies and second chances."
+  },
+  {
+    "id": "the-colour-of-magic-hogfather",
+    "title": "Hogfather",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 1996,
+    "subjects": [
+      "black-comedy",
+      "epic-fantasy",
+      "religion",
+      "children"
+    ],
+    "description": "Someone has arranged for the Discworld's Father Christmas to be removed, and Death takes the round instead. Contains the argument about small lies and big ones."
+  },
+  {
+    "id": "the-eyre-affair",
+    "title": "The Eyre Affair",
+    "authors": [
+      "Jasper Fforde"
+    ],
+    "year": 2001,
+    "subjects": [
+      "black-comedy",
+      "metafiction",
+      "parallel-worlds",
+      "libraries"
+    ],
+    "description": "In a Britain where literary crime is policed, Jane Eyre is kidnapped out of her own novel. Relentlessly silly and structurally clever."
+  },
+  {
+    "id": "american-gods",
+    "title": "American Gods",
+    "authors": [
+      "Neil Gaiman"
+    ],
+    "year": 2001,
+    "subjects": [
+      "urban-fantasy",
+      "mythology",
+      "road-trip",
+      "religion"
+    ],
+    "description": "An ex-convict is hired as a bodyguard by a con man who turns out to be recruiting old gods for a war against new ones. A road novel about immigration."
+  },
+  {
+    "id": "the-ocean-at-the-end-of-the-lane",
+    "title": "The Ocean at the End of the Lane",
+    "authors": [
+      "Neil Gaiman"
+    ],
+    "year": 2013,
+    "subjects": [
+      "urban-fantasy",
+      "folklore",
+      "children",
+      "memory"
+    ],
+    "description": "A man at a funeral remembers being seven, and the three women at the farm at the end of the lane. Short, and about how much of childhood is unspeakable."
+  },
+  {
+    "id": "the-golem-and-the-jinni",
+    "title": "The Golem and the Jinni",
+    "authors": [
+      "Helene Wecker"
+    ],
+    "year": 2013,
+    "subjects": [
+      "urban-fantasy",
+      "immigration",
+      "folklore",
+      "new-york"
+    ],
+    "description": "A clay woman and a fire spirit meet in 1899 New York, one in the Jewish quarter and one in Little Syria. Immigration written through two mythologies."
+  },
+  {
+    "id": "the-buried-giant",
+    "title": "The Buried Giant",
+    "authors": [
+      "Kazuo Ishiguro"
+    ],
+    "year": 2015,
+    "subjects": [
+      "epic-fantasy",
+      "memory",
+      "war",
+      "grief"
+    ],
+    "description": "An elderly Briton couple set out across a post-Arthurian England covered by a mist that erases memory, looking for a son they can barely recall."
+  },
+  {
+    "id": "the-once-and-future-king",
+    "title": "The Once and Future King",
+    "authors": [
+      "T. H. White"
+    ],
+    "year": 1958,
+    "subjects": [
+      "epic-fantasy",
+      "mythology",
+      "war",
+      "coming-of-age"
+    ],
+    "description": "Arthur from boyhood under Merlyn to the ruin of the Round Table. White wrote it through the Second World War and it is fundamentally about whether force can be made just."
+  },
+  {
+    "id": "the-princess-bride",
+    "title": "The Princess Bride",
+    "authors": [
+      "William Goldman"
+    ],
+    "year": 1973,
+    "subjects": [
+      "black-comedy",
+      "epic-fantasy",
+      "romance",
+      "metafiction"
+    ],
+    "description": "Presented as an abridgement of a nonexistent Florinese classic, with the boring parts removed and the author interrupting throughout. Funnier than the film."
+  },
+  {
+    "id": "watership-down",
+    "title": "Watership Down",
+    "authors": [
+      "Richard Adams"
+    ],
+    "year": 1972,
+    "subjects": [
+      "epic-fantasy",
+      "nature",
+      "middle-grade",
+      "survival"
+    ],
+    "description": "Rabbits leave a doomed warren to found another. Adams built them a language, a mythology and a politics, and the result is far grimmer than its reputation."
+  },
+  {
+    "id": "the-wee-free-men",
+    "title": "The Wee Free Men",
+    "authors": [
+      "Terry Pratchett"
+    ],
+    "year": 2003,
+    "subjects": [
+      "middle-grade",
+      "witches",
+      "folklore",
+      "ya-fantasy"
+    ],
+    "description": "A nine-year-old dairy farmer's daughter goes into fairyland with a frying pan to get her brother back, assisted by six-inch blue men. The best Discworld entry point for children."
+  }
+]

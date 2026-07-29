@@ -536,15 +536,6 @@
   "cosy-mystery": [
     "crime-detective-classic"
   ],
-  "puzzle": [
-    "crime-detective-classic"
-  ],
-  "heist": [
-    "crime-detective-hardboiled"
-  ],
-  "assassins": [
-    "crime-detective-hardboiled"
-  ],
   "thriller": [
     "crime-thriller"
   ],
@@ -556,9 +547,6 @@
   ],
   "domestic-abuse": [
     "crime-thriller-domestic"
-  ],
-  "violence": [
-    "crime-true-investigation"
   ],
   "incarceration": [
     "crime-true-justice"
@@ -586,9 +574,6 @@
     "spec-fantasy-epic"
   ],
   "monsters": [
-    "spec-fantasy-epic"
-  ],
-  "court-politics": [
     "spec-fantasy-epic"
   ],
   "folklore": [
@@ -626,9 +611,6 @@
   ],
   "school": [
     "ya-contemporary-realism"
-  ],
-  "children": [
-    "ya-middle-grade-adventure"
   ],
   "mythology": [
     "philosophy-religion-comparative"
@@ -696,9 +678,6 @@
   "neurodivergence": [
     "science-life-neuroscience"
   ],
-  "memory": [
-    "science-life-neuroscience"
-  ],
   "amnesia": [
     "science-life-neuroscience"
   ],
@@ -711,13 +690,10 @@
   "epistolary": [
     "arts-letters-essays"
   ],
-  "survival": [
-    "science-earth-natural-history"
-  ],
   "rock": [
     "arts-music-popular"
   ],
   "science": [
-    "science-physical-physics"
+    "science"
   ]
 }
