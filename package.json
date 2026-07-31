@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "description": "A searchable 3D book discovery cloud: books as points positioned by subject and author similarity.",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=22"
   },

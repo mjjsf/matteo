@@ -388,4 +388,18 @@ mkdir -p /tmp/site/matteo && cp -r dist/* /tmp/site/matteo/
 
 ## Licence
 
-MIT — see [LICENSE.md](LICENSE.md).
+**Proprietary. All rights reserved.** This project is source-visible, not open
+source — see [LICENSE.md](LICENSE.md). No permission is granted to use, copy,
+modify or redistribute the code or the data without written permission.
+
+The licence covers `data/` and `src/generated/` as well as the source: the book
+descriptions, the taxonomy and the tag vocabulary are original work, and the
+curation of the collection is protected as a compilation. Bibliographic facts —
+title, author, year — are facts and are not claimed.
+
+This project was previously MIT-licensed. That grant cannot be withdrawn from
+anyone who obtained a copy under it, so versions released as MIT stay MIT for
+those recipients; this licence governs everything from here.
+
+Third-party dependencies remain under their own licences, reproduced in
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
