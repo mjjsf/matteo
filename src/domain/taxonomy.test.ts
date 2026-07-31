@@ -39,8 +39,33 @@ describe('taxonomy structure', () => {
     expect(index.rootIds.length).toBeLessThanOrEqual(12);
   });
 
-  it('is no deeper than three levels', () => {
-    expect(index.maxDepth).toBeLessThanOrEqual(2);
+  it('stays shallow enough to read, without capping the depth the code accepts', () => {
+    // Raised from 2 when `philosophy-western-continental` gained a level. The
+    // limit is editorial, not structural: `buildTaxonomyIndex` recurses to any
+    // depth and nothing downstream assumes a maximum, so this exists to catch a
+    // taxonomy that has quietly become a filing system nobody can hold in their
+    // head — not to stop the tree growing.
+    expect(index.maxDepth).toBeLessThanOrEqual(4);
+  });
+
+  it('reads a tree deeper than the authored one', () => {
+    // The guard for the claim above. If someone reintroduces a depth assumption,
+    // this fails rather than the corpus silently losing its deepest level.
+    const deep = buildTaxonomyIndex({
+      version: 1,
+      roots: [
+        {
+          id: 'a',
+          label: 'A',
+          children: [
+            { id: 'b', label: 'B', children: [{ id: 'c', label: 'C', children: [{ id: 'd', label: 'D' }] }] },
+          ],
+        },
+      ],
+    });
+    expect(deep.maxDepth).toBe(3);
+    expect(deep.ancestorsOf.get('d')).toEqual(['c', 'b', 'a']);
+    expect(deep.byId.get('d')?.rootId).toBe('a');
   });
 
   it('gives every node a rootId that is actually a root', () => {

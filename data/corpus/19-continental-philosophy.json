@@ -1,0 +1,334 @@
+[
+  {
+    "id": "phenomenology-of-spirit",
+    "title": "Phenomenology of Spirit",
+    "authors": [
+      "G. W. F. Hegel"
+    ],
+    "year": 1807,
+    "subjects": [
+      "german-idealism",
+      "philosophy",
+      "epistemology",
+      "consciousness"
+    ],
+    "description": "Consciousness is put through every position it can occupy — sense-certainty, self-consciousness, reason, spirit — each collapsing under its own contradictions into the next. The master-slave passage alone reshaped how later thinkers wrote about recognition and freedom."
+  },
+  {
+    "id": "logical-investigations-husserl",
+    "title": "Logical Investigations",
+    "authors": [
+      "Edmund Husserl"
+    ],
+    "year": 1900,
+    "subjects": [
+      "phenomenology",
+      "philosophy",
+      "logic",
+      "epistemology"
+    ],
+    "description": "An attack on reducing logic to psychology, followed by the first sustained attempt to describe the structures of experience from the inside. It founded phenomenology as a method: go back to the things themselves, and describe what appears rather than explain it away."
+  },
+  {
+    "id": "cartesian-meditations",
+    "title": "Cartesian Meditations",
+    "authors": [
+      "Edmund Husserl"
+    ],
+    "year": 1931,
+    "subjects": [
+      "phenomenology",
+      "philosophy",
+      "consciousness",
+      "epistemology"
+    ],
+    "description": "Husserl restages Descartes' turn inward, bracketing the question of whether the world exists in order to describe how it is given to consciousness. The final meditation's problem — how other minds can appear to me at all — set the agenda for phenomenology after him."
+  },
+  {
+    "id": "phenomenology-of-perception",
+    "title": "Phenomenology of Perception",
+    "authors": [
+      "Maurice Merleau-Ponty"
+    ],
+    "year": 1945,
+    "subjects": [
+      "phenomenology",
+      "philosophy",
+      "consciousness",
+      "mind-and-brain"
+    ],
+    "description": "Perception is not a mind reading off data from a body; the body is itself the thing that perceives, and its habits and reach shape what the world can mean. Written against both empiricism and Cartesian dualism, using cases of neurological injury as evidence."
+  },
+  {
+    "id": "totality-and-infinity",
+    "title": "Totality and Infinity",
+    "authors": [
+      "Emmanuel Levinas"
+    ],
+    "year": 1961,
+    "subjects": [
+      "phenomenology",
+      "philosophy",
+      "ethics",
+      "comparative-religion"
+    ],
+    "description": "Ethics comes before metaphysics, not after it: the face of another person makes a claim on me that no system can absorb or justify. A phenomenology written in deliberate opposition to Heidegger, whose thought Levinas had helped introduce to France."
+  },
+  {
+    "id": "truth-and-method",
+    "title": "Truth and Method",
+    "authors": [
+      "Hans-Georg Gadamer"
+    ],
+    "year": 1960,
+    "subjects": [
+      "hermeneutics",
+      "philosophy",
+      "epistemology",
+      "translation"
+    ],
+    "description": "Understanding a text is not recovering what its author meant but a fusion of their horizon with your own — and the prejudices you bring are the condition of understanding, not an obstacle to it. The founding statement of philosophical hermeneutics."
+  },
+  {
+    "id": "dialectic-of-enlightenment",
+    "title": "Dialectic of Enlightenment",
+    "authors": [
+      "Max Horkheimer",
+      "Theodor W. Adorno"
+    ],
+    "year": 1947,
+    "subjects": [
+      "critical-theory",
+      "frankfurt-school",
+      "philosophy",
+      "totalitarianism"
+    ],
+    "description": "Written in exile during the war: reason that set out to free people from myth has hardened into a myth of its own, and the culture industry sells that domination back as entertainment. Bleak, and the founding text of the Frankfurt School's mature phase."
+  },
+  {
+    "id": "one-dimensional-man",
+    "title": "One-Dimensional Man",
+    "authors": [
+      "Herbert Marcuse"
+    ],
+    "year": 1964,
+    "subjects": [
+      "critical-theory",
+      "frankfurt-school",
+      "political-theory",
+      "economics"
+    ],
+    "description": "Advanced industrial society absorbs dissent by satisfying the needs it manufactures, leaving a flattened world where alternatives are literally unthinkable. It became a set text of the 1960s student movements Marcuse had not written it for."
+  },
+  {
+    "id": "structural-transformation-public-sphere",
+    "title": "The Structural Transformation of the Public Sphere",
+    "authors": [
+      "Jürgen Habermas"
+    ],
+    "year": 1962,
+    "subjects": [
+      "critical-theory",
+      "frankfurt-school",
+      "political-theory",
+      "media-studies"
+    ],
+    "description": "A history of the coffee-house and newspaper publics of the eighteenth century, and of how mass media turned that space of argument into one of consumption. The idea of the public sphere as a thing that can be measured and lost comes from here."
+  },
+  {
+    "id": "illuminations-benjamin",
+    "title": "Illuminations",
+    "authors": [
+      "Walter Benjamin"
+    ],
+    "year": 1955,
+    "subjects": [
+      "critical-theory",
+      "frankfurt-school",
+      "essays",
+      "art-history"
+    ],
+    "description": "Essays collected after Benjamin's death, including the argument that mechanical reproduction strips an artwork of its aura, and the theses on history written months before he died fleeing the Gestapo. Fragmentary by temperament, not by accident."
+  },
+  {
+    "id": "discipline-and-punish",
+    "title": "Discipline and Punish",
+    "authors": [
+      "Michel Foucault"
+    ],
+    "year": 1975,
+    "subjects": [
+      "poststructuralism",
+      "philosophy",
+      "criminal-justice",
+      "surveillance"
+    ],
+    "description": "Opens with a public execution and closes with the timetable of a modern prison, arguing that punishment did not become gentler but changed target — from the body to the soul, from spectacle to permanent observation. Bentham's panopticon is its central image."
+  },
+  {
+    "id": "history-of-sexuality-1",
+    "title": "The History of Sexuality, Volume 1",
+    "authors": [
+      "Michel Foucault"
+    ],
+    "year": 1976,
+    "subjects": [
+      "poststructuralism",
+      "philosophy",
+      "gender",
+      "class"
+    ],
+    "description": "Against the story that the Victorians silenced sex, Foucault argues the modern era produced an endless discourse about it — in medicine, confession and law — and that this talk was itself a form of power. Introduces biopower, his term for the administration of life."
+  },
+  {
+    "id": "the-order-of-things",
+    "title": "The Order of Things",
+    "authors": [
+      "Michel Foucault"
+    ],
+    "year": 1966,
+    "subjects": [
+      "poststructuralism",
+      "philosophy",
+      "epistemology",
+      "biography-of-ideas"
+    ],
+    "description": "An archaeology of the systems of thought that made particular knowledge possible in the Renaissance, the classical age and the modern period. It ends with the claim that man is a recent invention who may be erased like a face drawn in sand."
+  },
+  {
+    "id": "of-grammatology",
+    "title": "Of Grammatology",
+    "authors": [
+      "Jacques Derrida"
+    ],
+    "year": 1967,
+    "subjects": [
+      "deconstruction",
+      "poststructuralism",
+      "philosophy",
+      "linguistics"
+    ],
+    "description": "Western philosophy has treated speech as immediate and writing as a fallen copy, and Derrida traces that preference through Plato, Rousseau and Saussure to show it will not hold. The book that gave deconstruction its name and its method."
+  },
+  {
+    "id": "a-thousand-plateaus",
+    "title": "A Thousand Plateaus",
+    "authors": [
+      "Gilles Deleuze",
+      "Félix Guattari"
+    ],
+    "year": 1980,
+    "subjects": [
+      "poststructuralism",
+      "philosophy",
+      "postmodern",
+      "political-theory"
+    ],
+    "description": "Written to be entered at any chapter, it replaces the tree — hierarchy, roots, origins — with the rhizome, which connects any point to any other. Its vocabulary of assemblages, lines of flight and deterritorialisation escaped philosophy entirely."
+  },
+  {
+    "id": "mythologies-barthes",
+    "title": "Mythologies",
+    "authors": [
+      "Roland Barthes"
+    ],
+    "year": 1957,
+    "subjects": [
+      "poststructuralism",
+      "essays",
+      "media-studies",
+      "linguistics"
+    ],
+    "description": "Short pieces on wrestling, soap powder, steak and the face of Garbo, each showing how a culture turns its arrangements into things that merely seem natural. The closing essay supplies the semiotic machinery the rest of the book uses lightly."
+  },
+  {
+    "id": "the-interpretation-of-dreams",
+    "title": "The Interpretation of Dreams",
+    "authors": [
+      "Sigmund Freud"
+    ],
+    "year": 1899,
+    "subjects": [
+      "psychoanalysis",
+      "mind-and-brain",
+      "consciousness",
+      "biography-of-ideas"
+    ],
+    "description": "Dreams are wishes in disguise, and the disguise — condensation, displacement — is the work the mind does to keep itself asleep. Freud's own dreams supply much of the evidence, which is both the book's method and its most-contested feature."
+  },
+  {
+    "id": "civilization-and-its-discontents",
+    "title": "Civilization and Its Discontents",
+    "authors": [
+      "Sigmund Freud"
+    ],
+    "year": 1930,
+    "subjects": [
+      "psychoanalysis",
+      "philosophy",
+      "ethics",
+      "war"
+    ],
+    "description": "Civilisation buys security with instinctual renunciation, and the guilt that purchase generates is the permanent unhappiness of living in one. Written between the wars, and unsparing about how thin the arrangement is."
+  },
+  {
+    "id": "ecrits-lacan",
+    "title": "Écrits",
+    "authors": [
+      "Jacques Lacan"
+    ],
+    "year": 1966,
+    "subjects": [
+      "psychoanalysis",
+      "poststructuralism",
+      "linguistics",
+      "consciousness"
+    ],
+    "description": "The papers behind Lacan's return to Freud, including the mirror stage and the claim that the unconscious is structured like a language. Notoriously difficult on purpose — he held that a text which could be skimmed would be resisted rather than read."
+  },
+  {
+    "id": "critique-of-pure-reason",
+    "title": "Critique of Pure Reason",
+    "authors": [
+      "Immanuel Kant"
+    ],
+    "year": 1781,
+    "subjects": [
+      "german-idealism",
+      "philosophy",
+      "epistemology",
+      "consciousness"
+    ],
+    "description": "Knowledge requires both what the senses supply and what the mind imposes — space, time and the categories — so reason can map experience but never reach beyond it to things as they are in themselves. The book the rest of German idealism argues with."
+  },
+  {
+    "id": "the-ethics-of-ambiguity",
+    "title": "The Ethics of Ambiguity",
+    "authors": [
+      "Simone de Beauvoir"
+    ],
+    "year": 1947,
+    "subjects": [
+      "existentialism",
+      "philosophy",
+      "ethics",
+      "gender"
+    ],
+    "description": "An attempt to answer the charge that existentialism cannot ground an ethics: freedom is the one thing we must will, and willing it means willing it for others too. Shorter and more direct than the novel-length work either she or Sartre is better known for."
+  },
+  {
+    "id": "writing-and-difference",
+    "title": "Writing and Difference",
+    "authors": [
+      "Jacques Derrida"
+    ],
+    "year": 1967,
+    "subjects": [
+      "deconstruction",
+      "poststructuralism",
+      "philosophy",
+      "essays"
+    ],
+    "description": "Essays on Foucault, Levinas, Freud and Artaud, each reading a text closely enough to find the point where its own terms turn against it. Published the same year as Of Grammatology and often the easier way into the same method."
+  }
+]

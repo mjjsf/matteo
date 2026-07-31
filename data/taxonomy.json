@@ -119,11 +119,35 @@
           "children": [
             {
               "id": "spec-fantasy-epic",
-              "label": "Epic Fantasy"
+              "label": "Epic Fantasy",
+              "children": [
+                {
+                  "id": "spec-fantasy-epic-high",
+                  "label": "High Fantasy"
+                },
+                {
+                  "id": "spec-fantasy-epic-magic",
+                  "label": "Magic Systems"
+                },
+                {
+                  "id": "spec-fantasy-epic-creatures",
+                  "label": "Dragons & Monsters"
+                }
+              ]
             },
             {
               "id": "spec-fantasy-urban",
-              "label": "Urban Fantasy"
+              "label": "Urban Fantasy",
+              "children": [
+                {
+                  "id": "spec-fantasy-urban-modern",
+                  "label": "Modern Fantasy"
+                },
+                {
+                  "id": "spec-fantasy-urban-witchcraft",
+                  "label": "Witchcraft"
+                }
+              ]
             },
             {
               "id": "spec-fantasy-magical-realism",
@@ -367,7 +391,17 @@
           "children": [
             {
               "id": "philosophy-western-ancient",
-              "label": "Ancient Philosophy"
+              "label": "Ancient Philosophy",
+              "children": [
+                {
+                  "id": "philosophy-western-ancient-greek",
+                  "label": "Greek Philosophy"
+                },
+                {
+                  "id": "philosophy-western-ancient-stoic",
+                  "label": "Stoicism"
+                }
+              ]
             },
             {
               "id": "philosophy-western-ethics",
@@ -379,7 +413,47 @@
             },
             {
               "id": "philosophy-western-epistemology",
-              "label": "Knowledge & Science"
+              "label": "Knowledge & Science",
+              "children": [
+                {
+                  "id": "philosophy-western-epistemology-science",
+                  "label": "Philosophy of Science"
+                },
+                {
+                  "id": "philosophy-western-epistemology-knowledge",
+                  "label": "Knowledge & Reason"
+                }
+              ]
+            },
+            {
+              "id": "philosophy-western-continental",
+              "label": "Continental Philosophy",
+              "children": [
+                {
+                  "id": "philosophy-western-continental-idealism",
+                  "label": "German Idealism"
+                },
+                {
+                  "id": "philosophy-western-continental-phenomenology",
+                  "label": "Phenomenology"
+                },
+                {
+                  "id": "philosophy-western-continental-critical",
+                  "label": "Critical Theory"
+                },
+                {
+                  "id": "philosophy-western-continental-poststructuralism",
+                  "label": "Poststructuralism"
+                },
+                {
+                  "id": "philosophy-western-continental-psychoanalysis",
+                  "label": "Psychoanalysis"
+                },
+                {
+                  "id": "philosophy-western-continental-hermeneutics",
+                  "label": "Hermeneutics"
+                }
+              ]
             }
           ]
         },
@@ -455,7 +529,17 @@
           "children": [
             {
               "id": "society-politics-theory",
-              "label": "Political Theory"
+              "label": "Political Theory",
+              "children": [
+                {
+                  "id": "society-politics-theory-ideas",
+                  "label": "Political Ideas"
+                },
+                {
+                  "id": "society-politics-theory-conflict",
+                  "label": "War & Statecraft"
+                }
+              ]
             },
             {
               "id": "society-politics-democracy",
@@ -473,7 +557,21 @@
           "children": [
             {
               "id": "society-culture-race",
-              "label": "Race"
+              "label": "Race",
+              "children": [
+                {
+                  "id": "society-culture-race-civilrights",
+                  "label": "Civil Rights"
+                },
+                {
+                  "id": "society-culture-race-identity",
+                  "label": "Race & Identity"
+                },
+                {
+                  "id": "society-culture-race-class",
+                  "label": "Class"
+                }
+              ]
             },
             {
               "id": "society-culture-gender",
