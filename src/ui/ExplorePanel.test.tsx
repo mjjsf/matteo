@@ -9,6 +9,7 @@ import { Landing } from './Landing';
 import { ExplorePanel } from './ExplorePanel';
 import { DetailPanel } from './DetailPanel';
 import { Footer } from './Footer';
+import { bookRef, idOf } from '@/domain/nodeRef';
 
 /** The 3D scene is deliberately untested — there is no WebGL in happy-dom and
  *  asserting on three.js internals is not useful signal. What matters here is
@@ -55,10 +56,10 @@ describe('Landing', () => {
 
     const state = useStore.getState();
     expect(state.phase).toBe('active');
-    expect(state.graph.nodes[0]?.bookId).toBe('neuromancer');
+    expect(state.graph.nodes[0]?.nodeRef).toBe(bookRef('neuromancer'));
     // A lone point is not a map: seeding must expand once immediately.
     expect(state.graph.nodes.length).toBeGreaterThan(1);
-    expect(state.selectedId).toBe('neuromancer');
+    expect(state.selectedRef).toBe(bookRef('neuromancer'));
   });
 
   it('says so when nothing matches instead of seeding something arbitrary', () => {
@@ -73,14 +74,14 @@ describe('Landing', () => {
 
 describe('GraphOutline', () => {
   beforeEach(() => {
-    useStore.getState().seed('neuromancer');
+    useStore.getState().seed(bookRef('neuromancer'));
   });
 
   it('mirrors every node on the map', () => {
     render(<ExplorePanel />);
     const state = useStore.getState();
     for (const node of state.graph.nodes) {
-      const title = state.books[state.corpusIndexOf.get(node.bookId) as number]?.title as string;
+      const title = state.books[state.corpusIndexOf.get(idOf(node.nodeRef)) as number]?.title as string;
       expect(screen.getAllByText(title).length).toBeGreaterThan(0);
     }
   });
@@ -109,7 +110,7 @@ describe('GraphOutline', () => {
 
 describe('collapsing from the list', () => {
   beforeEach(() => {
-    useStore.getState().seed('neuromancer');
+    useStore.getState().seed(bookRef('neuromancer'));
   });
 
   const growFirst = (): void => {
@@ -129,7 +130,7 @@ describe('collapsing from the list', () => {
 
   it('removes exactly what was grown, and leaves the rest where it was', () => {
     render(<ExplorePanel />);
-    const before = useStore.getState().graph.nodes.map((n) => [n.bookId, [...n.target]] as const);
+    const before = useStore.getState().graph.nodes.map((n) => [n.nodeRef, [...n.target]] as const);
 
     growFirst();
     expect(useStore.getState().graph.nodes.length).toBeGreaterThan(before.length);
@@ -141,7 +142,7 @@ describe('collapsing from the list', () => {
     const after = useStore.getState().graph.nodes;
     expect(after).toHaveLength(before.length);
     // Same books, same coordinates — collapsing one branch must not shuffle the map.
-    expect(after.map((n) => [n.bookId, n.target])).toEqual(
+    expect(after.map((n) => [n.nodeRef, n.target])).toEqual(
       before.map(([id, t]) => [id, t]),
     );
   });
@@ -172,7 +173,7 @@ describe('DetailPanel', () => {
   });
 
   it('renders an honest Amazon link for a book with no ISBN', () => {
-    useStore.getState().seed('neuromancer');
+    useStore.getState().seed(bookRef('neuromancer'));
     render(<DetailPanel />);
     const link = screen.getByRole('link') as HTMLAnchorElement;
     // The seed corpus carries no fabricated ISBNs, so this must be the search
@@ -183,7 +184,7 @@ describe('DetailPanel', () => {
   });
 
   it('asks Amazon to filter to Prime without claiming eligibility itself', () => {
-    useStore.getState().seed('neuromancer');
+    useStore.getState().seed(bookRef('neuromancer'));
     const { container } = render(<DetailPanel />);
     const link = screen.getByRole('link') as HTMLAnchorElement;
     // The refinement travels in the URL, where Amazon acts on it.

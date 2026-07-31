@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, bookForRef } from '@/state/store';
 import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
 import { asSlot } from '@/domain/graph';
 import { formatYear } from './format';
+import { bookRef } from '@/domain/nodeRef';
 
 /** Detail panel for the selected book, with the buy link. */
 export function DetailPanel(): React.ReactElement | null {
-  const selectedId = useStore((s) => s.selectedId);
+  const selectedRef = useStore((s) => s.selectedRef);
   const graph = useStore((s) => s.graph);
   const revision = useStore((s) => s.revision);
   const expand = useStore((s) => s.expand);
@@ -14,7 +15,7 @@ export function DetailPanel(): React.ReactElement | null {
   const reseedFrom = useStore((s) => s.reseedFrom);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  const book = selectedId ? bookById(selectedId) : undefined;
+  const book = selectedRef ? bookForRef(selectedRef) : undefined;
 
   useEffect(() => {
     if (book) headingRef.current?.focus();
@@ -26,7 +27,7 @@ export function DetailPanel(): React.ReactElement | null {
   // `revision` is read only to re-render when `expand` flips a node's flags in
   // place — the graph object alone does not always change identity for those.
   void revision;
-  const slot = graph.indexOf.get(book.id);
+  const slot = graph.indexOf.get(bookRef(book.id));
   const node = slot === undefined ? undefined : graph.nodes[slot];
   const canGrow = node !== undefined && !node.expanded && node.expandable;
 
@@ -72,7 +73,7 @@ export function DetailPanel(): React.ReactElement | null {
           </button>
         )}
         {node !== undefined && node.generation > 0 && (
-          <button type="button" className="detail__reseed" onClick={() => reseedFrom(book.id)}>
+          <button type="button" className="detail__reseed" onClick={() => reseedFrom(bookRef(book.id))}>
             Start a new map here
           </button>
         )}

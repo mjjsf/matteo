@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, bookForRef } from '@/state/store';
 import { SOFT_CAP } from '@/domain/graph';
 import { GraphOutline } from './GraphOutline';
 
@@ -16,8 +16,8 @@ export function ExplorePanel(): React.ReactElement {
   const fitAll = useStore((s) => s.fitAll);
   const dismissNotice = useStore((s) => s.dismissNotice);
 
-  const seedId = graph.nodes[0]?.bookId;
-  const seedBook = seedId ? bookById(seedId) : undefined;
+  const seedRef = graph.nodes[0]?.nodeRef;
+  const seedBook = seedRef ? bookForRef(seedRef) : undefined;
   const count = graph.nodes.length;
 
   useEffect(() => {

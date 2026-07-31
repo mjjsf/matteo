@@ -1,4 +1,6 @@
-/** The exploration graph: a seed book plus the generations grown from it.
+import type { NodeRef } from './nodeRef';
+
+/** The exploration graph: a seed plus the generations grown from it.
  *
  *  Pure logic — no three.js, no React — so the placement rules are testable on
  *  their own. */
@@ -33,7 +35,10 @@ export function tierOf(node: GraphNode): Tier {
 }
 
 export interface GraphNode {
-  bookId: string;
+  /** What this node refers to — a book, topic, tag or author. Was a bare book
+   *  id when the map held only books; see `nodeRef.ts` for why it is namespaced
+   *  rather than a discriminated union. */
+  nodeRef: NodeRef;
   /** Where the node is settling toward. `position` in the scene animates to it. */
   target: [number, number, number];
   /** Index into the node array, or null for the seed. */
@@ -65,7 +70,7 @@ export interface GraphEdge {
 export interface Graph {
   nodes: GraphNode[];
   edges: GraphEdge[];
-  /** bookId -> node index, so a book already on screen is never added twice. */
+  /** nodeRef -> node index, so a thing already on screen is never added twice. */
   indexOf: Map<string, number>;
 }
 
@@ -123,13 +128,13 @@ export function emptyGraph(): Graph {
   return { nodes: [], edges: [], indexOf: new Map() };
 }
 
-export function seedGraph(bookId: string): Graph {
+export function seedGraph(nodeRef: NodeRef): Graph {
   return {
     nodes: [
-      { bookId, target: [0, 0, 0], parentIndex: null, generation: 0, expanded: false, expandable: true },
+      { nodeRef, target: [0, 0, 0], parentIndex: null, generation: 0, expanded: false, expandable: true },
     ],
     edges: [],
-    indexOf: new Map([[bookId, 0]]),
+    indexOf: new Map([[nodeRef, 0]]),
   };
 }
 
@@ -445,7 +450,7 @@ export interface ExpansionResult {
 export function expandNode(
   graph: Graph,
   nodeIndex: number,
-  candidates: Array<{ bookId: string; weight: number }>,
+  candidates: Array<{ nodeRef: NodeRef; weight: number }>,
   maxChildren: number,
   maxNodes: number = MAX_NODES,
 ): ExpansionResult {
@@ -453,11 +458,11 @@ export function expandNode(
   if (!node) return { graph, added: [], reason: 'unknown-node' };
   if (node.expanded) return { graph, added: [], reason: 'already-expanded' };
 
-  const fresh: Array<{ bookId: string; weight: number }> = [];
+  const fresh: Array<{ nodeRef: NodeRef; weight: number }> = [];
   const linkToExisting: number[] = [];
   for (const c of candidates) {
     if (fresh.length >= maxChildren) break;
-    const existing = graph.indexOf.get(c.bookId);
+    const existing = graph.indexOf.get(c.nodeRef);
     if (existing !== undefined) {
       if (existing !== nodeIndex) linkToExisting.push(existing);
       continue;
@@ -510,14 +515,14 @@ export function expandNode(
   admitted.forEach((c, i) => {
     const index = nodes.length;
     nodes.push({
-      bookId: c.bookId,
+      nodeRef: c.nodeRef,
       target: settled[i] as [number, number, number],
       parentIndex: nodeIndex,
       generation: node.generation + 1,
       expanded: false,
       expandable: true,
     });
-    indexOf.set(c.bookId, index);
+    indexOf.set(c.nodeRef, index);
     edges.push({ from: nodeIndex, to: index, kind: 'growth' });
     added.push(index);
   });
@@ -606,7 +611,7 @@ export function collapseNode(graph: Graph, nodeIndex: number): CollapseResult {
   }
 
   return {
-    graph: { nodes, edges, indexOf: new Map(nodes.map((n, i) => [n.bookId, i])) },
+    graph: { nodes, edges, indexOf: new Map(nodes.map((n, i) => [n.nodeRef, i])) },
     removed: [...doomed],
     oldToNew,
   };
@@ -614,7 +619,7 @@ export function collapseNode(graph: Graph, nodeIndex: number): CollapseResult {
 
 export interface OutlineRow {
   slot: Slot;
-  bookId: string;
+  nodeRef: NodeRef;
   /** Tree depth, which equals `generation`. Exposed separately because the DOM
    *  mirror renders it as `aria-level`, which is 1-based. */
   depth: number;
@@ -644,7 +649,7 @@ export function outline(graph: Graph): OutlineRow[] {
   const walk = (index: number, depth: number): void => {
     const node = graph.nodes[index];
     if (!node) return;
-    rows.push({ slot: asSlot(index), bookId: node.bookId, depth });
+    rows.push({ slot: asSlot(index), nodeRef: node.nodeRef, depth });
     for (const child of childrenOf.get(index) ?? []) walk(child, depth + 1);
   };
 

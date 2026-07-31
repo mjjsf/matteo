@@ -202,10 +202,10 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
         commitBounds(count);
       }
 
-      const focusId = s.hoveredId ?? s.selectedId;
-      if (focusId !== lastFocus) {
-        lastFocus = focusId;
-        const slot = focusId ? (s.graph.indexOf.get(focusId) ?? -1) : -1;
+      const focusRef = s.hoveredRef ?? s.selectedRef;
+      if (focusRef !== lastFocus) {
+        lastFocus = focusRef;
+        const slot = focusRef ? (s.graph.indexOf.get(focusRef) ?? -1) : -1;
         material.uniforms.uFocusIndex!.value = slot;
       }
     };

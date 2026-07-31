@@ -3,6 +3,7 @@ import { useStore } from '@/state/store';
 import { MIN_QUERY_LENGTH } from '@/domain/search';
 import { formatYear } from './format';
 import { preloadMapStage } from './lazyMapStage';
+import { bookRef } from '@/domain/nodeRef';
 
 /** The zero state: one centred question, nothing else.
  *
@@ -66,7 +67,7 @@ export function Landing(): React.ReactElement {
           className="landing__form"
           onSubmit={(e) => {
             e.preventDefault();
-            if (chosen) seed(chosen.book.id);
+            if (chosen) seed(bookRef(chosen.book.id));
             else if (!ready && typing) useStore.setState({ seedWhenReady: true });
           }}
         >
@@ -127,7 +128,7 @@ export function Landing(): React.ReactElement {
                   aria-selected={i === active}
                   className={i === active ? 'suggestion suggestion--active' : 'suggestion'}
                   onMouseEnter={() => setActive(i)}
-                  onClick={() => seed(hit.book.id)}
+                  onClick={() => seed(bookRef(hit.book.id))}
                 >
                   <span className="suggestion__title">{hit.book.title}</span>
                   <span className="suggestion__meta">

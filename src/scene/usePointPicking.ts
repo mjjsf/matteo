@@ -3,6 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useStore } from '@/state/store';
 import { EDGE_LEN, asSlot } from '@/domain/graph';
+import type { NodeRef } from '@/domain/nodeRef';
 
 /** How long a rollover survives the cursor leaving its node.
  *
@@ -45,12 +46,12 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
     }, HOVER_GRACE_MS);
   }, []);
 
-  const hoverIn = useCallback((id: string | null): void => {
+  const hoverIn = useCallback((ref: NodeRef | null): void => {
     if (clearTimer.current !== null) {
       clearTimeout(clearTimer.current);
       clearTimer.current = null;
     }
-    useStore.getState().setHovered(id);
+    useStore.getState().setHovered(ref);
   }, []);
 
   useEffect(() => {
@@ -108,7 +109,7 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
     // conflating the two is what made the previous version hover the wrong book
     // the moment the scene stopped showing every book in corpus order.
     const node = state.graph.nodes[asSlot(index)];
-    if (node) hoverIn(node.bookId);
+    if (node) hoverIn(node.nodeRef);
     else hoverOut();
   });
 }
@@ -132,11 +133,11 @@ export function useClickToExpand(enabled: boolean): void {
       if (Date.now() - downAt.t > 600) return;
 
       const state = useStore.getState();
-      const id = state.hoveredId;
-      if (!id) return;
+      const ref = state.hoveredRef;
+      if (!ref) return;
 
-      const slot = state.graph.indexOf.get(id);
-      state.select(id);
+      const slot = state.graph.indexOf.get(ref);
+      state.select(ref);
       if (slot === undefined) return;
 
       const node = state.graph.nodes[slot];

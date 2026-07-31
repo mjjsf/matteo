@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, bookForRef } from '@/state/store';
 import { asSlot, outline, tierOf, TIER } from '@/domain/graph';
 import { formatYear } from './format';
+import { bookRef } from '@/domain/nodeRef';
 
 /** Deepest level that still gets its own indent step. */
 const MAX_INDENT_LEVELS = 6;
@@ -26,7 +27,7 @@ const TIER_NOTE: Record<number, string> = {
 export function GraphOutline(): React.ReactElement | null {
   const graph = useStore((s) => s.graph);
   const revision = useStore((s) => s.revision);
-  const selectedId = useStore((s) => s.selectedId);
+  const selectedRef = useStore((s) => s.selectedRef);
   const expand = useStore((s) => s.expand);
   const collapse = useStore((s) => s.collapse);
   const select = useStore((s) => s.select);
@@ -46,7 +47,7 @@ export function GraphOutline(): React.ReactElement | null {
           reader announces correctly with no custom keyboard model to learn. */}
       <ul>
         {rows.map((row) => {
-          const book = bookById(row.bookId);
+          const book = bookForRef(row.nodeRef);
           const node = graph.nodes[row.slot];
           if (!book || !node) return null;
           const tier = tierOf(node);
@@ -54,7 +55,7 @@ export function GraphOutline(): React.ReactElement | null {
           const canCollapse = node.expanded && node.generation > 0;
 
           return (
-            <li key={`${row.slot}-${row.bookId}`}>
+            <li key={`${row.slot}-${row.nodeRef}`}>
               <div
                 className="outline__row"
                 // Indentation stops growing after a few levels. Unbounded, a
@@ -68,14 +69,14 @@ export function GraphOutline(): React.ReactElement | null {
                 <button
                   type="button"
                   className={
-                    book.id === selectedId ? 'outline__book outline__book--selected' : 'outline__book'
+                    book && bookRef(book.id) === selectedRef ? 'outline__book outline__book--selected' : 'outline__book'
                   }
-                  aria-current={book.id === selectedId ? 'true' : undefined}
-                  onFocus={() => setHovered(book.id)}
+                  aria-current={book && bookRef(book.id) === selectedRef ? 'true' : undefined}
+                  onFocus={() => setHovered(bookRef(book.id))}
                   onBlur={() => setHovered(null)}
-                  onMouseEnter={() => setHovered(book.id)}
+                  onMouseEnter={() => setHovered(bookRef(book.id))}
                   onMouseLeave={() => setHovered(null)}
-                  onClick={() => select(book.id, { fly: true })}
+                  onClick={() => select(bookRef(book.id), { fly: true })}
                 >
                   <span className="outline__title">{book.title}</span>
                   <span className="outline__meta">

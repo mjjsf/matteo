@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import type { Book, SearchHit } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
 import { createSearchIndex, runSearch, type SearchIndex } from '@/domain/search';
+import { bookRef, idOf, isBook, type NodeRef } from '@/domain/nodeRef';
 import {
   MAX_NODES,
   SOFT_CAP,
@@ -82,14 +83,14 @@ export interface AppState {
    *  then these slots in order reproduces the identical graph. */
   path: Slot[];
 
-  hoveredId: string | null;
+  hoveredRef: NodeRef | null;
   /** The pointer is inside the rollover card, so the hover must not be cleared.
    *
    *  The card sits offset from the cursor, so reaching the buy link inside it
    *  crosses empty canvas. Without this the card vanished in that gap and could
    *  never be clicked. */
   hoverLocked: boolean;
-  selectedId: string | null;
+  selectedRef: NodeRef | null;
   flyTarget: FlyTarget | null;
 
   /** Install a corpus. Called by `loadCorpus` in the app and directly by tests,
@@ -97,11 +98,11 @@ export interface AppState {
   hydrate: (books: Book[], neighborsFile: NeighborsFile) => void;
   failToLoad: (message: string) => void;
   setQuery: (q: string) => void;
-  seed: (bookId: string) => void;
+  seed: (ref: NodeRef) => void;
   /** Seed from the current query's best match. Returns false if nothing matched. */
   seedFromQuery: () => boolean;
   /** Replay a seed plus an expansion path, for restoring a shared link. */
-  restore: (bookId: string, path: number[]) => void;
+  restore: (ref: NodeRef, path: number[]) => void;
   expand: (slot: Slot) => void;
   /** Remove everything grown from `slot`, leaving it re-growable.
    *
@@ -109,9 +110,9 @@ export interface AppState {
    *  it only ever got bigger until you started over. Surviving nodes keep their
    *  exact positions; see `collapseNode`. */
   collapse: (slot: Slot) => void;
-  setHovered: (id: string | null) => void;
+  setHovered: (ref: NodeRef | null) => void;
   lockHover: (locked: boolean) => void;
-  select: (id: string | null, opts?: { fly?: boolean }) => void;
+  select: (ref: NodeRef | null, opts?: { fly?: boolean }) => void;
   requestFly: (target: Omit<FlyTarget, 'nonce'> | null) => void;
   /** Frame the whole graph. Expansion deliberately flies to the node you just
    *  opened, which is right in the moment and leaves you a long way from
@@ -124,7 +125,7 @@ export interface AppState {
   reset: () => void;
   /** Start a fresh graph from a book already on screen — the escape hatch when
    *  the graph is full, and better than pruning branches someone chose to grow. */
-  reseedFrom: (bookId: string) => void;
+  reseedFrom: (ref: NodeRef) => void;
 }
 
 export function bookById(id: string): Book | undefined {
@@ -133,11 +134,16 @@ export function bookById(id: string): Book | undefined {
   return i === undefined ? undefined : loaded.books[i];
 }
 
+/** The book a ref points at, or undefined for a ref of another grain. */
+export function bookForRef(ref: NodeRef): Book | undefined {
+  return isBook(ref) ? bookById(idOf(ref)) : undefined;
+}
+
 /** Neighbours of a book, best match first, already filtered by the similarity
  *  floor at bake time. */
-export function neighborsOf(bookId: string): Array<{ bookId: string; weight: number }> {
-  if (!loaded) return [];
-  const i = loaded.corpusIndexOf.get(bookId);
+export function similarBooks(ref: NodeRef): Array<{ nodeRef: NodeRef; weight: number }> {
+  if (!loaded || !isBook(ref)) return [];
+  const i = loaded.corpusIndexOf.get(idOf(ref));
   if (i === undefined) return [];
   const raw = loaded.neighborsFile.neighbors[i] ?? [];
   const best = raw[0]?.[1] ?? 1;
@@ -146,7 +152,7 @@ export function neighborsOf(bookId: string): Array<{ bookId: string; weight: num
     if (!other) return [];
     // Normalise against this book's own best match so the radius cue is
     // meaningful even for books whose absolute scores are all modest.
-    return [{ bookId: other.id, weight: best > 0 ? score / best : 0.5 }];
+    return [{ nodeRef: bookRef(other.id), weight: best > 0 ? score / best : 0.5 }];
   });
 }
 
@@ -168,9 +174,9 @@ export const useStore = create<AppState>((set, get) => ({
   notice: null,
   path: [],
 
-  hoveredId: null,
+  hoveredRef: null,
   hoverLocked: false,
-  selectedId: null,
+  selectedRef: null,
   flyTarget: null,
 
   hydrate: (nextBooks, neighborsFile) => {
@@ -207,14 +213,13 @@ export const useStore = create<AppState>((set, get) => ({
     set({ query: q, suggestions: index ? runSearch(index, q).slice(0, MAX_SUGGESTIONS) : [] });
   },
 
-  seed: (bookId) => {
-    const book = bookById(bookId);
-    if (!book) return;
+  seed: (ref) => {
+    if (!bookForRef(ref)) return;
 
-    let graph = seedGraph(bookId);
+    let graph = seedGraph(ref);
     // Expand immediately: a lone point is not a map. The first generation is
     // what makes the idea legible in the first second.
-    const candidates = neighborsOf(bookId);
+    const candidates = similarBooks(ref);
     const result = expandNode(graph, 0, candidates, childrenAtDepth(0), MAX_NODES);
     graph = result.graph;
     if (graph.nodes[0]) graph.nodes[0].expandable = candidates.length > 0;
@@ -224,7 +229,7 @@ export const useStore = create<AppState>((set, get) => ({
       graph,
       path: [],
       revision: get().revision + 1,
-      selectedId: bookId,
+      selectedRef: ref,
       notice: null,
       suggestions: [],
     });
@@ -240,18 +245,18 @@ export const useStore = create<AppState>((set, get) => ({
     if (!loaded) return false;
     const best = get().suggestions[0] ?? runSearch(loaded.searchIndex, get().query)[0];
     if (!best) return false;
-    get().seed(best.book.id);
+    get().seed(bookRef(best.book.id));
     return true;
   },
 
-  restore: (bookId, path) => {
-    if (!bookById(bookId)) return;
-    get().seed(bookId);
+  restore: (ref, path) => {
+    if (!bookForRef(ref)) return;
+    get().seed(ref);
     // Replayed through the same action a click uses, so a restored graph is
     // built by exactly the code that built the original — no second placement
     // path that could drift out of agreement with the first.
     for (const slot of path) get().expand(asSlot(slot));
-    set({ selectedId: bookId });
+    set({ selectedRef: ref });
   },
 
   expand: (slot) => {
@@ -266,7 +271,7 @@ export const useStore = create<AppState>((set, get) => ({
       return;
     }
 
-    const candidates = neighborsOf(node.bookId);
+    const candidates = similarBooks(node.nodeRef);
     const result = expandNode(
       state.graph,
       slot,
@@ -297,7 +302,7 @@ export const useStore = create<AppState>((set, get) => ({
     const graph = result.graph;
     for (const index of result.added) {
       const child = graph.nodes[index];
-      if (child) child.expandable = neighborsOf(child.bookId).length > 0;
+      if (child) child.expandable = similarBooks(child.nodeRef).length > 0;
     }
 
     set({ graph, path: [...state.path, slot], revision: state.revision + 1, notice: null });
@@ -318,7 +323,7 @@ export const useStore = create<AppState>((set, get) => ({
     const { graph, removed, oldToNew } = collapseNode(state.graph, slot);
     if (removed.length === 0) return;
 
-    const gone = new Set(removed.map((i) => state.graph.nodes[i]?.bookId));
+    const gone = new Set(removed.map((i) => state.graph.nodes[i]?.nodeRef));
     // The path is a list of slots, and every slot after a removal shifts. Remap
     // rather than rebuild: a shared link has to keep replaying to this graph.
     // The collapsed node drops out too — it is no longer an expansion.
@@ -332,17 +337,17 @@ export const useStore = create<AppState>((set, get) => ({
       revision: state.revision + 1,
       notice: null,
       // Both are book ids, so they only need clearing when the book itself left.
-      selectedId: state.selectedId && gone.has(state.selectedId) ? null : state.selectedId,
-      hoveredId: state.hoveredId && gone.has(state.hoveredId) ? null : state.hoveredId,
+      selectedRef: state.selectedRef && gone.has(state.selectedRef) ? null : state.selectedRef,
+      hoveredRef: state.hoveredRef && gone.has(state.hoveredRef) ? null : state.hoveredRef,
     });
   },
 
-  setHovered: (id) => {
+  setHovered: (ref) => {
     // A locked hover ignores only the CLEAR. Moving to a different node still
     // works, so the pointer never gets trapped on a stale card.
-    if (id === null && get().hoverLocked) return;
-    if (get().hoveredId === id) return;
-    set({ hoveredId: id });
+    if (ref === null && get().hoverLocked) return;
+    if (get().hoveredRef === ref) return;
+    set({ hoveredRef: ref });
   },
 
   lockHover: (locked) => {
@@ -350,11 +355,11 @@ export const useStore = create<AppState>((set, get) => ({
     set({ hoverLocked: locked });
   },
 
-  select: (id, opts) => {
-    set({ selectedId: id });
-    if (!id || !opts?.fly) return;
+  select: (ref, opts) => {
+    set({ selectedRef: ref });
+    if (!ref || !opts?.fly) return;
     const state = get();
-    const slot = state.graph.indexOf.get(id);
+    const slot = state.graph.indexOf.get(ref);
     if (slot === undefined) return;
     const node = state.graph.nodes[slot];
     if (node) get().requestFly({ position: node.target, distance: 22 });
@@ -390,8 +395,8 @@ export const useStore = create<AppState>((set, get) => ({
       set({ notice: null });
       return true;
     }
-    if (state.selectedId) {
-      set({ selectedId: null });
+    if (state.selectedRef) {
+      set({ selectedRef: null });
       return true;
     }
     if (state.phase === 'active') {
@@ -410,30 +415,30 @@ export const useStore = create<AppState>((set, get) => ({
       query: '',
       suggestions: [],
       seedWhenReady: false,
-      selectedId: null,
-      hoveredId: null,
+      selectedRef: null,
+      hoveredRef: null,
       hoverLocked: false,
       notice: null,
       flyTarget: null,
     }),
 
-  reseedFrom: (bookId) => {
+  reseedFrom: (ref) => {
     get().reset();
-    get().seed(bookId);
+    get().seed(ref);
   },
 }));
 
 /** Slot of a book currently on screen, or null. */
-export function slotOf(state: AppState, bookId: string): Slot | null {
-  const i = state.graph.indexOf.get(bookId);
+export function slotOf(state: AppState, ref: NodeRef): Slot | null {
+  const i = state.graph.indexOf.get(ref);
   return i === undefined ? null : asSlot(i);
 }
 
 /** Settled position of a book currently on screen. Returns null for books that
  *  are in the corpus but not in the graph — the old version returned a position
  *  for any book, which under a subgraph would draw rings at phantom locations. */
-export function positionOf(state: AppState, bookId: string): [number, number, number] | null {
-  const slot = slotOf(state, bookId);
+export function positionOf(state: AppState, ref: NodeRef): [number, number, number] | null {
+  const slot = slotOf(state, ref);
   if (slot === null) return null;
   return state.graph.nodes[slot]?.target ?? null;
 }

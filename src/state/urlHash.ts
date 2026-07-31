@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, bookForRef } from '@/state/store';
+import { toRef, type NodeRef } from '@/domain/nodeRef';
 
 /** Hash routing, deliberately — GitHub Pages has no rewrite rules, so path
  *  routing would 404 on refresh or on a shared deep link.
@@ -13,9 +14,9 @@ import { useStore, bookById } from '@/state/store';
  *  expansions in order reproduces the identical graph — which is why the slots
  *  are worth the extra characters. */
 export interface HashState {
-  seedId: string | null;
+  seedRef: NodeRef | null;
   path: number[];
-  openId: string | null;
+  openRef: NodeRef | null;
 }
 
 export function parseHash(hash: string): HashState {
@@ -24,10 +25,12 @@ export function parseHash(hash: string): HashState {
   const params = new URLSearchParams(search);
 
   const parts = pathPart.split('/').filter(Boolean);
-  let seedId: string | null = null;
+  let seedRef: NodeRef | null = null;
   let via = '';
   for (let i = 0; i < parts.length - 1; i++) {
-    if (parts[i] === 'from') seedId = decodeURIComponent(parts[i + 1] as string);
+    // A bare id with no `kind:` prefix is a book — that is what every link
+    // shared before node kinds existed carries, and they must keep resolving.
+    if (parts[i] === 'from') seedRef = toRef(decodeURIComponent(parts[i + 1] as string));
     if (parts[i] === 'via') via = decodeURIComponent(parts[i + 1] as string);
   }
 
@@ -38,14 +41,15 @@ export function parseHash(hash: string): HashState {
     // would treat as an unknown slot and silently ignore anyway.
     .filter((n) => Number.isInteger(n) && n >= 0);
 
-  return { seedId, path, openId: params.get('open') };
+  const open = params.get('open');
+  return { seedRef, path, openRef: open ? toRef(open) : null };
 }
 
 export function serializeHash(state: HashState): string {
-  if (!state.seedId) return '';
-  let path = `/from/${encodeURIComponent(state.seedId)}`;
+  if (!state.seedRef) return '';
+  let path = `/from/${encodeURIComponent(state.seedRef)}`;
   if (state.path.length > 0) path += `/via/${state.path.join(',')}`;
-  const q = state.openId ? `?open=${encodeURIComponent(state.openId)}` : '';
+  const q = state.openRef ? `?open=${encodeURIComponent(state.openRef)}` : '';
   return `#${path}${q}`;
 }
 
@@ -62,22 +66,22 @@ export function useUrlSync(): void {
   useEffect(() => {
     if (status !== 'ready') return;
     const apply = (): void => {
-      const { seedId, path, openId } = parseHash(window.location.hash);
+      const { seedRef, path, openRef } = parseHash(window.location.hash);
       const state = useStore.getState();
 
       // Nothing to restore, or this is the hash we ourselves just wrote.
-      if (!seedId || !bookById(seedId)) return;
+      if (!seedRef || !bookForRef(seedRef)) return;
       const current = serializeHash({
-        seedId: state.graph.nodes[0]?.bookId ?? null,
+        seedRef: state.graph.nodes[0]?.nodeRef ?? null,
         path: state.path,
-        openId: state.selectedId,
+        openRef: state.selectedRef,
       });
       if (current === window.location.hash) return;
 
       applying.current = true;
       try {
-        state.restore(seedId, path);
-        if (openId && bookById(openId)) useStore.getState().select(openId);
+        state.restore(seedRef, path);
+        if (openRef && bookForRef(openRef)) useStore.getState().select(openRef);
       } finally {
         applying.current = false;
       }
@@ -94,16 +98,16 @@ export function useUrlSync(): void {
       if (applying.current) return;
 
       const hash = serializeHash({
-        seedId: s.graph.nodes[0]?.bookId ?? null,
+        seedRef: s.graph.nodes[0]?.nodeRef ?? null,
         path: s.path,
-        openId: s.selectedId,
+        openRef: s.selectedRef,
       });
       if (hash === lastWritten.current) return;
 
       // Seeding and expanding are navigations — Back should undo them. Merely
       // opening a book replaces, so browsing details does not fill the history
       // with entries nobody wants to step through.
-      const structural = s.graph.nodes[0]?.bookId !== prev.graph.nodes[0]?.bookId
+      const structural = s.graph.nodes[0]?.nodeRef !== prev.graph.nodes[0]?.nodeRef
         || s.path.length !== prev.path.length;
 
       lastWritten.current = hash;

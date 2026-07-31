@@ -4,6 +4,7 @@ import type { Book } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
 import corpusJson from '@/generated/corpus.json';
 import neighborsJson from '@/generated/neighbors.json';
+import { bookRef } from '@/domain/nodeRef';
 
 /** The landing input during the corpus download.
  *
@@ -94,7 +95,7 @@ describe('Landing before the corpus arrives', () => {
 
     expect(useStore.getState().phase).toBe('active');
     expect(useStore.getState().seedWhenReady).toBe(false);
-    expect(useStore.getState().graph.nodes[0]?.bookId).toBe('neuromancer');
+    expect(useStore.getState().graph.nodes[0]?.nodeRef).toBe(bookRef('neuromancer'));
   });
 
   it('does not seed on arrival when nothing was submitted', () => {
