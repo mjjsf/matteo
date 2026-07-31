@@ -54,7 +54,22 @@ export interface TaxonomyIndex {
 /** raw subject tag -> taxonomy node ids it classifies into. */
 export type TagMap = Record<string, string[]>;
 
+/** One row in the suggestion list.
+ *
+ *  Uniform across grains rather than a discriminated union, because every hit
+ *  genuinely has the same four things to show — what it is, what to call it, a
+ *  secondary line, and how well it matched — and a union would make the
+ *  rendering a switch over four nearly identical branches. `book` is present
+ *  only for books, for callers that need the record itself. */
 export interface SearchHit {
-  book: Book;
+  /** Namespaced ref — see `nodeRef.ts`. Typed as string here to keep this
+   *  module free of the branded type; callers narrow it. */
+  ref: string;
+  kind: 'book' | 'topic' | 'tag' | 'author';
+  /** Primary line: a title, a topic label, a tag, an author's name. */
+  label: string;
+  /** Secondary line: byline and year, or how many books are behind it. */
+  detail: string;
   score: number;
+  book?: Book;
 }

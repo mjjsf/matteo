@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import corpusJson from '@/generated/corpus.json';
 import type { Book } from './types';
+import graphIndexJson from '@/generated/graph-index.json';
+import type { GraphIndexFile } from './graphIndex';
 import { MIN_QUERY_LENGTH, createSearchIndex, matchTier, runSearch } from './search';
 
 /** Search ranking, against the real corpus.
@@ -10,11 +12,12 @@ import { MIN_QUERY_LENGTH, createSearchIndex, matchTier, runSearch } from './sea
  *  cannot reproduce that. */
 
 const books = corpusJson as unknown as Book[];
-const index = createSearchIndex(books);
+const index = createSearchIndex(books, graphIndexJson as unknown as GraphIndexFile);
 const titles = (q: string, n = 6): string[] =>
   runSearch(index, q)
     .slice(0, n)
-    .map((h) => h.book.title);
+    .filter((h) => h.kind === 'book')
+    .map((h) => h.label);
 
 describe('single letters', () => {
   it('searches at all', () => {
@@ -72,15 +75,62 @@ describe('prefix beats fuzz', () => {
 describe('authors', () => {
   it('finds a book by surname prefix', () => {
     const out = runSearch(index, 'le guin').slice(0, 6);
-    expect(out.some((h) => h.book.authors.some((a) => /Le Guin/i.test(a)))).toBe(true);
+    expect(out.some((h) => h.book?.authors.some((a) => /Le Guin/i.test(a)) || h.kind === 'author')).toBe(
+      true,
+    );
   });
 
   it('finds a book by forename prefix', () => {
     expect(
       runSearch(index, 'ursula')
         .slice(0, 6)
-        .some((h) => h.book.authors.some((a) => /Ursula/i.test(a))),
+        .some((h) => h.book?.authors.some((a) => /Ursula/i.test(a)) || /Ursula/i.test(h.label)),
     ).toBe(true);
+  });
+});
+
+describe('subjects and authors are searchable too', () => {
+  const kinds = (q: string, n = 8): Array<[string, string]> =>
+    runSearch(index, q)
+      .slice(0, n)
+      .map((h) => [h.kind, h.label] as [string, string]);
+
+  it('finds a subject by name', () => {
+    expect(kinds('exist')).toContainEqual(['topic', 'Existentialism']);
+  });
+
+  it('finds an author as an entity, not only as a route to their books', () => {
+    expect(kinds('le guin')[0]).toEqual(['author', 'Ursula K. Le Guin']);
+    expect(kinds('pratchett')[0]).toEqual(['author', 'Terry Pratchett']);
+  });
+
+  it('still lists titles for a plain letter rather than burying them', () => {
+    // Ranking subjects above books by book-count broke exactly this: every
+    // subject carries a double-digit count and every book carries none, so "d"
+    // returned six subjects and not one D title.
+    expect(kinds('d').filter(([k]) => k === 'book').length).toBeGreaterThan(3);
+  });
+
+  it('does not offer a topic and an identically-named tag as two answers', () => {
+    // `Cyberpunk` the topic and `cyberpunk` the tag cover the same ground; both
+    // spent two of six slots saying one word twice.
+    const labels = kinds('cyberpunk').map(([, l]) => l.toLowerCase());
+    expect(new Set(labels).size).toBe(labels.length);
+  });
+
+  it('never offers a subject with no books behind it', () => {
+    for (const q of ['a', 'e', 'philosophy', 'romance']) {
+      for (const hit of runSearch(index, q)) {
+        if (hit.kind === 'book') continue;
+        expect(hit.detail, `${hit.label} is empty`).not.toMatch(/^0 books/);
+      }
+    }
+  });
+
+  it('gives every hit a ref that names its kind', () => {
+    for (const hit of runSearch(index, 'philosophy')) {
+      expect(hit.ref.startsWith(`${hit.kind}:`)).toBe(true);
+    }
   });
 });
 
@@ -99,7 +149,7 @@ describe('edges', () => {
 
   it('never repeats a book across tiers', () => {
     for (const q of ['d', 'the', 'a', 'neuromancer', 'dune']) {
-      const ids = runSearch(index, q).map((h) => h.book.id);
+      const ids = runSearch(index, q).map((h) => h.ref);
       expect(new Set(ids).size, `"${q}" repeated a book`).toBe(ids.length);
     }
   });

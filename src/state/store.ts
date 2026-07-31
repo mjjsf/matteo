@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { Book, SearchHit } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
+import type { GraphIndexFile } from '@/domain/graphIndex';
 import { createSearchIndex, runSearch, type SearchIndex } from '@/domain/search';
 import { bookRef, idOf, isBook, type NodeRef } from '@/domain/nodeRef';
 import {
@@ -33,6 +34,7 @@ interface Loaded {
   /** Corpus row index. Distinct from a graph `Slot` — see the comment on `Slot`. */
   corpusIndexOf: Map<string, number>;
   searchIndex: SearchIndex;
+  graphIndex: GraphIndexFile;
 }
 
 let loaded: Loaded | null = null;
@@ -95,7 +97,7 @@ export interface AppState {
 
   /** Install a corpus. Called by `loadCorpus` in the app and directly by tests,
    *  so both paths exercise the same wiring. */
-  hydrate: (books: Book[], neighborsFile: NeighborsFile) => void;
+  hydrate: (books: Book[], neighborsFile: NeighborsFile, graphIndex: GraphIndexFile) => void;
   failToLoad: (message: string) => void;
   setQuery: (q: string) => void;
   seed: (ref: NodeRef) => void;
@@ -132,6 +134,11 @@ export function bookById(id: string): Book | undefined {
   if (!loaded) return undefined;
   const i = loaded.corpusIndexOf.get(id);
   return i === undefined ? undefined : loaded.books[i];
+}
+
+/** The baked subject/author index, or null before `hydrate`. */
+export function graphIndex(): GraphIndexFile | null {
+  return loaded?.graphIndex ?? null;
 }
 
 /** The book a ref points at, or undefined for a ref of another grain. */
@@ -179,12 +186,13 @@ export const useStore = create<AppState>((set, get) => ({
   selectedRef: null,
   flyTarget: null,
 
-  hydrate: (nextBooks, neighborsFile) => {
+  hydrate: (nextBooks, neighborsFile, nextGraphIndex) => {
     loaded = {
       books: nextBooks,
       neighborsFile,
       corpusIndexOf: new Map(nextBooks.map((b, i) => [b.id, i])),
-      searchIndex: createSearchIndex(nextBooks),
+      searchIndex: createSearchIndex(nextBooks, nextGraphIndex),
+      graphIndex: nextGraphIndex,
     };
     set({
       status: 'ready',
@@ -245,7 +253,7 @@ export const useStore = create<AppState>((set, get) => ({
     if (!loaded) return false;
     const best = get().suggestions[0] ?? runSearch(loaded.searchIndex, get().query)[0];
     if (!best) return false;
-    get().seed(bookRef(best.book.id));
+    get().seed(best.ref as NodeRef);
     return true;
   },
 

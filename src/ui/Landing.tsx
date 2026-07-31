@@ -1,9 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { useStore } from '@/state/store';
 import { MIN_QUERY_LENGTH } from '@/domain/search';
-import { formatYear } from './format';
 import { preloadMapStage } from './lazyMapStage';
-import { bookRef } from '@/domain/nodeRef';
+import type { NodeRef } from '@/domain/nodeRef';
+
+/** Badge text for a non-book suggestion. Topics and tags are both "subject" to
+ *  a reader — the grain distinction matters to the code, not to someone typing. */
+const KIND_LABEL: Record<string, string> = {
+  topic: 'subject',
+  tag: 'subject',
+  author: 'author',
+};
 
 /** The zero state: one centred question, nothing else.
  *
@@ -60,19 +67,19 @@ export function Landing(): React.ReactElement {
       <div className="landing__inner">
         <h1 className="landing__brand">
           matteo
-          <span className="landing__sub">Name a book. Get the ones near it.</span>
+          <span className="landing__sub">Name a book, author or subject. Get what is near it.</span>
         </h1>
 
         <form
           className="landing__form"
           onSubmit={(e) => {
             e.preventDefault();
-            if (chosen) seed(bookRef(chosen.book.id));
+            if (chosen) seed(chosen.ref as NodeRef);
             else if (!ready && typing) useStore.setState({ seedWhenReady: true });
           }}
         >
           <label className="visually-hidden" htmlFor="book-search">
-            Name a book to start from
+            Name a book, author or subject to start from
           </label>
           <input
             id="book-search"
@@ -82,7 +89,7 @@ export function Landing(): React.ReactElement {
             // Every example is a book that is actually in the collection.
             // Offering a title we do not have makes the first thing someone
             // types the one thing guaranteed to fail.
-            placeholder="Neuromancer, Beloved, Dune…"
+            placeholder="A book, an author, or a subject…"
             autoComplete="off"
             role="combobox"
             aria-expanded={suggestions.length > 0}
@@ -113,14 +120,14 @@ export function Landing(): React.ReactElement {
 
         {ready && typing && suggestions.length === 0 && (
           <p className="landing__hint" role="status">
-            No book in the collection matches that. Try an author, or a different title.
+            Nothing in the collection matches that. Try a title, an author, or a subject.
           </p>
         )}
 
         {suggestions.length > 0 && (
           <ul className="landing__suggestions" id="seed-suggestions" role="listbox">
             {suggestions.map((hit, i) => (
-              <li key={hit.book.id} role="none">
+              <li key={hit.ref} role="none">
                 <button
                   type="button"
                   id={`seed-option-${i}`}
@@ -128,12 +135,18 @@ export function Landing(): React.ReactElement {
                   aria-selected={i === active}
                   className={i === active ? 'suggestion suggestion--active' : 'suggestion'}
                   onMouseEnter={() => setActive(i)}
-                  onClick={() => seed(bookRef(hit.book.id))}
+                  onClick={() => seed(hit.ref as NodeRef)}
                 >
-                  <span className="suggestion__title">{hit.book.title}</span>
-                  <span className="suggestion__meta">
-                    {hit.book.authors.join(', ')} · {formatYear(hit.book.year)}
+                  <span className="suggestion__title">
+                    {hit.label}
+                    {/* A book needs no badge — it is the default and the
+                        overwhelming majority. Labelling the other three is what
+                        stops "Philosophy & Religion" reading as a book title. */}
+                    {hit.kind !== 'book' && (
+                      <span className="suggestion__kind">{KIND_LABEL[hit.kind]}</span>
+                    )}
                   </span>
+                  <span className="suggestion__meta">{hit.detail}</span>
                 </button>
               </li>
             ))}

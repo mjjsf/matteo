@@ -12,8 +12,8 @@ export function useCorpus(): void {
     let cancelled = false;
 
     fetchCorpusData()
-      .then(({ books, neighbors }) => {
-        if (!cancelled) useStore.getState().hydrate(books, neighbors);
+      .then(({ books, neighbors, graphIndex }) => {
+        if (!cancelled) useStore.getState().hydrate(books, neighbors, graphIndex);
       })
       .catch((error: unknown) => {
         if (cancelled) return;

@@ -3,8 +3,10 @@ import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { useStore } from '@/state/store';
 import type { Book } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
+import type { GraphIndexFile } from '@/domain/graphIndex';
 import corpusJson from '@/generated/corpus.json';
 import neighborsJson from '@/generated/neighbors.json';
+import graphIndexJson from '@/generated/graph-index.json';
 import { Landing } from './Landing';
 import { ExplorePanel } from './ExplorePanel';
 import { DetailPanel } from './DetailPanel';
@@ -26,30 +28,34 @@ afterEach(cleanup);
 beforeEach(() => {
   useStore
     .getState()
-    .hydrate(corpusJson as unknown as Book[], neighborsJson as unknown as NeighborsFile);
+    .hydrate(
+      corpusJson as unknown as Book[],
+      neighborsJson as unknown as NeighborsFile,
+      graphIndexJson as unknown as GraphIndexFile,
+    );
   useStore.getState().reset();
 });
 
 describe('Landing', () => {
   it('renders a labelled input and no map', () => {
     render(<Landing />);
-    expect(screen.getByLabelText(/name a book to start from/i)).toBeTruthy();
+    expect(screen.getByLabelText(/name a book, author or subject/i)).toBeTruthy();
     expect(useStore.getState().phase).toBe('empty');
     expect(useStore.getState().graph.nodes).toHaveLength(0);
   });
 
   it('typing offers suggestions', () => {
     render(<Landing />);
-    fireEvent.change(screen.getByLabelText(/name a book to start from/i), {
+    fireEvent.change(screen.getByLabelText(/name a book, author or subject/i), {
       target: { value: 'neuromancer' },
     });
-    expect(useStore.getState().suggestions[0]?.book.title).toBe('Neuromancer');
+    expect(useStore.getState().suggestions[0]?.label).toBe('Neuromancer');
     expect(screen.getByText('Neuromancer')).toBeTruthy();
   });
 
   it('choosing a suggestion seeds a graph that is already branched', () => {
     render(<Landing />);
-    fireEvent.change(screen.getByLabelText(/name a book to start from/i), {
+    fireEvent.change(screen.getByLabelText(/name a book, author or subject/i), {
       target: { value: 'neuromancer' },
     });
     fireEvent.click(screen.getByText('Neuromancer'));
@@ -64,10 +70,10 @@ describe('Landing', () => {
 
   it('says so when nothing matches instead of seeding something arbitrary', () => {
     render(<Landing />);
-    fireEvent.change(screen.getByLabelText(/name a book to start from/i), {
+    fireEvent.change(screen.getByLabelText(/name a book, author or subject/i), {
       target: { value: 'qqqqzzzz' },
     });
-    expect(screen.getByRole('status').textContent).toMatch(/no book/i);
+    expect(screen.getByRole('status').textContent).toMatch(/nothing in the collection matches/i);
     expect(useStore.getState().phase).toBe('empty');
   });
 });
