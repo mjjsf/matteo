@@ -58,6 +58,15 @@ export interface ThemeColors {
   expanded: string;
   /** Edges between a book and the books grown from it. */
   edge: string;
+  /** Subject and author nodes — the two non-book marks.
+   *
+   *  #3f3d39 measures 9.51:1 on the greige surface and, more importantly,
+   *  3.02:1 against `pointResting` #898781, which is the other grey on the
+   *  canvas. Two greys is the real legibility risk here, so they clear the 3:1
+   *  non-text threshold against EACH OTHER and not merely against the
+   *  background. Form carries the distinction as well — disc, ring, diamond —
+   *  so nothing rests on telling the greys apart. */
+  subject: string;
 }
 
 /** The single theme. Exported as `FIELD` rather than `LIGHT` because there is no
@@ -74,6 +83,7 @@ export const FIELD: ThemeColors = {
   expandable: '#2A7BF6',
   expanded: '#d16400',
   edge: 'rgba(11,11,11,0.24)',
+  subject: '#3f3d39',
 };
 
 /** The exact strings the palette test asserts against, so an edit that breaks

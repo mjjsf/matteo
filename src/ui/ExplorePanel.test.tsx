@@ -78,6 +78,15 @@ describe('Landing', () => {
   });
 });
 
+/** Growing from the outline is two steps now: open the axis menu, then pick an
+ *  axis. The menu is the point — with four grains there are several honest
+ *  answers to "what is next to this", so the reader chooses rather than the app
+ *  guessing. */
+const growFirst = (): void => {
+  fireEvent.click(screen.getAllByRole('button', { name: /ways to grow from/i })[0] as HTMLElement);
+  fireEvent.click(screen.getAllByRole('button', { name: /related titles/i })[0] as HTMLElement);
+};
+
 describe('GraphOutline', () => {
   beforeEach(() => {
     useStore.getState().seed(bookRef('neuromancer'));
@@ -95,18 +104,14 @@ describe('GraphOutline', () => {
   it('growing from the list adds the same nodes a click would', () => {
     render(<ExplorePanel />);
     const before = useStore.getState().graph.nodes.length;
-    const grow = screen.getAllByRole('button', { name: /show books similar to/i })[0];
-    expect(grow).toBeTruthy();
-    fireEvent.click(grow as HTMLElement);
+    growFirst();
     expect(useStore.getState().graph.nodes.length).toBeGreaterThan(before);
   });
 
   it('leaves already-placed positions untouched when a generation is added', () => {
     render(<ExplorePanel />);
     const before = useStore.getState().graph.nodes.map((n) => [...n.target]);
-    fireEvent.click(
-      screen.getAllByRole('button', { name: /show books similar to/i })[0] as HTMLElement,
-    );
+    growFirst();
     const after = useStore.getState().graph.nodes.slice(0, before.length).map((n) => n.target);
     // Bit-identical, not merely close: this is the property that stops the map
     // rearranging itself under someone mid-exploration.
@@ -119,18 +124,13 @@ describe('collapsing from the list', () => {
     useStore.getState().seed(bookRef('neuromancer'));
   });
 
-  const growFirst = (): void => {
-    fireEvent.click(
-      screen.getAllByRole('button', { name: /show books similar to/i })[0] as HTMLElement,
-    );
-  };
 
   it('offers a hide control only once a book has been grown', () => {
     render(<ExplorePanel />);
-    expect(screen.queryAllByRole('button', { name: /hide the books grown from/i })).toHaveLength(0);
+    expect(screen.queryAllByRole('button', { name: /hide what was grown from/i })).toHaveLength(0);
     growFirst();
     expect(
-      screen.getAllByRole('button', { name: /hide the books grown from/i }).length,
+      screen.getAllByRole('button', { name: /hide what was grown from/i }).length,
     ).toBeGreaterThan(0);
   });
 
@@ -142,7 +142,7 @@ describe('collapsing from the list', () => {
     expect(useStore.getState().graph.nodes.length).toBeGreaterThan(before.length);
 
     fireEvent.click(
-      screen.getAllByRole('button', { name: /hide the books grown from/i })[0] as HTMLElement,
+      screen.getAllByRole('button', { name: /hide what was grown from/i })[0] as HTMLElement,
     );
 
     const after = useStore.getState().graph.nodes;
@@ -155,7 +155,7 @@ describe('collapsing from the list', () => {
 
   it('never leaves the seed collapsible, so the map cannot vanish', () => {
     render(<ExplorePanel />);
-    const seedRow = screen.queryAllByRole('button', { name: /hide the books grown from neuroman/i });
+    const seedRow = screen.queryAllByRole('button', { name: /hide what was grown from neuroman/i });
     expect(seedRow).toHaveLength(0);
   });
 
@@ -163,12 +163,12 @@ describe('collapsing from the list', () => {
     render(<ExplorePanel />);
     growFirst();
     fireEvent.click(
-      screen.getAllByRole('button', { name: /hide the books grown from/i })[0] as HTMLElement,
+      screen.getAllByRole('button', { name: /hide what was grown from/i })[0] as HTMLElement,
     );
     // Every remaining slot in the path must still address a real node, or a
     // shared link would replay into a different graph.
     const { path, graph } = useStore.getState();
-    for (const slot of path) expect(graph.nodes[slot]).toBeDefined();
+    for (const step of path) expect(graph.nodes[step.slot]).toBeDefined();
   });
 });
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useStore, bookForRef } from '@/state/store';
+import { useStore, resolves } from '@/state/store';
 import { toRef, type NodeRef } from '@/domain/nodeRef';
 
 /** Hash routing, deliberately — GitHub Pages has no rewrite rules, so path
@@ -13,9 +13,20 @@ import { toRef, type NodeRef } from '@/domain/nodeRef';
  *  share. Placement is fully deterministic, so replaying the seed and then those
  *  expansions in order reproduces the identical graph — which is why the slots
  *  are worth the extra characters. */
+/** One replayed expansion: which slot, and which axis it was grown along.
+ *
+ *  The axis is essential now that a node can be branched several ways — without
+ *  it a shared link replays the same slots along the default axis and produces a
+ *  different map. A step with no axis means "related titles", which is exactly
+ *  what a bare slot meant in every link written before axes existed. */
+export interface HashStep {
+  slot: number;
+  axis?: string;
+}
+
 export interface HashState {
   seedRef: NodeRef | null;
-  path: number[];
+  path: HashStep[];
   openRef: NodeRef | null;
 }
 
@@ -36,10 +47,18 @@ export function parseHash(hash: string): HashState {
 
   const path = via
     .split(',')
-    .map((s) => Number.parseInt(s, 10))
+    .filter(Boolean)
+    .map((step) => {
+      // `3` and `3:tag%3Aexistentialism` are both valid; the first is the old
+      // shape and means the default axis.
+      const at = step.indexOf(':');
+      const slot = Number.parseInt(at === -1 ? step : step.slice(0, at), 10);
+      const axis = at === -1 ? undefined : decodeURIComponent(step.slice(at + 1));
+      return { slot, axis };
+    })
     // Non-numeric junk is dropped rather than replayed as NaN, which `expand`
     // would treat as an unknown slot and silently ignore anyway.
-    .filter((n) => Number.isInteger(n) && n >= 0);
+    .filter((s) => Number.isInteger(s.slot) && s.slot >= 0);
 
   const open = params.get('open');
   return { seedRef, path, openRef: open ? toRef(open) : null };
@@ -48,7 +67,11 @@ export function parseHash(hash: string): HashState {
 export function serializeHash(state: HashState): string {
   if (!state.seedRef) return '';
   let path = `/from/${encodeURIComponent(state.seedRef)}`;
-  if (state.path.length > 0) path += `/via/${state.path.join(',')}`;
+  if (state.path.length > 0) {
+    path += `/via/${state.path
+      .map((s) => (s.axis ? `${s.slot}:${encodeURIComponent(s.axis)}` : String(s.slot)))
+      .join(',')}`;
+  }
   const q = state.openRef ? `?open=${encodeURIComponent(state.openRef)}` : '';
   return `#${path}${q}`;
 }
@@ -70,7 +93,7 @@ export function useUrlSync(): void {
       const state = useStore.getState();
 
       // Nothing to restore, or this is the hash we ourselves just wrote.
-      if (!seedRef || !bookForRef(seedRef)) return;
+      if (!seedRef || !resolves(seedRef)) return;
       const current = serializeHash({
         seedRef: state.graph.nodes[0]?.nodeRef ?? null,
         path: state.path,
@@ -81,7 +104,7 @@ export function useUrlSync(): void {
       applying.current = true;
       try {
         state.restore(seedRef, path);
-        if (openRef && bookForRef(openRef)) useStore.getState().select(openRef);
+        if (openRef && resolves(openRef)) useStore.getState().select(openRef);
       } finally {
         applying.current = false;
       }

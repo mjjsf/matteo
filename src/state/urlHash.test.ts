@@ -28,7 +28,7 @@ describe('parseHash', () => {
   it('parses an expansion path', () => {
     expect(parseHash('#/from/dune/via/3,7,12')).toEqual({
       seedRef: bookRef('dune'),
-      path: [3, 7, 12],
+      path: [{ slot: 3 }, { slot: 7 }, { slot: 12 }],
       openRef: null,
     });
   });
@@ -41,7 +41,7 @@ describe('parseHash', () => {
   it('drops junk in the expansion path rather than replaying NaN', () => {
     // A hand-edited or truncated URL must degrade to a shorter valid walk, not
     // to a graph built from garbage slot numbers.
-    expect(parseHash('#/from/dune/via/2,oops,-4,9').path).toEqual([2, 9]);
+    expect(parseHash('#/from/dune/via/2,oops,-4,9').path).toEqual([{ slot: 2, axis: undefined }, { slot: 9, axis: undefined }]);
   });
 
   it('rejects an unknown kind rather than inventing one', () => {
@@ -61,14 +61,14 @@ describe('serializeHash', () => {
     // No seed means no map, and a path or an open book without one is not a
     // state that can be restored.
     expect(serializeHash({ seedRef: null, path: [], openRef: null })).toBe('');
-    expect(serializeHash({ seedRef: null, path: [1, 2], openRef: bookRef('dune') })).toBe('');
+    expect(serializeHash({ seedRef: null, path: [{ slot: 1 }, { slot: 2 }], openRef: bookRef('dune') })).toBe('');
   });
 
   it('encodes each shape', () => {
     expect(serializeHash({ seedRef: bookRef('dune'), path: [], openRef: null })).toBe(
       '#/from/book%3Adune',
     );
-    expect(serializeHash({ seedRef: bookRef('dune'), path: [3, 7], openRef: null })).toBe(
+    expect(serializeHash({ seedRef: bookRef('dune'), path: [{ slot: 3 }, { slot: 7 }], openRef: null })).toBe(
       '#/from/book%3Adune/via/3,7',
     );
     expect(serializeHash({ seedRef: tagRef('existentialism'), path: [], openRef: null })).toBe(
@@ -76,13 +76,30 @@ describe('serializeHash', () => {
     );
   });
 
+  it('carries the branch axis, so a shared link replays the right branch', () => {
+    // Without the axis a link replays the same slots along the default axis and
+    // produces a DIFFERENT map — same shape, wrong content.
+    const withAxis = {
+      seedRef: bookRef('dune'),
+      path: [{ slot: 3, axis: 'tag:existentialism' }, { slot: 7, axis: 'books' }],
+      openRef: null,
+    };
+    const hash = serializeHash(withAxis);
+    expect(hash).toContain('3:tag%3Aexistentialism');
+    expect(parseHash(hash)).toEqual(withAxis);
+  });
+
+  it('reads a bare slot as the default axis, as it meant before axes existed', () => {
+    expect(parseHash('#/from/dune/via/3').path).toEqual([{ slot: 3, axis: undefined }]);
+  });
+
   it('round-trips every shape and every kind', () => {
     const cases = [
       { seedRef: bookRef('dune'), path: [], openRef: null },
-      { seedRef: bookRef('dune'), path: [3, 7, 12], openRef: null },
-      { seedRef: bookRef('dune'), path: [1], openRef: bookRef('neuromancer') },
+      { seedRef: bookRef('dune'), path: [{ slot: 3 }, { slot: 7 }, { slot: 12 }], openRef: null },
+      { seedRef: bookRef('dune'), path: [{ slot: 1 }], openRef: bookRef('neuromancer') },
       { seedRef: bookRef('a b'), path: [], openRef: bookRef('c d') },
-      { seedRef: topicRef('philosophy-western'), path: [2], openRef: tagRef('existentialism') },
+      { seedRef: topicRef('philosophy-western'), path: [{ slot: 2 }], openRef: tagRef('existentialism') },
       { seedRef: authorRef('ursula-k-le-guin'), path: [], openRef: null },
     ];
     for (const c of cases) {

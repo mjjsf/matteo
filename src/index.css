@@ -21,6 +21,7 @@
      text on them clears 4.5:1 by a wide margin. */
   --control: #e6e4de;
   --control-hover: #dbd8d1;
+  --subject: #3f3d39;
   --expandable: #2a7bf6;
   --expanded: #d16400;
   --focus-ring: #2a7bf6;
@@ -380,6 +381,57 @@ a:focus-visible {
   background: var(--control-hover);
 }
 
+.branch {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 2px 0 8px 28px;
+  padding: 6px;
+  background: var(--control);
+  border-radius: 10px;
+}
+
+.branch--compact {
+  margin: 8px 0 0;
+  background: none;
+  padding: 0;
+}
+
+.branch__axis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 0.76rem;
+  text-align: left;
+  color: var(--text-primary);
+  background: var(--panel);
+  border: 1px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.branch__axis:hover {
+  border-color: var(--expandable);
+}
+
+/* The default axis reads as the primary action: one gesture staying fast is
+   what stops the chooser taxing every single expansion. */
+.branch__axis--primary {
+  background: var(--expandable);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.branch__count {
+  font-size: 0.68rem;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+
 /* --- detail --- */
 
 .detail__title {
@@ -421,6 +473,25 @@ a:focus-visible {
   gap: 5px;
   margin: 0;
   padding: 0;
+}
+
+.chips li { display: contents; }
+
+.chip--action {
+  font: inherit;
+  background: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.chip--action:hover:not(:disabled) {
+  border-color: var(--expandable);
+  color: var(--expandable);
+}
+
+.chip--action:disabled {
+  cursor: default;
+  opacity: 0.55;
 }
 
 .chip {
@@ -603,6 +674,24 @@ a:focus-visible {
   border-radius: 10px;
   padding: 10px 12px;
   opacity: 0.9;
+}
+
+.legend__shapes {
+  /* A second row, separated: shape and colour are independent axes, and running
+     them together as one list reads as six alternatives rather than 4 x 3. */
+  margin-top: 6px !important;
+  padding-top: 6px;
+  border-top: 1px solid var(--hairline);
+}
+
+.swatch--ring {
+  background: none !important;
+  border: 2px solid var(--subject);
+}
+
+.swatch--diamond {
+  border-radius: 2px !important;
+  transform: rotate(45deg) scale(0.82);
 }
 
 .legend ul {

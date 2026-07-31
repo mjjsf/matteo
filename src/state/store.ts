@@ -3,7 +3,8 @@ import type { Book, SearchHit } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
 import type { GraphIndexFile } from '@/domain/graphIndex';
 import { createSearchIndex, runSearch, type SearchIndex } from '@/domain/search';
-import { bookRef, idOf, isBook, type NodeRef } from '@/domain/nodeRef';
+import { bookRef, idOf, isBook, kindOf, type NodeKind, type NodeRef } from '@/domain/nodeRef';
+import { DEFAULT_AXIS, axesFor, axisNote, candidatesFor, type BranchAxis } from '@/domain/branch';
 import {
   MAX_NODES,
   SOFT_CAP,
@@ -83,7 +84,7 @@ export interface AppState {
    *  This is what makes a shared link restore an actual exploration rather than
    *  just a starting book. Placement is deterministic, so replaying the seed and
    *  then these slots in order reproduces the identical graph. */
-  path: Slot[];
+  path: Array<{ slot: Slot; axis: string }>;
 
   hoveredRef: NodeRef | null;
   /** The pointer is inside the rollover card, so the hover must not be cleared.
@@ -104,8 +105,13 @@ export interface AppState {
   /** Seed from the current query's best match. Returns false if nothing matched. */
   seedFromQuery: () => boolean;
   /** Replay a seed plus an expansion path, for restoring a shared link. */
-  restore: (ref: NodeRef, path: number[]) => void;
-  expand: (slot: Slot) => void;
+  restore: (ref: NodeRef, path: Array<{ slot: number; axis?: string }>) => void;
+  /** Grow from `slot` along `axis`. Omitting the axis takes the default —
+   *  related titles — which is what keeps one click growing a book branch. */
+  expand: (slot: Slot, axis?: string) => void;
+  /** The ways this node can be branched, each with a count. Empty axes are
+   *  never returned; an option that resolves to nothing reads as a promise. */
+  axesFor: (slot: Slot) => BranchAxis[];
   /** Remove everything grown from `slot`, leaving it re-growable.
    *
    *  The counterpart to `expand`, so a map can shrink as well as grow — until now
@@ -134,6 +140,75 @@ export function bookById(id: string): Book | undefined {
   if (!loaded) return undefined;
   const i = loaded.corpusIndexOf.get(id);
   return i === undefined ? undefined : loaded.books[i];
+}
+
+/** Whether a ref names something that actually exists.
+ *
+ *  Guards seeding and URL restore against a hand-edited or stale link — a ref
+ *  for a book that was renamed, or a tag that a re-bake dropped, must produce
+ *  nothing rather than an empty map with a label on it. */
+export function resolves(ref: NodeRef): boolean {
+  const gi = loaded?.graphIndex;
+  const id = idOf(ref);
+  switch (kindOf(ref)) {
+    case 'book':
+      return bookById(id) !== undefined;
+    case 'topic':
+      return gi ? gi.topics[id] !== undefined : false;
+    case 'tag':
+      return gi ? (gi.booksForTag[id]?.length ?? 0) > 0 : false;
+    case 'author':
+      return gi ? gi.authorNames[id] !== undefined : false;
+    default:
+      return false;
+  }
+}
+
+/** What to call a node, whatever grain it is.
+ *
+ *  One resolver so every surface — the outline, the labels, the rollover card,
+ *  the detail panel — says the same thing about the same node. Four
+ *  near-identical switches was the alternative, and they would have drifted. */
+export interface RefDescription {
+  kind: NodeKind;
+  label: string;
+  detail: string;
+}
+
+export function describeRef(ref: NodeRef): RefDescription | null {
+  const gi = loaded?.graphIndex;
+  const id = idOf(ref);
+  const kind = kindOf(ref);
+  const books = (n: number): string => `${n} book${n === 1 ? '' : 's'}`;
+
+  switch (kind) {
+    case 'book': {
+      const book = bookById(id);
+      if (!book) return null;
+      return {
+        kind,
+        label: book.title,
+        detail: `${book.authors.join(', ')} · ${book.year < 0 ? `${-book.year} BCE` : book.year}`,
+      };
+    }
+    case 'topic': {
+      const topic = gi?.topics[id];
+      if (!topic) return null;
+      return { kind, label: topic.label, detail: `subject · ${books(gi?.booksForTopic[id]?.length ?? 0)}` };
+    }
+    case 'tag': {
+      const list = gi?.booksForTag[id];
+      if (!list) return null;
+      return { kind, label: id.replace(/-/g, ' '), detail: `subject · ${books(list.length)}` };
+    }
+    case 'author': {
+      const name = gi?.authorNames[id];
+      if (!name) return null;
+      return { kind, label: name, detail: `author · ${books(gi?.booksForAuthor[id]?.length ?? 0)}` };
+    }
+    default:
+      return null;
+  }
 }
 
 /** The baked subject/author index, or null before `hydrate`. */
@@ -222,15 +297,37 @@ export const useStore = create<AppState>((set, get) => ({
   },
 
   seed: (ref) => {
-    if (!bookForRef(ref)) return;
+    if (!resolves(ref)) return;
 
     let graph = seedGraph(ref);
     // Expand immediately: a lone point is not a map. The first generation is
-    // what makes the idea legible in the first second.
-    const candidates = similarBooks(ref);
-    const result = expandNode(graph, 0, candidates, childrenAtDepth(0), MAX_NODES);
+    // what makes the idea legible in the first second. Which axis that is
+    // depends on the grain — a book leads with related titles, a subject with
+    // whatever it offers first — so the seed's own axis list decides.
+    const gi = loaded?.graphIndex;
+    const first = gi ? (axesFor(ref, gi, bookForRef(ref), similarBooks)[0]?.id ?? DEFAULT_AXIS) : DEFAULT_AXIS;
+    const candidates = gi ? candidatesFor(ref, first, gi, similarBooks) : [];
+    const result = expandNode(
+      graph,
+      0,
+      candidates,
+      childrenAtDepth(0),
+      MAX_NODES,
+      axisNote(ref, first),
+    );
     graph = result.graph;
-    if (graph.nodes[0]) graph.nodes[0].expandable = candidates.length > 0;
+    // Same reason as in `expand`: `set` has not run yet.
+    if (graph.nodes[0] && gi) {
+      graph.nodes[0].expandable =
+        axesFor(ref, gi, bookForRef(ref), similarBooks).length > 0;
+    }
+    for (const index of result.added) {
+      const child = graph.nodes[index];
+      if (child && gi) {
+        child.expandable =
+          axesFor(child.nodeRef, gi, bookForRef(child.nodeRef), similarBooks).length > 0;
+      }
+    }
 
     set({
       phase: 'active',
@@ -258,16 +355,24 @@ export const useStore = create<AppState>((set, get) => ({
   },
 
   restore: (ref, path) => {
-    if (!bookForRef(ref)) return;
+    if (!resolves(ref)) return;
     get().seed(ref);
     // Replayed through the same action a click uses, so a restored graph is
     // built by exactly the code that built the original — no second placement
     // path that could drift out of agreement with the first.
-    for (const slot of path) get().expand(asSlot(slot));
+    for (const step of path) get().expand(asSlot(step.slot), step.axis ?? DEFAULT_AXIS);
     set({ selectedRef: ref });
   },
 
-  expand: (slot) => {
+  axesFor: (slot) => {
+    const state = get();
+    const node = state.graph.nodes[slot];
+    const gi = loaded?.graphIndex;
+    if (!node || !gi) return [];
+    return axesFor(node.nodeRef, gi, bookForRef(node.nodeRef), similarBooks);
+  },
+
+  expand: (slot, axis = DEFAULT_AXIS) => {
     const state = get();
     const node = state.graph.nodes[slot];
     if (!node) return;
@@ -279,13 +384,15 @@ export const useStore = create<AppState>((set, get) => ({
       return;
     }
 
-    const candidates = similarBooks(node.nodeRef);
+    const gi = loaded?.graphIndex;
+    const candidates = gi ? candidatesFor(node.nodeRef, axis, gi, similarBooks) : [];
     const result = expandNode(
       state.graph,
       slot,
       candidates,
       childrenAtDepth(node.generation),
       SOFT_CAP,
+      axisNote(node.nodeRef, axis),
     );
 
     if (result.added.length === 0) {
@@ -310,10 +417,22 @@ export const useStore = create<AppState>((set, get) => ({
     const graph = result.graph;
     for (const index of result.added) {
       const child = graph.nodes[index];
-      if (child) child.expandable = similarBooks(child.nodeRef).length > 0;
+      // Computed from the PURE function against the graph in hand, not through
+      // `get().axesFor` — this runs before `set`, so the store still holds the
+      // previous graph and every new node would come back with no axes and be
+      // marked a leaf the moment it was born.
+      if (child && gi) {
+        child.expandable =
+          axesFor(child.nodeRef, gi, bookForRef(child.nodeRef), similarBooks).length > 0;
+      }
     }
 
-    set({ graph, path: [...state.path, slot], revision: state.revision + 1, notice: null });
+    set({
+      graph,
+      path: [...state.path, { slot, axis }],
+      revision: state.revision + 1,
+      notice: null,
+    });
     // Framed on the node that was just expanded, not on the whole graph: the new
     // children are what the click asked for, and pulling back to fit everything
     // would shrink them away with each generation.
@@ -336,8 +455,8 @@ export const useStore = create<AppState>((set, get) => ({
     // rather than rebuild: a shared link has to keep replaying to this graph.
     // The collapsed node drops out too — it is no longer an expansion.
     const path = state.path
-      .filter((s) => s !== slot && oldToNew.has(s))
-      .map((s) => asSlot(oldToNew.get(s) as number));
+      .filter((s) => s.slot !== slot && oldToNew.has(s.slot))
+      .map((s) => ({ slot: asSlot(oldToNew.get(s.slot) as number), axis: s.axis }));
 
     set({
       graph,

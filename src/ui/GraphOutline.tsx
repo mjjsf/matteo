@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
-import { useStore, bookForRef } from '@/state/store';
+import { useMemo, useState } from 'react';
+import { useStore, describeRef } from '@/state/store';
 import { asSlot, outline, tierOf, TIER } from '@/domain/graph';
-import { formatYear } from './format';
-import { bookRef } from '@/domain/nodeRef';
+import { BranchMenu } from './BranchMenu';
+
 
 /** Deepest level that still gets its own indent step. */
 const MAX_INDENT_LEVELS = 6;
@@ -28,10 +28,10 @@ export function GraphOutline(): React.ReactElement | null {
   const graph = useStore((s) => s.graph);
   const revision = useStore((s) => s.revision);
   const selectedRef = useStore((s) => s.selectedRef);
-  const expand = useStore((s) => s.expand);
   const collapse = useStore((s) => s.collapse);
   const select = useStore((s) => s.select);
   const setHovered = useStore((s) => s.setHovered);
+  const [openMenu, setOpenMenu] = useState<number | null>(null);
 
   // Keyed on `revision` because `expand` mutates node flags in place for the
   // no-op cases, so the node array alone is not a reliable change signal.
@@ -47,9 +47,9 @@ export function GraphOutline(): React.ReactElement | null {
           reader announces correctly with no custom keyboard model to learn. */}
       <ul>
         {rows.map((row) => {
-          const book = bookForRef(row.nodeRef);
+          const about = describeRef(row.nodeRef);
           const node = graph.nodes[row.slot];
-          if (!book || !node) return null;
+          if (!about || !node) return null;
           const tier = tierOf(node);
           const canGrow = !node.expanded && node.expandable;
           const canCollapse = node.expanded && node.generation > 0;
@@ -69,19 +69,17 @@ export function GraphOutline(): React.ReactElement | null {
                 <button
                   type="button"
                   className={
-                    book && bookRef(book.id) === selectedRef ? 'outline__book outline__book--selected' : 'outline__book'
+                    row.nodeRef === selectedRef ? 'outline__book outline__book--selected' : 'outline__book'
                   }
-                  aria-current={book && bookRef(book.id) === selectedRef ? 'true' : undefined}
-                  onFocus={() => setHovered(bookRef(book.id))}
+                  aria-current={row.nodeRef === selectedRef ? 'true' : undefined}
+                  onFocus={() => setHovered(row.nodeRef)}
                   onBlur={() => setHovered(null)}
-                  onMouseEnter={() => setHovered(bookRef(book.id))}
+                  onMouseEnter={() => setHovered(row.nodeRef)}
                   onMouseLeave={() => setHovered(null)}
-                  onClick={() => select(bookRef(book.id), { fly: true })}
+                  onClick={() => select(row.nodeRef, { fly: true })}
                 >
-                  <span className="outline__title">{book.title}</span>
-                  <span className="outline__meta">
-                    {book.authors.join(', ')} · {formatYear(book.year)}
-                  </span>
+                  <span className="outline__title">{about.label}</span>
+                  <span className="outline__meta">{about.detail}</span>
                   <span className="visually-hidden">
                     {row.depth === 0 ? 'starting book' : `${row.depth} steps out`}, {TIER_NOTE[tier]}
                   </span>
@@ -91,10 +89,11 @@ export function GraphOutline(): React.ReactElement | null {
                   <button
                     type="button"
                     className="outline__grow"
-                    // Named for the book rather than "expand", so a screen
+                    // Named for the thing rather than "expand", so a screen
                     // reader announces which of thirty rows this button acts on.
-                    aria-label={`Show books similar to ${book.title}`}
-                    onClick={() => expand(asSlot(row.slot))}
+                    aria-label={`Ways to grow from ${about.label}`}
+                    aria-expanded={openMenu === row.slot}
+                    onClick={() => setOpenMenu(openMenu === row.slot ? null : row.slot)}
                   >
                     +
                   </button>
@@ -107,13 +106,20 @@ export function GraphOutline(): React.ReactElement | null {
                   <button
                     type="button"
                     className="outline__grow"
-                    aria-label={`Hide the books grown from ${book.title}`}
+                    aria-label={`Hide what was grown from ${about.label}`}
                     onClick={() => collapse(asSlot(row.slot))}
                   >
                     −
                   </button>
                 )}
               </div>
+
+              {/* The same menu the rollover card shows. Rendered in the flow
+                  rather than as a popover so it is reachable by Tab in the order
+                  a reader would expect. */}
+              {openMenu === row.slot && canGrow && (
+                <BranchMenu slot={asSlot(row.slot)} onPick={() => setOpenMenu(null)} />
+              )}
             </li>
           );
         })}

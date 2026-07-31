@@ -65,6 +65,11 @@ export interface GraphEdge {
   from: number;
   to: number;
   kind: EdgeKind;
+  /** Which branch axis grew this edge — "similar", "by author", "by subject".
+   *  Recorded because with several ways to branch, an undifferentiated edge can
+   *  no longer say WHY two things are adjacent, and that is most of what a
+   *  mixed branch means. */
+  note?: string;
 }
 
 export interface Graph {
@@ -453,6 +458,7 @@ export function expandNode(
   candidates: Array<{ nodeRef: NodeRef; weight: number }>,
   maxChildren: number,
   maxNodes: number = MAX_NODES,
+  note?: string,
 ): ExpansionResult {
   const node = graph.nodes[nodeIndex];
   if (!node) return { graph, added: [], reason: 'unknown-node' };
@@ -523,7 +529,7 @@ export function expandNode(
       expandable: true,
     });
     indexOf.set(c.nodeRef, index);
-    edges.push({ from: nodeIndex, to: index, kind: 'growth' });
+    edges.push({ from: nodeIndex, to: index, kind: 'growth', ...(note ? { note } : {}) });
     added.push(index);
   });
 
