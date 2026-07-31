@@ -306,7 +306,7 @@ export const useStore = create<AppState>((set, get) => ({
     // whatever it offers first — so the seed's own axis list decides.
     const gi = loaded?.graphIndex;
     const first = gi ? (axesFor(ref, gi, bookForRef(ref), similarBooks)[0]?.id ?? DEFAULT_AXIS) : DEFAULT_AXIS;
-    const candidates = gi ? candidatesFor(ref, first, gi, similarBooks) : [];
+    const candidates = gi ? candidatesFor(ref, first, gi, similarBooks, bookForRef(ref)) : [];
     const result = expandNode(
       graph,
       0,
@@ -385,7 +385,9 @@ export const useStore = create<AppState>((set, get) => ({
     }
 
     const gi = loaded?.graphIndex;
-    const candidates = gi ? candidatesFor(node.nodeRef, axis, gi, similarBooks) : [];
+    const candidates = gi
+      ? candidatesFor(node.nodeRef, axis, gi, similarBooks, bookForRef(node.nodeRef))
+      : [];
     const result = expandNode(
       state.graph,
       slot,

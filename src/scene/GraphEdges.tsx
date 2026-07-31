@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { useStore } from '@/state/store';
 import { MAX_NODES, type EdgeKind } from '@/domain/graph';
 import type { ThemeColors } from '@/domain/palette';
+import type { TransitionState } from './transition';
 
 const MAX_EDGES = MAX_NODES * 2;
 
@@ -22,9 +23,15 @@ const MAX_EDGES = MAX_NODES * 2;
 export function GraphEdges({
   theme,
   pointsRef,
+  transition,
 }: {
   theme: ThemeColors;
   pointsRef: React.MutableRefObject<THREE.Points | null>;
+  /** Written by `GraphPoints` when the graph changes. Edges into a collapsing
+   *  subtree are not in the store's edge list any more — it holds the graph as
+   *  it now is — so without these the lines would snap out of existence while
+   *  the nodes they connect are still visibly retreating. */
+  transition: React.MutableRefObject<TransitionState>;
 }): React.ReactElement {
   const growthSlots = useRef<Array<[number, number]>>([]);
   const crossSlots = useRef<Array<[number, number]>>([]);
@@ -88,34 +95,43 @@ export function GraphEdges({
       lastRevision = s.revision;
       growthSlots.current = collect(s, 'growth');
       crossSlots.current = collect(s, 'cross');
-      growthGeo.setDrawRange(0, growthSlots.current.length * 2);
-      crossGeo.setDrawRange(0, crossSlots.current.length * 2);
+      // The draw range is set in the frame loop instead, which is the only place
+      // that knows how many ghost edges are still travelling alongside these.
     };
     apply(useStore.getState());
     return useStore.subscribe(apply);
-  }, [growthGeo, crossGeo]);
+  }, []);
 
   useFrame(() => {
     const points = pointsRef.current;
     if (!points) return;
     const src = points.geometry.getAttribute('position').array as Float32Array;
 
-    const write = (geo: THREE.BufferGeometry, edges: Array<[number, number]>): void => {
-      if (edges.length === 0) return;
+    const write = (
+      geo: THREE.BufferGeometry,
+      live: Array<[number, number]>,
+      ghosts: Array<[number, number]>,
+    ): void => {
       const attr = geo.getAttribute('position') as THREE.BufferAttribute;
       const dst = attr.array as Float32Array;
-      for (let e = 0; e < edges.length; e++) {
-        const [a, b] = edges[e] as [number, number];
+      // Appended after the live edges rather than tracked separately: the ghost
+      // slots hold real positions in the same buffer, so one pass draws both and
+      // the draw range is the only thing that has to know the difference.
+      const count = Math.min(live.length + ghosts.length, MAX_EDGES);
+      for (let e = 0; e < count; e++) {
+        const [a, b] = (e < live.length ? live[e] : ghosts[e - live.length]) as [number, number];
         for (let d = 0; d < 3; d++) {
           dst[e * 6 + d] = src[a * 3 + d] as number;
           dst[e * 6 + 3 + d] = src[b * 3 + d] as number;
         }
       }
+      geo.setDrawRange(0, count * 2);
       attr.needsUpdate = true;
     };
 
-    write(growthGeo, growthSlots.current);
-    write(crossGeo, crossSlots.current);
+    const ghosts = transition.current.ghostEdges;
+    write(growthGeo, growthSlots.current, ghosts.growth);
+    write(crossGeo, crossSlots.current, ghosts.cross);
   });
 
   return (

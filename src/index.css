@@ -730,6 +730,58 @@ a:focus-visible {
   letter-spacing: 0.05em;
 }
 
+/* --- branch arc (the ways to grow, around the hovered node) --- */
+
+.node-arc {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  /* NEVER `auto`. This layer covers the whole stage, so making the container
+     itself interactive hands it every pointer event on the map — the canvas
+     stops responding to hover and click entirely for as long as a band is up.
+     Only the segments below take events. */
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 6;
+}
+
+.node-arc__seg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  /* Fixed rather than content-driven: `hoverPlacement` derives both the spacing
+     between segments and the card's standoff from this number, so a segment
+     allowed to grow past it would slide under its neighbour. Keep the two in
+     step — ARC_SEG_MAX_WIDTH. */
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px 11px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--panel-translucent);
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.node-arc__seg:hover {
+  background: var(--expandable);
+  border-color: var(--expandable);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-arc {
+    transition: none;
+  }
+}
+
 /* --- node titles (HTML overlay, not troika text) --- */
 
 .node-labels {

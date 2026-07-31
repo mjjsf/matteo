@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useStore, bookForRef, describeRef, slotOf } from '@/state/store';
 import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
+import { placeHover } from './hoverPlacement';
 
 /** Rollover card for the node under the cursor: title, byline, and the
  *  description the brief asks for.
@@ -34,6 +35,11 @@ export function BookTooltip({
     const vec = new THREE.Vector3();
     let lastRef: string | null | undefined;
     let canvasEl: HTMLCanvasElement | null = null;
+    /** How many arc segments the node under the cursor is showing, so the card
+     *  knows how far to stand off. Cached with the labels rather than recomputed
+     *  per frame: `axesFor` walks the graph index, and this loop runs at 60fps
+     *  through every orbit. */
+    let segments = 0;
 
     const tick = (): void => {
       raf = requestAnimationFrame(tick);
@@ -66,6 +72,7 @@ export function BookTooltip({
         const about = describeRef(hovered);
         const book = bookForRef(hovered);
         const node = state.graph.nodes[slot];
+        segments = node && !node.expanded ? state.axesFor(slot).length : 0;
         if (about && titleRef.current && metaRef.current && descRef.current && hintRef.current) {
           titleRef.current.textContent = about.label;
           metaRef.current.textContent = about.detail;
@@ -80,8 +87,11 @@ export function BookTooltip({
                 node.generation > 0
                 ? 'Click to hide what grew from this'
                 : 'Your starting point'
-              : node.expandable
-                ? 'Click for ways to grow from this'
+              : segments > 0
+                ? // The ways to grow are now buttons on the arc around the node,
+                  // so pointing at them beats describing them. A plain click is
+                  // still the fast path along the first one.
+                  'Pick a branch, or click to grow'
                 : 'Nothing further to grow';
           // Written imperatively, like everything else on this card: rendering it
           // through React would put the reconciler back in the hover path.
@@ -109,13 +119,21 @@ export function BookTooltip({
 
       // Behind the camera: hide rather than drawing at a nonsense position.
       el.style.opacity = vec.z > 1 ? '0' : '1';
-      // Flip the card to whichever side has room, so it never runs off the edge.
-      const flipX = x > rect.width - 280;
-      const flipY = y < 190;
+      // Shared with `NodeArc`, which draws a band of buttons around this same
+      // point. The card has to be pushed clear of it, and only one of the two
+      // can be the place that knows how far.
+      const { cardLeft, cardBelow, cardOffsetX, cardOffsetY } = placeHover({
+        x,
+        y,
+        width: rect.width,
+        height: rect.height,
+        segments,
+      });
       el.style.transform =
         `translate3d(${x}px, ${y}px, 0) ` +
-        `translate(${flipX ? '-100%' : '0'}, ${flipY ? '0' : '-100%'}) ` +
-        `translate(${flipX ? '-14px' : '14px'}, ${flipY ? '14px' : '-14px'})`;
+        `translate(${cardLeft ? '-100%' : '0'}, ${cardBelow ? '0' : '-100%'}) ` +
+        `translate(${cardLeft ? -cardOffsetX : cardOffsetX}px, ` +
+        `${cardBelow ? cardOffsetY : -cardOffsetY}px)`;
     };
 
     raf = requestAnimationFrame(tick);

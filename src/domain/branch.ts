@@ -21,14 +21,30 @@ import {
  *
  *  Every axis carries a COUNT, and an axis with nothing behind it is not
  *  offered at all. An option that resolves to an empty branch is worse than an
- *  option that is absent: it reads as a promise. */
+ *  option that is absent: it reads as a promise.
+ *
+ *  NO NODE OFFERS MORE THAN THREE AXES. That is a real invariant with a test on
+ *  it, not an observation — the canvas draws these as an arc of segments around
+ *  the hovered node, and an arc that silently truncated a fourth option would be
+ *  hiding a branch rather than declining to offer one. Every kind already fitted
+ *  except books, which is why a book's authors and subjects are grouped into one
+ *  axis each instead of one axis apiece. */
 
 export interface BranchAxis {
   /** Stable id, carried in the shared URL. Either a bare word or a node ref. */
   id: string;
   label: string;
+  /** How many nodes pressing this attaches.
+   *
+   *  For the grouped book axes that is the only number available — there is no
+   *  single "how big is what is behind this" for a fan of four subjects — so it
+   *  is the meaning everywhere, and the outline's numbers for book rows moved to
+   *  match. It is also the more useful one for a control that grows things. */
   count: number;
 }
+
+/** The most axes any node can offer. The arc has this many segments. */
+export const MAX_AXES = 3;
 
 /** Growing along an axis attaches these, best first. */
 export interface Candidate {
@@ -61,6 +77,38 @@ function bookCandidates(ids: string[]): Candidate[] {
   return ids.map((id, i) => ({ nodeRef: bookRef(id), weight: 1 - i * 0.05 }));
 }
 
+function ranked(refs: NodeRef[]): Candidate[] {
+  return refs.map((nodeRef, i) => ({ nodeRef, weight: 1 - i * 0.05 }));
+}
+
+/** The authors of `book` who have other work in this corpus.
+ *
+ *  A one-book author is dropped: that branch would be a single node whose only
+ *  child is the book you arrived from. 572 of the 1038 books are in that
+ *  position, so this is the common case, not an edge case.
+ *
+ *  Shared by `axesFor` and `candidatesFor` on purpose. The number on the button
+ *  and the fan the button grows are then the same list read twice, and cannot
+ *  drift apart as the corpus changes. */
+function branchableAuthors(
+  index: GraphIndexFile,
+  book: Book | undefined,
+): Array<{ name: string; ref: NodeRef }> {
+  const out: Array<{ name: string; ref: NodeRef }> = [];
+  for (const name of book?.authors ?? []) {
+    const slug = authorSlug(name);
+    if ((index.booksForAuthor[slug]?.length ?? 0) > 1) out.push({ name, ref: authorRef(slug) });
+  }
+  return out;
+}
+
+/** The subjects of `book` that name a shelf with something on it. */
+function branchableSubjects(index: GraphIndexFile, book: Book | undefined): NodeRef[] {
+  return (book?.subjects ?? [])
+    .filter((tag) => (index.countForTag[tag] ?? index.booksForTag[tag]?.length ?? 0) > 0)
+    .map((tag) => tagRef(tag));
+}
+
 export function axesFor(
   ref: NodeRef,
   index: GraphIndexFile,
@@ -72,20 +120,25 @@ export function axesFor(
   const out: BranchAxis[] = [];
 
   if (kind === 'book') {
+    // `titles` stays first: a seeded book expands along `axesFor(...)[0]` before
+    // anyone has clicked anything, and similarity is the right thing to open with.
     const n = similar(ref).length;
     if (n > 0) out.push({ id: DEFAULT_AXIS, label: 'Related titles', count: n });
-    for (const name of book?.authors ?? []) {
-      const slug = authorSlug(name);
-      // Only worth offering when the author has other work here — otherwise the
-      // branch is one node that leads straight back to this book.
-      const works = index.booksForAuthor[slug]?.length ?? 0;
-      if (works > 1) out.push({ id: authorRef(slug), label: `By ${name}`, count: works });
+
+    // One axis per author and one per subject is what this used to be, and it
+    // measured at a median of 5 options and a maximum of 9 — a list, not a
+    // choice. Grouped, a book offers at most three, which is what lets the
+    // canvas show them as an arc around the node rather than a menu.
+    const authors = branchableAuthors(index, book);
+    if (authors.length === 1) {
+      out.push({ id: 'authors', label: `By ${authors[0]!.name}`, count: 1 });
+    } else if (authors.length > 1) {
+      out.push({ id: 'authors', label: 'Its authors', count: authors.length });
     }
-    for (const tag of book?.subjects ?? []) {
-      const count = index.countForTag[tag] ?? index.booksForTag[tag]?.length ?? 0;
-      if (count > 0) {
-        out.push({ id: tagRef(tag), label: `In ${tag.replace(/-/g, ' ')}`, count });
-      }
+
+    const subjects = branchableSubjects(index, book);
+    if (subjects.length > 0) {
+      out.push({ id: 'subjects', label: 'Subjects', count: subjects.length });
     }
     return out;
   }
@@ -155,14 +208,26 @@ export function candidatesFor(
   axis: string,
   index: GraphIndexFile,
   similar: SimilarBooks,
+  book?: Book,
 ): Candidate[] {
   const kind = kindOf(ref);
   const id = idOf(ref);
 
   if (axis === DEFAULT_AXIS) return similar(ref);
 
+  // A bare `author:`/`tag:`/`topic:` id was its own axis before the book axes
+  // were grouped, and those ids travel in the `path` of every shared URL. Kept
+  // so links already in the wild keep replaying to the same map — nothing
+  // produces them any more, and nothing needs to.
   if (axis.startsWith('author:') || axis.startsWith('tag:') || axis.startsWith('topic:')) {
     return [{ nodeRef: axis as NodeRef, weight: 1 }];
+  }
+
+  if (kind === 'book') {
+    // Grouped: one press attaches every author, or every subject, rather than
+    // making the reader pick one of seven tags off a list.
+    if (axis === 'authors') return ranked(branchableAuthors(index, book).map((a) => a.ref));
+    if (axis === 'subjects') return ranked(branchableSubjects(index, book));
   }
 
   if (kind === 'topic') {
@@ -218,7 +283,9 @@ export function candidatesFor(
 export function axisNote(ref: NodeRef, axis: string): string {
   if (axis === DEFAULT_AXIS) return 'similar';
   if (axis.startsWith('author:') || axis === 'authors') return 'by author';
-  if (axis.startsWith('tag:') || axis.startsWith('topic:')) return 'by subject';
+  if (axis.startsWith('tag:') || axis.startsWith('topic:') || axis === 'subjects') {
+    return 'by subject';
+  }
   if (axis === 'books') return kindOf(ref) === 'author' ? 'by author' : 'by subject';
   return 'by subject';
 }

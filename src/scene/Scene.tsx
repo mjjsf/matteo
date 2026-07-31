@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import type { ThemeColors } from '@/domain/palette';
@@ -8,6 +8,7 @@ import { CameraRig } from './CameraRig';
 import { GraphEdges } from './GraphEdges';
 import { GraphPoints } from './GraphPoints';
 import { HighlightRing } from './HighlightRing';
+import { emptyTransitionState } from './transition';
 import { useClickToExpand, usePointPicking } from './usePointPicking';
 
 function SceneContents({
@@ -30,6 +31,12 @@ function SceneContents({
     [pointsRef],
   );
 
+  // Nodes that are retreating off the map, written by `GraphPoints` and read by
+  // `GraphEdges`. A ref rather than store state for the same reason `pointsRef`
+  // is one: it changes mid-animation, and a re-render inside the Canvas on every
+  // collapse is exactly what this scene is built to avoid.
+  const transition = useRef(emptyTransitionState());
+
   usePointPicking(points, true);
   useClickToExpand(true);
 
@@ -37,8 +44,8 @@ function SceneContents({
     <>
       <CameraRig />
       {/* Edges first so nodes draw over them. */}
-      <GraphEdges theme={theme} pointsRef={pointsRef} />
-      <GraphPoints theme={theme} onReady={onReady} />
+      <GraphEdges theme={theme} pointsRef={pointsRef} transition={transition} />
+      <GraphPoints theme={theme} onReady={onReady} transition={transition} />
       <HighlightRing theme={theme} pointsRef={pointsRef} />
     </>
   );
