@@ -94,6 +94,13 @@ export interface AppState {
    *  never be clicked. */
   hoverLocked: boolean;
   selectedRef: NodeRef | null;
+  /** The node whose branch menu is open on the canvas, if any.
+   *
+   *  Deliberately NOT `selectedRef`. The detail panel keys off selection, and
+   *  dismissing the menu must not close the panel — they are two different
+   *  questions ("what am I reading about" and "am I choosing how to grow"), and
+   *  folding them into one field makes Escape do two things at once. */
+  menuRef: NodeRef | null;
   flyTarget: FlyTarget | null;
 
   /** Install a corpus. Called by `loadCorpus` in the app and directly by tests,
@@ -121,6 +128,7 @@ export interface AppState {
   setHovered: (ref: NodeRef | null) => void;
   lockHover: (locked: boolean) => void;
   select: (ref: NodeRef | null, opts?: { fly?: boolean }) => void;
+  openMenu: (ref: NodeRef | null) => void;
   requestFly: (target: Omit<FlyTarget, 'nonce'> | null) => void;
   /** Frame the whole graph. Expansion deliberately flies to the node you just
    *  opened, which is right in the moment and leaves you a long way from
@@ -259,6 +267,7 @@ export const useStore = create<AppState>((set, get) => ({
   hoveredRef: null,
   hoverLocked: false,
   selectedRef: null,
+  menuRef: null,
   flyTarget: null,
 
   hydrate: (nextBooks, neighborsFile, nextGraphIndex) => {
@@ -475,6 +484,10 @@ export const useStore = create<AppState>((set, get) => ({
       // Both are book ids, so they only need clearing when the book itself left.
       selectedRef: state.selectedRef && gone.has(state.selectedRef) ? null : state.selectedRef,
       hoveredRef: state.hoveredRef && gone.has(state.hoveredRef) ? null : state.hoveredRef,
+      // Collapsing is the one action that can delete the node a menu is anchored
+      // to, and an anchor that no longer exists leaves the menu floating over
+      // empty space pointing at nothing.
+      menuRef: null,
     });
   },
 
@@ -489,6 +502,24 @@ export const useStore = create<AppState>((set, get) => ({
   lockHover: (locked) => {
     if (get().hoverLocked === locked) return;
     set({ hoverLocked: locked });
+  },
+
+  openMenu: (ref) => {
+    // Only where there is something to choose. A menu offering nothing is worse
+    // than no menu: it reads as a broken control rather than as a leaf.
+    if (ref === null) {
+      if (get().menuRef !== null) set({ menuRef: null });
+      return;
+    }
+    const state = get();
+    const slot = state.graph.indexOf.get(ref);
+    if (slot === undefined) return;
+    const node = state.graph.nodes[slot];
+    if (!node || node.expanded || state.axesFor(asSlot(slot)).length === 0) {
+      set({ menuRef: null });
+      return;
+    }
+    set({ menuRef: ref });
   },
 
   select: (ref, opts) => {
@@ -531,6 +562,14 @@ export const useStore = create<AppState>((set, get) => ({
       set({ notice: null });
       return true;
     }
+    // Ahead of selection: the menu is the most recently opened thing and the
+    // most transient, so it is what Escape should take back first. Closing it
+    // leaves the detail panel alone, which is the point of keeping the two
+    // fields apart.
+    if (state.menuRef) {
+      set({ menuRef: null });
+      return true;
+    }
     if (state.selectedRef) {
       set({ selectedRef: null });
       return true;
@@ -553,6 +592,7 @@ export const useStore = create<AppState>((set, get) => ({
       seedWhenReady: false,
       selectedRef: null,
       hoveredRef: null,
+      menuRef: null,
       hoverLocked: false,
       notice: null,
       flyTarget: null,

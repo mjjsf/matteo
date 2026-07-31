@@ -9,7 +9,7 @@ import { GraphEdges } from './GraphEdges';
 import { GraphPoints } from './GraphPoints';
 import { HighlightRing } from './HighlightRing';
 import { emptyTransitionState } from './transition';
-import { useClickToExpand, usePointPicking } from './usePointPicking';
+import { useNodeClick, usePointPicking } from './usePointPicking';
 
 function SceneContents({
   theme,
@@ -38,7 +38,7 @@ function SceneContents({
   const transition = useRef(emptyTransitionState());
 
   usePointPicking(points, true);
-  useClickToExpand(true);
+  useNodeClick(true);
 
   return (
     <>

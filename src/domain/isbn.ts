@@ -1,12 +1,16 @@
 /** ISBN normalisation and conversion.
  *
- *  Why this exists: Amazon's `/dp/{ASIN}` deep links work for print books when
- *  the ASIN equals the ISBN-10. Getting an ISBN-10 out of a corpus that records
- *  ISBN-13 requires a real conversion, including the check digit.
+ *  Why this exists: Bookshop.org's affiliate product link is
+ *  `bookshop.org/a/{affiliateID}/{isbn13}`, so getting a valid ISBN-13 out of
+ *  whatever a book happens to record is the difference between a deep link and a
+ *  search.
  *
- *  The important edge case: ISBN-13s in the **979** prefix range have no
- *  ISBN-10 equivalent at all — the ISBN-10 space simply cannot represent them.
- *  Only 978-prefixed ISBN-13s convert. Callers must handle `null`. */
+ *  This used to convert the other way, ISBN-13 to ISBN-10, because Amazon's
+ *  `/dp/{ASIN}` deep links work for print books when the ASIN equals the
+ *  ISBN-10. That direction is gone with the Amazon links, and with it the awkward
+ *  edge case it carried: ISBN-13s in the **979** prefix range have no ISBN-10 at
+ *  all, so only 978 prefixes converted. Going 10 to 13 has no such gap — every
+ *  ISBN-10 has an ISBN-13, by construction. */
 
 /** Strip hyphens, spaces, and normalise a trailing lowercase 'x'. */
 export function normalizeIsbn(raw: string): string {
@@ -46,29 +50,30 @@ export function isValidIsbn(raw: string): boolean {
   return isValidIsbn10(raw) || isValidIsbn13(raw);
 }
 
-/** Convert a 978-prefixed ISBN-13 to its ISBN-10 form.
- *  Returns null for 979 prefixes (no ISBN-10 exists), invalid checksums, or
- *  anything malformed — never throws, so callers can fall back to a search URL. */
-export function isbn13ToIsbn10(raw: string): string | null {
+/** Convert an ISBN-10 to its ISBN-13 form.
+ *  Returns null for an invalid checksum or anything malformed — never throws, so
+ *  callers can fall back to a search URL. */
+export function isbn10ToIsbn13(raw: string): string | null {
   const s = normalizeIsbn(raw);
-  if (!/^\d{13}$/.test(s)) return null;
-  if (!s.startsWith('978')) return null;
-  if (isbn13CheckDigit(s.slice(0, 12)) !== s[12]) return null;
-
-  const body = s.slice(3, 12);
-  return body + isbn10CheckDigit(body);
+  if (!isValidIsbn10(s)) return null;
+  // The ISBN-10 check digit is discarded, not carried: the 13 recomputes its own
+  // over a different weighting, and the two are not related.
+  const body = `978${s.slice(0, 9)}`;
+  return body + isbn13CheckDigit(body);
 }
 
-/** Best available ISBN-10 for a book: an explicit one if present and valid,
- *  otherwise derived from a 978 ISBN-13. Null when neither is possible. */
-export function resolveIsbn10(book: {
+/** Best available ISBN-13 for a book: an explicit one if present and valid,
+ *  otherwise derived from an ISBN-10. Null when neither is possible — which is
+ *  every book in the corpus today, so the search fallback is the live path and
+ *  not a rarity. */
+export function resolveIsbn13(book: {
   isbn10?: string;
   isbn13?: string;
 }): string | null {
-  if (book.isbn10) {
-    const s = normalizeIsbn(book.isbn10);
-    if (isValidIsbn10(s)) return s;
+  if (book.isbn13) {
+    const s = normalizeIsbn(book.isbn13);
+    if (isValidIsbn13(s)) return s;
   }
-  if (book.isbn13) return isbn13ToIsbn10(book.isbn13);
+  if (book.isbn10) return isbn10ToIsbn13(book.isbn10);
   return null;
 }

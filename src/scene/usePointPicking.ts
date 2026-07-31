@@ -114,9 +114,15 @@ export function usePointPicking(points: THREE.Points | null, enabled: boolean): 
   });
 }
 
-/** Click to select, and click again to grow. Shares the hover result, so a click
- *  always acts on exactly what the ring is showing. */
-export function useClickToExpand(enabled: boolean): void {
+/** Click to select and choose, click again to fold up. Shares the hover result,
+ *  so a click always acts on exactly what the ring is showing.
+ *
+ *  A click used to GROW the node, along whichever axis `axesFor` happened to
+ *  return first. The choice was real — a book opens onto similar titles, its
+ *  author, or its subjects — but it was made silently, and nothing told the
+ *  reader another answer existed. Now a click opens the menu and grows nothing
+ *  until something in it is pressed. */
+export function useNodeClick(enabled: boolean): void {
   const { gl } = useThree();
 
   useEffect(() => {
@@ -134,7 +140,13 @@ export function useClickToExpand(enabled: boolean): void {
 
       const state = useStore.getState();
       const ref = state.hoveredRef;
-      if (!ref) return;
+      // A click on empty canvas dismisses the menu. Without this the only way to
+      // put it away is Escape or growing something, and a menu you cannot
+      // casually close is one that follows you around the map.
+      if (!ref) {
+        state.openMenu(null);
+        return;
+      }
 
       const slot = state.graph.indexOf.get(ref);
       state.select(ref);
@@ -142,12 +154,15 @@ export function useClickToExpand(enabled: boolean): void {
 
       const node = state.graph.nodes[slot];
       if (!node) return;
-      // Clicking an unopened node grows from it; clicking an opened one again
-      // folds it back up, so the map can shrink as well as grow. The seed is
-      // exempt — collapsing it leaves a lone point, which is what Start over is
-      // for, and it would make the whole map vanish on a stray click.
-      if (!node.expanded) state.expand(asSlot(slot));
-      else if (node.generation > 0) state.collapse(asSlot(slot));
+      // Clicking an unopened node offers the ways to grow it; clicking an opened
+      // one again folds it back up, so the map can shrink as well as grow. The
+      // seed is exempt — collapsing it leaves a lone point, which is what Start
+      // over is for, and it would make the whole map vanish on a stray click.
+      if (!node.expanded) state.openMenu(ref);
+      else {
+        state.openMenu(null);
+        if (node.generation > 0) state.collapse(asSlot(slot));
+      }
     };
 
     canvas.addEventListener('pointerdown', onDown);

@@ -1,4 +1,4 @@
-import { AFFILIATE_DISCLOSURE } from '@/domain/amazon';
+import { AFFILIATE_DISCLOSURE, shouldDiscloseAffiliate } from '@/domain/bookshop';
 import { useStore } from '@/state/store';
 
 export function Footer(): React.ReactElement {
@@ -12,7 +12,12 @@ export function Footer(): React.ReactElement {
       <span>
         {ready ? `${count} books · ` : ''}neighbours from shared subjects and authors
       </span>
-      <span className="footer__disclosure">{AFFILIATE_DISCLOSURE}</span>
+      {/* Only when there is a relationship to disclose. This used to render
+          unconditionally, so the app told every visitor it earned commission on
+          their purchases while carrying no affiliate id and earning nothing. */}
+      {shouldDiscloseAffiliate() && (
+        <span className="footer__disclosure">{AFFILIATE_DISCLOSURE}</span>
+      )}
     </footer>
   );
 }

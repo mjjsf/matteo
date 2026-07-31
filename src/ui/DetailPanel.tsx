@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useStore, bookForRef, describeRef } from '@/state/store';
-import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
+import { bookshopLinkForBook, configuredAffiliateId } from '@/domain/bookshop';
 import { asSlot } from '@/domain/graph';
 import { tagRef } from '@/domain/nodeRef';
 import { BranchMenu } from './BranchMenu';
@@ -37,7 +37,7 @@ export function DetailPanel(): React.ReactElement | null {
   const slot = graph.indexOf.get(selectedRef);
   const node = slot === undefined ? undefined : graph.nodes[slot];
   const canGrow = node !== undefined && !node.expanded && node.expandable;
-  const link = book ? amazonLinkForBook(book, configuredAssociateTag()) : null;
+  const link = book ? bookshopLinkForBook(book, configuredAffiliateId()) : null;
 
   return (
     <aside className="panel panel--detail" aria-live="polite" aria-label="Selected">
@@ -104,16 +104,25 @@ export function DetailPanel(): React.ReactElement | null {
         )}
       </div>
 
-      {/* No Prime badge of our own: eligibility can only be verified through
-          Amazon's PA-API, so the search link asks Amazon to filter and its page
-          reports the result. Claiming it here would be inventing facts about a
-          real product — which is why `link.hint` no longer being rendered does
-          not change what this link claims. It never claimed anything.
+      {/* Nothing here claims price, stock or availability: this side knows none
+          of those, so the link opens Bookshop's page and their page reports what
+          they have. That is why `link.hint` not being rendered changes nothing
+          about what the link claims — it never claimed anything.
 
-          The Associates disclosure is not repeated here either: `Footer` renders
-          it on every screen including this one, so this was a duplicate. */}
+          `sponsored` is conditional rather than always-on. It belongs on a link
+          that can earn a commission, and a Bookshop SEARCH cannot: attribution
+          rides on the `/a/{id}` path segment, which a search URL has nowhere to
+          put. Every link in the corpus is a search today.
+
+          The affiliate disclosure is not repeated here: `Footer` renders it on
+          every screen including this one. */}
       {link && (
-        <a className="buy" href={link.href} target="_blank" rel="noopener noreferrer sponsored">
+        <a
+          className="buy"
+          href={link.href}
+          target="_blank"
+          rel={link.sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
+        >
           {link.label}
         </a>
       )}
