@@ -1,0 +1,18 @@
+{
+  "numFound": 42,
+  "start": 0,
+  "docs": [
+    {
+      "key": "/works/OL27258W",
+      "title": "Neuromancer",
+      "author_name": ["William Gibson"],
+      "first_publish_year": 1984
+    },
+    {
+      "key": "/works/OL15168813W",
+      "title": "Neuromancer: The Graphic Novel",
+      "author_name": ["William Gibson", "Tom de Haven"],
+      "first_publish_year": 1989
+    }
+  ]
+}
