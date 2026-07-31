@@ -181,6 +181,87 @@ Wolf Hall to *Bring Up the Bodies* through shared subjects, without asserting
 that the Tudor court is a fantasy kingdom. Inventing a taxonomy node per theme
 would make the tree meaningless; dropping the tags would throw away real signal.
 
+### Where the corpus comes from
+
+Three different provenances, and they are worth keeping straight because only one
+of them is a thing this project owns.
+
+| field | provenance |
+|---|---|
+| `title`, `authors`, `year` | Facts. Not owned, not claimed, and **checkable** — `npm run verify:corpus` |
+| `subjects` | A controlled vocabulary authored for this project, defined in `tagMap.json` before any book uses it |
+| `description` | **Written for this project.** ~150,000 characters of original prose, and the thing `LICENSE.md` actually claims |
+
+The descriptions are the reason to be careful about where the rest comes from.
+They are original work; the facts around them should be verifiable against
+somebody else's records, not taken on trust. Hence the verification pass below.
+
+### Why not WorldCat
+
+Asked and answered, so it does not have to be re-researched.
+
+- **The API is not open, and is closing.** Support for WorldCat Search API v1.0
+  ended 31 December 2024, with access removed in phases from January 2025.
+  Eligibility required a library holding *both* an OCLC Cataloging and Metadata
+  subscription *and* a FirstSearch/WorldCat Discovery subscription, plus an issued
+  WSKey. The old free WorldCat Basic API is long gone.
+- **"Open content in WorldCat Discovery" is a different thing.** It is an Open
+  Access *filter*: DOIs matched against Unpaywall so a search can be narrowed to
+  freely readable scholarly material. It is not open book metadata and not an API.
+- **Redistribution is the wrong shape.** WorldCat Rights and Responsibilities
+  grants reuse and transfer to OCLC *members*. This app ships its whole corpus as
+  a static file to every visitor under a licence reserving all rights.
+- **And it would not help where it matters.** Catalogue descriptions live in MARC
+  520, are patchy for trade fiction, and are usually publisher jacket copy —
+  copyrighted by the publisher. Substituting them would import someone else's
+  text into a proprietary product and give up the one claim `LICENSE.md` makes.
+
+Open Library does the job WorldCat cannot: CC0, no key, and it answers the only
+question being asked — does a book by this name, by this person, in this year,
+exist.
+
+**Still open:** aligning the 276-tag vocabulary to [OCLC
+FAST](https://www.oclc.org/research/areas/data-science/fast.html), which *is*
+freely downloadable under ODC-By and would replace an authored vocabulary with a
+real subject authority. It needs the bulk download, which is not reachable from
+the environment this was built in, so it is not done. Whoever does it owes the
+attribution ODC-By requires, in `THIRD-PARTY-NOTICES.md`.
+
+### Verifying the corpus
+
+```bash
+npm run verify:corpus                 # all 1038 books, ~5 minutes at the throttle
+npm run verify:corpus -- --limit 50   # a taste
+npm run verify:corpus -- --json       # machine-readable
+```
+
+**It writes nothing.** Every finding is for a person to read and decide about — a
+book's year and its attribution are editorial facts, and a script that silently
+rewrote them would swap one unverified source for another. Same call
+`merge-corpus.ts` makes when it lets the authored corpus win every conflict.
+
+Findings come in four kinds, ordered by how much they should worry you:
+
+| kind | means |
+|---|---|
+| `not-found` | No catalogue record with this title. The strongest signal an entry is not real. |
+| `author-differs` | The catalogue attributes this title to somebody else. |
+| `year-later` | We date it *after* the catalogue's earliest record. Worth checking. |
+| `year-earlier` | We date it *before*. Usually a translation dated by its original publication, which is correct. |
+
+A failed request is counted separately and reported as unreachable — never as a
+missing book. Half a thousand real books listed as "the catalogue has never heard
+of this" because the service rate-limited us is how a verification pass becomes
+noise and stops being read.
+
+**Like `npm run fetch`, this has never run against the live service**, for the
+same reason: `openlibrary.org` answers 403 at the egress proxy of the environment
+it was written in. Matching, ranking and the report are tested over the real
+corpus with a stub catalogue, and the request layer is tested against the shape
+recorded in `test/fixtures/catalogue/`. What stays unverified is one claim — that
+`/search.json` still answers in that shape. Expect to confirm it on the first real
+run rather than to debug the code.
+
 **The corpus is still finite**, and 1016 books is the honest limit on
 recommendation quality: some seeds have thin or odd neighbours because there is
 genuinely nothing near them. Every description is a real summary of a real book.
@@ -362,6 +443,7 @@ network access at all.
 | `npm run neighbors` | re-bake `src/generated/` (commit the result) |
 | `npm run fetch` | pull more books from Open Library (unverified — see above) |
 | `npm run corpus:merge` | combine authored + fetched |
+| `npm run verify:corpus` | check every book's facts against a catalogue; writes nothing |
 
 ### Deployment and the base path
 
