@@ -17,7 +17,7 @@ describe('the search link, which is every link in the corpus today', () => {
     // the live one and the product branch below is currently unreachable.
     const link = bookshopLinkForBook(base);
     expect(link.kind).toBe('search');
-    expect(link.label).toBe('Find on Bookshop');
+    expect(link.label).toBe('Find on Bookshop.org');
     expect(new URL(link.href).host).toBe('bookshop.org');
     expect(new URL(link.href).searchParams.get('keywords')).toBe('Test Book Ada Lovelace');
   });
@@ -54,7 +54,7 @@ describe('the product link, which goes live when the corpus has ISBNs', () => {
     const link = bookshopLinkForBook({ ...base, isbn13: '9780306406157' }, '5780');
     expect(link.kind).toBe('product');
     expect(link.href).toBe('https://bookshop.org/a/5780/9780306406157');
-    expect(link.label).toBe('Buy on Bookshop');
+    expect(link.label).toBe('Buy on Bookshop.org');
     expect(link.sponsored).toBe(true);
   });
 

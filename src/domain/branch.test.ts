@@ -29,11 +29,12 @@ const someSimilar = (): Candidate[] => [
 ];
 const noSimilar = (): Candidate[] => [];
 
-describe('no node offers more than three axes', () => {
-  // The invariant the canvas arc rests on. Before grouping, a book offered
-  // `titles` plus one axis per author plus one per subject — a median of 5 and a
-  // maximum of 9. An arc drawn from that would have had to truncate, which hides
-  // a branch rather than declining to offer it.
+describe('no node offers more than MAX_AXES', () => {
+  // Before grouping, a book offered `titles` plus one axis per author plus one
+  // per subject — a median of 5 and a maximum of 9. A menu drawn from that would
+  // have had to truncate, which hides a branch rather than declining to offer it.
+  // The cap was 3 while the chooser was an arc and is 4 now that it is a list;
+  // what stays constant is that it is enforced rather than hoped for.
   it('holds for every book in the corpus, with and without neighbours', () => {
     for (const similar of [someSimilar, noSimilar]) {
       const worst = books
@@ -56,19 +57,51 @@ describe('no node offers more than three axes', () => {
 });
 
 describe('a book groups its authors and its subjects', () => {
-  it('names the author when there is exactly one worth following', () => {
+  it('offers the four relations in a fixed order', () => {
     const book = bookOf('anna-karenina');
-    const axis = axesFor(bookRef(book.id), index, book, noSimilar).find((a) => a.id === 'authors');
-    expect(axis).toEqual({ id: 'authors', label: 'By Leo Tolstoy', count: 1 });
+    expect(axesFor(bookRef(book.id), index, book, someSimilar).map((a) => a.label)).toEqual([
+      'Related Titles',
+      'Related Subjects',
+      'Related Authors',
+      'More by Author',
+    ]);
   });
 
-  it('counts them instead of naming them when a book has two', () => {
+  it('counts the authors behind "More by Author" rather than naming one', () => {
+    const one = bookOf('anna-karenina');
+    expect(
+      axesFor(bookRef(one.id), index, one, noSimilar).find((a) => a.id === 'authors'),
+    ).toEqual({ id: 'authors', label: 'More by Author', count: 1 });
+
+    const two = bookOf('good-omens');
+    expect(
+      axesFor(bookRef(two.id), index, two, noSimilar).find((a) => a.id === 'authors'),
+    ).toEqual({ id: 'authors', label: 'More by Author', count: 2 });
+  });
+
+  it('never offers a book its own author under "Related Authors"', () => {
+    // Its own authors are what `More by Author` grows. Offering them from both
+    // buttons would let the reader open the same node twice and wonder why the
+    // second press did nothing.
+    const book = bookOf('anna-karenina');
+    const grown = candidatesFor(bookRef(book.id), 'related-authors', index, noSimilar, book);
+    expect(grown.length).toBeGreaterThan(0);
+    expect(grown.map((c) => c.nodeRef)).not.toContain(authorRef('leo-tolstoy'));
+  });
+
+  it('de-duplicates related authors across a book with two authors', () => {
     const book = bookOf('good-omens');
-    const axis = axesFor(bookRef(book.id), index, book, noSimilar).find((a) => a.id === 'authors');
-    expect(axis).toEqual({ id: 'authors', label: 'Its authors', count: 2 });
+    const grown = candidatesFor(bookRef(book.id), 'related-authors', index, noSimilar, book);
+    expect(new Set(grown.map((c) => c.nodeRef)).size).toBe(grown.length);
   });
 
-  it('omits the axis entirely for a one-book author', () => {
+  it('drops "Related Authors" for a one-book author, who has none', () => {
+    const book = bookOf('neuromancer');
+    const ids = axesFor(bookRef(book.id), index, book, noSimilar).map((a) => a.id);
+    expect(ids).toEqual(['subjects']);
+  });
+
+  it('omits the author axis entirely for a one-book author', () => {
     // 572 of 1038 books are in this position, so it is the common case. The
     // branch would be a single author node whose only child is the book you came
     // from, which reads as a promise the map cannot keep.

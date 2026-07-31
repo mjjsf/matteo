@@ -6,19 +6,19 @@ const at = (x: number, y: number, hasMenu: boolean, size = canvas) =>
   placeHover({ x, y, ...size, hasMenu });
 
 describe('the menu', () => {
-  it('sits below and right of the node it was opened on', () => {
-    // Anchored to a click rather than to the pointer, so it belongs where the
-    // reader last put their cursor rather than somewhere clever.
+  it('sits below and LEFT of the node it was opened on', () => {
     const place = at(700, 450, true);
-    expect(place.menuLeft).toBe(false);
+    expect(place.menuLeft).toBe(true);
     expect(place.menuAbove).toBe(false);
     expect(place.menuOffsetX).toBe(GAP);
     expect(place.menuOffsetY).toBe(GAP);
   });
 
-  it('flips at the right edge rather than running off it', () => {
-    expect(at(1435, 450, true).menuLeft).toBe(true);
-    expect(at(100, 450, true).menuLeft).toBe(false);
+  it('flips right at the LEFT edge rather than running off it', () => {
+    // The flip direction inverted with the default. A node near the left edge
+    // has nowhere to put a 230px menu, so it goes to the right instead.
+    expect(at(40, 450, true).menuLeft).toBe(false);
+    expect(at(1300, 450, true).menuLeft).toBe(true);
   });
 
   it('flips at the bottom edge rather than running off it', () => {

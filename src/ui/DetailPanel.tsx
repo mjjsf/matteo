@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { useStore, bookForRef, describeRef } from '@/state/store';
 import { bookshopLinkForBook, configuredAffiliateId } from '@/domain/bookshop';
 import { asSlot } from '@/domain/graph';
-import { tagRef } from '@/domain/nodeRef';
 import { BranchMenu } from './BranchMenu';
 
 /** Detail panel for whatever is selected.
@@ -12,12 +11,16 @@ import { BranchMenu } from './BranchMenu';
  *  biography and no subject blurb anywhere in the data. Writing one would be the
  *  same error the descriptions rule already forbids: plausible text that stays
  *  invisible as fiction until a reader trusts it. What they do have is what they
- *  contain, and that is what the branch menu shows. */
+ *  contain, and that is what the branch menu shows.
+ *
+ *  The book's subjects used to be listed here as clickable pills that branched
+ *  the map. They are gone: `Related Subjects` in the branch menu grows exactly
+ *  the same set from the same book, so the pills were a second route to one
+ *  destination and the panel is quieter without them. */
 export function DetailPanel(): React.ReactElement | null {
   const selectedRef = useStore((s) => s.selectedRef);
   const graph = useStore((s) => s.graph);
   const revision = useStore((s) => s.revision);
-  const expand = useStore((s) => s.expand);
   const select = useStore((s) => s.select);
   const reseedFrom = useStore((s) => s.reseedFrom);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -56,32 +59,6 @@ export function DetailPanel(): React.ReactElement | null {
       <p className="detail__byline">{about.detail}</p>
 
       {book && <p className="detail__description">{book.description}</p>}
-
-      {book && book.subjects.length > 0 && (
-        <>
-          <h3 className="detail__heading">Subjects</h3>
-          <ul className="chips">
-            {book.subjects.map((tag) => (
-              <li key={tag}>
-                {/* The pills are branch buttons now. A subject on a book is the
-                    most direct handle the reader has for "show me more of this
-                    kind of thing", and it used to be inert text. */}
-                <button
-                  type="button"
-                  className="chip chip--action"
-                  onClick={() => {
-                    if (slot !== undefined) expand(asSlot(slot), tagRef(tag));
-                  }}
-                  disabled={slot === undefined || node?.expanded === true}
-                  title={`Grow the map along ${tag.replace(/-/g, ' ')}`}
-                >
-                  {tag.replace(/-/g, ' ')}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
 
       {book?.isbn13 && (
         <p className="detail__isbn">

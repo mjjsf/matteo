@@ -26,7 +26,6 @@ export function BookTooltip({
   const titleRef = useRef<HTMLSpanElement>(null);
   const metaRef = useRef<HTMLSpanElement>(null);
   const descRef = useRef<HTMLSpanElement>(null);
-  const hintRef = useRef<HTMLSpanElement>(null);
   const buyRef = useRef<HTMLAnchorElement>(null);
   const lockHover = useStore((s) => s.lockHover);
 
@@ -70,27 +69,12 @@ export function BookTooltip({
         lastRef = hovered;
         const about = describeRef(hovered);
         const book = bookForRef(hovered);
-        const node = state.graph.nodes[slot];
-        if (about && titleRef.current && metaRef.current && descRef.current && hintRef.current) {
+        if (about && titleRef.current && metaRef.current && descRef.current) {
           titleRef.current.textContent = about.label;
           metaRef.current.textContent = about.detail;
           // A subject or an author has no description in this corpus, and
           // inventing one would be the error the descriptions rule forbids.
           descRef.current.textContent = book?.description ?? '';
-          hintRef.current.textContent = !node
-            ? ''
-            : node.expanded
-              ? // Expanded nodes now fold back up, so say so — this used to read
-                // "Click to open details", which is no longer what a click does.
-                node.generation > 0
-                ? 'Click to hide what grew from this'
-                : 'Your starting point'
-              : node.expandable
-                ? // A click no longer grows anything by itself — it opens the
-                  // menu and waits. Saying "click to grow" would promise a
-                  // result the click does not produce.
-                  'Click for ways to grow this'
-                : 'Nothing further to grow';
           // Written imperatively, like everything else on this card: rendering it
           // through React would put the reconciler back in the hover path.
           if (buyRef.current) {
@@ -165,7 +149,6 @@ export function BookTooltip({
       <span className="tooltip__title" ref={titleRef} />
       <span className="tooltip__meta" ref={metaRef} />
       <span className="tooltip__desc" ref={descRef} />
-      <span className="tooltip__hint" ref={hintRef} />
       <a
         className="tooltip__buy"
         ref={buyRef}

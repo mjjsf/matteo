@@ -65,7 +65,7 @@ export function bookshopLinkForBook(book: Book, affiliateId?: string): BookshopL
     return {
       href: id ? `${HOST}/a/${encodeURIComponent(id)}/${isbn13}` : `${HOST}/book/${isbn13}`,
       kind: 'product',
-      label: 'Buy on Bookshop',
+      label: 'Buy on Bookshop.org',
       hint: 'opens the book on Bookshop.org',
       sponsored: id !== undefined,
     };
@@ -76,7 +76,7 @@ export function bookshopLinkForBook(book: Book, affiliateId?: string): BookshopL
   return {
     href: url.toString(),
     kind: 'search',
-    label: 'Find on Bookshop',
+    label: 'Find on Bookshop.org',
     // Says what the link ASKS FOR, not what is guaranteed to come back.
     hint: 'opens a Bookshop.org search for this title',
     // A search URL cannot carry the `/a/{id}` segment, so it is never attributed
