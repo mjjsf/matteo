@@ -4,7 +4,7 @@ import type * as THREE from 'three';
 import type { ThemeColors } from '@/domain/palette';
 import { Scene } from '@/scene/Scene';
 import { BookTooltip } from './BookTooltip';
-import { NodeArc } from './NodeArc';
+import { NodeMenu } from './NodeMenu';
 import { NodeLabels } from './NodeLabels';
 import { Legend } from './Legend';
 
@@ -49,7 +49,7 @@ export default function MapStage({
       </Scene>
       <NodeLabels cameraRef={cameraRef} pointsRef={pointsRef} />
       <BookTooltip cameraRef={cameraRef} pointsRef={pointsRef} />
-      <NodeArc cameraRef={cameraRef} pointsRef={pointsRef} />
+      <NodeMenu cameraRef={cameraRef} pointsRef={pointsRef} />
       <Legend theme={theme} />
     </div>
   );

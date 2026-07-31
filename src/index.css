@@ -730,56 +730,36 @@ a:focus-visible {
   letter-spacing: 0.05em;
 }
 
-/* --- branch arc (the ways to grow, around the hovered node) --- */
+/* --- branch menu on the canvas (the ways to grow, on click) --- */
 
-.node-arc {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  /* NEVER `auto`. This layer covers the whole stage, so making the container
-     itself interactive hands it every pointer event on the map — the canvas
-     stops responding to hover and click entirely for as long as a band is up.
-     Only the segments below take events. */
-  pointer-events: none;
-  transition: opacity 120ms ease;
-  z-index: 6;
-}
-
-.node-arc__seg {
+.node-menu {
   position: absolute;
   top: 0;
   left: 0;
+  /* Interactive, unlike the labels layer: this is a real menu a person opened.
+     It is sized to its content rather than spanning the stage, so making it
+     interactive cannot swallow clicks meant for the canvas — the arc this
+     replaced spanned the whole stage and, made interactive, took every pointer
+     event on the map. */
   pointer-events: auto;
-  /* Fixed rather than content-driven: `hoverPlacement` derives both the spacing
-     between segments and the card's standoff from this number, so a segment
-     allowed to grow past it would slide under its neighbour. Keep the two in
-     step — ARC_SEG_MAX_WIDTH. */
-  max-width: 140px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 5px 11px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
+  z-index: 6;
+  min-width: 178px;
+  max-width: 230px;
+  /* The same lift the other overlays get, so the menu reads as sitting on the
+     field rather than painted onto it. */
   background: var(--panel-translucent);
-  color: var(--text-primary);
-  font-size: 0.7rem;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(11, 11, 11, 0.08);
 }
 
-.node-arc__seg:hover {
-  background: var(--expandable);
-  border-color: var(--expandable);
-  color: #ffffff;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .node-arc {
-    transition: none;
-  }
+/* `.branch` is shaped for the OUTLINE, where it sits indented beneath the row it
+   belongs to. Floating on the canvas that indent shifts it 28px clear of the node
+   it is anchored to, which reads as the menu pointing at the wrong point. */
+.node-menu .branch {
+  margin: 0;
+  background: none;
 }
 
 /* --- node titles (HTML overlay, not troika text) --- */
@@ -974,9 +954,9 @@ a:focus-visible {
   .panel--detail {
     top: auto;
     /* Clears the footer, which wraps to two lines at this width. The affiliate
-       disclosure lives there and has to stay readable — Amazon's terms require
-       it wherever the links appear, so a panel sitting on top of it is not a
-       cosmetic problem. */
+       disclosure lives there and has to stay readable — affiliate programmes
+       require it wherever the links appear, so a panel sitting on top of it is
+       not a cosmetic problem. */
     bottom: 56px;
     left: 12px;
     right: 12px;

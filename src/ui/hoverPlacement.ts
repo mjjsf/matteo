@@ -1,51 +1,32 @@
-/** Where the two hover overlays go.
+/** Where the two node overlays go.
  *
- *  The description card and the branch arc both anchor to the same projected
- *  point, and both are large — the card up to 260px wide, the arc a ring of
- *  labelled buttons around the node. Left to compute their own positions they
+ *  The description card follows the pointer's node; the branch menu stays on the
+ *  node that was clicked. Usually those are different nodes and nothing has to be
+ *  negotiated — but hovering the node whose menu is open puts both on the same
+ *  projected point, and both are large. Left to compute their own positions they
  *  would sit on top of each other, and each would be reasoning about the other's
  *  size from its own copy of the constants.
  *
- *  So one function decides both, from the same inputs, and each overlay reads
- *  the part it needs. Pure and tested, because the failures it prevents — two
- *  absolutely-positioned layers overlapping, or three buttons overlapping each
- *  other — only appear at some screen positions and some segment counts, which
- *  is exactly what a screenshot at one camera angle will not show. */
+ *  So one function decides both, from the same inputs, and each overlay reads the
+ *  part it needs. Pure and tested, because an overlap that only appears at some
+ *  screen positions is exactly what a screenshot at one camera angle will not
+ *  show.
+ *
+ *  This used to place an ARC of buttons on a circle around the node, when the
+ *  chooser appeared on hover. A click-opened menu is an ordinary rectangle, which
+ *  is both easier to read and easier to place — the trigonometry, the segment
+ *  spacing and the "does the outermost button clear the card" arithmetic all go
+ *  away with it. */
 
-/** Distance from the node to the centre of a segment. Large enough that the
- *  outermost two clear each other at `ARC_SEG_MAX_WIDTH`; no larger, because the
- *  ring covers whatever nodes it passes over. */
-export const ARC_RADIUS = 86;
+/** Gap between the node and an overlay in the ordinary case. */
+export const GAP = 14;
 
-/** How much of a circle the segments span. "More or less a semicircle": wide
- *  enough to read as a band, narrow enough that two segments arc OVER the node
- *  rather than sitting level with it on either side. */
-export const ARC_SWEEP = (140 * Math.PI) / 180;
-
-/** The widest a segment may draw. Must match `max-width` on `.node-arc__seg` —
- *  which is why that is a fixed number rather than content-driven. Both the
- *  separation between segments and the card's standoff are derived from it, so a
- *  segment allowed to grow past its allowance would slide under its neighbour. */
-export const ARC_SEG_MAX_WIDTH = 140;
-
-/** Gap between the node and the card in the ordinary case. */
-export const CARD_GAP = 14;
-
-/** Horizontal gap for the one case where the card cannot go on the opposite side
- *  of the node from the arc: it has to clear the whole ring sideways instead.
- *  Derived rather than guessed, so changing the arc moves the card. */
-export const CARD_ARC_GAP = Math.round(
-  ARC_RADIUS * Math.sin(ARC_SWEEP / 2) + ARC_SEG_MAX_WIDTH / 2 + 12,
-);
-
-/** Roughly what the card occupies. Only used to ask "does it fit on this side",
- *  so it is the generous end of the range rather than a measurement. */
+/** Roughly what each overlay occupies. Only used to ask "does it fit on this
+ *  side", so these are the generous end of the range rather than measurements. */
 const CARD_WIDTH = 280;
 const CARD_HEIGHT = 190;
-
-/** Below this many pixels from the top there is no room to draw the arc above
- *  the node, so it goes underneath instead. */
-const ARC_HEADROOM = ARC_RADIUS + 30;
+const MENU_WIDTH = 230;
+const MENU_HEIGHT = 130;
 
 export interface HoverPlacement {
   /** Card sits to the left of the node rather than the right. */
@@ -54,14 +35,12 @@ export interface HoverPlacement {
   cardBelow: boolean;
   cardOffsetX: number;
   cardOffsetY: number;
-  /** True when the arc is above the node. */
-  arcAbove: boolean;
-  /** One angle per segment, left to right.
-   *
-   *  Screen space, measured from the +x axis, counter-clockwise as drawn — so
-   *  `Math.PI / 2` is directly ABOVE the node even though screen y grows
-   *  downward. Convert with `x + r*cos(a)`, `y - r*sin(a)`. */
-  arcAngles: number[];
+  /** Menu sits to the left of the node rather than the right. */
+  menuLeft: boolean;
+  /** Menu sits above the node rather than below it. */
+  menuAbove: boolean;
+  menuOffsetX: number;
+  menuOffsetY: number;
 }
 
 export function placeHover(input: {
@@ -70,48 +49,49 @@ export function placeHover(input: {
   y: number;
   width: number;
   height: number;
-  /** How many branch segments to lay out. Zero for a node with nothing to
-   *  choose — an expanded one, or a leaf. */
-  segments: number;
+  /** Whether a branch menu is open on THIS node. When it is, the two overlays
+   *  have to be kept apart; when it is not, the card behaves as it always did. */
+  hasMenu?: boolean;
+  /** Retained so callers that count branch axes can pass what they have.
+   *  Non-zero means the same thing as `hasMenu`. */
+  segments?: number;
 }): HoverPlacement {
-  const { x, y, width, height, segments } = input;
-  const hasArc = segments > 0;
+  const { x, y, width, height } = input;
+  const hasMenu = input.hasMenu ?? (input.segments ?? 0) > 0;
 
-  const arcAbove = y >= ARC_HEADROOM;
-  const centre = arcAbove ? Math.PI / 2 : -Math.PI / 2;
+  // The menu goes below-right by default and flips only at an edge. It is
+  // anchored to a click rather than to the pointer, so it should be where the
+  // reader last put their cursor, not somewhere clever.
+  const menuLeft = x > width - (MENU_WIDTH + GAP);
+  const menuAbove = y > height - (MENU_HEIGHT + GAP);
 
-  const arcAngles: number[] = [];
-  if (segments === 1) {
-    arcAngles.push(centre);
-  } else if (segments > 1) {
-    // Descending, so index 0 is the leftmost segment and the labels read in the
-    // order `axesFor` returned them.
-    for (let i = 0; i < segments; i++) {
-      arcAngles.push(centre + ARC_SWEEP / 2 - (i * ARC_SWEEP) / (segments - 1));
-    }
-  }
-
-  // The card goes on the opposite side of the node from the arc, which separates
-  // them for free and keeps the card near the thing it describes. Only when that
+  // The card takes the opposite VERTICAL side from the menu, which separates
+  // them for free and keeps each near the node it describes. Only where that
   // side has no room does it fall back to standing off sideways.
+  const roomAbove = y >= CARD_HEIGHT;
+  const roomBelow = y + CARD_HEIGHT + GAP <= height;
+
   let cardBelow: boolean;
-  if (!hasArc) {
-    cardBelow = y < CARD_HEIGHT;
-  } else if (arcAbove) {
-    cardBelow = y + CARD_HEIGHT + CARD_GAP <= height;
+  if (!hasMenu) {
+    cardBelow = !roomAbove;
+  } else if (menuAbove) {
+    cardBelow = roomBelow;
   } else {
-    cardBelow = y < CARD_HEIGHT;
+    cardBelow = !roomAbove;
   }
 
-  const sameSide = hasArc && arcAbove === !cardBelow;
-  const cardOffsetX = sameSide ? CARD_ARC_GAP : CARD_GAP;
+  // Same side as the menu and nowhere else to go: distance is what is left.
+  const sameSide = hasMenu && cardBelow === !menuAbove;
+  const cardOffsetX = sameSide ? MENU_WIDTH + GAP * 2 : GAP;
 
   return {
-    cardLeft: x > width - (CARD_WIDTH + cardOffsetX - CARD_GAP),
+    cardLeft: x > width - (CARD_WIDTH + cardOffsetX - GAP),
     cardBelow,
     cardOffsetX,
-    cardOffsetY: CARD_GAP,
-    arcAbove,
-    arcAngles,
+    cardOffsetY: GAP,
+    menuLeft,
+    menuAbove,
+    menuOffsetX: GAP,
+    menuOffsetY: GAP,
   };
 }

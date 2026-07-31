@@ -83,8 +83,8 @@ describe('seed corpus integrity', () => {
 
   it('only carries ISBNs that pass their checksum', () => {
     // ISBNs are optional and are never fabricated — a checksum-valid but wrong
-    // ISBN would deep-link to the wrong product. Where absent, the Amazon link
-    // falls back to a title+author search.
+    // ISBN would deep-link to the wrong book. Where absent, and it is absent for
+    // every book today, the Bookshop link falls back to a title+author search.
     const bad: string[] = [];
     for (const b of books) {
       if (b.isbn13 && !isValidIsbn(b.isbn13)) bad.push(`${b.id}: isbn13 ${b.isbn13}`);

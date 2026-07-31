@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import {
   isValidIsbn10,
   isValidIsbn13,
-  isbn13ToIsbn10,
+  isbn10ToIsbn13,
   normalizeIsbn,
-  resolveIsbn10,
+  resolveIsbn13,
 } from './isbn';
 
 describe('normalizeIsbn', () => {
@@ -15,37 +15,31 @@ describe('normalizeIsbn', () => {
   });
 });
 
-describe('isbn13ToIsbn10', () => {
+describe('isbn10ToIsbn13', () => {
   it('converts the canonical pair', () => {
-    expect(isbn13ToIsbn10('9780306406157')).toBe('0306406152');
+    expect(isbn10ToIsbn13('0306406152')).toBe('9780306406157');
   });
 
   it('tolerates hyphens and spaces', () => {
-    expect(isbn13ToIsbn10('978-0-306-40615-7')).toBe('0306406152');
+    expect(isbn10ToIsbn13('0-306-40615-2')).toBe('9780306406157');
   });
 
-  it('produces an X check digit where required', () => {
-    // 978-0-8044-2957-X: the ISBN-10 check digit for body 080442957 is X.
-    const isbn10 = isbn13ToIsbn10('9780804429573');
-    expect(isbn10).toBe('080442957X');
-    expect(isValidIsbn10(isbn10 as string)).toBe(true);
-  });
-
-  it('returns null for 979 prefixes, which have no ISBN-10 at all', () => {
-    // Assert the checksum is genuinely valid first, so this test proves the
-    // 979 prefix is the reason for rejection rather than a malformed number.
-    expect(isValidIsbn13('9791234567896')).toBe(true);
-    expect(isbn13ToIsbn10('9791234567896')).toBeNull();
+  it('accepts an X check digit and discards it', () => {
+    // The two check digits are computed over different weightings and are not
+    // related, so the 10's is dropped rather than carried across. 080442957X
+    // and 0804429573 differ only in that digit and must produce the same 13.
+    expect(isbn10ToIsbn13('080442957X')).toBe('9780804429573');
+    expect(isValidIsbn13(isbn10ToIsbn13('080442957X') as string)).toBe(true);
   });
 
   it('returns null rather than throwing on malformed input', () => {
-    for (const bad of ['', 'not-an-isbn', '97803064061', '97803064061579', '978030640615X']) {
-      expect(isbn13ToIsbn10(bad)).toBeNull();
+    for (const bad of ['', 'not-an-isbn', '030640615', '03064061522', '03064061X2']) {
+      expect(isbn10ToIsbn13(bad)).toBeNull();
     }
   });
 
-  it('returns null when the ISBN-13 checksum is wrong', () => {
-    expect(isbn13ToIsbn10('9780306406158')).toBeNull();
+  it('returns null when the ISBN-10 checksum is wrong', () => {
+    expect(isbn10ToIsbn13('0306406153')).toBeNull();
   });
 });
 
@@ -65,21 +59,25 @@ describe('validation', () => {
   });
 });
 
-describe('resolveIsbn10', () => {
-  it('prefers an explicit valid isbn10', () => {
-    expect(resolveIsbn10({ isbn10: '0306406152', isbn13: '9791234567896' })).toBe('0306406152');
+describe('resolveIsbn13', () => {
+  it('prefers an explicit valid isbn13', () => {
+    expect(resolveIsbn13({ isbn10: '0306406152', isbn13: '9791234567896' })).toBe('9791234567896');
   });
 
-  it('derives from isbn13 when isbn10 is absent', () => {
-    expect(resolveIsbn10({ isbn13: '9780306406157' })).toBe('0306406152');
+  it('derives from isbn10 when isbn13 is absent', () => {
+    expect(resolveIsbn13({ isbn10: '0306406152' })).toBe('9780306406157');
   });
 
-  it('ignores an invalid explicit isbn10 and falls back', () => {
-    expect(resolveIsbn10({ isbn10: 'garbage', isbn13: '9780306406157' })).toBe('0306406152');
+  it('ignores an invalid explicit isbn13 and falls back', () => {
+    expect(resolveIsbn13({ isbn13: 'garbage', isbn10: '0306406152' })).toBe('9780306406157');
+  });
+
+  it('keeps a 979 ISBN, which the old ISBN-10 direction had to reject', () => {
+    expect(resolveIsbn13({ isbn13: '9791234567896' })).toBe('9791234567896');
   });
 
   it('returns null when nothing is resolvable', () => {
-    expect(resolveIsbn10({})).toBeNull();
-    expect(resolveIsbn10({ isbn13: '9791234567896' })).toBeNull();
+    expect(resolveIsbn13({})).toBeNull();
+    expect(resolveIsbn13({ isbn10: 'garbage' })).toBeNull();
   });
 });

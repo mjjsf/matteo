@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useStore, bookForRef, describeRef, slotOf } from '@/state/store';
-import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
+import { bookshopLinkForBook, configuredAffiliateId } from '@/domain/bookshop';
 import { placeHover } from './hoverPlacement';
 
 /** Rollover card for the node under the cursor: title, byline, and the
@@ -35,11 +35,10 @@ export function BookTooltip({
     const vec = new THREE.Vector3();
     let lastRef: string | null | undefined;
     let canvasEl: HTMLCanvasElement | null = null;
-    /** How many arc segments the node under the cursor is showing, so the card
-     *  knows how far to stand off. Cached with the labels rather than recomputed
-     *  per frame: `axesFor` walks the graph index, and this loop runs at 60fps
-     *  through every orbit. */
-    let segments = 0;
+    /** Whether the branch menu is open on the node under the cursor, so the card
+     *  knows to stand clear of it. Usually false: the menu follows a click and
+     *  the card follows the pointer, so they are normally on different nodes. */
+    let menuHere = false;
 
     const tick = (): void => {
       raf = requestAnimationFrame(tick);
@@ -72,7 +71,6 @@ export function BookTooltip({
         const about = describeRef(hovered);
         const book = bookForRef(hovered);
         const node = state.graph.nodes[slot];
-        segments = node && !node.expanded ? state.axesFor(slot).length : 0;
         if (about && titleRef.current && metaRef.current && descRef.current && hintRef.current) {
           titleRef.current.textContent = about.label;
           metaRef.current.textContent = about.detail;
@@ -87,17 +85,24 @@ export function BookTooltip({
                 node.generation > 0
                 ? 'Click to hide what grew from this'
                 : 'Your starting point'
-              : segments > 0
-                ? // The ways to grow are now buttons on the arc around the node,
-                  // so pointing at them beats describing them. A plain click is
-                  // still the fast path along the first one.
-                  'Pick a branch, or click to grow'
+              : node.expandable
+                ? // A click no longer grows anything by itself — it opens the
+                  // menu and waits. Saying "click to grow" would promise a
+                  // result the click does not produce.
+                  'Click for ways to grow this'
                 : 'Nothing further to grow';
           // Written imperatively, like everything else on this card: rendering it
           // through React would put the reconciler back in the hover path.
           if (buyRef.current) {
             buyRef.current.style.display = book ? '' : 'none';
-            if (book) buyRef.current.href = amazonLinkForBook(book, configuredAssociateTag()).href;
+            if (book) {
+              const link = bookshopLinkForBook(book, configuredAffiliateId());
+              buyRef.current.href = link.href;
+              buyRef.current.textContent = link.label;
+              buyRef.current.rel = link.sponsored
+                ? 'noopener noreferrer sponsored'
+                : 'noopener noreferrer';
+            }
           }
         }
       }
@@ -119,15 +124,16 @@ export function BookTooltip({
 
       // Behind the camera: hide rather than drawing at a nonsense position.
       el.style.opacity = vec.z > 1 ? '0' : '1';
-      // Shared with `NodeArc`, which draws a band of buttons around this same
-      // point. The card has to be pushed clear of it, and only one of the two
-      // can be the place that knows how far.
+      // Shared with `NodeMenu`, which anchors to this same point whenever the
+      // open menu belongs to the node being hovered. The card has to stand clear
+      // of it, and only one of the two can be the place that knows how far.
+      menuHere = state.menuRef === hovered;
       const { cardLeft, cardBelow, cardOffsetX, cardOffsetY } = placeHover({
         x,
         y,
         width: rect.width,
         height: rect.height,
-        segments,
+        hasMenu: menuHere,
       });
       el.style.transform =
         `translate3d(${x}px, ${y}px, 0) ` +
@@ -145,7 +151,7 @@ export function BookTooltip({
     // card is reachable only by pointer, and an aria-hidden subtree must not
     // contain anything focusable. Nothing is lost by it: DetailPanel carries the
     // same book's buy link as real, focusable DOM, so keyboard and screen-reader
-    // users reach Amazon by that route rather than this one.
+    // users reach Bookshop by that route rather than this one.
     <div
       className="tooltip"
       ref={ref}
@@ -165,10 +171,12 @@ export function BookTooltip({
         ref={buyRef}
         href="#"
         target="_blank"
-        rel="noopener noreferrer sponsored"
+        rel="noopener noreferrer"
         tabIndex={-1}
       >
-        Find on Amazon
+        {/* Label and rel are both written in the frame loop above, from the same
+            link the detail panel builds. Left empty here rather than hardcoded,
+            so the two can never disagree about which shop this points at. */}
       </a>
     </div>
   );

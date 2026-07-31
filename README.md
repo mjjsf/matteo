@@ -113,42 +113,51 @@ the palette no longer depends on them to be legal.
 merely pin the hexes: it recomputes the contrast ratios, so a nudged colour
 fails CI rather than quietly invalidating a comment.
 
-## Amazon links, and the absence of Prime
+## Bookshop.org links
 
-Links are ISBN-based `/dp/` deep links where an ISBN is known, and a
-title + author search URL otherwise. Set the affiliate tag with:
+Purchase links go to [Bookshop.org](https://bookshop.org), which routes the bulk
+of its margin to independent bookshops. Set an affiliate id with:
 
 ```
-VITE_AMAZON_ASSOCIATE_TAG=yourtag-20
+VITE_BOOKSHOP_AFFILIATE_ID=1234
 ```
 
 in a `.env.local` (git-ignored, so it is documented here rather than committed).
-Without it, links simply carry no tag.
 
-**There is no Prime badge of our own.** Prime eligibility is only obtainable
-through Amazon's Product Advertising API, which requires an approved Associates
-account and secret-key request signing that cannot happen in a browser.
-Displaying "ships with Prime" without verifying it would be inventing facts about
-a real product.
+Two link shapes, both built in `src/domain/bookshop.ts`:
 
-What the app does instead is hand Amazon a search URL carrying its **own
-Prime-eligible refinement**, and let Amazon's page report what it finds. The link
-is labelled by what it *asks for* — "opens an Amazon search filtered to
-Prime-eligible results" — never by what a given book ships with.
+| when | link |
+|---|---|
+| an ISBN-13 is known | `bookshop.org/a/{id}/{isbn13}`, Bookshop's documented affiliate format |
+| otherwise | a title + author search |
 
-The refinement id is **unverified from the environment this was built in**:
-`amazon.com` is blocked there, so it could not be exercised against the live site,
-and it is marketplace-specific (the value in `src/domain/amazon.ts` is for the US
-store). It is chosen to fail safe — an unrecognised `rh` refinement makes Amazon
-return the ordinary unfiltered results, and since nothing on our side claims
-eligibility, a silently ignored refinement cannot become a false claim. Doing it
-properly still means PA-API credentials plus a small serverless signing endpoint.
+**Every link is a search today**, because no book in the corpus records an ISBN.
+That is not a rare fallback — the product branch has never once been taken, and
+the Amazon `/dp/` branch it replaces never was either. `npm run fetch` populates
+real ISBNs from Open Library, and those books deep-link the moment it does. The
+corpus carries **no fabricated ISBNs**: a checksum-valid but incorrect one would
+open the wrong book, which is worse than a search.
 
-The seed corpus also carries **no fabricated ISBNs**. A checksum-valid but
-incorrect ISBN would deep-link to the wrong book, which is worse than no link, so
-books without a known ISBN fall back to search and are labelled "Find on Amazon"
-rather than "Buy on Amazon". `npm run fetch` populates real ISBNs from Open
-Library.
+**The search path is unverified from the environment this was built in.**
+`bookshop.org` answers 403 at that sandbox's egress proxy, so no request has ever
+been made against it. Unlike the Amazon Prime refinement this replaced — which
+degraded to ordinary results when unrecognised — a wrong search *path* is a 404
+on every button in the app. It is also the cheapest thing in the project to
+check: click one button. If it is wrong, `SEARCH_PATH` in `src/domain/bookshop.ts`
+is a one-line fix.
+
+**The affiliate disclosure appears only when there is an affiliate.** The
+previous version rendered it unconditionally, so with no tag configured — the
+state of the deployed site — the app told every visitor it earned commission on
+their purchases while earning nothing. A disclosure that is not true is a claim
+about a commercial relationship that does not exist, not a harmless extra.
+`rel="sponsored"` follows the same rule: it is applied only to links that can
+actually earn, which today is none of them, because attribution rides on the
+`/a/{id}` path segment and a search URL has nowhere to put it.
+
+Nothing in the UI claims price, stock, availability or delivery. This side knows
+none of those, so the link opens Bookshop's page and their page reports what they
+have.
 
 ## Data
 
@@ -403,7 +412,7 @@ descriptions are ~40% of `corpus.json` while only the open book needs one.
 ## Layout of the code
 
 ```
-src/domain/    pure logic: taxonomy, search, ISBN, Amazon, palette
+src/domain/    pure logic: taxonomy, search, ISBN, Bookshop links, palette
 src/state/     zustand store, URL hash routing, buffer selectors
 src/scene/     three.js / react-three-fiber rendering
 src/ui/        React panels and HTML overlays

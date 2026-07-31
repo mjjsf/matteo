@@ -178,36 +178,41 @@ describe('DetailPanel', () => {
     expect(container.querySelector('.panel--detail')).toBeNull();
   });
 
-  it('renders an honest Amazon link for a book with no ISBN', () => {
+  it('renders an honest Bookshop link for a book with no ISBN', () => {
     useStore.getState().seed(bookRef('neuromancer'));
     render(<DetailPanel />);
     const link = screen.getByRole('link') as HTMLAnchorElement;
-    // The seed corpus carries no fabricated ISBNs, so this must be the search
-    // fallback and must be labelled as such rather than promising a product page.
-    expect(link.getAttribute('href')).toContain('/s?');
-    expect(link.getAttribute('rel')).toContain('sponsored');
-    expect(link.textContent).toContain('Find on Amazon');
+    // No book in the corpus carries an ISBN, so this is not a fallback that
+    // rarely fires — it is every link in the app. It must be labelled as a
+    // search rather than promising a product page.
+    const href = new URL(link.getAttribute('href') as string);
+    expect(href.host).toBe('bookshop.org');
+    expect(href.searchParams.get('keywords')).toContain('Neuromancer');
+    expect(link.textContent).toContain('Find on Bookshop');
   });
 
-  it('asks Amazon to filter to Prime without claiming eligibility itself', () => {
+  it('does not mark a search link sponsored, because it can earn nothing', () => {
+    // Bookshop attributes through the `/a/{id}` path segment, which a search URL
+    // has nowhere to carry. `rel="sponsored"` on a link that cannot pay a
+    // commission is a false statement about a commercial relationship — quiet,
+    // but still false. The old Amazon link asserted it unconditionally.
     useStore.getState().seed(bookRef('neuromancer'));
     const { container } = render(<DetailPanel />);
     const link = screen.getByRole('link') as HTMLAnchorElement;
-    // The refinement travels in the URL, where Amazon acts on it.
-    expect(link.getAttribute('href')).toContain('rh=');
-    // The explainer line under the button is gone, so there is no longer any
-    // prose here describing the filter — which makes the negative the whole
-    // guarantee, and the one worth asserting: the panel must never state that
-    // this particular book ships with Prime. Nothing in the UI may say it does.
-    expect(container.textContent).not.toMatch(/eligible for prime|ships with prime|prime shipping/i);
-    expect(container.textContent).not.toMatch(/prime/i);
+    expect(link.getAttribute('rel')).not.toContain('sponsored');
+    expect(link.getAttribute('href')).not.toContain('/a/');
+    // And nothing in the panel may claim price, stock or availability, none of
+    // which this side knows.
+    expect(container.textContent).not.toMatch(/in stock|available now|ships/i);
   });
 
-  it('carries the affiliate disclosure in the footer on every screen', () => {
-    // It used to be repeated inside the detail panel as well. That duplicate is
-    // gone; the requirement is not, so the assertion moved to where the single
-    // remaining copy lives rather than being deleted with it.
+  it('withholds the affiliate disclosure when there is no affiliate', () => {
+    // The disclosure used to render unconditionally, so with no id configured —
+    // which is the state of this test run and of the deployed site — the app
+    // told every visitor it earned commission on their purchases while earning
+    // nothing. The requirement to disclose a real relationship is unchanged;
+    // asserting one that does not exist is what stopped.
     const { container } = render(<Footer />);
-    expect(container.textContent).toContain('Amazon Associate');
+    expect(container.textContent).not.toMatch(/commission/i);
   });
 });
