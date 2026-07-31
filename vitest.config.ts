@@ -22,8 +22,12 @@ export default defineConfig({
             'src/domain/**/*.test.ts',
             'src/generated/**/*.test.ts',
             'scripts/**/*.test.ts',
-            // Pure decision logic with no WebGL and no DOM involved.
+            // Pure decision logic with no WebGL and no DOM involved. Named file
+            // by file rather than globbed, so that adding a test beside a
+            // component is a decision about whether it belongs in `node` rather
+            // than something that happens by accident and then fails on `window`.
             'src/scene/motion.test.ts',
+            'src/scene/transition.test.ts',
           ],
         },
       },

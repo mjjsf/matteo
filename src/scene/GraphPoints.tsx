@@ -2,10 +2,16 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useStore } from '@/state/store';
-import { EDGE_LEN, MAX_NODES, tierOf } from '@/domain/graph';
-import { kindOf, type NodeKind } from '@/domain/nodeRef';
+import { EDGE_LEN, MAX_NODES, tierOf, type EdgeKind } from '@/domain/graph';
+import { kindOf, type NodeKind, type NodeRef } from '@/domain/nodeRef';
 import { hexToRgbTriple, type ThemeColors } from '@/domain/palette';
-import { prefersReducedMotion, spawnOriginFor } from './motion';
+import { prefersReducedMotion } from './motion';
+import {
+  SPAWN_MS,
+  emptyTransitionState,
+  planTransition,
+  type TransitionState,
+} from './transition';
 import {
   graphPointsFragmentShader,
   graphPointsVertexShader,
@@ -15,14 +21,10 @@ import {
  *  to a reader, and the grain distinction is a code concern. */
 const MARK_OF: Record<NodeKind, number> = { book: 0, topic: 1, tag: 1, author: 2 };
 
-const SPAWN_MS = 520;
-/** Per-child delay so a fan unfurls in similarity order — the best match arrives
- *  first, which is a second, free encoding of rank. */
-const STAGGER_MS = 45;
-
 interface Props {
   theme: ThemeColors;
   onReady: (points: THREE.Points) => void;
+  transition: React.MutableRefObject<TransitionState>;
 }
 
 /** The book nodes.
@@ -36,17 +38,28 @@ interface Props {
  *   - `useStore.subscribe` owns `aSize`/`aTier` (discrete, event-driven).
  *  Neither causes a React render, which is the invariant that keeps hovering and
  *  animation off the reconciler. */
-export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
+export function GraphPoints({ theme, onReady, transition }: Props): React.ReactElement {
   const pointsRef = useRef<THREE.Points>(null);
   const { gl } = useThree();
 
   /** Animation state, deliberately outside React and outside the store: it
-   *  changes every frame and nothing may re-render because of it. */
+   *  changes every frame and nothing may re-render because of it.
+   *
+   *  `refs` and `parents` mirror the LAST revision's slot assignment. They are
+   *  what lets a node be found by identity rather than by index, which is the
+   *  whole basis of `planTransition` — `collapseNode` compacts the array, so a
+   *  slot does not name the same node from one revision to the next. */
   const anim = useRef({
     target: new Float32Array(MAX_NODES * 3),
     spawn: new Float32Array(MAX_NODES * 3),
-    startAt: new Float32Array(MAX_NODES),
-    count: 0,
+    startAt: new Float64Array(MAX_NODES),
+    refs: [] as NodeRef[],
+    parents: [] as Array<number | null>,
+    edges: [] as Array<{ from: number; to: number; kind: EdgeKind }>,
+    /** Slots on the map. */
+    live: 0,
+    /** Slots being drawn while they retreat, immediately after `live`. */
+    ghosts: 0,
     until: 0,
   });
 
@@ -173,48 +186,73 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
       if (s.revision !== lastRevision) {
         lastRevision = s.revision;
         const nodes = s.graph.nodes;
-        const count = Math.min(nodes.length, MAX_NODES);
         const a = anim.current;
         const now = performance.now();
         const reduced = prefersReducedMotion();
 
-        for (let i = 0; i < count; i++) {
-          const node = nodes[i]!;
-          const isNew = i >= a.count;
+        const plan = planTransition({
+          prevRefs: a.refs,
+          prevParents: a.parents,
+          prevEdges: a.edges,
+          nextNodes: nodes,
+          rendered: positions,
+          now,
+          reduced,
+        });
 
-          a.target[i * 3] = node.target[0];
-          a.target[i * 3 + 1] = node.target[1];
-          a.target[i * 3 + 2] = node.target[2];
+        // Ghost attributes are CARRIED, not recomputed: the nodes they describe
+        // are gone from the graph, so there is nothing left to compute them
+        // from. Read before the live writes below, since a ghost's old slot may
+        // be one a survivor has just moved into.
+        const carried = plan.ghostFrom.map((slot) => ({
+          size: sizes[slot] as number,
+          tier: tiers[slot] as number,
+          kind: kinds[slot] as number,
+        }));
 
-          if (isNew) {
-            const parent = node.parentIndex === null ? null : nodes[node.parentIndex];
-            // Under reduced motion this is the node's own target, not the
-            // parent's — the tween below is skipped entirely, so a spawn origin
-            // that is not already the destination would strand the node there.
-            const from = spawnOriginFor(node.target, parent?.target ?? null, reduced);
-            a.spawn[i * 3] = from[0];
-            a.spawn[i * 3 + 1] = from[1];
-            a.spawn[i * 3 + 2] = from[2];
-            a.startAt[i] = reduced ? -Infinity : now + (i - a.count) * STAGGER_MS;
-            positions[i * 3] = from[0];
-            positions[i * 3 + 1] = from[1];
-            positions[i * 3 + 2] = from[2];
+        const total = plan.liveCount + plan.ghostCount;
+        for (let i = 0; i < total; i++) {
+          for (let d = 0; d < 3; d++) {
+            a.spawn[i * 3 + d] = plan.from[i * 3 + d] as number;
+            a.target[i * 3 + d] = plan.to[i * 3 + d] as number;
+            // Written straight away rather than waiting for the next frame: a
+            // slot whose node changed identity is showing the wrong node's
+            // position until something writes over it.
+            positions[i * 3 + d] = plan.from[i * 3 + d] as number;
           }
+          a.startAt[i] = plan.startAt[i] as number;
+        }
 
+        for (let i = 0; i < plan.liveCount; i++) {
+          const node = nodes[i]!;
           sizes[i] = node.generation === 0 ? 13 : Math.max(6, 11 - node.generation * 1.1);
           tiers[i] = tierOf(node);
           kinds[i] = MARK_OF[kindOf(node.nodeRef)];
         }
+        carried.forEach((attrs, g) => {
+          const slot = plan.liveCount + g;
+          sizes[slot] = attrs.size;
+          tiers[slot] = attrs.tier;
+          kinds[slot] = attrs.kind;
+        });
 
-        a.count = count;
-        a.until = reduced ? 0 : now + SPAWN_MS + count * STAGGER_MS;
+        a.live = plan.liveCount;
+        a.ghosts = plan.ghostCount;
+        a.until = plan.until;
+        a.refs = nodes.slice(0, plan.liveCount).map((n) => n.nodeRef);
+        a.parents = nodes.slice(0, plan.liveCount).map((n) => n.parentIndex);
+        a.edges = s.graph.edges.map((e) => ({ from: e.from, to: e.to, kind: e.kind }));
+        transition.current.ghostEdges = plan.ghostEdges;
 
-        geometry.setDrawRange(0, count);
+        geometry.setDrawRange(0, total);
         positionAttr.needsUpdate = true;
         sizeAttr.needsUpdate = true;
         tierAttr.needsUpdate = true;
         kindAttr.needsUpdate = true;
-        commitBounds(count);
+        // Over the live nodes only. The bounding sphere is what the raycaster
+        // culls against, so leaving retreating nodes out of it is also what
+        // keeps them unhoverable.
+        commitBounds(plan.liveCount);
       }
 
       const focusRef = s.hoveredRef ?? s.selectedRef;
@@ -227,17 +265,32 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
 
     apply(useStore.getState());
     return useStore.subscribe(apply);
-  }, [geometry, material, commitBounds]);
+  }, [geometry, material, commitBounds, transition]);
 
   useFrame(() => {
     const a = anim.current;
     const now = performance.now();
-    if (now > a.until || a.count === 0) return;
+
+    if (now > a.until) {
+      // The retreat has finished, so the slots holding it go back to being
+      // unused. Done here rather than on a timer: the frame loop already knows
+      // what time it is, and a timer could fire during a revision it knows
+      // nothing about. Checked before the `live === 0` bail below, or an empty
+      // map would leave its ghosts drawn for good.
+      if (a.ghosts > 0) {
+        a.ghosts = 0;
+        geometry.setDrawRange(0, a.live);
+        transition.current.ghostEdges = emptyTransitionState().ghostEdges;
+      }
+      return;
+    }
+
+    if (a.live + a.ghosts === 0) return;
 
     const positionAttr = geometry.getAttribute('position') as THREE.BufferAttribute;
     const positions = positionAttr.array as Float32Array;
 
-    for (let i = 0; i < a.count; i++) {
+    for (let i = 0; i < a.live + a.ghosts; i++) {
       const t = Math.min(1, Math.max(0, (now - (a.startAt[i] as number)) / SPAWN_MS));
       const e = 1 - (1 - t) ** 3;
       for (let d = 0; d < 3; d++) {
@@ -247,7 +300,7 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
       }
     }
     positionAttr.needsUpdate = true;
-    commitBounds(a.count);
+    commitBounds(a.live);
   });
 
   return (
