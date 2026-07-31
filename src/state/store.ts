@@ -403,12 +403,19 @@ export const useStore = create<AppState>((set, get) => ({
       set({
         graph: { ...graph },
         revision: state.revision + 1,
+        // Accurate for the grain and the axis. This used to read "No further
+        // similar books — this is a leaf" for every empty result, which is
+        // wrong twice over once a branch can follow an author or a subject:
+        // growing Foucault by "their books" when all three are already on the
+        // map is not a leaf and has nothing to do with similarity.
         notice:
           result.reason === 'at-capacity'
             ? `This graph is full at ${SOFT_CAP} books. Open a book and start a new map from it.`
             : result.reason === 'already-expanded'
               ? null
-              : 'No further similar books — this is a leaf.',
+              : axis === DEFAULT_AXIS
+                ? 'No further similar books — this is a leaf.'
+                : 'Everything along that path is already on the map.',
       });
       return;
     }

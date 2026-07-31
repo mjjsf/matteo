@@ -91,17 +91,29 @@ export function axesFor(
   }
 
   if (kind === 'topic') {
-    // Books lead. Seeding a subject and getting a list of narrower subjects is
-    // a table of contents when what was asked for was the shelf; the hierarchy
-    // is still one click away, and the seed's first expansion takes this.
     const books = index.booksForTopic[id] ?? [];
-    if (books.length > 0) {
-      out.push({ id: 'books', label: 'Books in it', count: index.countForTopic[id] ?? books.length });
-    }
     const children = index.topics[id]?.childIds ?? [];
-    if (children.length > 0) {
-      out.push({ id: 'narrower', label: 'Narrower subjects', count: children.length });
-    }
+    const bookAxis = {
+      id: 'books',
+      label: 'Books in it',
+      count: index.countForTopic[id] ?? books.length,
+    };
+    const narrowerAxis = {
+      id: 'narrower',
+      label: 'Narrower subjects',
+      count: children.length,
+    };
+    // A node can only be expanded ONCE, along one axis, so whichever axis comes
+    // first is the one a seed takes and the only one that node will ever use.
+    // That makes the order load-bearing rather than cosmetic:
+    //
+    //  - a topic WITH children leads with them, or seeding "Continental
+    //    Philosophy" grows eight books and permanently locks out the six
+    //    schools underneath it — the tree the hierarchy exists to show;
+    //  - a LEAF topic leads with books, or seeding "Existentialism" offers a
+    //    table of contents when what was asked for was the shelf.
+    if (children.length > 0) out.push(narrowerAxis);
+    if (books.length > 0) out.push(bookAxis);
     const tags = ownTags(index, id);
     if (tags.length > 0) out.push({ id: 'tags', label: 'Subjects within', count: tags.length });
     return out;

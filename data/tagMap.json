@@ -2,122 +2,703 @@
   "19th-century": [
     "fiction-classics-19c"
   ],
-  "victorian": [
-    "fiction-classics-19c"
+  "academia": [
+    "arts-letters-criticism"
   ],
-  "modernism": [
-    "fiction-classics-modernism"
+  "activism": [
+    "society-politics-democracy"
   ],
-  "stream-of-consciousness": [
-    "fiction-classics-modernism"
-  ],
-  "russian-literature": [
-    "fiction-classics-russian"
-  ],
-  "family-saga": [
-    "fiction-contemporary-family"
-  ],
-  "coming-of-age": [
-    "fiction-contemporary-coming-of-age"
-  ],
-  "postmodern": [
-    "fiction-contemporary-postmodern"
-  ],
-  "metafiction": [
-    "fiction-contemporary-postmodern"
-  ],
-  "latin-american-literature": [
-    "fiction-world-latin-american"
-  ],
-  "japanese-literature": [
-    "fiction-world-east-asian"
-  ],
-  "chinese-literature": [
-    "fiction-world-east-asian"
+  "addiction": [
+    "science-life-medicine"
   ],
   "african-literature": [
     "fiction-world-african"
   ],
-  "south-asian-literature": [
-    "fiction-world-south-asian"
+  "amnesia": [
+    "science-life-neuroscience"
   ],
-  "short-stories": [
-    "fiction-short-stories"
+  "ancient-philosophy": [
+    "philosophy-western-ancient-greek"
   ],
-  "novella": [
-    "fiction-short-novella"
+  "architecture": [
+    "arts-visual-architecture"
   ],
-  "cyberpunk": [
-    "spec-sf-cyberpunk"
+  "art": [
+    "arts-visual-art-history"
   ],
-  "space-opera": [
-    "spec-sf-space-opera"
+  "art-history": [
+    "arts-visual-art-history"
   ],
-  "dystopia": [
+  "artificial-intelligence": [
+    "science-computing-ai"
+  ],
+  "artificial-life": [
+    "spec-sf-first-contact",
+    "science-computing-ai"
+  ],
+  "astronomy": [
+    "science-physical-cosmology"
+  ],
+  "authoritarianism": [
+    "society-politics-authoritarianism"
+  ],
+  "autobiography": [
+    "history-lives-memoir"
+  ],
+  "behavioral-economics": [
+    "society-economics-behavioral"
+  ],
+  "bioethics": [
     "spec-sf-dystopia"
   ],
-  "post-apocalyptic": [
-    "spec-sf-dystopia"
+  "biography": [
+    "history-lives"
   ],
-  "first-contact": [
-    "spec-sf-first-contact"
+  "biography-of-ideas": [
+    "philosophy-western-epistemology-knowledge"
   ],
-  "time-travel": [
-    "spec-sf-time"
+  "black-comedy": [
+    "arts-letters-essays"
   ],
-  "epic-fantasy": [
-    "spec-fantasy-epic"
+  "book-club": [
+    "fiction-contemporary-book-club"
   ],
-  "urban-fantasy": [
-    "spec-fantasy-urban"
+  "buddhism": [
+    "philosophy-eastern-buddhism"
   ],
-  "magical-realism": [
-    "spec-fantasy-magical-realism"
+  "children-adventure": [
+    "ya-middle-grade-adventure"
   ],
-  "gothic": [
-    "spec-horror-gothic"
+  "chinese-literature": [
+    "fiction-world-east-asian"
   ],
-  "cosmic-horror": [
-    "spec-horror-cosmic"
+  "chosen-one": [
+    "ya-speculative-fantasy"
   ],
-  "psychological-horror": [
-    "spec-horror-psychological"
+  "city-life": [
+    "society-place-urbanism",
+    "fiction-contemporary-postmodern"
   ],
-  "hardboiled": [
-    "crime-detective-hardboiled"
+  "civil-rights": [
+    "society-culture-race-civilrights"
   ],
-  "noir": [
-    "crime-detective-hardboiled"
-  ],
-  "police-procedural": [
-    "crime-detective-procedural"
+  "class": [
+    "society-culture-race-class"
   ],
   "classic-mystery": [
     "crime-detective-classic"
   ],
-  "espionage": [
+  "classical-antiquity": [
+    "history-ancient-classical"
+  ],
+  "classical-music": [
+    "arts-music-classical"
+  ],
+  "climate": [
+    "science-earth-climate"
+  ],
+  "cold-war": [
+    "history-modern-cold-war"
+  ],
+  "colonialism": [
+    "history-modern-empire"
+  ],
+  "coming-of-age": [
+    "fiction-contemporary-coming-of-age"
+  ],
+  "comparative-religion": [
+    "philosophy-religion-comparative"
+  ],
+  "computer-science": [
+    "science-computing-cs"
+  ],
+  "computer-security": [
+    "science-computing-crypto"
+  ],
+  "confucianism": [
+    "philosophy-eastern-taoism"
+  ],
+  "consciousness": [
+    "philosophy-mind-consciousness"
+  ],
+  "conspiracy": [
     "crime-thriller-espionage"
   ],
-  "legal-thriller": [
-    "crime-thriller-legal"
+  "cosmic-horror": [
+    "spec-horror-cosmic"
   ],
-  "techno-thriller": [
-    "crime-thriller-techno"
+  "cosmology": [
+    "science-physical-cosmology"
   ],
-  "true-crime": [
-    "crime-true-investigation"
+  "cosy-mystery": [
+    "crime-detective-classic"
   ],
   "criminal-justice": [
     "crime-true-justice"
   ],
-  "classical-antiquity": [
-    "history-ancient-classical"
+  "critical-theory": [
+    "philosophy-western-continental-critical"
+  ],
+  "cryptography": [
+    "science-computing-crypto"
+  ],
+  "cyberpunk": [
+    "spec-sf-cyberpunk"
+  ],
+  "deconstruction": [
+    "philosophy-western-continental-poststructuralism"
+  ],
+  "democracy": [
+    "society-politics-democracy"
+  ],
+  "detective": [
+    "crime-detective"
+  ],
+  "detective-and-mystery-stories": [
+    "crime-detective-classic"
+  ],
+  "detective-fiction": [
+    "crime-detective-classic",
+    "crime-detective-hardboiled"
+  ],
+  "disability": [
+    "science-life-medicine"
+  ],
+  "divorce": [
+    "fiction-contemporary-family"
+  ],
+  "domestic-abuse": [
+    "crime-thriller-domestic"
+  ],
+  "domestic-suspense": [
+    "crime-thriller-domestic"
+  ],
+  "dragons": [
+    "spec-fantasy-epic-creatures"
+  ],
+  "dystopia": [
+    "spec-sf-dystopia"
+  ],
+  "ecology": [
+    "science-earth-ecology"
+  ],
+  "economics": [
+    "society-economics-theory"
+  ],
+  "empire": [
+    "history-modern-empire"
+  ],
+  "enemies-to-lovers": [
+    "romance-contemporary-romcom"
+  ],
+  "engineering": [
+    "science-computing-cs"
+  ],
+  "environment": [
+    "science-earth-ecology"
+  ],
+  "environmental-history": [
+    "science-earth-climate",
+    "history-modern-empire"
+  ],
+  "epic-fantasy": [
+    "spec-fantasy-epic-high"
+  ],
+  "epistemology": [
+    "philosophy-western-epistemology-knowledge"
+  ],
+  "epistolary": [
+    "arts-letters-essays"
+  ],
+  "espionage": [
+    "crime-thriller-espionage"
+  ],
+  "essays": [
+    "arts-letters-essays"
+  ],
+  "ethics": [
+    "philosophy-western-ethics"
+  ],
+  "evolution": [
+    "science-life-evolution"
+  ],
+  "existentialism": [
+    "philosophy-western-continental",
+    "philosophy-western-existentialism"
+  ],
+  "fae": [
+    "romance-fantasy-fae"
+  ],
+  "family": [
+    "fiction-contemporary-family"
+  ],
+  "family-saga": [
+    "fiction-contemporary-family"
+  ],
+  "fantasy": [
+    "spec-fantasy"
+  ],
+  "feminism": [
+    "society-culture-gender"
+  ],
+  "film": [
+    "arts-media-film"
+  ],
+  "first-contact": [
+    "spec-sf-first-contact"
+  ],
+  "first-love": [
+    "ya-contemporary-romance"
+  ],
+  "folklore": [
+    "spec-fantasy-magical-realism"
+  ],
+  "frankfurt-school": [
+    "philosophy-western-continental-critical"
+  ],
+  "fraud": [
+    "society-economics-theory"
+  ],
+  "friends-to-lovers": [
+    "romance-contemporary-second-chance"
+  ],
+  "gender": [
+    "society-culture-gender"
+  ],
+  "genetics": [
+    "science-life-genetics"
+  ],
+  "german-idealism": [
+    "philosophy-western-continental-idealism"
+  ],
+  "ghosts": [
+    "spec-horror-gothic"
+  ],
+  "globalization": [
+    "society-place-globalization"
+  ],
+  "gothic": [
+    "spec-horror-gothic"
+  ],
+  "graphic-novel": [
+    "arts-visual-art-history"
+  ],
+  "grief": [
+    "ya-contemporary-realism"
+  ],
+  "grimdark": [
+    "spec-fantasy-grimdark"
+  ],
+  "hardboiled": [
+    "crime-detective-hardboiled"
+  ],
+  "hermeneutics": [
+    "philosophy-western-continental-hermeneutics"
+  ],
+  "high-school": [
+    "ya-contemporary-realism"
+  ],
+  "historical-fiction": [
+    "fiction-contemporary-book-club"
+  ],
+  "historical-romance": [
+    "romance-historical-saga"
+  ],
+  "holocaust": [
+    "history-modern-world-wars"
+  ],
+  "horror": [
+    "spec-horror"
+  ],
+  "identity": [
+    "society-culture-gender"
+  ],
+  "illness": [
+    "science-life-medicine"
+  ],
+  "immigration": [
+    "society-culture-migration"
+  ],
+  "immortality": [
+    "spec-fantasy-urban-modern"
+  ],
+  "incarceration": [
+    "crime-true-justice"
+  ],
+  "japanese-literature": [
+    "fiction-world-east-asian"
+  ],
+  "jazz": [
+    "arts-music-jazz"
+  ],
+  "journalism": [
+    "arts-media-media-studies"
+  ],
+  "kidnapping": [
+    "crime-thriller"
+  ],
+  "labor": [
+    "society-economics-work"
+  ],
+  "latin-american-literature": [
+    "fiction-world-latin-american"
+  ],
+  "legal-thriller": [
+    "crime-thriller-legal"
+  ],
+  "libraries": [
+    "arts-letters-criticism"
+  ],
+  "linguistics": [
+    "philosophy-mind-logic"
+  ],
+  "literary-criticism": [
+    "arts-letters-criticism"
+  ],
+  "logic": [
+    "philosophy-mind-logic"
+  ],
+  "magic-school": [
+    "ya-speculative-fantasy"
+  ],
+  "magic-system": [
+    "spec-fantasy-epic-magic"
+  ],
+  "magical-realism": [
+    "spec-fantasy-magical-realism"
+  ],
+  "marriage-plot": [
+    "romance-historical-regency"
+  ],
+  "mathematics": [
+    "science-physical-mathematics"
+  ],
+  "media-studies": [
+    "arts-media-media-studies"
+  ],
+  "medicine": [
+    "science-life-medicine"
+  ],
+  "medieval-history": [
+    "history-ancient-medieval"
+  ],
+  "memoir": [
+    "history-lives-memoir"
+  ],
+  "mental-health": [
+    "science-life-neuroscience"
+  ],
+  "metafiction": [
+    "fiction-contemporary-postmodern"
+  ],
+  "middle-grade": [
+    "ya-middle-grade-adventure"
+  ],
+  "migration": [
+    "society-culture-migration"
+  ],
+  "mind-and-brain": [
+    "science-life-neuroscience",
+    "philosophy-mind-consciousness"
+  ],
+  "modernism": [
+    "fiction-classics-modernism"
+  ],
+  "monsters": [
+    "spec-fantasy-epic-creatures"
+  ],
+  "motherhood": [
+    "fiction-contemporary-family"
+  ],
+  "motion-pictures": [
+    "arts-media-film"
+  ],
+  "murder": [
+    "crime-detective"
+  ],
+  "music": [
+    "arts-music"
+  ],
+  "music-criticism": [
+    "arts-music-popular",
+    "arts-letters-criticism"
+  ],
+  "mysticism": [
+    "philosophy-religion-mysticism"
+  ],
+  "mythology": [
+    "philosophy-religion-comparative"
+  ],
+  "natural-history": [
+    "science-earth-natural-history"
+  ],
+  "nature": [
+    "science-earth-natural-history"
+  ],
+  "nature-writing": [
+    "science-earth-natural-history",
+    "arts-letters-essays"
+  ],
+  "neurodivergence": [
+    "science-life-neuroscience"
+  ],
+  "neuroscience": [
+    "science-life-neuroscience"
+  ],
+  "noir": [
+    "crime-detective-hardboiled"
+  ],
+  "nordic-noir": [
+    "crime-detective-procedural"
+  ],
+  "novella": [
+    "fiction-short-novella"
+  ],
+  "pandemic": [
+    "spec-sf-dystopia"
+  ],
+  "parallel-worlds": [
+    "spec-sf-time"
+  ],
+  "paranormal-romance": [
+    "romance-fantasy-paranormal"
+  ],
+  "phenomenology": [
+    "philosophy-western-continental-phenomenology"
+  ],
+  "philosophy": [
+    "philosophy-western"
+  ],
+  "philosophy-of-science": [
+    "philosophy-western-epistemology-science"
+  ],
+  "photography": [
+    "arts-visual-photography"
+  ],
+  "physics": [
+    "science-physical-physics"
+  ],
+  "poetry": [
+    "arts-letters-poetry"
+  ],
+  "police-procedural": [
+    "crime-detective-procedural"
+  ],
+  "political-biography": [
+    "history-lives-political"
+  ],
+  "political-theory": [
+    "society-politics-theory-ideas"
+  ],
+  "politics-and-government": [
+    "society-politics-theory-conflict"
+  ],
+  "popular-music": [
+    "arts-music-popular"
+  ],
+  "possession": [
+    "spec-horror-psychological"
+  ],
+  "post-apocalyptic": [
+    "spec-sf-dystopia"
+  ],
+  "postmodern": [
+    "fiction-contemporary-postmodern"
+  ],
+  "poststructuralism": [
+    "philosophy-western-continental-poststructuralism"
+  ],
+  "poverty": [
+    "society-economics-work"
+  ],
+  "procedural": [
+    "crime-detective-procedural"
+  ],
+  "programming": [
+    "science-computing-cs"
+  ],
+  "propaganda": [
+    "society-politics-authoritarianism"
+  ],
+  "psychoanalysis": [
+    "philosophy-western-continental-psychoanalysis"
+  ],
+  "psychological-horror": [
+    "spec-horror-psychological"
+  ],
+  "public-health": [
+    "science-life-medicine"
+  ],
+  "quantum-mechanics": [
+    "science-physical-physics"
+  ],
+  "queer-romance": [
+    "romance-contemporary-queer"
+  ],
+  "race": [
+    "society-culture-race-identity"
+  ],
+  "regency": [
+    "romance-historical-regency"
+  ],
+  "religion": [
+    "philosophy-religion-comparative"
+  ],
+  "revolution": [
+    "history-modern-revolution"
+  ],
+  "robots": [
+    "spec-sf",
+    "science-computing-ai"
+  ],
+  "rock": [
+    "arts-music-popular"
+  ],
+  "romance": [
+    "romance-contemporary"
+  ],
+  "romantasy": [
+    "romance-fantasy-fae"
+  ],
+  "romantic-comedy": [
+    "romance-contemporary-romcom"
   ],
   "rome": [
     "history-ancient-classical"
   ],
-  "medieval-history": [
-    "history-ancient-medieval"
+  "russian-literature": [
+    "fiction-classics-russian"
+  ],
+  "sapphic": [
+    "romance-contemporary-queer"
+  ],
+  "satire": [
+    "arts-letters-essays"
+  ],
+  "school": [
+    "ya-contemporary-realism"
+  ],
+  "science": [
+    "science"
+  ],
+  "science-fiction": [
+    "spec-sf"
+  ],
+  "science-writing": [
+    "science-physical-physics",
+    "arts-letters-essays"
+  ],
+  "scientific-biography": [
+    "history-lives-scientific"
+  ],
+  "second-chance": [
+    "romance-contemporary-second-chance"
+  ],
+  "serial-killer": [
+    "crime-detective-procedural"
+  ],
+  "short-stories": [
+    "fiction-short-stories"
+  ],
+  "slavery": [
+    "history-modern-empire"
+  ],
+  "slow-burn": [
+    "romance-contemporary-second-chance"
+  ],
+  "small-town": [
+    "romance-contemporary-second-chance"
+  ],
+  "south-asian-literature": [
+    "fiction-world-south-asian"
+  ],
+  "space": [
+    "spec-sf-space-opera"
+  ],
+  "space-opera": [
+    "spec-sf-space-opera"
+  ],
+  "spy-stories": [
+    "crime-thriller-espionage"
+  ],
+  "stoicism": [
+    "philosophy-western-ancient-stoic"
+  ],
+  "stream-of-consciousness": [
+    "fiction-classics-modernism"
+  ],
+  "surveillance": [
+    "spec-sf-dystopia",
+    "science-computing-crypto"
+  ],
+  "survival-games": [
+    "ya-speculative-dystopia"
+  ],
+  "taoism": [
+    "philosophy-eastern-taoism"
+  ],
+  "techno-thriller": [
+    "crime-thriller-techno"
+  ],
+  "technology-criticism": [
+    "arts-media-media-studies"
+  ],
+  "thriller": [
+    "crime-thriller"
+  ],
+  "time-travel": [
+    "spec-sf-time"
+  ],
+  "totalitarianism": [
+    "spec-sf-dystopia",
+    "society-politics-authoritarianism"
+  ],
+  "translation": [
+    "fiction-world-east-asian",
+    "arts-letters-criticism"
+  ],
+  "true-crime": [
+    "crime-true-investigation"
+  ],
+  "unreliable-narrator": [
+    "crime-thriller-domestic"
+  ],
+  "urban-fantasy": [
+    "spec-fantasy-urban-modern"
+  ],
+  "urbanism": [
+    "society-place-urbanism"
+  ],
+  "utopia": [
+    "society-politics-theory-ideas"
+  ],
+  "vampires": [
+    "romance-fantasy-paranormal"
+  ],
+  "victorian": [
+    "fiction-classics-19c"
+  ],
+  "war": [
+    "history-modern-world-wars",
+    "society-politics-theory-conflict"
+  ],
+  "wartime-romance": [
+    "romance-historical-saga"
+  ],
+  "wealth": [
+    "society-economics-work"
+  ],
+  "western": [
+    "history-modern-empire"
+  ],
+  "witches": [
+    "spec-fantasy-urban-witchcraft"
+  ],
+  "work": [
+    "society-economics-work"
+  ],
+  "workplace-romance": [
+    "romance-contemporary-romcom"
   ],
   "world-war-i": [
     "history-modern-world-wars"
@@ -125,575 +706,16 @@
   "world-war-ii": [
     "history-modern-world-wars"
   ],
-  "holocaust": [
-    "history-modern-world-wars"
-  ],
-  "cold-war": [
-    "history-modern-cold-war"
-  ],
-  "revolution": [
-    "history-modern-revolution"
-  ],
-  "colonialism": [
-    "history-modern-empire"
-  ],
-  "empire": [
-    "history-modern-empire"
-  ],
-  "memoir": [
-    "history-lives-memoir"
-  ],
-  "political-biography": [
-    "history-lives-political"
-  ],
-  "scientific-biography": [
-    "history-lives-scientific"
-  ],
-  "physics": [
-    "science-physical-physics"
-  ],
-  "quantum-mechanics": [
-    "science-physical-physics"
-  ],
-  "cosmology": [
-    "science-physical-cosmology"
-  ],
-  "astronomy": [
-    "science-physical-cosmology"
-  ],
-  "mathematics": [
-    "science-physical-mathematics"
-  ],
-  "evolution": [
-    "science-life-evolution"
-  ],
-  "genetics": [
-    "science-life-genetics"
-  ],
-  "neuroscience": [
-    "science-life-neuroscience"
-  ],
-  "medicine": [
-    "science-life-medicine"
-  ],
-  "public-health": [
-    "science-life-medicine"
-  ],
-  "ecology": [
-    "science-earth-ecology"
-  ],
-  "climate": [
-    "science-earth-climate"
-  ],
-  "natural-history": [
-    "science-earth-natural-history"
-  ],
-  "computer-science": [
-    "science-computing-cs"
-  ],
-  "programming": [
-    "science-computing-cs"
-  ],
-  "artificial-intelligence": [
-    "science-computing-ai"
-  ],
-  "cryptography": [
-    "science-computing-crypto"
-  ],
-  "computer-security": [
-    "science-computing-crypto"
-  ],
-  "ancient-philosophy": [
-    "philosophy-western-ancient"
-  ],
-  "stoicism": [
-    "philosophy-western-ancient"
-  ],
-  "ethics": [
-    "philosophy-western-ethics"
-  ],
-  "existentialism": [
-    "philosophy-western-existentialism"
-  ],
-  "epistemology": [
-    "philosophy-western-epistemology"
-  ],
-  "philosophy-of-science": [
-    "philosophy-western-epistemology"
-  ],
-  "buddhism": [
-    "philosophy-eastern-buddhism"
-  ],
-  "taoism": [
-    "philosophy-eastern-taoism"
-  ],
-  "confucianism": [
-    "philosophy-eastern-taoism"
-  ],
-  "comparative-religion": [
-    "philosophy-religion-comparative"
-  ],
-  "mysticism": [
-    "philosophy-religion-mysticism"
-  ],
-  "consciousness": [
-    "philosophy-mind-consciousness"
-  ],
-  "logic": [
-    "philosophy-mind-logic"
-  ],
-  "linguistics": [
-    "philosophy-mind-logic"
-  ],
-  "economics": [
-    "society-economics-theory"
-  ],
-  "behavioral-economics": [
-    "society-economics-behavioral"
-  ],
-  "labor": [
-    "society-economics-work"
-  ],
-  "political-theory": [
-    "society-politics-theory"
-  ],
-  "democracy": [
-    "society-politics-democracy"
-  ],
-  "authoritarianism": [
-    "society-politics-authoritarianism"
-  ],
-  "propaganda": [
-    "society-politics-authoritarianism"
-  ],
-  "race": [
-    "society-culture-race"
-  ],
-  "civil-rights": [
-    "society-culture-race"
-  ],
-  "gender": [
-    "society-culture-gender"
-  ],
-  "feminism": [
-    "society-culture-gender"
-  ],
-  "migration": [
-    "society-culture-migration"
-  ],
-  "urbanism": [
-    "society-place-urbanism"
-  ],
-  "globalization": [
-    "society-place-globalization"
-  ],
-  "art-history": [
-    "arts-visual-art-history"
-  ],
-  "photography": [
-    "arts-visual-photography"
-  ],
-  "architecture": [
-    "arts-visual-architecture"
-  ],
-  "jazz": [
-    "arts-music-jazz"
-  ],
-  "classical-music": [
-    "arts-music-classical"
-  ],
-  "popular-music": [
-    "arts-music-popular"
-  ],
-  "literary-criticism": [
-    "arts-letters-criticism"
-  ],
-  "essays": [
-    "arts-letters-essays"
-  ],
-  "poetry": [
-    "arts-letters-poetry"
-  ],
-  "film": [
-    "arts-media-film"
-  ],
-  "media-studies": [
-    "arts-media-media-studies"
-  ],
-  "technology-criticism": [
-    "arts-media-media-studies"
-  ],
-  "surveillance": [
-    "spec-sf-dystopia",
-    "science-computing-crypto"
-  ],
-  "totalitarianism": [
-    "spec-sf-dystopia",
-    "society-politics-authoritarianism"
-  ],
-  "artificial-life": [
-    "spec-sf-first-contact",
-    "science-computing-ai"
-  ],
-  "war": [
-    "history-modern-world-wars",
-    "society-politics-theory"
-  ],
-  "nature-writing": [
-    "science-earth-natural-history",
-    "arts-letters-essays"
-  ],
-  "science-writing": [
-    "science-physical-physics",
-    "arts-letters-essays"
-  ],
-  "mind-and-brain": [
-    "science-life-neuroscience",
-    "philosophy-mind-consciousness"
-  ],
-  "utopia": [
-    "spec-sf-dystopia",
-    "society-politics-theory"
-  ],
-  "detective-fiction": [
-    "crime-detective-classic",
-    "crime-detective-hardboiled"
-  ],
-  "translation": [
-    "fiction-world-east-asian",
-    "arts-letters-criticism"
-  ],
-  "biography-of-ideas": [
-    "history-lives-scientific",
-    "philosophy-western-epistemology"
-  ],
-  "class": [
-    "society-economics-work",
-    "society-culture-race"
-  ],
-  "environmental-history": [
-    "science-earth-climate",
-    "history-modern-empire"
-  ],
-  "city-life": [
-    "society-place-urbanism",
-    "fiction-contemporary-postmodern"
-  ],
-  "music-criticism": [
-    "arts-music-popular",
-    "arts-letters-criticism"
-  ],
-  "science-fiction": [
-    "spec-sf"
-  ],
-  "fantasy": [
-    "spec-fantasy"
-  ],
-  "horror": [
-    "spec-horror"
-  ],
-  "detective-and-mystery-stories": [
-    "crime-detective-classic"
-  ],
-  "spy-stories": [
-    "crime-thriller-espionage"
-  ],
-  "biography": [
-    "history-lives"
-  ],
-  "autobiography": [
-    "history-lives-memoir"
-  ],
-  "philosophy": [
-    "philosophy-western"
-  ],
-  "religion": [
-    "philosophy-religion-comparative"
-  ],
-  "politics-and-government": [
-    "society-politics-theory"
-  ],
-  "art": [
-    "arts-visual-art-history"
-  ],
-  "music": [
-    "arts-music"
-  ],
-  "motion-pictures": [
-    "arts-media-film"
-  ],
-  "romantic-comedy": [
-    "romance-contemporary-romcom"
-  ],
-  "workplace-romance": [
-    "romance-contemporary-romcom"
-  ],
-  "second-chance": [
-    "romance-contemporary-second-chance"
-  ],
-  "small-town": [
-    "romance-contemporary-second-chance"
-  ],
-  "slow-burn": [
-    "romance-contemporary-second-chance"
-  ],
-  "queer-romance": [
-    "romance-contemporary-queer"
-  ],
-  "sapphic": [
-    "romance-contemporary-queer"
-  ],
-  "regency": [
-    "romance-historical-regency"
-  ],
-  "marriage-plot": [
-    "romance-historical-regency"
-  ],
-  "historical-romance": [
-    "romance-historical-saga"
-  ],
-  "wartime-romance": [
-    "romance-historical-saga"
-  ],
-  "fae": [
-    "romance-fantasy-fae"
-  ],
-  "romantasy": [
-    "romance-fantasy-fae"
-  ],
-  "paranormal-romance": [
-    "romance-fantasy-paranormal"
-  ],
-  "vampires": [
-    "romance-fantasy-paranormal"
-  ],
-  "ya-realism": [
-    "ya-contemporary-realism"
-  ],
-  "high-school": [
-    "ya-contemporary-realism"
-  ],
-  "grief": [
-    "ya-contemporary-realism"
-  ],
-  "first-love": [
-    "ya-contemporary-romance"
-  ],
-  "ya-romance": [
-    "ya-contemporary-romance"
-  ],
   "ya-dystopia": [
-    "ya-speculative-dystopia"
-  ],
-  "survival-games": [
     "ya-speculative-dystopia"
   ],
   "ya-fantasy": [
     "ya-speculative-fantasy"
   ],
-  "magic-school": [
-    "ya-speculative-fantasy"
-  ],
-  "chosen-one": [
-    "ya-speculative-fantasy"
-  ],
-  "middle-grade": [
-    "ya-middle-grade-adventure"
-  ],
-  "children-adventure": [
-    "ya-middle-grade-adventure"
-  ],
-  "domestic-suspense": [
-    "crime-thriller-domestic"
-  ],
-  "unreliable-narrator": [
-    "crime-thriller-domestic"
-  ],
-  "book-club": [
-    "fiction-contemporary-book-club"
-  ],
-  "historical-fiction": [
-    "fiction-contemporary-book-club"
-  ],
-  "grimdark": [
-    "spec-fantasy-grimdark"
-  ],
-  "murder": [
-    "crime-detective"
-  ],
-  "detective": [
-    "crime-detective"
-  ],
-  "serial-killer": [
-    "crime-detective-procedural"
-  ],
-  "nordic-noir": [
-    "crime-detective-procedural"
-  ],
-  "procedural": [
-    "crime-detective-procedural"
-  ],
-  "cosy-mystery": [
-    "crime-detective-classic"
-  ],
-  "thriller": [
-    "crime-thriller"
-  ],
-  "conspiracy": [
-    "crime-thriller-espionage"
-  ],
-  "kidnapping": [
-    "crime-thriller"
-  ],
-  "domestic-abuse": [
-    "crime-thriller-domestic"
-  ],
-  "incarceration": [
-    "crime-true-justice"
-  ],
-  "space": [
-    "spec-sf-space-opera"
-  ],
-  "parallel-worlds": [
-    "spec-sf-time"
-  ],
-  "pandemic": [
-    "spec-sf-dystopia"
-  ],
-  "bioethics": [
-    "spec-sf-dystopia"
-  ],
-  "robots": [
-    "spec-sf",
-    "science-computing-ai"
-  ],
-  "magic-system": [
-    "spec-fantasy-epic"
-  ],
-  "dragons": [
-    "spec-fantasy-epic"
-  ],
-  "monsters": [
-    "spec-fantasy-epic"
-  ],
-  "folklore": [
-    "spec-fantasy-magical-realism"
-  ],
-  "witches": [
-    "spec-fantasy-urban"
-  ],
-  "immortality": [
-    "spec-fantasy-urban"
-  ],
-  "ghosts": [
-    "spec-horror-gothic"
-  ],
-  "possession": [
-    "spec-horror-psychological"
-  ],
-  "family": [
-    "fiction-contemporary-family"
-  ],
-  "motherhood": [
-    "fiction-contemporary-family"
-  ],
-  "divorce": [
-    "fiction-contemporary-family"
-  ],
-  "romance": [
-    "romance-contemporary"
-  ],
-  "enemies-to-lovers": [
-    "romance-contemporary-romcom"
-  ],
-  "friends-to-lovers": [
-    "romance-contemporary-second-chance"
-  ],
-  "school": [
+  "ya-realism": [
     "ya-contemporary-realism"
   ],
-  "mythology": [
-    "philosophy-religion-comparative"
-  ],
-  "slavery": [
-    "history-modern-empire"
-  ],
-  "western": [
-    "history-modern-empire"
-  ],
-  "journalism": [
-    "arts-media-media-studies"
-  ],
-  "graphic-novel": [
-    "arts-visual-art-history"
-  ],
-  "academia": [
-    "arts-letters-criticism"
-  ],
-  "libraries": [
-    "arts-letters-criticism"
-  ],
-  "environment": [
-    "science-earth-ecology"
-  ],
-  "nature": [
-    "science-earth-natural-history"
-  ],
-  "engineering": [
-    "science-computing-cs"
-  ],
-  "activism": [
-    "society-politics-democracy"
-  ],
-  "immigration": [
-    "society-culture-migration"
-  ],
-  "identity": [
-    "society-culture-gender"
-  ],
-  "poverty": [
-    "society-economics-work"
-  ],
-  "wealth": [
-    "society-economics-work"
-  ],
-  "work": [
-    "society-economics-work"
-  ],
-  "fraud": [
-    "society-economics-theory"
-  ],
-  "disability": [
-    "science-life-medicine"
-  ],
-  "illness": [
-    "science-life-medicine"
-  ],
-  "addiction": [
-    "science-life-medicine"
-  ],
-  "mental-health": [
-    "science-life-neuroscience"
-  ],
-  "neurodivergence": [
-    "science-life-neuroscience"
-  ],
-  "amnesia": [
-    "science-life-neuroscience"
-  ],
-  "black-comedy": [
-    "arts-letters-essays"
-  ],
-  "satire": [
-    "arts-letters-essays"
-  ],
-  "epistolary": [
-    "arts-letters-essays"
-  ],
-  "rock": [
-    "arts-music-popular"
-  ],
-  "science": [
-    "science"
+  "ya-romance": [
+    "ya-contemporary-romance"
   ]
 }

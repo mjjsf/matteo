@@ -67,7 +67,7 @@ export function Landing(): React.ReactElement {
       <div className="landing__inner">
         <h1 className="landing__brand">
           matteo
-          <span className="landing__sub">Name a book, author or subject. Get what is near it.</span>
+          <span className="landing__sub">Find your next perfect book</span>
         </h1>
 
         <form

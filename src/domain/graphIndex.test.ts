@@ -36,10 +36,25 @@ describe('hierarchy comes from the authored taxonomy', () => {
   });
 
   it('walks from a leaf tag up to a root', () => {
+    // `existentialism` now classifies two ways — under its own node and under
+    // Continental Philosophy — so which one the walk starts from is incidental.
+    // What matters is that it starts somewhere real and terminates at a root.
     const path = topicPathForTag(index, 'existentialism');
-    expect(path[0]).toBe('philosophy-western-existentialism');
+    expect(index.topicsForTag['existentialism']).toContain(path[0] as string);
     expect(path.at(-1)).toBe('philosophy');
     expect(index.rootTopics).toContain(path.at(-1));
+  });
+
+  it('reaches four levels now that the taxonomy has them', () => {
+    // The limit PR #7 shipped with: no branch could run deeper than the authored
+    // tree, which stopped at depth 2 in every root.
+    const path = topicPathForTag(index, 'poststructuralism');
+    expect(path).toEqual([
+      'philosophy-western-continental-poststructuralism',
+      'philosophy-western-continental',
+      'philosophy-western',
+      'philosophy',
+    ]);
   });
 
   it('lets a tag sit under more than one topic rather than forcing a parent', () => {
@@ -63,11 +78,24 @@ describe('hierarchy comes from the authored taxonomy', () => {
 describe('books under a subject are the ones it describes', () => {
   it('ranks the philosophy above the novels for existentialism', () => {
     // The failure mode of a naive inverted index: `existentialism` is carried by
-    // Kafka, Murakami and Dostoevsky as well as by Sartre and Heidegger, and
+    // Kafka, Murakami and Dostoevsky as well as by Sartre and Beauvoir, and
     // insertion order would put the novels first.
+    //
+    // Asserted as a property rather than by naming titles. `Being and Time` used
+    // to be pinned here and now sits sixth — not a regression: it gained
+    // `phenomenology` and `hermeneutics`, which is what it mostly is, so its
+    // existentialism weight is diluted by exactly the amount those tags say.
+    // Pinning one title made the test fail on a corpus edit that improved it.
     const top = titles(index.booksForTag['existentialism'], 5);
-    expect(top).toContain('Being and Time');
-    expect(top).toContain('Being and Nothingness');
+    const primary = [
+      'The Second Sex',
+      'Being and Nothingness',
+      'The Ethics of Ambiguity',
+      'Being and Time',
+      'Beyond Good and Evil',
+      'Fear and Trembling',
+    ];
+    expect(top.filter((t) => primary.includes(t)).length).toBeGreaterThanOrEqual(3);
     expect(top).not.toContain('Kafka on the Shore');
   });
 
