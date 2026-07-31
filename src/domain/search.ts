@@ -45,7 +45,7 @@ export function entitiesFrom(graphIndex: GraphIndexFile): SearchEntity[] {
       ref: topicRef(id),
       kind: 'topic',
       label: node.label,
-      count: graphIndex.booksForTopic[id]?.length ?? 0,
+      count: graphIndex.countForTopic[id] ?? 0,
     });
   }
   // A tag whose label is already a topic label is dropped from SEARCH only.
@@ -60,7 +60,7 @@ export function entitiesFrom(graphIndex: GraphIndexFile): SearchEntity[] {
     // rather than in every place that renders one.
     const label = tag.replace(/-/g, ' ');
     if (topicLabels.has(label.toLowerCase())) continue;
-    out.push({ ref: tagRef(tag), kind: 'tag', label, count: ids.length });
+    out.push({ ref: tagRef(tag), kind: 'tag', label, count: graphIndex.countForTag[tag] ?? ids.length });
   }
   for (const [slug, name] of Object.entries(graphIndex.authorNames)) {
     out.push({

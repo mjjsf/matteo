@@ -157,7 +157,10 @@ export function Landing(): React.ReactElement {
             covers that window instead. */}
         {ready && !typing && (
           <p className="landing__hint">
-            {bookCount} books, mapped by shared subjects and authors.
+            {bookCount} books, mapped by shared subjects and authors.{' '}
+            <a className="landing__browse" href="#/browse">
+              Browse the collection
+            </a>
           </p>
         )}
       </div>

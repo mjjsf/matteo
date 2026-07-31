@@ -53,6 +53,16 @@ export interface GraphIndexFile {
   /** Books under a topic including all its descendants, most characteristic first. */
   booksForTopic: Record<string, string[]>;
   booksForTag: Record<string, string[]>;
+  /** TRUE totals, separate from the capped lists above.
+   *
+   *  `booksForTag` and `booksForTopic` stop at BOOKS_PER_SUBJECT so the artifact
+   *  does not carry the corpus once per tag. Reporting their length as the count
+   *  said "Arts & Culture — 16 books" for a topic holding 194, and showed three
+   *  different subjects all claiming 16 in the branch menu. The list is what you
+   *  will be shown; this is what is actually there, and they are not the same
+   *  number. */
+  countForTopic: Record<string, number>;
+  countForTag: Record<string, number>;
   relatedTags: Record<string, string[]>;
   /** slug -> display name, so the UI never has to un-slug for display. */
   authorNames: Record<string, string>;
@@ -138,7 +148,9 @@ export function buildGraphIndex(
   });
 
   const booksForTag: Record<string, string[]> = {};
+  const countForTag: Record<string, number> = {};
   for (const [tag, indices] of booksByTag) {
+    countForTag[tag] = indices.length;
     booksForTag[tag] = topBy(
       indices,
       // Falls back to a tiny constant so a tag pruned from the feature vocab
@@ -168,8 +180,10 @@ export function buildGraphIndex(
   // own tags so the first books under "Existentialism" are the ones the label
   // actually describes.
   const booksForTopic: Record<string, string[]> = {};
+  const countForTopic: Record<string, number> = {};
   const indexOfBook = new Map(books.map((b, i) => [b.id, i]));
   for (const [topicId, memberIds] of taxonomy.membersOf) {
+    countForTopic[topicId] = memberIds.size;
     const own = new Set(tagsForTopic[topicId] ?? []);
     // Descendant tags count too, or a root with no directly-mapped tags of its
     // own would rank all its books at zero.
@@ -252,6 +266,8 @@ export function buildGraphIndex(
     topicsForTag,
     booksForTopic,
     booksForTag,
+    countForTopic,
+    countForTag,
     relatedTags,
     authorNames,
     booksForAuthor,

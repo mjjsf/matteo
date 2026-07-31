@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import type * as THREE from 'three';
 import { FIELD } from '@/domain/palette';
 import { useStore } from '@/state/store';
@@ -7,6 +7,7 @@ import { useCorpus } from '@/state/useCorpus';
 import { useGlobalKeys } from '@/state/keyboard';
 import { WebGLGuard } from '@/scene/WebGLGuard';
 import { Landing } from '@/ui/Landing';
+import { Browse } from '@/ui/Browse';
 import { ExplorePanel } from '@/ui/ExplorePanel';
 import { DetailPanel } from '@/ui/DetailPanel';
 import { Footer } from '@/ui/Footer';
@@ -20,10 +21,20 @@ export function App(): React.ReactElement {
   const phase = useStore((s) => s.phase);
   const status = useStore((s) => s.status);
   const loadError = useStore((s) => s.loadError);
+  // Hash-driven so the index is linkable and Back works, like every other route
+  // here. Read once and on hashchange rather than through `useUrlSync`, which
+  // owns the map's own state and would fight over it.
+  const [browsing, setBrowsing] = useState(() => window.location.hash.startsWith('#/browse'));
 
   useCorpus();
   useUrlSync();
   useGlobalKeys();
+
+  useEffect(() => {
+    const onHash = (): void => setBrowsing(window.location.hash.startsWith('#/browse'));
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
   useEffect(() => {
     document.body.style.background = theme.surface;
@@ -56,7 +67,20 @@ export function App(): React.ReactElement {
 
   return (
     <WebGLGuard fallback={<ListOnlyApp />}>
-      {phase === 'empty' ? (
+      {browsing ? (
+        <div className="app app--empty">
+          <Browse
+            onClose={() => {
+              // Only blank the hash when there is nothing to point at. Once a
+              // map exists the URL belongs to `useUrlSync`, and clearing it here
+              // would throw away the link that was just created.
+              if (useStore.getState().phase === 'empty') window.location.hash = '';
+              setBrowsing(false);
+            }}
+          />
+          <Footer />
+        </div>
+      ) : phase === 'empty' ? (
         <div className="app app--empty">
           <Landing />
           <Footer />

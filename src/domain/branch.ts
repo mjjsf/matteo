@@ -42,6 +42,19 @@ export const DEFAULT_AXIS = 'titles';
  *  rather than in the graph index. */
 export type SimilarBooks = (ref: NodeRef) => Candidate[];
 
+/** A topic's own tags, minus any that is simply the topic under another name.
+ *
+ *  The topic `Existentialism` and the tag `existentialism` are the same thing;
+ *  offering the tag as a child of the topic put two identically-labelled nodes
+ *  side by side on the canvas, which reads as a bug rather than as a hierarchy.
+ *  Search de-duplicates the same pair for the same reason. */
+function ownTags(index: GraphIndexFile, topicId: string): string[] {
+  const label = index.topics[topicId]?.label.toLowerCase();
+  return (index.tagsForTopic[topicId] ?? []).filter(
+    (t) => t.replace(/-/g, ' ').toLowerCase() !== label,
+  );
+}
+
 function bookCandidates(ids: string[]): Candidate[] {
   // Weight falls with rank so the fan still encodes ordering in its geometry,
   // exactly as similarity weights do for a book branch.
@@ -69,7 +82,7 @@ export function axesFor(
       if (works > 1) out.push({ id: authorRef(slug), label: `By ${name}`, count: works });
     }
     for (const tag of book?.subjects ?? []) {
-      const count = index.booksForTag[tag]?.length ?? 0;
+      const count = index.countForTag[tag] ?? index.booksForTag[tag]?.length ?? 0;
       if (count > 0) {
         out.push({ id: tagRef(tag), label: `In ${tag.replace(/-/g, ' ')}`, count });
       }
@@ -78,20 +91,27 @@ export function axesFor(
   }
 
   if (kind === 'topic') {
+    // Books lead. Seeding a subject and getting a list of narrower subjects is
+    // a table of contents when what was asked for was the shelf; the hierarchy
+    // is still one click away, and the seed's first expansion takes this.
+    const books = index.booksForTopic[id] ?? [];
+    if (books.length > 0) {
+      out.push({ id: 'books', label: 'Books in it', count: index.countForTopic[id] ?? books.length });
+    }
     const children = index.topics[id]?.childIds ?? [];
     if (children.length > 0) {
       out.push({ id: 'narrower', label: 'Narrower subjects', count: children.length });
     }
-    const tags = index.tagsForTopic[id] ?? [];
+    const tags = ownTags(index, id);
     if (tags.length > 0) out.push({ id: 'tags', label: 'Subjects within', count: tags.length });
-    const books = index.booksForTopic[id] ?? [];
-    if (books.length > 0) out.push({ id: 'books', label: 'Books in it', count: books.length });
     return out;
   }
 
   if (kind === 'tag') {
     const books = index.booksForTag[id] ?? [];
-    if (books.length > 0) out.push({ id: 'books', label: 'Books in it', count: books.length });
+    if (books.length > 0) {
+      out.push({ id: 'books', label: 'Books in it', count: index.countForTag[id] ?? books.length });
+    }
     const related = index.relatedTags[id] ?? [];
     if (related.length > 0) {
       out.push({ id: 'related', label: 'Related subjects', count: related.length });
@@ -141,7 +161,7 @@ export function candidatesFor(
       }));
     }
     if (axis === 'tags') {
-      return (index.tagsForTopic[id] ?? []).map((t, i) => ({
+      return ownTags(index, id).map((t, i) => ({
         nodeRef: tagRef(t),
         weight: 1 - i * 0.05,
       }));

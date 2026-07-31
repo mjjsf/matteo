@@ -103,6 +103,35 @@ describe('books under a subject are the ones it describes', () => {
   });
 });
 
+describe('counts are the truth, not the length of the list shown', () => {
+  it('reports the real total for a subject bigger than the stored list', () => {
+    // `booksForTag` stops at BOOKS_PER_SUBJECT so the artifact does not carry
+    // the corpus once per tag. Reporting its length as the count said
+    // "Arts & Culture — 16 books" for a topic holding 194, and made three
+    // different subjects in one menu all claim 16.
+    const big = Object.entries(index.countForTag).filter(([, n]) => n > 16);
+    expect(big.length).toBeGreaterThan(0);
+    for (const [tag, n] of big) {
+      expect(index.booksForTag[tag]?.length).toBeLessThanOrEqual(16);
+      expect(n).toBeGreaterThan(index.booksForTag[tag]?.length ?? 0);
+    }
+  });
+
+  it('counts every book that actually carries the tag', () => {
+    for (const tag of ['book-club', 'existentialism', 'cyberpunk']) {
+      const actual = books.filter((b) => b.subjects.includes(tag)).length;
+      expect(index.countForTag[tag], tag).toBe(actual);
+    }
+  });
+
+  it('counts a topic including its descendants', () => {
+    const root = index.countForTopic['philosophy'] ?? 0;
+    const child = index.countForTopic['philosophy-western'] ?? 0;
+    expect(root).toBeGreaterThanOrEqual(child);
+    expect(child).toBeGreaterThan(0);
+  });
+});
+
 describe('related, where correlation is the right relation', () => {
   it('relates a tag to tags that actually co-occur', () => {
     expect(index.relatedTags['cyberpunk']).toEqual(

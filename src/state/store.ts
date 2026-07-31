@@ -194,12 +194,12 @@ export function describeRef(ref: NodeRef): RefDescription | null {
     case 'topic': {
       const topic = gi?.topics[id];
       if (!topic) return null;
-      return { kind, label: topic.label, detail: `subject · ${books(gi?.booksForTopic[id]?.length ?? 0)}` };
+      return { kind, label: topic.label, detail: `subject · ${books(gi?.countForTopic[id] ?? 0)}` };
     }
     case 'tag': {
       const list = gi?.booksForTag[id];
       if (!list) return null;
-      return { kind, label: id.replace(/-/g, ' '), detail: `subject · ${books(list.length)}` };
+      return { kind, label: id.replace(/-/g, ' '), detail: `subject · ${books(gi?.countForTag[id] ?? list.length)}` };
     }
     case 'author': {
       const name = gi?.authorNames[id];
