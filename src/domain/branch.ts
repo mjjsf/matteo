@@ -23,12 +23,11 @@ import {
  *  offered at all. An option that resolves to an empty branch is worse than an
  *  option that is absent: it reads as a promise.
  *
- *  NO NODE OFFERS MORE THAN THREE AXES. That is a real invariant with a test on
- *  it, not an observation — the canvas draws these as an arc of segments around
- *  the hovered node, and an arc that silently truncated a fourth option would be
- *  hiding a branch rather than declining to offer one. Every kind already fitted
- *  except books, which is why a book's authors and subjects are grouped into one
- *  axis each instead of one axis apiece. */
+ *  NO NODE OFFERS MORE THAN `MAX_AXES`. That is a real invariant with a test on
+ *  it, not an observation: a menu that silently truncated an option would be
+ *  hiding a branch rather than declining to offer one. It is also why a book's
+ *  authors and subjects are grouped into one axis each rather than one apiece —
+ *  ungrouped, a book measured a median of five options and a maximum of nine. */
 
 export interface BranchAxis {
   /** Stable id, carried in the shared URL. Either a bare word or a node ref. */
@@ -43,8 +42,15 @@ export interface BranchAxis {
   count: number;
 }
 
-/** The most axes any node can offer. The arc has this many segments. */
-export const MAX_AXES = 3;
+/** The most axes any node can offer.
+ *
+ *  Was three, because the chooser was an ARC: segments spaced around a circle,
+ *  where a fourth had to be crowded or truncated. The arc is gone — the chooser
+ *  is a rectangular list — so the number now describes the vocabulary rather than
+ *  the geometry, and it is four because a book has four honest relations. Still a
+ *  real cap with a corpus-wide test behind it: a menu that silently dropped a
+ *  fifth would be hiding a branch rather than declining to offer one. */
+export const MAX_AXES = 4;
 
 /** Growing along an axis attaches these, best first. */
 export interface Candidate {
@@ -102,6 +108,26 @@ function branchableAuthors(
   return out;
 }
 
+/** Authors near this book's authors, minus the book's own.
+ *
+ *  Its own authors are what `More by Author` grows, and offering them from two
+ *  different buttons would let the reader open the same node twice over and
+ *  wonder why the second press did nothing. De-duplicated across authors too, so
+ *  a co-written book does not list a shared neighbour once per collaborator. */
+function relatedAuthorsFor(index: GraphIndexFile, book: Book | undefined): NodeRef[] {
+  const own = new Set((book?.authors ?? []).map(authorSlug));
+  const seen = new Set<string>();
+  const out: NodeRef[] = [];
+  for (const slug of own) {
+    for (const near of index.relatedAuthors[slug] ?? []) {
+      if (own.has(near) || seen.has(near)) continue;
+      seen.add(near);
+      out.push(authorRef(near));
+    }
+  }
+  return out;
+}
+
 /** The subjects of `book` that name a shelf with something on it. */
 function branchableSubjects(index: GraphIndexFile, book: Book | undefined): NodeRef[] {
   return (book?.subjects ?? [])
@@ -123,22 +149,24 @@ export function axesFor(
     // `titles` stays first: a seeded book expands along `axesFor(...)[0]` before
     // anyone has clicked anything, and similarity is the right thing to open with.
     const n = similar(ref).length;
-    if (n > 0) out.push({ id: DEFAULT_AXIS, label: 'Related titles', count: n });
+    if (n > 0) out.push({ id: DEFAULT_AXIS, label: 'Related Titles', count: n });
 
     // One axis per author and one per subject is what this used to be, and it
     // measured at a median of 5 options and a maximum of 9 — a list, not a
-    // choice. Grouped, a book offers at most three, which is what lets the
-    // canvas show them as an arc around the node rather than a menu.
-    const authors = branchableAuthors(index, book);
-    if (authors.length === 1) {
-      out.push({ id: 'authors', label: `By ${authors[0]!.name}`, count: 1 });
-    } else if (authors.length > 1) {
-      out.push({ id: 'authors', label: 'Its authors', count: authors.length });
-    }
-
+    // choice. Grouped, a book offers at most four.
     const subjects = branchableSubjects(index, book);
     if (subjects.length > 0) {
-      out.push({ id: 'subjects', label: 'Subjects', count: subjects.length });
+      out.push({ id: 'subjects', label: 'Related Subjects', count: subjects.length });
+    }
+
+    const near = relatedAuthorsFor(index, book);
+    if (near.length > 0) {
+      out.push({ id: 'related-authors', label: 'Related Authors', count: near.length });
+    }
+
+    const authors = branchableAuthors(index, book);
+    if (authors.length > 0) {
+      out.push({ id: 'authors', label: 'More by Author', count: authors.length });
     }
     return out;
   }
@@ -228,6 +256,7 @@ export function candidatesFor(
     // making the reader pick one of seven tags off a list.
     if (axis === 'authors') return ranked(branchableAuthors(index, book).map((a) => a.ref));
     if (axis === 'subjects') return ranked(branchableSubjects(index, book));
+    if (axis === 'related-authors') return ranked(relatedAuthorsFor(index, book));
   }
 
   if (kind === 'topic') {
@@ -283,6 +312,7 @@ export function candidatesFor(
 export function axisNote(ref: NodeRef, axis: string): string {
   if (axis === DEFAULT_AXIS) return 'similar';
   if (axis.startsWith('author:') || axis === 'authors') return 'by author';
+  if (axis === 'related-authors') return 'by author';
   if (axis.startsWith('tag:') || axis.startsWith('topic:') || axis === 'subjects') {
     return 'by subject';
   }

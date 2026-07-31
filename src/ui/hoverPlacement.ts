@@ -59,10 +59,11 @@ export function placeHover(input: {
   const { x, y, width, height } = input;
   const hasMenu = input.hasMenu ?? (input.segments ?? 0) > 0;
 
-  // The menu goes below-right by default and flips only at an edge. It is
-  // anchored to a click rather than to the pointer, so it should be where the
-  // reader last put their cursor, not somewhere clever.
-  const menuLeft = x > width - (MENU_WIDTH + GAP);
+  // The menu goes below-LEFT by default and flips only at an edge. Left rather
+  // than right so it does not sit over the fan a node is about to grow: children
+  // are placed on an axis pointing away from the parent, which for a map grown
+  // outward from the origin is far more often rightward than leftward.
+  const menuLeft = x >= MENU_WIDTH + GAP;
   const menuAbove = y > height - (MENU_HEIGHT + GAP);
 
   // The card takes the opposite VERTICAL side from the menu, which separates

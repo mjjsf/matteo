@@ -270,11 +270,6 @@ a:focus-visible {
   margin: 14px 0 10px;
 }
 
-.panel__link--on {
-  background: var(--text-primary);
-  color: var(--surface);
-}
-
 .browse__count {
   margin-left: auto;
   font-size: 0.72rem;
@@ -387,6 +382,33 @@ a:focus-visible {
 
 .panel__link:hover {
   background: var(--control-hover);
+}
+
+/* BOTH modifiers must sit AFTER `.panel__link`, not before it. They are the same
+   specificity as the base, so source order is the only thing deciding — and when
+   `--on` was written above the base rule it lost that fight silently. Browse's
+   mode toggle has been rendering its active mode in the same greige as its
+   inactive ones ever since, which is the entire signal that control carries.
+   Found by checking the computed background of a button that should have been
+   black and was not. */
+
+/* Browse's active mode. */
+.panel__link--on {
+  background: var(--text-primary);
+  color: var(--surface);
+}
+
+/* Fit map and Start over. A modifier rather than a change to the base class,
+   because the base is shared with Browse, where `--on` above is the same
+   treatment — blackening the base would make that toggle's two states identical.
+   17.3:1 on white. */
+.panel__link--solid {
+  background: var(--text-primary);
+  color: #ffffff;
+}
+
+.panel__link--solid:hover {
+  background: #2a2a28;
 }
 
 .explore__seed {
@@ -574,42 +596,6 @@ a:focus-visible {
   margin: 16px 0 7px;
 }
 
-.chips {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
-}
-
-.chips li { display: contents; }
-
-.chip--action {
-  font: inherit;
-  background: none;
-  cursor: pointer;
-  color: var(--text-secondary);
-}
-
-.chip--action:hover:not(:disabled) {
-  border-color: var(--expandable);
-  color: var(--expandable);
-}
-
-.chip--action:disabled {
-  cursor: default;
-  opacity: 0.55;
-}
-
-.chip {
-  font-size: 0.72rem;
-  padding: 6px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--hairline);
-  color: var(--text-secondary);
-}
-
 .detail__isbn {
   font-size: 0.72rem;
   color: var(--text-muted);
@@ -676,10 +662,12 @@ a:focus-visible {
   transition: opacity 120ms ease;
   transform: translate3d(-9999px, -9999px, 0);
   margin: 14px 0 0 14px;
-  padding: 6px 9px;
+  /* Matched to `.panel` so the rollover and the detail panel read as the same
+     kind of surface rather than two different ones. */
+  padding: 16px;
   background: var(--panel-translucent);
   border: 1px solid var(--hairline);
-  border-radius: 7px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   max-width: 260px;
@@ -722,13 +710,6 @@ a:focus-visible {
   font-weight: 500;
 }
 
-.tooltip__hint {
-  margin-top: 6px;
-  font-size: 0.66rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
 
 /* --- branch menu on the canvas (the ways to grow, on click) --- */
 

@@ -46,10 +46,10 @@ export function ExplorePanel(): React.ReactElement {
           )}
         </h1>
         <div className="panel__actions">
-          <button type="button" className="panel__link" onClick={fitAll}>
+          <button type="button" className="panel__link panel__link--solid" onClick={fitAll}>
             Fit map
           </button>
-          <button type="button" className="panel__link" onClick={reset}>
+          <button type="button" className="panel__link panel__link--solid" onClick={reset}>
             Start over
           </button>
         </div>
