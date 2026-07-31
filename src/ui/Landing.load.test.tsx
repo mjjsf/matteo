@@ -2,8 +2,11 @@ import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest';
 import { render, screen, fireEvent, cleanup, act } from '@testing-library/react';
 import type { Book } from '@/domain/types';
 import type { NeighborsFile } from '@/domain/similarity';
+import type { GraphIndexFile } from '@/domain/graphIndex';
 import corpusJson from '@/generated/corpus.json';
 import neighborsJson from '@/generated/neighbors.json';
+import graphIndexJson from '@/generated/graph-index.json';
+import { bookRef } from '@/domain/nodeRef';
 
 /** The landing input during the corpus download.
  *
@@ -39,12 +42,16 @@ const hydrate = (): void => {
   act(() => {
     useStore
       .getState()
-      .hydrate(corpusJson as unknown as Book[], neighborsJson as unknown as NeighborsFile);
+      .hydrate(
+      corpusJson as unknown as Book[],
+      neighborsJson as unknown as NeighborsFile,
+      graphIndexJson as unknown as GraphIndexFile,
+    );
   });
 };
 
 const input = (): HTMLInputElement =>
-  screen.getByLabelText(/name a book to start from/i) as HTMLInputElement;
+  screen.getByLabelText(/name a book, author or subject/i) as HTMLInputElement;
 
 describe('Landing before the corpus arrives', () => {
   it('offers a usable input rather than a loading screen', () => {
@@ -66,7 +73,7 @@ describe('Landing before the corpus arrives', () => {
   it('does not claim there is no match while the books are still loading', () => {
     render(<Landing />);
     fireEvent.change(input(), { target: { value: 'neuromancer' } });
-    expect(screen.queryByText(/no book in the collection matches/i)).toBeNull();
+    expect(screen.queryByText(/nothing in the collection matches/i)).toBeNull();
   });
 
   it('populates the list on arrival, against what was already typed', () => {
@@ -78,7 +85,7 @@ describe('Landing before the corpus arrives', () => {
     hydrate();
 
     expect(useStore.getState().suggestions.length).toBeGreaterThan(0);
-    expect(useStore.getState().suggestions[0]?.book.title).toMatch(/neuromancer/i);
+    expect(useStore.getState().suggestions[0]?.label).toMatch(/neuromancer/i);
     expect(screen.getByRole('option', { name: /neuromancer/i })).toBeTruthy();
   });
 
@@ -94,7 +101,7 @@ describe('Landing before the corpus arrives', () => {
 
     expect(useStore.getState().phase).toBe('active');
     expect(useStore.getState().seedWhenReady).toBe(false);
-    expect(useStore.getState().graph.nodes[0]?.bookId).toBe('neuromancer');
+    expect(useStore.getState().graph.nodes[0]?.nodeRef).toBe(bookRef('neuromancer'));
   });
 
   it('does not seed on arrival when nothing was submitted', () => {

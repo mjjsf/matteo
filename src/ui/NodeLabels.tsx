@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { useStore } from '@/state/store';
+import { useStore, describeRef } from '@/state/store';
 import { MAX_NODES } from '@/domain/graph';
+
 
 /** How many titles are on screen at once.
  *
@@ -76,7 +77,7 @@ export function NodeLabels({
       const positions = points.geometry.getAttribute('position').array as Float32Array;
       const count = Math.min(nodes.length, MAX_NODES);
 
-      const focusId = state.hoveredId ?? state.selectedId;
+      const focusId = state.hoveredRef ?? state.selectedRef;
       const focusSlot = focusId ? (state.graph.indexOf.get(focusId) ?? -1) : -1;
 
       camera.getWorldPosition(camPos);
@@ -106,8 +107,9 @@ export function NodeLabels({
           continue;
         }
         const node = nodes[entry.index];
-        const book = node ? state.corpusIndexOf.get(node.bookId) : undefined;
-        const title = book === undefined ? '' : (state.books[book]?.title ?? '');
+        // Every grain gets a label, not only books: an unlabelled ring on the
+        // canvas is a mystery, and the subject's name is the whole point of it.
+        const title = node ? (describeRef(node.nodeRef)?.label ?? '') : '';
         if (el.textContent !== title) el.textContent = title;
 
         vec

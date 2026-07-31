@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { useStore, slotOf } from '@/state/store';
 import { EDGE_LEN } from '@/domain/graph';
 import type { ThemeColors } from '@/domain/palette';
+import type { NodeRef } from '@/domain/nodeRef';
 
 /** A single reused ring marking the hovered or selected node.
  *
@@ -66,9 +67,9 @@ export function HighlightRing({
       | Float32Array
       | undefined;
 
-    const place = (mesh: THREE.Mesh | null, id: string | null): void => {
+    const place = (mesh: THREE.Mesh | null, ref: NodeRef | null): void => {
       if (!mesh) return;
-      const slot = id ? slotOf(state, id) : null;
+      const slot = ref ? slotOf(state, ref) : null;
       if (slot === null || !positions) {
         mesh.visible = false;
         return;
@@ -83,10 +84,10 @@ export function HighlightRing({
       mesh.quaternion.copy(camera.quaternion);
     };
 
-    place(selectedRef.current, state.selectedId);
+    place(selectedRef.current, state.selectedRef);
     place(
       hoveredRef.current,
-      state.hoveredId && state.hoveredId !== state.selectedId ? state.hoveredId : null,
+      state.hoveredRef && state.hoveredRef !== state.selectedRef ? state.hoveredRef : null,
     );
   });
 

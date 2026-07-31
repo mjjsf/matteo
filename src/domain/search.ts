@@ -1,5 +1,7 @@
 import Fuse from 'fuse.js';
 import type { Book, SearchHit } from './types';
+import type { GraphIndexFile } from './graphIndex';
+import { authorRef, bookRef, tagRef, topicRef } from './nodeRef';
 
 /** Fuzzy search over the corpus.
  *
@@ -18,9 +20,60 @@ import type { Book, SearchHit } from './types';
 export interface SearchIndex {
   fuse: Fuse<Book>;
   books: Book[];
+  /** Subjects and authors, so they are searchable on the same footing as books.
+   *  Optional because a search index over books alone is still meaningful — and
+   *  because the corpus and the graph index arrive together, so this is never
+   *  half-present in practice. */
+  entities: SearchEntity[];
 }
 
-export function createSearchIndex(books: Book[]): SearchIndex {
+/** A non-book thing that can be searched for and seeded from. */
+export interface SearchEntity {
+  ref: string;
+  kind: 'topic' | 'tag' | 'author';
+  label: string;
+  /** How many books stand behind it — shown, and used to break ties so a
+   *  subject with substance outranks one with two books. */
+  count: number;
+}
+
+/** Subjects and authors, flattened out of the baked index. */
+export function entitiesFrom(graphIndex: GraphIndexFile): SearchEntity[] {
+  const out: SearchEntity[] = [];
+  for (const [id, node] of Object.entries(graphIndex.topics)) {
+    out.push({
+      ref: topicRef(id),
+      kind: 'topic',
+      label: node.label,
+      count: graphIndex.countForTopic[id] ?? 0,
+    });
+  }
+  // A tag whose label is already a topic label is dropped from SEARCH only.
+  // `Cyberpunk` the topic and `cyberpunk` the tag cover the same ground, and
+  // offering both spent two of six suggestion slots saying one word twice. The
+  // topic wins because it carries the hierarchy and its book list includes
+  // descendants. The tag itself is untouched everywhere else — it is still what
+  // the pills in the detail panel are, and still branchable from there.
+  const topicLabels = new Set(out.map((e) => e.label.toLowerCase()));
+  for (const [tag, ids] of Object.entries(graphIndex.booksForTag)) {
+    // Tags are slugs; the label is what a person reads, so unslug it here once
+    // rather than in every place that renders one.
+    const label = tag.replace(/-/g, ' ');
+    if (topicLabels.has(label.toLowerCase())) continue;
+    out.push({ ref: tagRef(tag), kind: 'tag', label, count: graphIndex.countForTag[tag] ?? ids.length });
+  }
+  for (const [slug, name] of Object.entries(graphIndex.authorNames)) {
+    out.push({
+      ref: authorRef(slug),
+      kind: 'author',
+      label: name,
+      count: graphIndex.booksForAuthor[slug]?.length ?? 0,
+    });
+  }
+  return out;
+}
+
+export function createSearchIndex(books: Book[], graphIndex?: GraphIndexFile): SearchIndex {
   const fuse = new Fuse(books, {
     keys: [
       { name: 'title', weight: 0.5 },
@@ -35,7 +88,7 @@ export function createSearchIndex(books: Book[]): SearchIndex {
     minMatchCharLength: 2,
     includeScore: true,
   });
-  return { fuse, books };
+  return { fuse, books, entities: graphIndex ? entitiesFrom(graphIndex) : [] };
 }
 
 /** One character is enough to search.
@@ -64,12 +117,19 @@ function withoutArticle(folded: string): string {
   return folded.replace(/^(?:the|a|an)\s+/, '');
 }
 
-/** Ranking tier, lowest first. Below the fuzzy tier there is nothing. */
+/** Ranking tier, lowest first. Below the fuzzy tier there is nothing.
+ *
+ *  An author gets a tier of their own, ABOVE the books that match through them.
+ *  Without it "le guin" returned *The Dispossessed* first: the author entity and
+ *  her books shared one tier, so the alphabet decided, and "the dispossessed"
+ *  beat "ursula k. le guin". When you type an author's name the author is the
+ *  answer — their books are what you get by opening it. */
 const TIER_TITLE_PREFIX = 0;
 const TIER_TITLE_WORD_PREFIX = 1;
-const TIER_AUTHOR_PREFIX = 2;
-const TIER_TITLE_CONTAINS = 3;
-const TIER_FUZZY = 4;
+const TIER_AUTHOR_ENTITY = 2;
+const TIER_AUTHOR_BOOK = 3;
+const TIER_TITLE_CONTAINS = 4;
+const TIER_FUZZY = 5;
 
 /** Fuse score above which a fuzzy match is discarded rather than shown.
  *
@@ -112,7 +172,7 @@ export function matchTier(book: Book, q: string): number | null {
   for (const author of book.authors) {
     const a = fold(author);
     if (a.startsWith(q) || a.includes(q) || a.split(/\s+/).some((w) => w.startsWith(q))) {
-      return TIER_AUTHOR_PREFIX;
+      return TIER_AUTHOR_BOOK;
     }
   }
 
@@ -134,29 +194,82 @@ export function runSearch(index: SearchIndex, query: string): SearchHit[] {
   if (raw.length < MIN_QUERY_LENGTH) return [];
   const q = fold(raw);
 
-  const tiered: Array<{ book: Book; tier: number; sortKey: string }> = [];
+  const tiered: Array<{ hit: SearchHit; tier: number; sortKey: string }> = [];
+
   for (const book of index.books) {
     const tier = matchTier(book, q);
-    if (tier !== null) tiered.push({ book, tier, sortKey: withoutArticle(fold(book.title)) });
+    if (tier === null) continue;
+    tiered.push({
+      hit: {
+        ref: bookRef(book.id),
+        kind: 'book',
+        label: book.title,
+        detail: `${book.authors.join(', ')} · ${book.year < 0 ? `${-book.year} BCE` : book.year}`,
+        score: tier / (TIER_FUZZY + 1),
+        book,
+      },
+      tier,
+      sortKey: withoutArticle(fold(book.title)),
+    });
   }
 
+  // Subjects and authors run through the SAME tiers, so "d" lists D titles,
+  // D subjects and D authors interleaved by how well each matched rather than
+  // by kind. Sorting by kind would bury a subject exactly named by the query
+  // beneath twenty books that merely start with the same letter.
+  for (const entity of index.entities) {
+    const label = fold(entity.label);
+    const tier = entity.ref.startsWith('author:')
+      ? label.startsWith(q) || label.includes(q) || label.split(/\s+/).some((w) => w.startsWith(q))
+        ? TIER_AUTHOR_ENTITY
+        : null
+      : label.startsWith(q)
+        ? TIER_TITLE_PREFIX
+        : label.split(/[\s-]+/).some((w) => w.startsWith(q))
+          ? TIER_TITLE_WORD_PREFIX
+          : label.includes(q)
+            ? TIER_TITLE_CONTAINS
+            : null;
+    if (tier === null || entity.count === 0) continue;
+    tiered.push({
+      hit: {
+        ref: entity.ref,
+        kind: entity.kind,
+        label: entity.label,
+        detail: `${entity.count} book${entity.count === 1 ? '' : 's'}`,
+        score: tier / (TIER_FUZZY + 1),
+      },
+      tier,
+      sortKey: label,
+    });
+  }
+
+  // Alphabetical within a tier, across ALL grains together. Ranking subjects
+  // above books by book-count seemed reasonable and was wrong: every subject
+  // carries a double-digit count and every book carries none, so "d" returned
+  // six subjects and not one D title — undoing the thing prefix ranking was
+  // built for. Interleaved alphabetically, a query letter returns the D things,
+  // whatever kind they are, which is what the list is for.
   tiered.sort((a, b) => a.tier - b.tier || a.sortKey.localeCompare(b.sortKey));
 
-  const hits: SearchHit[] = tiered.map(({ book, tier }) => ({
-    book,
-    // Kept on the same 0..1 "lower is better" scale Fuse uses, so `SearchHit`
-    // means one thing regardless of which tier produced it.
-    score: tier / (TIER_FUZZY + 1),
-  }));
+  const hits: SearchHit[] = tiered.map((t) => t.hit);
 
-  const seen = new Set(hits.map((h) => h.book.id));
+  const seen = new Set(hits.map((h) => h.ref));
   for (const r of index.fuse.search(raw)) {
     const score = r.score ?? 1;
     // Sorted best-first by Fuse, so the first one over the line ends the tier.
     if (score > FUZZY_SCORE_CUTOFF) break;
-    if (seen.has(r.item.id)) continue;
-    seen.add(r.item.id);
-    hits.push({ book: r.item, score });
+    const ref = bookRef(r.item.id);
+    if (seen.has(ref)) continue;
+    seen.add(ref);
+    hits.push({
+      ref,
+      kind: 'book',
+      label: r.item.title,
+      detail: `${r.item.authors.join(', ')} · ${r.item.year < 0 ? `${-r.item.year} BCE` : r.item.year}`,
+      score,
+      book: r.item,
+    });
   }
 
   return hits;

@@ -1,12 +1,20 @@
 import { useEffect, useRef } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, bookForRef, describeRef } from '@/state/store';
 import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
 import { asSlot } from '@/domain/graph';
-import { formatYear } from './format';
+import { tagRef } from '@/domain/nodeRef';
+import { BranchMenu } from './BranchMenu';
 
-/** Detail panel for the selected book, with the buy link. */
+/** Detail panel for whatever is selected.
+ *
+ *  Switches on grain. A book has a description and a buy link; a subject or an
+ *  author has neither, because this corpus carries neither — there is no author
+ *  biography and no subject blurb anywhere in the data. Writing one would be the
+ *  same error the descriptions rule already forbids: plausible text that stays
+ *  invisible as fiction until a reader trusts it. What they do have is what they
+ *  contain, and that is what the branch menu shows. */
 export function DetailPanel(): React.ReactElement | null {
-  const selectedId = useStore((s) => s.selectedId);
+  const selectedRef = useStore((s) => s.selectedRef);
   const graph = useStore((s) => s.graph);
   const revision = useStore((s) => s.revision);
   const expand = useStore((s) => s.expand);
@@ -14,24 +22,25 @@ export function DetailPanel(): React.ReactElement | null {
   const reseedFrom = useStore((s) => s.reseedFrom);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  const book = selectedId ? bookById(selectedId) : undefined;
+  const about = selectedRef ? describeRef(selectedRef) : null;
+  const book = selectedRef ? bookForRef(selectedRef) : undefined;
 
   useEffect(() => {
-    if (book) headingRef.current?.focus();
-  }, [book]);
+    if (about) headingRef.current?.focus();
+  }, [about]);
 
-  if (!book) return null;
+  if (!selectedRef || !about) return null;
 
-  const link = amazonLinkForBook(book, configuredAssociateTag());
   // `revision` is read only to re-render when `expand` flips a node's flags in
   // place — the graph object alone does not always change identity for those.
   void revision;
-  const slot = graph.indexOf.get(book.id);
+  const slot = graph.indexOf.get(selectedRef);
   const node = slot === undefined ? undefined : graph.nodes[slot];
   const canGrow = node !== undefined && !node.expanded && node.expandable;
+  const link = book ? amazonLinkForBook(book, configuredAssociateTag()) : null;
 
   return (
-    <aside className="panel panel--detail" aria-live="polite" aria-label="Selected book">
+    <aside className="panel panel--detail" aria-live="polite" aria-label="Selected">
       <button
         type="button"
         className="panel__close"
@@ -42,37 +51,54 @@ export function DetailPanel(): React.ReactElement | null {
       </button>
 
       <h2 className="detail__title" ref={headingRef} tabIndex={-1}>
-        {book.title}
+        {about.label}
       </h2>
-      <p className="detail__byline">
-        {book.authors.join(', ')} · {formatYear(book.year)}
-      </p>
+      <p className="detail__byline">{about.detail}</p>
 
-      <p className="detail__description">{book.description}</p>
+      {book && <p className="detail__description">{book.description}</p>}
 
-      <h3 className="detail__heading">Subjects</h3>
-      <ul className="chips">
-        {book.subjects.map((tag) => (
-          <li key={tag} className="chip">
-            {tag.replace(/-/g, ' ')}
-          </li>
-        ))}
-      </ul>
+      {book && book.subjects.length > 0 && (
+        <>
+          <h3 className="detail__heading">Subjects</h3>
+          <ul className="chips">
+            {book.subjects.map((tag) => (
+              <li key={tag}>
+                {/* The pills are branch buttons now. A subject on a book is the
+                    most direct handle the reader has for "show me more of this
+                    kind of thing", and it used to be inert text. */}
+                <button
+                  type="button"
+                  className="chip chip--action"
+                  onClick={() => {
+                    if (slot !== undefined) expand(asSlot(slot), tagRef(tag));
+                  }}
+                  disabled={slot === undefined || node?.expanded === true}
+                  title={`Grow the map along ${tag.replace(/-/g, ' ')}`}
+                >
+                  {tag.replace(/-/g, ' ')}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
-      {book.isbn13 && (
+      {book?.isbn13 && (
         <p className="detail__isbn">
           ISBN <span>{book.isbn13}</span>
         </p>
       )}
 
+      {canGrow && slot !== undefined && (
+        <>
+          <h3 className="detail__heading">Grow from here</h3>
+          <BranchMenu slot={asSlot(slot)} />
+        </>
+      )}
+
       <div className="detail__actions">
-        {canGrow && slot !== undefined && (
-          <button type="button" className="detail__grow" onClick={() => expand(asSlot(slot))}>
-            Show similar books
-          </button>
-        )}
         {node !== undefined && node.generation > 0 && (
-          <button type="button" className="detail__reseed" onClick={() => reseedFrom(book.id)}>
+          <button type="button" className="detail__reseed" onClick={() => reseedFrom(selectedRef)}>
             Start a new map here
           </button>
         )}
@@ -86,9 +112,11 @@ export function DetailPanel(): React.ReactElement | null {
 
           The Associates disclosure is not repeated here either: `Footer` renders
           it on every screen including this one, so this was a duplicate. */}
-      <a className="buy" href={link.href} target="_blank" rel="noopener noreferrer sponsored">
-        {link.label}
-      </a>
+      {link && (
+        <a className="buy" href={link.href} target="_blank" rel="noopener noreferrer sponsored">
+          {link.label}
+        </a>
+      )}
     </aside>
   );
 }

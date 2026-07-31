@@ -20,6 +20,7 @@ import { buildTaxonomyIndex, populateMembers } from '@/domain/taxonomy';
 import { loadCorpusForLayout, loadTagMap, loadTaxonomyFile } from '@/domain/fixtures';
 import { FEATURE_CONFIG, buildFeatureMatrix } from '@/domain/features';
 import { inputHash } from '@/domain/hash';
+import { buildGraphIndex } from '@/domain/graphIndex';
 import {
   NEIGHBOR_K,
   quantise,
@@ -147,11 +148,30 @@ export function buildNeighbors(): void {
     neighbors: quantise(neighbors),
   };
 
+  // The subject/author adjacency the map grows along when the axis is not
+  // "related titles". Same input hash, so one stale-artifact check covers both.
+  const graphIndex = buildGraphIndex(
+    books,
+    tagMap,
+    index,
+    features,
+    (i) => neighbors[i] ?? [],
+    file.inputHash,
+  );
+  const tagCount = Object.keys(graphIndex.booksForTag).length;
+  const authorCount = Object.keys(graphIndex.authorNames).length;
+  console.log(
+    `\ngraph index: ${Object.keys(graphIndex.topics).length} topics, ` +
+      `${tagCount} tags, ${authorCount} authors`,
+  );
+
   mkdirSync(GENERATED_DIR, { recursive: true });
   writeFileSync(join(GENERATED_DIR, 'corpus.json'), `${JSON.stringify(books)}\n`);
   writeFileSync(join(GENERATED_DIR, 'neighbors.json'), `${JSON.stringify(file)}\n`);
+  writeFileSync(join(GENERATED_DIR, 'graph-index.json'), `${JSON.stringify(graphIndex)}\n`);
 
   console.log(`\nwrote src/generated/corpus.json (${books.length} books)`);
   console.log('wrote src/generated/neighbors.json');
+  console.log('wrote src/generated/graph-index.json');
 }
 

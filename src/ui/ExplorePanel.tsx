@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, describeRef } from '@/state/store';
 import { SOFT_CAP } from '@/domain/graph';
 import { GraphOutline } from './GraphOutline';
 
@@ -16,8 +16,8 @@ export function ExplorePanel(): React.ReactElement {
   const fitAll = useStore((s) => s.fitAll);
   const dismissNotice = useStore((s) => s.dismissNotice);
 
-  const seedId = graph.nodes[0]?.bookId;
-  const seedBook = seedId ? bookById(seedId) : undefined;
+  const seedRef = graph.nodes[0]?.nodeRef;
+  const seedAbout = seedRef ? describeRef(seedRef) : null;
   const count = graph.nodes.length;
 
   useEffect(() => {
@@ -37,9 +37,9 @@ export function ExplorePanel(): React.ReactElement {
             `aria-labelledby` and the skip-link in App.tsx target that id, and it
             is a better label for the panel than the app's own name was. */}
         <h1 id="explore-heading" className="explore__seed">
-          {seedBook ? (
+          {seedAbout ? (
             <>
-              Books near <strong>{seedBook.title}</strong>
+              Books near <strong>{seedAbout.label}</strong>
             </>
           ) : (
             'Books on the map'

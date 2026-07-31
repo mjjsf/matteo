@@ -3,12 +3,17 @@ import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useStore } from '@/state/store';
 import { EDGE_LEN, MAX_NODES, tierOf } from '@/domain/graph';
+import { kindOf, type NodeKind } from '@/domain/nodeRef';
 import { hexToRgbTriple, type ThemeColors } from '@/domain/palette';
 import { prefersReducedMotion, spawnOriginFor } from './motion';
 import {
   graphPointsFragmentShader,
   graphPointsVertexShader,
 } from './graphPointsShader';
+
+/** Which mark a grain draws as. Topics and tags share one — both are subjects
+ *  to a reader, and the grain distinction is a code concern. */
+const MARK_OF: Record<NodeKind, number> = { book: 0, topic: 1, tag: 1, author: 2 };
 
 const SPAWN_MS = 520;
 /** Per-child delay so a fan unfurls in similarity order — the best match arrives
@@ -62,6 +67,11 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
     tier.setUsage(THREE.DynamicDrawUsage);
     geo.setAttribute('aTier', tier);
 
+    // Orthogonal to tier: a subject node is itself expandable or expanded.
+    const kind = new THREE.BufferAttribute(new Float32Array(MAX_NODES), 1);
+    kind.setUsage(THREE.DynamicDrawUsage);
+    geo.setAttribute('aKind', kind);
+
     // Explicit index: three compiles ShaderMaterial as GLSL ES 1.00, where
     // gl_VertexID does not exist. Equals the node slot, so the focus test in the
     // vertex shader stays a plain comparison.
@@ -95,6 +105,7 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
           uExpandable: { value: new THREE.Color(...hexToRgbTriple(theme.expandable)) },
           uExpanded: { value: new THREE.Color(...hexToRgbTriple(theme.expanded)) },
           uExhausted: { value: new THREE.Color(...hexToRgbTriple(theme.pointResting)) },
+          uSubject: { value: new THREE.Color(...hexToRgbTriple(theme.subject)) },
         },
       }),
     [gl, theme],
@@ -149,9 +160,11 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
     const positionAttr = geometry.getAttribute('position') as THREE.BufferAttribute;
     const sizeAttr = geometry.getAttribute('aSize') as THREE.BufferAttribute;
     const tierAttr = geometry.getAttribute('aTier') as THREE.BufferAttribute;
+    const kindAttr = geometry.getAttribute('aKind') as THREE.BufferAttribute;
     const positions = positionAttr.array as Float32Array;
     const sizes = sizeAttr.array as Float32Array;
     const tiers = tierAttr.array as Float32Array;
+    const kinds = kindAttr.array as Float32Array;
 
     let lastRevision = -1;
     let lastFocus: string | null | undefined;
@@ -190,6 +203,7 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
 
           sizes[i] = node.generation === 0 ? 13 : Math.max(6, 11 - node.generation * 1.1);
           tiers[i] = tierOf(node);
+          kinds[i] = MARK_OF[kindOf(node.nodeRef)];
         }
 
         a.count = count;
@@ -199,13 +213,14 @@ export function GraphPoints({ theme, onReady }: Props): React.ReactElement {
         positionAttr.needsUpdate = true;
         sizeAttr.needsUpdate = true;
         tierAttr.needsUpdate = true;
+        kindAttr.needsUpdate = true;
         commitBounds(count);
       }
 
-      const focusId = s.hoveredId ?? s.selectedId;
-      if (focusId !== lastFocus) {
-        lastFocus = focusId;
-        const slot = focusId ? (s.graph.indexOf.get(focusId) ?? -1) : -1;
+      const focusRef = s.hoveredRef ?? s.selectedRef;
+      if (focusRef !== lastFocus) {
+        lastFocus = focusRef;
+        const slot = focusRef ? (s.graph.indexOf.get(focusRef) ?? -1) : -1;
         material.uniforms.uFocusIndex!.value = slot;
       }
     };

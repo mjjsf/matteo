@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useStore, bookById } from '@/state/store';
+import { useStore, resolves } from '@/state/store';
+import { toRef, type NodeRef } from '@/domain/nodeRef';
 
 /** Hash routing, deliberately — GitHub Pages has no rewrite rules, so path
  *  routing would 404 on refresh or on a shared deep link.
@@ -12,10 +13,21 @@ import { useStore, bookById } from '@/state/store';
  *  share. Placement is fully deterministic, so replaying the seed and then those
  *  expansions in order reproduces the identical graph — which is why the slots
  *  are worth the extra characters. */
+/** One replayed expansion: which slot, and which axis it was grown along.
+ *
+ *  The axis is essential now that a node can be branched several ways — without
+ *  it a shared link replays the same slots along the default axis and produces a
+ *  different map. A step with no axis means "related titles", which is exactly
+ *  what a bare slot meant in every link written before axes existed. */
+export interface HashStep {
+  slot: number;
+  axis?: string;
+}
+
 export interface HashState {
-  seedId: string | null;
-  path: number[];
-  openId: string | null;
+  seedRef: NodeRef | null;
+  path: HashStep[];
+  openRef: NodeRef | null;
 }
 
 export function parseHash(hash: string): HashState {
@@ -24,28 +36,43 @@ export function parseHash(hash: string): HashState {
   const params = new URLSearchParams(search);
 
   const parts = pathPart.split('/').filter(Boolean);
-  let seedId: string | null = null;
+  let seedRef: NodeRef | null = null;
   let via = '';
   for (let i = 0; i < parts.length - 1; i++) {
-    if (parts[i] === 'from') seedId = decodeURIComponent(parts[i + 1] as string);
+    // A bare id with no `kind:` prefix is a book — that is what every link
+    // shared before node kinds existed carries, and they must keep resolving.
+    if (parts[i] === 'from') seedRef = toRef(decodeURIComponent(parts[i + 1] as string));
     if (parts[i] === 'via') via = decodeURIComponent(parts[i + 1] as string);
   }
 
   const path = via
     .split(',')
-    .map((s) => Number.parseInt(s, 10))
+    .filter(Boolean)
+    .map((step) => {
+      // `3` and `3:tag%3Aexistentialism` are both valid; the first is the old
+      // shape and means the default axis.
+      const at = step.indexOf(':');
+      const slot = Number.parseInt(at === -1 ? step : step.slice(0, at), 10);
+      const axis = at === -1 ? undefined : decodeURIComponent(step.slice(at + 1));
+      return { slot, axis };
+    })
     // Non-numeric junk is dropped rather than replayed as NaN, which `expand`
     // would treat as an unknown slot and silently ignore anyway.
-    .filter((n) => Number.isInteger(n) && n >= 0);
+    .filter((s) => Number.isInteger(s.slot) && s.slot >= 0);
 
-  return { seedId, path, openId: params.get('open') };
+  const open = params.get('open');
+  return { seedRef, path, openRef: open ? toRef(open) : null };
 }
 
 export function serializeHash(state: HashState): string {
-  if (!state.seedId) return '';
-  let path = `/from/${encodeURIComponent(state.seedId)}`;
-  if (state.path.length > 0) path += `/via/${state.path.join(',')}`;
-  const q = state.openId ? `?open=${encodeURIComponent(state.openId)}` : '';
+  if (!state.seedRef) return '';
+  let path = `/from/${encodeURIComponent(state.seedRef)}`;
+  if (state.path.length > 0) {
+    path += `/via/${state.path
+      .map((s) => (s.axis ? `${s.slot}:${encodeURIComponent(s.axis)}` : String(s.slot)))
+      .join(',')}`;
+  }
+  const q = state.openRef ? `?open=${encodeURIComponent(state.openRef)}` : '';
   return `#${path}${q}`;
 }
 
@@ -62,22 +89,22 @@ export function useUrlSync(): void {
   useEffect(() => {
     if (status !== 'ready') return;
     const apply = (): void => {
-      const { seedId, path, openId } = parseHash(window.location.hash);
+      const { seedRef, path, openRef } = parseHash(window.location.hash);
       const state = useStore.getState();
 
       // Nothing to restore, or this is the hash we ourselves just wrote.
-      if (!seedId || !bookById(seedId)) return;
+      if (!seedRef || !resolves(seedRef)) return;
       const current = serializeHash({
-        seedId: state.graph.nodes[0]?.bookId ?? null,
+        seedRef: state.graph.nodes[0]?.nodeRef ?? null,
         path: state.path,
-        openId: state.selectedId,
+        openRef: state.selectedRef,
       });
       if (current === window.location.hash) return;
 
       applying.current = true;
       try {
-        state.restore(seedId, path);
-        if (openId && bookById(openId)) useStore.getState().select(openId);
+        state.restore(seedRef, path);
+        if (openRef && resolves(openRef)) useStore.getState().select(openRef);
       } finally {
         applying.current = false;
       }
@@ -94,16 +121,16 @@ export function useUrlSync(): void {
       if (applying.current) return;
 
       const hash = serializeHash({
-        seedId: s.graph.nodes[0]?.bookId ?? null,
+        seedRef: s.graph.nodes[0]?.nodeRef ?? null,
         path: s.path,
-        openId: s.selectedId,
+        openRef: s.selectedRef,
       });
       if (hash === lastWritten.current) return;
 
       // Seeding and expanding are navigations — Back should undo them. Merely
       // opening a book replaces, so browsing details does not fill the history
       // with entries nobody wants to step through.
-      const structural = s.graph.nodes[0]?.bookId !== prev.graph.nodes[0]?.bookId
+      const structural = s.graph.nodes[0]?.nodeRef !== prev.graph.nodes[0]?.nodeRef
         || s.path.length !== prev.path.length;
 
       lastWritten.current = hash;

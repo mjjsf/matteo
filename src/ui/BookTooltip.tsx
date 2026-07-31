@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { useStore, bookById, slotOf } from '@/state/store';
+import { useStore, bookForRef, describeRef, slotOf } from '@/state/store';
 import { amazonLinkForBook, configuredAssociateTag } from '@/domain/amazon';
-import { formatYear } from './format';
 
 /** Rollover card for the node under the cursor: title, byline, and the
  *  description the brief asks for.
@@ -33,7 +32,7 @@ export function BookTooltip({
   useEffect(() => {
     let raf = 0;
     const vec = new THREE.Vector3();
-    let lastId: string | null | undefined;
+    let lastRef: string | null | undefined;
     let canvasEl: HTMLCanvasElement | null = null;
 
     const tick = (): void => {
@@ -46,30 +45,33 @@ export function BookTooltip({
       const state = useStore.getState();
       // Hover only. Selection has the detail panel, and pinning a card over the
       // graph after every click would sit on top of the thing just grown.
-      const id = state.hoveredId;
+      const hovered = state.hoveredRef;
 
-      if (!id) {
-        if (lastId !== null) {
+      if (!hovered) {
+        if (lastRef !== null) {
           el.style.opacity = '0';
-          lastId = null;
+          lastRef = null;
         }
         return;
       }
 
-      const slot = slotOf(state, id);
+      const slot = slotOf(state, hovered);
       if (slot === null) {
         el.style.opacity = '0';
         return;
       }
 
-      if (id !== lastId) {
-        lastId = id;
-        const book = bookById(id);
+      if (hovered !== lastRef) {
+        lastRef = hovered;
+        const about = describeRef(hovered);
+        const book = bookForRef(hovered);
         const node = state.graph.nodes[slot];
-        if (book && titleRef.current && metaRef.current && descRef.current && hintRef.current) {
-          titleRef.current.textContent = book.title;
-          metaRef.current.textContent = `${book.authors.join(', ')} · ${formatYear(book.year)}`;
-          descRef.current.textContent = book.description;
+        if (about && titleRef.current && metaRef.current && descRef.current && hintRef.current) {
+          titleRef.current.textContent = about.label;
+          metaRef.current.textContent = about.detail;
+          // A subject or an author has no description in this corpus, and
+          // inventing one would be the error the descriptions rule forbids.
+          descRef.current.textContent = book?.description ?? '';
           hintRef.current.textContent = !node
             ? ''
             : node.expanded
@@ -77,14 +79,15 @@ export function BookTooltip({
                 // "Click to open details", which is no longer what a click does.
                 node.generation > 0
                 ? 'Click to hide what grew from this'
-                : 'Your starting book'
+                : 'Your starting point'
               : node.expandable
-                ? 'Click to grow similar books'
-                : 'No further similar books';
+                ? 'Click for ways to grow from this'
+                : 'Nothing further to grow';
           // Written imperatively, like everything else on this card: rendering it
           // through React would put the reconciler back in the hover path.
           if (buyRef.current) {
-            buyRef.current.href = amazonLinkForBook(book, configuredAssociateTag()).href;
+            buyRef.current.style.display = book ? '' : 'none';
+            if (book) buyRef.current.href = amazonLinkForBook(book, configuredAssociateTag()).href;
           }
         }
       }
