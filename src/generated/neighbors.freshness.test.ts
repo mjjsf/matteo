@@ -3,7 +3,9 @@ import { loadCorpusForLayout, loadTagMap, loadTaxonomyFile } from '@/domain/fixt
 import { FEATURE_CONFIG } from '@/domain/features';
 import { inputHash } from '@/domain/hash';
 import { MIN_SIM, NEIGHBOR_K, type NeighborsFile } from '@/domain/similarity';
+import type { GraphIndexFile } from '@/domain/graphIndex';
 import neighbors from './neighbors.json';
+import graphIndex from './graph-index.json';
 import corpus from './corpus.json';
 
 /** The entire safety net for baking neighbours at build time. Without this,
@@ -61,6 +63,19 @@ describe('generated neighbours freshness', () => {
         );
       }
     }
+  });
+
+  it('keeps the graph index in step with the neighbours', () => {
+    // Both artifacts are baked from the same inputs in one pass and share an
+    // input hash, so one check covers both. Without it, editing the corpus and
+    // re-baking only part of `src/generated/` would ship a subject index
+    // pointing at books that have moved — resolving to *something* every time,
+    // and therefore silent.
+    const gi = graphIndex as unknown as GraphIndexFile;
+    expect(
+      gi.inputHash,
+      'src/generated/graph-index.json is stale — run `npm run neighbors` and commit the result',
+    ).toBe(file.inputHash);
   });
 
   it('leaves no book without a single similar book', () => {
