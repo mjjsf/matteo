@@ -544,16 +544,23 @@ a:focus-visible {
   cursor: pointer;
 }
 
+/* Hover and press are the ONLY highlights now, so the hovered item has to be
+   unmistakable on its own. A border change alone was enough while one item sat
+   permanently solid blue and the rest were quiet; with nothing pre-highlighted
+   it is not.
+
+   The tint is the one `.suggestion--active` already uses on the landing screen,
+   so this is the app's existing "this one is live" treatment rather than a
+   fourth invention. */
 .branch__axis:hover {
+  background: color-mix(in srgb, var(--expandable) 12%, var(--panel));
   border-color: var(--expandable);
 }
 
-/* The default axis reads as the primary action: one gesture staying fast is
-   what stops the chooser taxing every single expansion. */
-.branch__axis--primary {
-  background: var(--expandable);
-  color: #ffffff;
-  font-weight: 500;
+/* Pressed reads deeper than hovered, so a click registers even when the pointer
+   never moves off the item. */
+.branch__axis:active {
+  background: color-mix(in srgb, var(--expandable) 22%, var(--panel));
 }
 
 .branch__count {
