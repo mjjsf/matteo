@@ -1,6 +1,5 @@
 import { useStore } from '@/state/store';
 import { asSlot, type Slot } from '@/domain/graph';
-import { DEFAULT_AXIS } from '@/domain/branch';
 
 /** The axes a node can be branched along, as buttons.
  *
@@ -31,16 +30,16 @@ export function BranchMenu({
 
   return (
     <div className={compact ? 'branch branch--compact' : 'branch'}>
-      {axes.map((axis, i) => (
+      {axes.map((axis) => (
         <button
           key={axis.id}
           type="button"
-          // The first axis is the default one Enter takes, so it reads as the
-          // primary action rather than as one of several equals. Keeping one
-          // gesture fast is what stops the chooser taxing every expansion.
-          className={
-            i === 0 || axis.id === DEFAULT_AXIS ? 'branch__axis branch__axis--primary' : 'branch__axis'
-          }
+          // No item is pre-highlighted. The first one used to be painted solid
+          // blue because a plain click on a node grew it along that axis, so the
+          // colour named the branch the fast path would take. A click opens this
+          // menu now and grows nothing until something here is pressed, so the
+          // blue was marking a primacy that no longer exists.
+          className="branch__axis"
           onClick={() => {
             expand(asSlot(slot), axis.id);
             onPick?.();
