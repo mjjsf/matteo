@@ -6,6 +6,15 @@ import { BranchMenu } from './BranchMenu';
 
 /** Detail panel for whatever is selected.
  *
+ *  NO LONGER MOUNTED OVER THE MAP. It used to float in the right column there,
+ *  duplicating a rollover card that already carries the same title, byline and
+ *  description for whatever the pointer is on.
+ *
+ *  It stays in `ListOnlyApp`, and that is not a leftover. That view has no
+ *  canvas — so no rollover card and no node menu — and this is the only place a
+ *  description, a buy link or `Start a new map here` can be reached there at
+ *  all. Deleting the component to tidy the map would have gutted the fallback.
+ *
  *  Switches on grain. A book has a description and a buy link; a subject or an
  *  author has neither, because this corpus carries neither — there is no author
  *  biography and no subject blurb anywhere in the data. Writing one would be the

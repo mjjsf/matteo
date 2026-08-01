@@ -51,8 +51,8 @@ export function Legend({ theme }: { theme: ThemeColors }): React.ReactElement {
               style={{ background: colorFor(tier, theme) }}
               aria-hidden="true"
             />
-            {label}
-            {note && <em> ({note})</em>}
+            <span className="legend__label">{label}</span>
+            {note && <em>({note})</em>}
           </li>
         ))}
       </ul>
@@ -70,7 +70,7 @@ export function Legend({ theme }: { theme: ThemeColors }): React.ReactElement {
               }
               aria-hidden="true"
             />
-            {label}
+            <span className="legend__label">{label}</span>
           </li>
         ))}
       </ul>

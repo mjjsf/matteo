@@ -783,25 +783,38 @@ a:focus-visible {
 .legend {
   position: absolute;
   bottom: 40px;
-  /* Centred rather than bottom-left: the explore panel can grow to nearly the
-     full window height, and at that point a bottom-left legend is simply hidden
-     behind it. */
-  left: 50%;
-  transform: translateX(-50%);
+  /* Bottom RIGHT, in the column the detail panel used to float in. It was
+     centred at the bottom while that column was occupied; with the panel gone
+     from the map this side is free, and the legend out of the way of a graph
+     that grows outward from the middle.
+     The explore panel can reach nearly the full window height, which is why it
+     was never bottom-left. */
+  right: 20px;
   font-size: 0.72rem;
   color: var(--text-secondary);
+  /* Same treatment as `.panel`, so the frame reads as one of the app's surfaces
+     rather than a fifth kind of box. */
   background: var(--panel-translucent);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--hairline);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 12px;
+  padding: 16px;
+  /* Narrow enough to stand PORTRAIT. Left to size itself the frame came out
+     209x173 — landscape — because the notes ("click to fold back up") are longer
+     than the labels they qualify. Capping the width wraps them under their own
+     row instead, which is also where they belong: a note is a gloss on the entry
+     above it, not a second column. */
+  width: 164px;
   opacity: 0.9;
 }
 
 .legend__shapes {
-  /* A second row, separated: shape and colour are independent axes, and running
-     them together as one list reads as six alternatives rather than 4 x 3. */
-  margin-top: 6px !important;
-  padding-top: 6px;
+  /* A second GROUP, separated: shape and colour are independent axes, and
+     running them together as one list reads as seven alternatives rather than
+     4 + 3. The rule matters more now the legend is a single column, where
+     nothing else signals that the list restarts. */
+  margin-top: 10px !important;
+  padding-top: 10px;
   border-top: 1px solid var(--hairline);
 }
 
@@ -819,21 +832,37 @@ a:focus-visible {
   list-style: none;
   margin: 0;
   padding: 0;
+  /* A column rather than a wrapping row: portrait, so the frame is tall and
+     narrow beside a map that is wide. */
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 16px;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .legend li {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 7px;
+  gap: 2px 7px;
+}
+
+.legend__label {
+  /* Takes the rest of the row and wraps INSIDE itself. Without this the label is
+     a bare text node in a wrapping flex row, so at this width it dropped below
+     its own swatch and sat flush left — which reads as a colour with no name
+     followed by a name with no colour. Pairing the two is the whole job of this
+     legend. */
+  flex: 1;
+  min-width: 0;
 }
 
 .legend em {
   color: var(--text-muted);
   font-style: normal;
   font-size: 0.66rem;
+  /* Its own line, aligned under the label rather than under the swatch. */
+  flex-basis: 100%;
+  margin-left: 17px;
 }
 
 .swatch {
