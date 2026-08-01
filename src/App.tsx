@@ -9,7 +9,6 @@ import { WebGLGuard } from '@/scene/WebGLGuard';
 import { Landing } from '@/ui/Landing';
 import { Browse } from '@/ui/Browse';
 import { ExplorePanel } from '@/ui/ExplorePanel';
-import { DetailPanel } from '@/ui/DetailPanel';
 import { Footer } from '@/ui/Footer';
 import { ListOnlyApp } from '@/ui/ListOnlyApp';
 import { MapStage } from '@/ui/lazyMapStage';
@@ -101,7 +100,6 @@ export function App(): React.ReactElement {
           </Suspense>
 
           <ExplorePanel />
-          <DetailPanel />
           <Footer />
         </div>
       )}
