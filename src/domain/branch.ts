@@ -110,7 +110,7 @@ function branchableAuthors(
 
 /** Authors near this book's authors, minus the book's own.
  *
- *  Its own authors are what `More by Author` grows, and offering them from two
+ *  Its own authors are what `More by author` grows, and offering them from two
  *  different buttons would let the reader open the same node twice over and
  *  wonder why the second press did nothing. De-duplicated across authors too, so
  *  a co-written book does not list a shared neighbour once per collaborator. */
@@ -149,24 +149,24 @@ export function axesFor(
     // `titles` stays first: a seeded book expands along `axesFor(...)[0]` before
     // anyone has clicked anything, and similarity is the right thing to open with.
     const n = similar(ref).length;
-    if (n > 0) out.push({ id: DEFAULT_AXIS, label: 'Related Titles', count: n });
+    if (n > 0) out.push({ id: DEFAULT_AXIS, label: 'Related titles', count: n });
 
     // One axis per author and one per subject is what this used to be, and it
     // measured at a median of 5 options and a maximum of 9 — a list, not a
     // choice. Grouped, a book offers at most four.
     const subjects = branchableSubjects(index, book);
     if (subjects.length > 0) {
-      out.push({ id: 'subjects', label: 'Related Subjects', count: subjects.length });
+      out.push({ id: 'subjects', label: 'Related subjects', count: subjects.length });
     }
 
     const near = relatedAuthorsFor(index, book);
     if (near.length > 0) {
-      out.push({ id: 'related-authors', label: 'Related Authors', count: near.length });
+      out.push({ id: 'related-authors', label: 'Related authors', count: near.length });
     }
 
     const authors = branchableAuthors(index, book);
     if (authors.length > 0) {
-      out.push({ id: 'authors', label: 'More by Author', count: authors.length });
+      out.push({ id: 'authors', label: 'More by author', count: authors.length });
     }
     return out;
   }

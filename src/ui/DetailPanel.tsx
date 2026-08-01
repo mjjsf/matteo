@@ -23,7 +23,7 @@ import { BranchMenu } from './BranchMenu';
  *  contain, and that is what the branch menu shows.
  *
  *  The book's subjects used to be listed here as clickable pills that branched
- *  the map. They are gone: `Related Subjects` in the branch menu grows exactly
+ *  the map. They are gone: `Related subjects` in the branch menu grows exactly
  *  the same set from the same book, so the pills were a second route to one
  *  destination and the panel is quieter without them. */
 export function DetailPanel(): React.ReactElement | null {

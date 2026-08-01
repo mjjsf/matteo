@@ -60,27 +60,27 @@ describe('a book groups its authors and its subjects', () => {
   it('offers the four relations in a fixed order', () => {
     const book = bookOf('anna-karenina');
     expect(axesFor(bookRef(book.id), index, book, someSimilar).map((a) => a.label)).toEqual([
-      'Related Titles',
-      'Related Subjects',
-      'Related Authors',
-      'More by Author',
+      'Related titles',
+      'Related subjects',
+      'Related authors',
+      'More by author',
     ]);
   });
 
-  it('counts the authors behind "More by Author" rather than naming one', () => {
+  it('counts the authors behind "More by author" rather than naming one', () => {
     const one = bookOf('anna-karenina');
     expect(
       axesFor(bookRef(one.id), index, one, noSimilar).find((a) => a.id === 'authors'),
-    ).toEqual({ id: 'authors', label: 'More by Author', count: 1 });
+    ).toEqual({ id: 'authors', label: 'More by author', count: 1 });
 
     const two = bookOf('good-omens');
     expect(
       axesFor(bookRef(two.id), index, two, noSimilar).find((a) => a.id === 'authors'),
-    ).toEqual({ id: 'authors', label: 'More by Author', count: 2 });
+    ).toEqual({ id: 'authors', label: 'More by author', count: 2 });
   });
 
-  it('never offers a book its own author under "Related Authors"', () => {
-    // Its own authors are what `More by Author` grows. Offering them from both
+  it('never offers a book its own author under "Related authors"', () => {
+    // Its own authors are what `More by author` grows. Offering them from both
     // buttons would let the reader open the same node twice and wonder why the
     // second press did nothing.
     const book = bookOf('anna-karenina');
@@ -95,7 +95,7 @@ describe('a book groups its authors and its subjects', () => {
     expect(new Set(grown.map((c) => c.nodeRef)).size).toBe(grown.length);
   });
 
-  it('drops "Related Authors" for a one-book author, who has none', () => {
+  it('drops "Related authors" for a one-book author, who has none', () => {
     const book = bookOf('neuromancer');
     const ids = axesFor(bookRef(book.id), index, book, noSimilar).map((a) => a.id);
     expect(ids).toEqual(['subjects']);
