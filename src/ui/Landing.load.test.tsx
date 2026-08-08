@@ -92,7 +92,11 @@ describe('Landing before the corpus arrives', () => {
   it('honours a submit made before the corpus landed', () => {
     render(<Landing />);
     fireEvent.change(input(), { target: { value: 'neuromancer' } });
-    fireEvent.click(screen.getByRole('button', { name: /start/i }));
+    // Dispatched straight at the form, because there is no longer a submit
+    // button to click. Note what this therefore does NOT prove: happy-dom does
+    // not implement HTML implicit submission, so that Enter reaches this handler
+    // at all is checked in a real browser, not here.
+    fireEvent.submit(input().closest('form')!);
     // Nothing to seed from yet, but the intent is remembered rather than lost.
     expect(useStore.getState().phase).toBe('empty');
     expect(useStore.getState().seedWhenReady).toBe(true);
