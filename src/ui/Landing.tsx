@@ -42,14 +42,16 @@ export function Landing(): React.ReactElement {
     setActive(0);
   }, [suggestions]);
 
+  // The list is capped in height and scrolls on a short viewport, so the arrow
+  // keys have to bring the highlight with them — otherwise `active` walks out of
+  // view and the reader is navigating a list they cannot see.
+  useEffect(() => {
+    document.getElementById(`seed-option-${active}`)?.scrollIntoView({ block: 'nearest' });
+  }, [active]);
+
   const ready = status === 'ready';
   const typing = query.trim().length >= MIN_QUERY_LENGTH;
   const chosen = suggestions[active];
-  // Submitting is allowed before the corpus lands — the store remembers the
-  // intent and seeds the moment the index exists. Otherwise a fast typist who
-  // names a book and hits Enter during the fetch gets nothing and has to press
-  // it a second time.
-  const canSubmit = chosen !== undefined || (!ready && typing);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (suggestions.length === 0) return;
@@ -74,6 +76,10 @@ export function Landing(): React.ReactElement {
           className="landing__form"
           onSubmit={(e) => {
             e.preventDefault();
+            // Submitting is allowed before the corpus lands — the store remembers
+            // the intent and seeds the moment the index exists. Otherwise a fast
+            // typist who names a book and hits Enter during the fetch gets
+            // nothing and has to press it a second time.
             if (chosen) seed(chosen.ref as NodeRef);
             else if (!ready && typing) useStore.setState({ seedWhenReady: true });
           }}
@@ -103,66 +109,75 @@ export function Landing(): React.ReactElement {
               setQuery(e.target.value);
             }}
           />
-          <button type="submit" disabled={!canSubmit}>
-            Start
-          </button>
+
+          {/* Inside the form, and out of flow: the list hangs off the field as a
+              dropdown so that the block above it never reflows when suggestions
+              appear. There is no submit button — a form with a single field
+              submits on Enter, and the ordinary path is to click a suggestion. */}
+          {suggestions.length > 0 && (
+            <ul className="landing__suggestions" id="seed-suggestions" role="listbox">
+              {suggestions.map((hit, i) => (
+                <li key={hit.ref} role="none">
+                  <button
+                    type="button"
+                    id={`seed-option-${i}`}
+                    role="option"
+                    aria-selected={i === active}
+                    className={i === active ? 'suggestion suggestion--active' : 'suggestion'}
+                    onMouseEnter={() => setActive(i)}
+                    onClick={() => seed(hit.ref as NodeRef)}
+                  >
+                    <span className="suggestion__title">
+                      {hit.label}
+                      {/* A book needs no badge — it is the default and the
+                          overwhelming majority. Labelling the other three is what
+                          stops "Philosophy & Religion" reading as a book title. */}
+                      {hit.kind !== 'book' && (
+                        <span className="suggestion__kind">{KIND_LABEL[hit.kind]}</span>
+                      )}
+                    </span>
+                    <span className="suggestion__meta">{hit.detail}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* The hints share the list's slot, and are out of flow for the same
+              reason it is. All three are mutually exclusive with a populated
+              list — loading implies no suggestions yet, "no match" *is* the empty
+              list, and the book count only shows before you type — so they never
+              collide, and the centred block above keeps a fixed height whichever
+              of them is on screen. Without this the column shrank the moment the
+              book-count line went away, moving the field mid-keystroke. */}
+
+          {/* While loading, say so — including mid-typing. The empty suggestion
+              list is legitimate during the fetch, so the "no match" line would be
+              confidently wrong; but showing nothing at all leaves someone who has
+              typed a whole title watching a blank space with no explanation. */}
+          {!ready && (
+            <p className="landing__hint" role="status">
+              Loading the books… you can type ahead.
+            </p>
+          )}
+
+          {ready && typing && suggestions.length === 0 && (
+            <p className="landing__hint" role="status">
+              Nothing in the collection matches that. Try a title, an author, or a subject.
+            </p>
+          )}
+
+          {/* `bookCount` is 0 until the corpus arrives; the loading line above
+              covers that window instead. */}
+          {ready && !typing && (
+            <p className="landing__hint">
+              {bookCount} books, mapped by shared subjects and authors.{' '}
+              <a className="landing__browse" href="#/browse">
+                Browse the collection
+              </a>
+            </p>
+          )}
         </form>
-
-        {/* While loading, say so — including mid-typing. The empty suggestion
-            list is legitimate during the fetch, so the "no match" line would be
-            confidently wrong; but showing nothing at all leaves someone who has
-            typed a whole title watching a blank space with no explanation. */}
-        {!ready && (
-          <p className="landing__hint" role="status">
-            Loading the books… you can type ahead.
-          </p>
-        )}
-
-        {ready && typing && suggestions.length === 0 && (
-          <p className="landing__hint" role="status">
-            Nothing in the collection matches that. Try a title, an author, or a subject.
-          </p>
-        )}
-
-        {suggestions.length > 0 && (
-          <ul className="landing__suggestions" id="seed-suggestions" role="listbox">
-            {suggestions.map((hit, i) => (
-              <li key={hit.ref} role="none">
-                <button
-                  type="button"
-                  id={`seed-option-${i}`}
-                  role="option"
-                  aria-selected={i === active}
-                  className={i === active ? 'suggestion suggestion--active' : 'suggestion'}
-                  onMouseEnter={() => setActive(i)}
-                  onClick={() => seed(hit.ref as NodeRef)}
-                >
-                  <span className="suggestion__title">
-                    {hit.label}
-                    {/* A book needs no badge — it is the default and the
-                        overwhelming majority. Labelling the other three is what
-                        stops "Philosophy & Religion" reading as a book title. */}
-                    {hit.kind !== 'book' && (
-                      <span className="suggestion__kind">{KIND_LABEL[hit.kind]}</span>
-                    )}
-                  </span>
-                  <span className="suggestion__meta">{hit.detail}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {/* `bookCount` is 0 until the corpus arrives; the loading line above
-            covers that window instead. */}
-        {ready && !typing && (
-          <p className="landing__hint">
-            {bookCount} books, mapped by shared subjects and authors.{' '}
-            <a className="landing__browse" href="#/browse">
-              Browse the collection
-            </a>
-          </p>
-        )}
       </div>
     </main>
   );

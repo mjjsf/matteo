@@ -109,12 +109,12 @@ canvas {
   flex: 1;
   display: grid;
   place-items: center;
-  padding: 24px;
-  /* Nudged above centre: a block that grows downward as suggestions appear
-     stays put this way, instead of the input sliding under the cursor while
-     someone is still typing into it. */
+  /* Truly centred, which it could not be while the suggestion list was in flow:
+     the block grew downward as you typed, so centring slid the input up under
+     the cursor. The list is a dropdown now and takes no space, so there is
+     nothing left to reflow and no need for the old nudge above centre. */
   align-content: center;
-  padding-bottom: 12vh;
+  padding: 24px;
 }
 
 .landing__inner {
@@ -139,9 +139,10 @@ canvas {
   letter-spacing: 0;
 }
 
+/* Positioned so the suggestion list can hang off the field. */
 .landing__form {
+  position: relative;
   display: flex;
-  gap: 8px;
 }
 
 .landing__form input {
@@ -157,23 +158,6 @@ canvas {
   box-shadow: 0 1px 3px rgba(11, 11, 11, 0.06);
 }
 
-.landing__form button {
-  padding: 0 20px;
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #ffffff;
-  background: var(--expandable);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.landing__form button:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
 .landing__hint {
   margin: 12px 2px 0;
   font-size: 0.78rem;
@@ -181,9 +165,37 @@ canvas {
   text-align: center;
 }
 
+/* Hints inside the form share the suggestion list's slot and, like it, take no
+   space in the column — otherwise the block changed height as one hint replaced
+   another or none, which moved the field while someone was typing into it. Only
+   the ones in the form: the load-failure screen renders a `.landing__hint` with
+   no form around it, and it has to stay in flow. */
+.landing__form .landing__hint {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+
+/* A dropdown rather than a block in the column, so the centred wordmark and
+   field stay exactly where they are while the list fills in underneath.
+   The cap is derived, not picked: the block is centred in the space above the
+   footer, so the list's top lands at `50vh + 58px` and the footer's at
+   `100vh - 29px`, leaving `50vh - 99px` between them. Rounding that to 100
+   keeps a hair of clearance. A fraction like `44vh` looked fine at 900px tall
+   and hung 20px below the fold at 620px, where the rows underneath were
+   unreachable however far you scrolled the list. */
 .landing__suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  max-height: calc(50vh - 100px);
+  overflow-y: auto;
   list-style: none;
-  margin: 12px 0 0;
+  margin: 0;
   padding: 6px;
   border: 1px solid var(--hairline);
   border-radius: 12px;
@@ -894,6 +906,20 @@ a:focus-visible {
   color: var(--text-muted);
   border-top: 1px solid var(--hairline);
   background: var(--panel-translucent);
+}
+
+/* The landing screen has no canvas for the footer to float over, so it joins the
+   column instead. That does two things at once: `space-between` was leaving the
+   single span flush left, which is why the line read as off-centre; and taking
+   the bar out of the overlay makes `.landing`'s flex box exactly the space above
+   it, so `place-items: center` centres against what the reader can actually see
+   rather than against a region the footer covers the bottom of.
+   Anchoring on `.landing` covers all three wrappers that mount it — the zero
+   state, the load-failure screen and the WebGL fallback — while leaving Browse,
+   which is `.app--empty` with no landing, and the map alone. */
+.app:has(.landing) .footer {
+  position: static;
+  justify-content: center;
 }
 
 .skip-link {
