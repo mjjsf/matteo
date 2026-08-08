@@ -77,7 +77,8 @@ export function App(): React.ReactElement {
               setBrowsing(false);
             }}
           />
-          <Footer />
+          {/* No "Browse the collection" link on the browse screen itself. */}
+          <Footer showBrowse={false} />
         </div>
       ) : phase === 'empty' ? (
         <div className="app app--empty">

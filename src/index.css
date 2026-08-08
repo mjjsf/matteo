@@ -120,7 +120,7 @@ canvas {
      while the suggestion list was in flow the block grew downward as you typed,
      and centring slid the field up under the cursor. The list and the hints are
      out of flow now, so the block's height is fixed and this is free. */
-  --nudge: 10vh;
+  --nudge: 30vh;
   padding: 24px;
   padding-bottom: calc(24px + var(--nudge));
 }
@@ -361,10 +361,6 @@ a:focus-visible {
   flex: none;
   font-size: 0.72rem;
   color: var(--text-muted);
-}
-
-.landing__browse {
-  color: var(--expandable);
 }
 
 /* --- explore panel --- */
@@ -917,6 +913,13 @@ a:focus-visible {
   color: var(--text-muted);
   border-top: 1px solid var(--hairline);
   background: var(--panel-translucent);
+}
+
+/* Colour only. Size and weight are inherited from `.footer`, which is the point:
+   this link moved down from under the landing input and takes the footer's
+   formatting rather than bringing its own. */
+.footer__browse {
+  color: var(--expandable);
 }
 
 /* The landing screen has no canvas for the footer to float over, so it joins the
