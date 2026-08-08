@@ -120,7 +120,7 @@ canvas {
      while the suggestion list was in flow the block grew downward as you typed,
      and centring slid the field up under the cursor. The list and the hints are
      out of flow now, so the block's height is fixed and this is free. */
-  --nudge: 30vh;
+  --nudge: 20vh;
   padding: 24px;
   padding-bottom: calc(24px + var(--nudge));
 }
