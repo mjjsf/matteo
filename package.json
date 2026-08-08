@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A searchable 3D book discovery cloud: books as points positioned by subject and author similarity.",
+  "description": "A visual book search: name one book and grow a map outward through the titles, subjects and authors nearest it.",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=22"
