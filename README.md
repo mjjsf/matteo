@@ -131,12 +131,46 @@ Two link shapes, both built in `src/domain/bookshop.ts`:
 | an ISBN-13 is known | `bookshop.org/a/{id}/{isbn13}`, Bookshop's documented affiliate format |
 | otherwise | a title + author search |
 
-**Every link is a search today**, because no book in the corpus records an ISBN.
-That is not a rare fallback — the product branch has never once been taken, and
-the Amazon `/dp/` branch it replaces never was either. `npm run fetch` populates
-real ISBNs from Open Library, and those books deep-link the moment it does. The
-corpus carries **no fabricated ISBNs**: a checksum-valid but incorrect one would
-open the wrong book, which is worse than a search.
+**Every link is a search until the corpus has ISBNs**, and as committed it has
+none — not one of the 1038 books records one, because they were authored by hand.
+That is not a rare fallback: the product branch has never once been taken, and the
+Amazon `/dp/` branch it replaces never was either.
+
+`npm run isbn:enrich` is what changes that. (`npm run fetch` does **not** — that
+imports *new* books by subject and never touches the authored ones, which is a
+distinction the previous version of this section got wrong.)
+
+```
+npm run isbn:enrich                  # every book that lacks one, ~5 min at the throttle
+npm run isbn:enrich -- --limit 20    # a taste
+npm run isbn:enrich -- --dry-run     # report only, writes nothing
+
+git diff data/corpus                 # read the ISBNs before trusting them
+npm run neighbors                    # ISBNs do not reach the app until this runs
+```
+
+**The bake is not optional.** The app reads `src/generated/corpus.json`, so
+enriching `data/corpus/` alone changes nothing on screen. `npm test` fails on the
+freshness check until you re-bake, which is the guard rail for exactly this.
+
+It is the only script in the repo that writes to authored data, and it is narrow
+on purpose: it only ever **adds** an `isbn13`, only to books that have none, and
+only when the catalogue record matched on title, author *and* year — the same
+`verify()` bar `npm run verify:corpus` uses. Books it cannot place keep their
+search link deliberately. A search that finds the book beats a product link that
+404s, and beats a convincing page for the *wrong* book by a great deal more.
+
+Because Open Library lists ISBNs across **all editions** of a work, a book with
+several gets an arbitrary one — the run reports how many it chose between, so that
+is visible rather than implied. The corpus carries **no fabricated ISBNs**: a
+checksum-valid but incorrect one would open the wrong book.
+
+Like `npm run fetch` and `npm run verify:corpus`, **the enrichment pass has never
+run against the live service** — `openlibrary.org` answers 403 at the same egress
+proxy. Its parts are unit-tested against recorded shapes, so the unverified part is
+one claim: that `search.json` accepts `isbn` as a field. Unlike the search path
+below, it **fails safe** — a wrong field name means no ISBNs come back and nothing
+is written.
 
 **The search path is unverified from the environment this was built in.**
 `bookshop.org` answers 403 at that sandbox's egress proxy, so no request has ever
@@ -453,6 +487,7 @@ network access at all.
 | `npm run fetch` | pull more books from Open Library (unverified — see above) |
 | `npm run corpus:merge` | combine authored + fetched |
 | `npm run verify:corpus` | check every book's facts against a catalogue; writes nothing |
+| `npm run isbn:enrich` | add ISBNs so Bookshop links open the book's page, not a search (unverified — see above) |
 
 ### Deployment and the base path
 

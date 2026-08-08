@@ -49,10 +49,15 @@ const SEARCH_PATH = '/beta-search';
  *    affiliate product link, or `/book/{isbn13}` with no affiliate configured.
  *  - Otherwise -> a search for title and author.
  *
- *  The second branch is the live one: no book in the corpus currently records an
- *  ISBN, so every link today is a search. The first exists because it is the
- *  confirmed format and becomes live the moment ISBNs land, not because it is
- *  reachable now.
+ *  Which branch a book takes is decided by its DATA, not by anything here. A book
+ *  with an `isbn13` deep-links to its own page; a book without one searches. The
+ *  corpus was authored by hand and recorded no ISBNs at all, which is the only
+ *  reason every link was a search — `npm run isbn:enrich` fills them in from Open
+ *  Library, and every book it resolves moves to the first branch on the next bake.
+ *
+ *  Books the enrichment pass cannot confidently identify keep the search link on
+ *  purpose. A search that finds the book beats a product link that 404s, and beats
+ *  a convincing page for the wrong book by much more than that.
  *
  *  Affiliate attribution is a PATH SEGMENT for Bookshop, not a query parameter
  *  the way Amazon's `tag` was. With no id configured the link is a plain

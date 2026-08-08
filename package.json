@@ -18,6 +18,7 @@
     "lint": "eslint .",
     "fetch": "vite-node scripts/fetch-openlibrary.ts",
     "verify:corpus": "vite-node scripts/verify-corpus.ts",
+    "isbn:enrich": "vite-node scripts/enrich-isbns.ts",
     "corpus:merge": "vite-node scripts/merge-corpus.ts",
     "neighbors": "vite-node scripts/build-neighbors.ts"
   },
