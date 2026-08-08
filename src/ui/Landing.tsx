@@ -26,7 +26,6 @@ export function Landing(): React.ReactElement {
   const setQuery = useStore((s) => s.setQuery);
   const suggestions = useStore((s) => s.suggestions);
   const seed = useStore((s) => s.seed);
-  const bookCount = useStore((s) => s.books.length);
   const status = useStore((s) => s.status);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -143,13 +142,15 @@ export function Landing(): React.ReactElement {
             </ul>
           )}
 
-          {/* The hints share the list's slot, and are out of flow for the same
-              reason it is. All three are mutually exclusive with a populated
-              list — loading implies no suggestions yet, "no match" *is* the empty
-              list, and the book count only shows before you type — so they never
-              collide, and the centred block above keeps a fixed height whichever
-              of them is on screen. Without this the column shrank the moment the
-              book-count line went away, moving the field mid-keystroke. */}
+          {/* Both hints share the list's slot, and are out of flow for the same
+              reason it is: they are mutually exclusive with a populated list —
+              loading implies no suggestions yet, and "no match" *is* the empty
+              list — so they never collide, and the block above keeps a fixed
+              height whichever of them is on screen.
+              What used to sit here as well was a resting line naming the book
+              count, which said the same thing as the footer one bar below it. The
+              footer kept the wording; this slot is now for feedback about the
+              input only, which is why nothing shows here until you type. */}
 
           {/* While loading, say so — including mid-typing. The empty suggestion
               list is legitimate during the fetch, so the "no match" line would be
@@ -167,16 +168,6 @@ export function Landing(): React.ReactElement {
             </p>
           )}
 
-          {/* `bookCount` is 0 until the corpus arrives; the loading line above
-              covers that window instead. */}
-          {ready && !typing && (
-            <p className="landing__hint">
-              {bookCount} books, mapped by shared subjects and authors.{' '}
-              <a className="landing__browse" href="#/browse">
-                Browse the collection
-              </a>
-            </p>
-          )}
         </form>
       </div>
     </main>
